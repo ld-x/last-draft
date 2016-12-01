@@ -1,0 +1,261 @@
+body {
+  font-family: Georgia;
+  background: black;
+}
+
+#root {
+  background: white;
+  margin: 5rem;
+  min-height: 20rem;
+}
+
+.rte-root {
+  font-size: 1.75rem;
+  background: white;
+  color: black;
+  box-sizing: border-box;
+  padding: 1rem;
+  position: relative;
+  line-height: 1.4em;
+}
+
+.rte-editor {
+  cursor: text;
+  margin-top: 10px;
+  position: relative;
+  margin: 0 auto;
+}
+.rte-editor h3 {
+  font-size: 2rem;
+  margin: 2rem 0;
+}
+.rte-editor .rte-blockquote {
+  border-left: 0.2rem solid #555;
+  color: #555;
+  margin: 0;
+  padding: 1rem 0 1rem 2rem;
+}
+.rte-editor a {
+  text-decoration: underline;
+  color: red;
+}
+
+.rte__side-toolbar {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  left: -35px;
+  top: 0;
+  transition: all .2s ease;
+}
+
+.rte__button {
+  background: none;
+  border: none;
+  color: #6d6d6d;
+  cursor: pointer;
+  border-radius: 1.5rem;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-right: 2px;
+  text-align: center;
+  transition: all .2s ease;
+}
+
+.rte__button:focus {
+  outline: none;
+  border-color: #08c;
+  color: #08c;
+}
+
+.rte__button:hover {
+  color: red;
+}
+
+.rte__button.rte__img-button {
+  background: none;
+  background-color: #fff;
+}
+
+.rte__add-button--open {
+  transform: rotate(45deg);
+}
+
+/* toolbar */
+.rte__toolbar {
+  background: #2b2b2b;
+  color: white;
+  cursor: auto;
+  border-radius: 5px;
+  z-index: 2;
+  position: absolute;
+  transition: all .1s ease;
+  visibility: hidden;
+  background-image: linear-gradient(180deg, rgba(49, 49, 47, 0.99), #262625);
+}
+
+.rte__toolbar.rte__toolbar--open {
+  visibility: visible;
+}
+
+.rte__toolbar.rte__toolbar--linkinput {
+  animation: pop-downwards .2s forwards linear;
+}
+
+.rte__toolbar:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  margin-left: -5px;
+  border-top: 5px solid #2b2b2b;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+
+.rte__toolbar .url-input {
+  box-sizing: border-box;
+  border-radius: 2px;
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  background: #2b2b2b;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.rte__toolbar .url-input:focus {
+  outline: none;
+}
+
+.rte__toolbar .url-input-close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* controls */
+.rte-controls {
+  font-size: 14px;
+  display: inline-block;
+  border-right: 1px solid #555;
+  position: relative;
+}
+
+.rte-controls.rte-show-link-input {
+  padding: 6px 10px;
+}
+
+.rte-controls:last-child {
+  border-right: none;
+}
+
+/* buttons */
+.rte-controls .rte-linkButton {
+  color: #fff;
+  text-decoration: none;
+}
+
+.rte-styleButton {
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 10px;
+}
+
+.rte-styleButton:hover {
+  color: red;
+}
+
+.rte-styleButton:last-child {
+  margin-right: 0;
+}
+
+.rte-styleButton.rte-styleButton-bold {
+  font-weight: bold;
+}
+
+.rte-styleButton.rte-styleButton-italic {
+  font-style: italic;
+}
+
+.rte-styleButton.rte-styleButton-underline {
+  text-decoration: underline;
+}
+
+.rte-styleButton.rte-styleButton-strikethrough {
+  text-decoration: line-through;
+}
+
+.rte-activeButton {
+  color: red;
+}
+
+.rte-activeButton:hover {
+  color: red;
+}
+
+.public-DraftEditor-content .rte-block-paragraph {
+  margin: 20px 0;
+}
+
+.public-DraftEditor-content .rte-block-paragraph:first-child {
+  margin-top: 0;
+}
+
+.public-DraftEditor-content .rte-block-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.rte-block-checkbox input[type=checkbox] {
+  float: left;
+  margin-right: 10px;
+}
+
+figure.rte-block-image {
+  margin: 10px 0;
+  background: #fbfbfb;
+}
+
+figure.rte-block-image img {
+  cursor: default;
+  max-width: 100%;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+figure.rte-block-image img.is-selected {
+  box-shadow: 0 0 0 3px #02b875;
+}
+
+figure.rte-block-image figcaption {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: right;
+  padding: 0.4rem 0;
+}
+
+figure.rte-block-image figcaption .public-DraftStyleDefault-block {
+  text-align: center;
+}
+
+figure.rte-block-image .rte-block-image-inner-container {
+  position: relative;
+}
+
+figure.rte-block-image .rte-block-image-toolbar-container {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  cursor: pointer;
+}
+
+.public-DraftEditor-content .rte-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
