@@ -1,19 +1,48 @@
-import React, { PropTypes } from 'react'
-import Editor from './RTE/Editor'
+import React, { Component } from 'react';
+import { EditorState, CompositeDecorator } from 'draft-js'
+import { convertFromRaw, convertFromHTML, ContentState } from 'draft-js'
+import Editor from 'draft-js-plugins-editor'
+import createImagePlugin from 'draft-js-image-plugin'
+import { stateToHTML } from 'draft-js-export-html'
+import initialState from './initialState'
 
-export default class AddButton extends React.Component {
+import { findLinkEntities, Link } from './Entities'
+const decorators = [ { strategy: findLinkEntities, component: Link } ]
+const imagePlugin = createImagePlugin()
+const plugins = [imagePlugin]
+
+export default class SimpleImageEditor extends Component {
+
   constructor(props) {
     super(props)
-  }
 
-  editorUpdated() {
-    console.log('updated')
+    /* from html */
+    const initalHtml = '<div><a href="http://www.g.co">Example link</a></div>'
+    const blocks = convertFromHTML(initalHtml)
+    const content = ContentState.createFromBlockArray(blocks)
+    let state = EditorState.createWithContent(content, new CompositeDecorator(decorators))
+    //this.state = { editorState: state }
+
+    /* from json */
+    this.state = { editorState: EditorState.createWithContent(convertFromRaw(initialState)) }
+
+    this.onChange = (editorState) => this.setState({editorState})
+
+    // console.log(stateToHTML(state))
   }
 
   render() {
-    let htmlValue = '<div><img src="http://imgur.com/yrwFoXT.jpg" /><p>xxx</p></div>'
     return (
-      <Editor html={htmlValue} name='body' onChange={::this.editorUpdated} autofocus={true} />
+      <div>
+        <div className='editor' onClick={this.focus}>
+          <Editor
+            decorators={decorators}
+            editorState={this.state.editorState}
+            onChange={this.onChange}
+            plugins={plugins}
+            ref={(element) => { this.editor = element; }} />
+        </div>
+      </div>
     )
   }
 }
