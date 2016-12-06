@@ -1,4 +1,4 @@
-# final-draft
+# [final-draft](http://finaldraft.vace.nz)
 
 [![npm version](https://badge.fury.io/js/final-draft.svg)](https://badge.fury.io/js/final-draft)
 
