@@ -1,27 +1,6 @@
 import React, { Component } from 'react'
-import { EditorState } from 'draft-js'
-import Editor from 'draft-js-plugins-editor'
-import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
-import mentions from './mentions'
 
-/*
-import styles from './Mention.css'
-*/
-
-import 'draft-js-mention-plugin/lib/plugin.css'
-
-/* FOR CUSTOM ADD: theme: styles, */
-const mentionPlugin = createMentionPlugin({
-  mentions,
-  entityMutability: 'IMMUTABLE',
-  positionSuggestions,
-  mentionPrefix: '@',
-})
-
-const { MentionSuggestions } = mentionPlugin
-const plugins = [mentionPlugin]
-
-const Entry = (props) => {
+export const Entry = (props) => {
   const {
     mention,
     theme,
@@ -54,47 +33,7 @@ const Entry = (props) => {
   )
 }
 
-export default class CustomMentionEditor extends Component {
-
-  state = {
-    editorState: EditorState.createEmpty(),
-    suggestions: mentions,
-  }
-
-  onChange = (editorState) => {
-    this.setState({ editorState })
-  }
-
-  onSearchChange = ({ value }) => {
-    this.setState({
-      suggestions: defaultSuggestionsFilter(value, mentions),
-    })
-  }
-
-  focus = () => {
-    this.editor.focus()
-  }
-
-  render() {
-    return (
-      <div className='editor' onClick={this.focus}>
-        <Editor
-          editorState={this.state.editorState}
-          onChange={this.onChange}
-          plugins={plugins}
-          ref={(element) => { this.editor = element; }}
-        />
-        <MentionSuggestions
-          onSearchChange={this.onSearchChange}
-          suggestions={this.state.suggestions}
-          entryComponent={Entry}
-        />
-      </div>
-    )
-  }
-}
-
-const positionSuggestions = ({ state, props }) => {
+export const positionSuggestions = ({ state, props }) => {
   let transform
   let transition
 

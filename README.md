@@ -1,7 +1,14 @@
 # final-draft
-a Draft.js editor http://vace.nz/finaldraft
 
-## Run Example
+[![npm version](https://badge.fury.io/js/final-draft.svg)](https://badge.fury.io/js/final-draft)
+
+![](https://raw.githubusercontent.com/StevenIseki/final-draft/master/screenshot.gif)
+
+final-draft is a Draft.js editor built using [draft-js-plugins](https://draft-js-plugins.com)
+
+Soon to be viewed here http://vace.nz/finaldraft
+
+## Run
 
 ```
 npm install

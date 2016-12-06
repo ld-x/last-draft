@@ -2,9 +2,9 @@ import { fromJS } from 'immutable'
 
 const mentions = fromJS([
   {
-    name: 'matthew',
-    title: 'Senior Software Engineer',
-    avatar: 'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
+    name: 'benjamin',
+    title: 'Frankfurt/London',
+    avatar: 'https://avatars2.githubusercontent.com/u/4349324?v=3&s=400',
   },
   {
     name: 'julian',
