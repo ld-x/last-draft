@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor'
 import createHashtagPlugin from 'draft-js-hashtag-plugin'
 
+import 'draft-js-hashtag-plugin/lib/plugin.css'
+const hashtagPlugin = createHashtagPlugin()
+
+/*
 import styles from './Hashtag.css'
 const hashtagPlugin = createHashtagPlugin({ theme: styles })
+*/
+
 const plugins = [hashtagPlugin]
 const text = `#TIL: This editor can have all sorts of #hashtags. Pretty #cool :)
 Try it yourself by starting a word with a # (hash character) …
 `;
 
-import 'draft-js-hashtag-plugin/lib/plugin.css'
 
 
 export default class SimpleHashtagEditor extends Component {

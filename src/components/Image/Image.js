@@ -7,18 +7,21 @@ import createFocusPlugin from 'draft-js-focus-plugin'
 import createResizeablePlugin from 'draft-js-resizeable-plugin'
 import createDndPlugin from 'draft-js-dnd-plugin'
 
-const focusPlugin = createFocusPlugin()
-const resizeablePlugin = createResizeablePlugin()
-const dndPlugin = createDndPlugin()
-const alignmentPlugin = createAlignmentPlugin()
-const { AlignmentTool } = alignmentPlugin
+/*
+import focusStyles from './Focus.css'
+import alignmentStyles from './Alignment.css'
+const focusPlugin = createFocusPlugin({ theme: focusStyles })
+const alignmentPlugin = createAlignmentPlugin({ theme: alignmentStyles })
+*/
 
-import styles from './Image.css'
-import 'draft-js-image-plugin/lib/plugin.css'
 import 'draft-js-alignment-plugin/lib/plugin.css'
 import 'draft-js-focus-plugin/lib/plugin.css'
-import 'draft-js-image-plugin/lib/plugin.css'
-import 'draft-js-toolbar-plugin/lib/plugin.css'
+const focusPlugin = createFocusPlugin()
+const alignmentPlugin = createAlignmentPlugin()
+
+const resizeablePlugin = createResizeablePlugin()
+const dndPlugin = createDndPlugin()
+const { AlignmentTool } = alignmentPlugin
 
 const decorator = composeDecorators(
   resizeablePlugin.decorator,
@@ -27,11 +30,10 @@ const decorator = composeDecorators(
   dndPlugin.decorator
 )
 
-const imagePlugin = createImagePlugin({ decorator })
-const plugins = [dndPlugin, focusPlugin, alignmentPlugin, resizeablePlugin, imagePlugin]
-
 import { initialState } from './initialState'
 
+const imagePlugin = createImagePlugin({ decorator })
+const plugins = [dndPlugin, focusPlugin, alignmentPlugin, resizeablePlugin, imagePlugin]
 export default class CustomImageEditor extends Component {
 
   state = {

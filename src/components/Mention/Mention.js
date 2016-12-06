@@ -2,33 +2,18 @@ import React, { Component } from 'react'
 import { EditorState } from 'draft-js'
 import Editor from 'draft-js-plugins-editor'
 import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
-import styles from './Mention.css'
 import mentions from './mentions'
+
+/*
+import styles from './Mention.css'
+*/
 
 import 'draft-js-mention-plugin/lib/plugin.css'
 
-const positionSuggestions = ({ state, props }) => {
-  let transform
-  let transition
-
-  if (state.isActive && props.suggestions.size > 0) {
-    transform = 'scaleY(1)'
-    transition = 'all 0.25s cubic-bezier(.3,1.2,.2,1)'
-  } else if (state.isActive) {
-    transform = 'scaleY(0)'
-    transition = 'all 0.25s cubic-bezier(.3,1,.2,1)'
-  }
-
-  return {
-    transform,
-    transition,
-  }
-}
-
+/* FOR CUSTOM ADD: theme: styles, */
 const mentionPlugin = createMentionPlugin({
   mentions,
   entityMutability: 'IMMUTABLE',
-  theme: styles,
   positionSuggestions,
   mentionPrefix: '@',
 })
@@ -106,5 +91,23 @@ export default class CustomMentionEditor extends Component {
         />
       </div>
     )
+  }
+}
+
+const positionSuggestions = ({ state, props }) => {
+  let transform
+  let transition
+
+  if (state.isActive && props.suggestions.size > 0) {
+    transform = 'scaleY(1)'
+    transition = 'all 0.25s cubic-bezier(.3,1.2,.2,1)'
+  } else if (state.isActive) {
+    transform = 'scaleY(0)'
+    transition = 'all 0.25s cubic-bezier(.3,1,.2,1)'
+  }
+
+  return {
+    transform,
+    transition,
   }
 }

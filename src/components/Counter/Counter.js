@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor'
 import createCounterPlugin from 'draft-js-counter-plugin'
-import styles from './Counter.css'
 
 import 'draft-js-counter-plugin/lib/plugin.css'
+const counterPlugin = createCounterPlugin()
 
+/*
+import styles from './Counter.css'
 const theme = {
   counter: styles.counter,
   counterOverLimit: styles.counterOverLimit
 }
 const counterPlugin = createCounterPlugin({ theme })
+*/
+
 const { CharCounter, WordCounter, LineCounter, CustomCounter } = counterPlugin
 const plugins = [counterPlugin]
 const text = `This editor has counters below!

@@ -3,13 +3,15 @@ import { EditorState } from 'draft-js'
 import Editor from 'draft-js-plugins-editor'
 import createLinkifyPlugin from 'draft-js-linkify-plugin'
 
+/*
 import styles from './Linkify.css'
-import 'draft-js-linkify-plugin/lib/plugin.css'
+const linkifyPlugin = createLinkifyPlugin({ theme: styles })
+*/
 
+import 'draft-js-linkify-plugin/lib/plugin.css'
 const linkifyPlugin = createLinkifyPlugin()
 
 const plugins = [linkifyPlugin]
-
 export default class CustomMentionEditor extends Component {
 
   state = {

@@ -23,7 +23,8 @@
 }
 
 .emojiSuggestionsEntryFocused {
-  composes: emojiSuggestionsEntry;
+  padding: 5px 10px 1px 10px;
+  transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
   background-color: #e6f3ff;
 }
 

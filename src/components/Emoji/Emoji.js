@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor'
 import createEmojiPlugin from 'draft-js-emoji-plugin'
-import styles from './Emoji.css'
 
+import 'draft-js-emoji-plugin/lib/plugin.css'
+const emojiPlugin = createEmojiPlugin()
+
+/*
+import styles from './Emoji.css'
 const emojiPlugin = createEmojiPlugin({ theme: styles })
+*/
+
 const { EmojiSuggestions } = emojiPlugin
 const plugins = [emojiPlugin]
 const text = `Cool, we can have all sorts of Emojis here. 🙌
 🌿☃️🎉🙈 aaaand maybe a few more here 🐲☀️🗻 Quite fun!`
-
-import 'draft-js-emoji-plugin/lib/plugin.css'
 
 
 export default class SimpleEmojiEditor extends Component {
