@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Final Draft...",
   "scripts": {
+    "build": "npm run clean && NODE_ENV=prod webpack --config webpack.config.prod",
+    "clean": "rm public/bundle.js && rm public/style.css && rm public/vendor.js || true",
     "dev": "NODE_ENV=dev webpack-dev-server --port 3000 --inline --hot"
   },
   "repository": {
@@ -44,9 +46,10 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.16.0",
     "immutable": "^3.8.1",
-    "style-loader": "^0.13.1",
+    "postcss-cssnext": "^2.9.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
   }
