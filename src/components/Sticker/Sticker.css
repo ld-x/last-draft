@@ -1,0 +1,32 @@
+.selectSticker {
+  border: 0;
+  border-radius: 5px;
+  background: #fff;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+.selectStickerImage {
+  height: 40px;
+  width: 40px;
+  user-drag: none;
+}
+.stickerImage {
+  width: 100px;
+  height: 100px;
+}
+
+.select {
+  display: inline-block;
+  background: #fff;
+}
+.selectPopover {
+  margin-top: 10px;
+  background: #fff;
+  position: absolute;
+  height: 250px;
+  width: 220px;
+  border-radius: 2px;
+  padding: 10px;
+  box-shadow: 0 4px 30px 0 #dcdcdc;
+  z-index: 2;
+}

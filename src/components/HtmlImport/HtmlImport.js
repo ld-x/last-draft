@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import { EditorState, CompositeDecorator } from 'draft-js'
 import { convertFromRaw, convertFromHTML, ContentState } from 'draft-js'
 import Editor from 'draft-js-plugins-editor'
-import createImagePlugin from 'draft-js-image-plugin'
 import { stateToHTML } from 'draft-js-export-html'
-import initialState from './initialState'
 
 import { findLinkEntities, Link } from './Entities'
 const decorators = [ { strategy: findLinkEntities, component: Link } ]
-const imagePlugin = createImagePlugin()
-const plugins = [imagePlugin]
 
 export default class SimpleImageEditor extends Component {
 
@@ -21,14 +17,16 @@ export default class SimpleImageEditor extends Component {
     const blocks = convertFromHTML(initalHtml)
     const content = ContentState.createFromBlockArray(blocks)
     let state = EditorState.createWithContent(content, new CompositeDecorator(decorators))
-    //this.state = { editorState: state }
+    this.state = { editorState: state }
+  }
 
-    /* from json */
-    this.state = { editorState: EditorState.createWithContent(convertFromRaw(initialState)) }
+  onChange = (editorState) => {
+    console.log(stateToHTML(editorState.getCurrentContent()))
+    this.setState({ editorState })
+  }
 
-    this.onChange = (editorState) => this.setState({editorState})
-
-    // console.log(stateToHTML(state))
+  focus = () => {
+    this.editor.focus()
   }
 
   render() {
@@ -39,7 +37,6 @@ export default class SimpleImageEditor extends Component {
             decorators={decorators}
             editorState={this.state.editorState}
             onChange={this.onChange}
-            plugins={plugins}
             ref={(element) => { this.editor = element; }} />
         </div>
       </div>

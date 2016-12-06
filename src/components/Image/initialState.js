@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
     "entityMap": {
         "0": {
             "type": "image",
@@ -38,5 +38,3 @@ const initialState = {
         "data": {}
     }]
 }
-
-module.exports = initialState
