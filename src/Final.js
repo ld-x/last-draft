@@ -3,6 +3,8 @@ import Editor, { createEditorStateWithText, composeDecorators } from 'draft-js-p
 import { EditorState, convertFromRaw, convertToRaw, convertFromHTML, ContentState } from 'draft-js'
 import { stateToHTML } from 'draft-js-export-html'
 
+
+
 /* Counter plugin */
 import createCounterPlugin from 'draft-js-counter-plugin'
 import 'draft-js-counter-plugin/lib/plugin.css'
@@ -29,10 +31,11 @@ import createDndPlugin from 'draft-js-dnd-plugin'
 
 import 'draft-js-alignment-plugin/lib/plugin.css'
 import 'draft-js-focus-plugin/lib/plugin.css'
-const focusPlugin = createFocusPlugin()
-const alignmentPlugin = createAlignmentPlugin()
-const resizeablePlugin = createResizeablePlugin()
-const dndPlugin = createDndPlugin()
+
+const focusPlugin = createFocusPlugin();
+const resizeablePlugin = createResizeablePlugin();
+const dndPlugin = createDndPlugin();
+const alignmentPlugin = createAlignmentPlugin();
 const { AlignmentTool } = alignmentPlugin
 
 const decorator = composeDecorators(
@@ -78,7 +81,7 @@ const { StickerSelect } = stickerPlugin
 /* Undo Redo */
 import createUndoPlugin from 'draft-js-undo-plugin'
 import 'draft-js-undo-plugin/lib/plugin.css'
-const undoPlugin = createUndoPlugin({ undoContent: 'Undo', redoContent: 'Redo' })
+const undoPlugin = createUndoPlugin()
 const { UndoButton, RedoButton } = undoPlugin
 
 
@@ -155,14 +158,15 @@ export default class Final extends Component {
             plugins={plugins}
             ref={(element) => { this.editor = element; }}
           />
+          <AlignmentTool />
           <InlineToolbar />
           <SideToolbar />
-            <EmojiSuggestions />
-            <MentionSuggestions
-              onSearchChange={this.onSearchChange}
-              suggestions={this.state.suggestions}
-              entryComponent={Entry}
-            />
+          <EmojiSuggestions />
+          <MentionSuggestions
+            onSearchChange={this.onSearchChange}
+            suggestions={this.state.suggestions}
+            entryComponent={Entry}
+          />
         </div>
 
         <div className='options'>
@@ -170,12 +174,8 @@ export default class Final extends Component {
           <div><WordCounter limit={50} /> words out of an allowed 50</div>
 
           <StickerSelect editor={this} />
-          {
-            /* lets fix these styles first
-            <UndoButton />
-            <RedoButton />
-            */
-          }
+          <UndoButton />
+          <RedoButton />
         </div>
 
       </div>
