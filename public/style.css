@@ -129,8 +129,11 @@
   border-width: 6px;
   margin-left: -6px;
 }
-.draftJsEmojiPlugin__button__qi1gf {
+.draftJsEmojiPlugin__buttonWrapper__1Dmqh {
   display: inline-block;
+}
+
+.draftJsEmojiPlugin__button__qi1gf {
   background: #fbfbfb;
   color: #888;
   font-size: 18px;
@@ -138,7 +141,7 @@
   padding-top: 5px;
   vertical-align: bottom;
   height: 34px;
-  /*width: 36px;*/
+  width: 36px;
 }
 
 .draftJsEmojiPlugin__button__qi1gf svg {
@@ -149,9 +152,25 @@
   background: #f3f3f3;
   outline: 0; /* reset for :focus */
 }
-.draftJsEmojiPlugin__focused__3Mksn {
+
+.draftJsEmojiPlugin__active__3qcpF {
+  background: #efefef;
+  color: #444;
+}
+
+.draftJsEmojiPlugin__active__3qcpF svg {
+  fill: #444;
+}
+.draftJsEmojiPlugin__unfocused__1Wvrs:hover {
+  cursor: default;
   border-radius: 2px;
-  box-shadow: 0 0 0 3px #ACCEF7
+  box-shadow: 0 0 0 3px #D2E3F7;
+}
+
+.draftJsEmojiPlugin__focused__3Mksn {
+  cursor: default;
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px #ACCEF7;
 }
 .draftJsToolbar__buttonWrapper__1Dmqh {
   display: inline-block;

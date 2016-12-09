@@ -43,14 +43,14 @@
     "draft-js-toolbar-plugin": "^2.0.0-beta5",
     "draft-js-undo-plugin": "^2.0.0-beta7",
     "express": "^4.13.4",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
     "html-webpack-plugin": "^2.16.0",
     "immutable": "^3.8.1",
     "postcss-cssnext": "^2.9.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.2"
+    "webpack": "2.1.0-beta.27",
+    "webpack-dev-server": "2.1.0-beta.12"
   }
 }
