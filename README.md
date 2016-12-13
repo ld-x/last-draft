@@ -8,8 +8,10 @@ final-draft is a Draft.js editor built using [draft-js-plugins](https://draft-js
 
 ## Run
 
+**Note:** Currently including the draft-js-plugins in this project as I work on them, once they are stable and version 2 is released, they will go back to being includes. So to run this at the moment, you will need to yarn install in each plugin subfolder for now.
+
 ```
-npm install
+yarn install
 npm run dev
 open http://127.0.0.1:3000
 ```

@@ -1,7 +1,38 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom'
-
 import Example from './Example'
+
+class GithubButton extends Component {
+  componentDidMount() {
+    const githubScript = document.createElement('script')
+    githubScript.src = '//buttons.github.io/buttons.js'
+    githubScript.id = 'github-bjs'
+    this.githubButton.parentNode.appendChild(githubScript)
+  }
+
+  componentWillUnmount() {
+    const elem = document.getElementById('github-bjs')
+    if (elem !== undefined) { elem.parentNode.removeChild(elem) }
+  }
+
+  render() {
+    return (
+      <a
+        ref={(element) => { this.githubButton = element; }}
+        className="github-button"
+        href="https://github.com/vacenz/final-draft"
+        data-style='mega'
+        data-count-href="/vacenz/final-draft/stargazers"
+        data-count-api="/repos/vacenz/final-draft#stargazers_count"
+        data-count-aria-label="# stargazers on GitHub"
+        aria-label="Star vacenz/final-draft on GitHub"
+      >
+        Github
+      </a>
+    )
+  }
+}
+
 
 class App extends Component {
 
@@ -53,6 +84,14 @@ class App extends Component {
       easing: 'easeOutQuad',
       delay: 1500,
     });
+
+    animate({
+      el: this.githubWrapper,
+      opacity: [0, 1],
+      duration: 1600,
+      easing: 'easeOutQuad',
+      delay: 2500,
+    });
   };
 
   render () {
@@ -97,6 +136,10 @@ class App extends Component {
             </g>
           </g>
         </svg>
+
+        <div className='githubWrapper' ref={(element) => { this.githubWrapper = element; }}>
+          <GithubButton />
+        </div>
 
         <Example />
       </div>
