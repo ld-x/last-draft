@@ -1,4 +1,4 @@
-.emojiStyles__emoji___3Od4C {
+.emojiStyles__emoji___7VHPu {
   background-position: center;
   /* make sure the background the image is only shown once */
   background-repeat: no-repeat;
@@ -23,14 +23,14 @@
   line-height: inherit;
 }
 
-.emojiStyles__emojiCharacter___15lwv {
+.emojiStyles__emojiCharacter___1fKPi {
   /*
   Hide the original Emoji icon no matter what system it is. color: transparent
   would have been nice to avoid the extra span, but it doesn't work on iOS.
   */
   opacity: 0;
 }
-.emojiSuggestionsStyles__emojiSuggestions___vCS6m {
+.emojiSuggestionsStyles__emojiSuggestions___3W0Z7 {
   border: 1px solid #eee;
   margin-top: 1.75em;
   position: absolute;
@@ -43,25 +43,32 @@
   padding-top: 8px;
   padding-bottom: 8px;
   z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   box-sizing: border-box;
-  transform: scale(0);
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
-.emojiSuggestionsEntryStyles__emojiSuggestionsEntry___8ihYg {
+.emojiSuggestionsEntryStyles__emojiSuggestionsEntry___1zp_3 {
   padding: 5px 10px 1px 10px;
+  -webkit-transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
   transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
 }
 
-.emojiSuggestionsEntryStyles__emojiSuggestionsEntry___8ihYg:active {
+.emojiSuggestionsEntryStyles__emojiSuggestionsEntry___1zp_3:active {
   background-color: #cce7ff;
 }
 
-.emojiSuggestionsEntryStyles__emojiSuggestionsEntryFocused___1wJ_U {
+.emojiSuggestionsEntryStyles__emojiSuggestionsEntryFocused___1Nu_U {
   background-color: #e6f3ff;
 }
 
-.emojiSuggestionsEntryStyles__emojiSuggestionsEntryText___kyn5I {
+.emojiSuggestionsEntryStyles__emojiSuggestionsEntryText___17_BS {
   display: inline-block;
   margin-left: 8px;
   white-space: nowrap;
@@ -71,7 +78,7 @@
   font-size: 0.9em;
 }
 
-.emojiSuggestionsEntryStyles__emojiSuggestionsEntryIcon___2YnjQ {
+.emojiSuggestionsEntryStyles__emojiSuggestionsEntryIcon___30xnS {
   width: 1em;
   height: 1em;
   margin-left: 0.25em;
@@ -80,7 +87,7 @@
 }
 /* emojiStyles */
 
-.EmojiStyles__emoji___1rVK7 {
+.EmojiStyles__emoji___19Hn1 {
   background-position: center;
   /* make sure the background the image is only shown once */
   background-repeat: no-repeat;
@@ -105,7 +112,7 @@
   line-height: inherit;
 }
 
-.EmojiStyles__emojiCharacter___1HGF- {
+.EmojiStyles__emojiCharacter___2R2aw {
   /*
   Hide the original Emoji icon no matter what system it is. color: transparent
   would have been nice to avoid the extra span, but it doesn't work on iOS.
@@ -115,20 +122,21 @@
 
 /* emojiSuggestionsEntryStyles */
 
-.EmojiStyles__emojiSuggestionsEntry___3CuAN {
+.EmojiStyles__emojiSuggestionsEntry___1FoSy {
   padding: 5px 10px 1px 10px;
+  -webkit-transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
   transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
 }
 
-.EmojiStyles__emojiSuggestionsEntry___3CuAN:active {
+.EmojiStyles__emojiSuggestionsEntry___1FoSy:active {
   background-color: #cce7ff;
 }
 
-.EmojiStyles__emojiSuggestionsEntryFocused___3vaOI {
+.EmojiStyles__emojiSuggestionsEntryFocused___lPoCT {
   background-color: #e6f3ff;
 }
 
-.EmojiStyles__emojiSuggestionsEntryText___3K5uv {
+.EmojiStyles__emojiSuggestionsEntryText___27AaC {
   display: inline-block;
   margin-left: 8px;
   white-space: nowrap;
@@ -138,7 +146,7 @@
   font-size: 0.9em;
 }
 
-.EmojiStyles__emojiSuggestionsEntryIcon___2FC46 {
+.EmojiStyles__emojiSuggestionsEntryIcon___1q_hr {
   width: 1em;
   height: 1em;
   margin-left: 0.25em;
@@ -148,7 +156,7 @@
 
 /* emojiSuggestionsStyles */
 
-.EmojiStyles__emojiSuggestions___2rf2I {
+.EmojiStyles__emojiSuggestions___YhD2L {
   border: 1px solid #eee;
   margin-top: 1.75em;
   position: absolute;
@@ -161,25 +169,32 @@
   padding-top: 8px;
   padding-bottom: 8px;
   z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   box-sizing: border-box;
-  transform: scale(0);
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
-.styles__hashtag___2ctZ_ {
+.styles__hashtag___2EHHR {
   color: #5e93c5;
 }
-.HashtagStyles__hashtag___1N0Q_ {
+.HashtagStyles__hashtag___2oDV4 {
   color: #5e93c5;
 }
-.imageStyles__image___3Bww3 {}
-.styles__addImage___2iGrs {
+.imageStyles__image___2FY73 {}
+.styles__addImage___BNE8- {
   background: #FFF;
   display: inline-block;
 }
-.alignmentToolStyles__alignmentTool___1jc3D {
+.alignmentToolStyles__alignmentTool___2-Q7x {
   left: 50%;
-  transform: translate(-50%) scale(0);
+  -webkit-transform: translate(-50%) scale(0);
+          transform: translate(-50%) scale(0);
   position: absolute;
   border: 1px solid #ddd;
   background: #fff;
@@ -189,7 +204,7 @@
   box-sizing: border-box;
 }
 
-.alignmentToolStyles__alignmentTool___1jc3D:after, .alignmentToolStyles__alignmentTool___1jc3D:before {
+.alignmentToolStyles__alignmentTool___2-Q7x:after, .alignmentToolStyles__alignmentTool___2-Q7x:before {
   top: 100%;
   left: 50%;
   border: solid transparent;
@@ -200,23 +215,23 @@
   pointer-events: none;
 }
 
-.alignmentToolStyles__alignmentTool___1jc3D:after {
+.alignmentToolStyles__alignmentTool___2-Q7x:after {
   border-color: rgba(255, 255, 255, 0);
   border-top-color: #fff;
   border-width: 4px;
   margin-left: -4px;
 }
-.alignmentToolStyles__alignmentTool___1jc3D:before {
+.alignmentToolStyles__alignmentTool___2-Q7x:before {
   border-color: rgba(221, 221, 221, 0);
   border-top-color: #ddd;
   border-width: 6px;
   margin-left: -6px;
 }
-.buttonStyles__buttonWrapper___2lgRI {
+.buttonStyles__buttonWrapper___15neR {
   display: inline-block;
 }
 
-.buttonStyles__button___3hu33 {
+.buttonStyles__button___21elG {
   background: #fbfbfb;
   color: #888;
   font-size: 18px;
@@ -227,50 +242,51 @@
   width: 36px;
 }
 
-.buttonStyles__button___3hu33 svg {
+.buttonStyles__button___21elG svg {
   fill: #888;
 }
 
-.buttonStyles__button___3hu33:hover, .buttonStyles__button___3hu33:focus {
+.buttonStyles__button___21elG:hover, .buttonStyles__button___21elG:focus {
   background: #f3f3f3;
   outline: 0; /* reset for :focus */
 }
 
-.buttonStyles__active___3I9hS {
+.buttonStyles__active___3app7 {
   background: #efefef;
   color: #444;
 }
 
-.buttonStyles__active___3I9hS svg {
+.buttonStyles__active___3app7 svg {
   fill: #444;
 }
-.style__unfocused___3xfDT:hover {
+.style__unfocused___3PmHc:hover {
   cursor: default;
   border-radius: 2px;
   box-shadow: 0 0 0 3px #D2E3F7;
 }
 
-.style__focused___3B6Ct {
+.style__focused___2a_V4 {
   cursor: default;
   border-radius: 2px;
   box-shadow: 0 0 0 3px #ACCEF7;
 }
-.FocusStyles__unfocused___ffb88:hover {
+.FocusStyles__unfocused___2IZO_:hover {
   cursor: default;
   border-radius: 2px;
   box-shadow: 0 0 0 3px #D2E3F7;
 }
 
-.FocusStyles__focused___2fcnP {
+.FocusStyles__focused___1IPkt {
   cursor: default;
   border-radius: 2px;
   box-shadow: 0 0 0 3px #ACCEF7;
 }
 /* alignmentTool */
 
-.AlignmentStyles__alignmentTool___2vjbD {
+.AlignmentStyles__alignmentTool___21JsV {
   left: 50%;
-  transform: translate(-50%) scale(0);
+  -webkit-transform: translate(-50%) scale(0);
+          transform: translate(-50%) scale(0);
   position: absolute;
   border: 1px solid #ddd;
   background: #fff;
@@ -280,7 +296,7 @@
   box-sizing: border-box;
 }
 
-.AlignmentStyles__alignmentTool___2vjbD:after, .AlignmentStyles__alignmentTool___2vjbD:before {
+.AlignmentStyles__alignmentTool___21JsV:after, .AlignmentStyles__alignmentTool___21JsV:before {
   top: 100%;
   left: 50%;
   border: solid transparent;
@@ -291,13 +307,13 @@
   pointer-events: none;
 }
 
-.AlignmentStyles__alignmentTool___2vjbD:after {
+.AlignmentStyles__alignmentTool___21JsV:after {
   border-color: rgba(255, 255, 255, 0);
   border-top-color: #fff;
   border-width: 4px;
   margin-left: -4px;
 }
-.AlignmentStyles__alignmentTool___2vjbD:before {
+.AlignmentStyles__alignmentTool___21JsV:before {
   border-color: rgba(221, 221, 221, 0);
   border-top-color: #ddd;
   border-width: 6px;
@@ -306,11 +322,11 @@
 
 /* button */
 
-.AlignmentStyles__buttonWrapper___12xcQ {
+.AlignmentStyles__buttonWrapper___1hTyo {
   display: inline-block;
 }
 
-.AlignmentStyles__button___22c_p {
+.AlignmentStyles__button___26SLY {
   background: #fbfbfb;
   color: #888;
   font-size: 18px;
@@ -321,34 +337,34 @@
   width: 36px;
 }
 
-.AlignmentStyles__button___22c_p svg {
+.AlignmentStyles__button___26SLY svg {
   fill: #888;
 }
 
-.AlignmentStyles__button___22c_p:hover, .AlignmentStyles__button___22c_p:focus {
+.AlignmentStyles__button___26SLY:hover, .AlignmentStyles__button___26SLY:focus {
   background: #f3f3f3;
   outline: 0; /* reset for :focus */
 }
 
-.AlignmentStyles__active___21831 {
+.AlignmentStyles__active___1Pkz9 {
   background: #efefef;
   color: #444;
 }
 
-.AlignmentStyles__active___21831 svg {
+.AlignmentStyles__active___1Pkz9 svg {
   fill: #444;
 }
-.separatorStyles__separator___2RCHS {
+.separatorStyles__separator___3NkVF {
   display: inline-block;
   border-right: 1px solid #ddd;
   height: 24px;
   margin: 0 0.5em;
 }
-.buttonStyles__buttonWrapper___otPn- {
+.buttonStyles__buttonWrapper___15neR {
   display: inline-block;
 }
 
-.buttonStyles__button___157ZK {
+.buttonStyles__button___21elG {
   background: #fbfbfb;
   color: #888;
   font-size: 18px;
@@ -359,26 +375,27 @@
   width: 36px;
 }
 
-.buttonStyles__button___157ZK svg {
+.buttonStyles__button___21elG svg {
   fill: #888;
 }
 
-.buttonStyles__button___157ZK:hover, .buttonStyles__button___157ZK:focus {
+.buttonStyles__button___21elG:hover, .buttonStyles__button___21elG:focus {
   background: #f3f3f3;
   outline: 0; /* reset for :focus */
 }
 
-.buttonStyles__active___2xR61 {
+.buttonStyles__active___3app7 {
   background: #efefef;
   color: #444;
 }
 
-.buttonStyles__active___2xR61 svg {
+.buttonStyles__active___3app7 svg {
   fill: #444;
 }
-.toolbarStyles__toolbar___TzJQy {
+.toolbarStyles__toolbar___PcU5j {
   left: 50%;
-  transform: translate(-50%) scale(0);
+  -webkit-transform: translate(-50%) scale(0);
+          transform: translate(-50%) scale(0);
   position: absolute;
   border: 1px solid #ddd;
   background: #fff;
@@ -388,7 +405,7 @@
   box-sizing: border-box;
 }
 
-.toolbarStyles__toolbar___TzJQy:after, .toolbarStyles__toolbar___TzJQy:before {
+.toolbarStyles__toolbar___PcU5j:after, .toolbarStyles__toolbar___PcU5j:before {
   top: 100%;
   left: 50%;
   border: solid transparent;
@@ -399,21 +416,22 @@
   pointer-events: none;
 }
 
-.toolbarStyles__toolbar___TzJQy:after {
+.toolbarStyles__toolbar___PcU5j:after {
   border-color: rgba(255, 255, 255, 0);
   border-top-color: #fff;
   border-width: 4px;
   margin-left: -4px;
 }
-.toolbarStyles__toolbar___TzJQy:before {
+.toolbarStyles__toolbar___PcU5j:before {
   border-color: rgba(221, 221, 221, 0);
   border-top-color: #ddd;
   border-width: 6px;
   margin-left: -6px;
 }
-.inlineToolbarStyles__toolbar___1-k7F {
+.inlineToolbarStyles__toolbar___2fsbe {
   left: 50%;
-  transform: translate(-50%) scale(0);
+  -webkit-transform: translate(-50%) scale(0);
+          transform: translate(-50%) scale(0);
   position: absolute;
   border: 1px solid #111;
   background: #333;
@@ -423,7 +441,7 @@
   box-sizing: border-box;
 }
 
-.inlineToolbarStyles__toolbar___1-k7F:after, .inlineToolbarStyles__toolbar___1-k7F:before {
+.inlineToolbarStyles__toolbar___2fsbe:after, .inlineToolbarStyles__toolbar___2fsbe:before {
   top: 100%;
   left: 50%;
   border: solid transparent;
@@ -434,24 +452,24 @@
   pointer-events: none;
 }
 
-.inlineToolbarStyles__toolbar___1-k7F:after {
+.inlineToolbarStyles__toolbar___2fsbe:after {
   border-color: rgba(255, 255, 255, 0);
   border-top-color: #333;
   border-width: 4px;
   margin-left: -4px;
 }
 
-.inlineToolbarStyles__toolbar___1-k7F:before {
+.inlineToolbarStyles__toolbar___2fsbe:before {
   border-color: rgba(221, 221, 221, 0);
   border-top-color: #111;
   border-width: 6px;
   margin-left: -6px;
 }
-.InlineToolbarButtonStyles__buttonWrapper___1C-O6 {
+.InlineToolbarButtonStyles__buttonWrapper___wrORK {
   display: inline-block;
 }
 
-.InlineToolbarButtonStyles__button___RETRN {
+.InlineToolbarButtonStyles__button___3AK7- {
   background: #333;
   color: #ddd;
   font-size: 18px;
@@ -463,28 +481,28 @@
   border-radius: 4px;
 }
 
-.InlineToolbarButtonStyles__button___RETRN svg {
+.InlineToolbarButtonStyles__button___3AK7- svg {
   fill: #ddd;
 }
 
-.InlineToolbarButtonStyles__button___RETRN:hover, .InlineToolbarButtonStyles__button___RETRN:focus {
+.InlineToolbarButtonStyles__button___3AK7-:hover, .InlineToolbarButtonStyles__button___3AK7-:focus {
   background: #444;
   outline: 0; /* reset for :focus */
 }
 
-.InlineToolbarButtonStyles__active___17ZZ8 {
+.InlineToolbarButtonStyles__active___1LEYk {
   color: #6a9cc9;
 }
 
-.InlineToolbarButtonStyles__active___17ZZ8 svg {
+.InlineToolbarButtonStyles__active___1LEYk svg {
   fill: #6a9cc9;
 }
-.styles__addLink___1OIgG {
+.styles__addLink___BzSxn {
   background: #FFF;
   display: inline-block;
 }
 
-.styles__addLinkPopover___3RrGY {
+.styles__addLinkPopover___HUD6d {
   background: #FFF;
   position: absolute;
   height: 54px;
@@ -493,14 +511,15 @@
   padding: 10px;
   box-shadow: 0px 4px 30px 0px rgba(220,220,220,1);
   z-index: 1000;
+  -webkit-transition: 0.5s linear height;
   transition: 0.5s linear height;
 }
 
-.styles__addLinkClosedPopover___3IlHu {
+.styles__addLinkClosedPopover___2rYll {
   display: none;
 }
 
-.styles__addLinkButton___2ai9R {
+.styles__addLinkButton___1JoVg {
   box-sizing: border-box;
   background: #fff;
   border: 1px solid #ddd;
@@ -516,23 +535,23 @@
   margin: 0;
 }
 
-.styles__addLinkButton___2ai9R:focus {
+.styles__addLinkButton___1JoVg:focus {
   outline: 0; /* reset for :focus */
 }
 
-.styles__addLinkButton___2ai9R:hover {
+.styles__addLinkButton___1JoVg:hover {
   background: #f3f3f3;
 }
 
-.styles__addLinkButton___2ai9R:active {
+.styles__addLinkButton___1JoVg:active {
   background: #e6e6e6;
 }
 
-.styles__addLinkPressedButton___2pWGN {
+.styles__addLinkPressedButton___1Gk2- {
   background: #ededed;
 }
 
-.styles__addLinkBottomGradient___27spA {
+.styles__addLinkBottomGradient___1VY-P {
   width: 100%;
   height: 1em;
   position: absolute;
@@ -541,10 +560,11 @@
   right: 0px;
   background-color: white;
   pointer-events: none;
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
   background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
 }
 
-.styles__addLinkInput___3K89H {
+.styles__addLinkInput___6vP00 {
   box-sizing: border-box;
   border: 1px solid #ddd;
   cursor: text;
@@ -556,17 +576,17 @@
   background: #fefefe;
 }
 
-.styles__addLinkInput___3K89H:focus {
+.styles__addLinkInput___6vP00:focus {
   outline: none !important;
 }
 
-.styles__addLinkInputError___oPlR5 {
+.styles__addLinkInputError___i1EFU {
   color: darkred;
   border: 1px solid darkred;
   box-shadow: none;
 }
 
-.styles__addLinkConfirmButton___1ukug {
+.styles__addLinkConfirmButton___2CKs2 {
   box-sizing: border-box;
   background: #fff;
   border: 1px solid #ddd;
@@ -583,56 +603,56 @@
   margin-left: 1%;
 }
 
-.styles__addLinkConfirmButton___1ukug:focus {
+.styles__addLinkConfirmButton___2CKs2:focus {
   outline: 0;
 }
 
-.styles__addLinkConfirmButton___1ukug:hover {
+.styles__addLinkConfirmButton___2CKs2:hover {
   background: #f3f3f3;
 }
 
-.styles__addLinkConfirmButton___1ukug:active {
+.styles__addLinkConfirmButton___2CKs2:active {
   background: #e6e6e6;
 }
 
-.styles__addLinkError___3wLbM {
+.styles__addLinkError___2Rx48 {
   opacity: 0;
   color: red;
 }
 
-.styles__addLinkErrorDisabled___3StOG {
+.styles__addLinkErrorDisabled___3VeHD {
   opacity: 1;
   color: red;
 }
-.styles__link___17dwC, .styles__link___17dwC:visited {
+.styles__link___3_jcK, .styles__link___3_jcK:visited {
   color: #5e93c5;
   text-decoration: none;
 }
 
-.styles__link___17dwC:hover, .styles__link___17dwC:focus {
+.styles__link___3_jcK:hover, .styles__link___3_jcK:focus {
   color: #7eadda;
   outline: 0; /* reset for :focus */
   cursor: pointer;
 }
 
-.styles__link___17dwC:active {
+.styles__link___3_jcK:active {
   color: #4a7bab;
 }
-.Linkify__link___1H0k4, .Linkify__link___1H0k4:visited {
+.Linkify__link___3HLAE, .Linkify__link___3HLAE:visited {
   color: #5e93c5;
   text-decoration: none;
 }
 
-.Linkify__link___1H0k4:hover, .Linkify__link___1H0k4:focus {
+.Linkify__link___3HLAE:hover, .Linkify__link___3HLAE:focus {
   color: #7eadda;
   outline: 0; /* reset for :focus */
   cursor: pointer;
 }
 
-.Linkify__link___1H0k4:active {
+.Linkify__link___3HLAE:active {
   color: #4a7bab;
 }
-.mentionStyles__mention___M8l1F, .mentionStyles__mention___M8l1F:visited {
+.mentionStyles__mention___3Lcg0, .mentionStyles__mention___3Lcg0:visited {
   color: #575f67;
   cursor: pointer;
   display: inline-block;
@@ -643,17 +663,17 @@
   text-decoration: none;
 }
 
-.mentionStyles__mention___M8l1F:hover, .mentionStyles__mention___M8l1F:focus {
+.mentionStyles__mention___3Lcg0:hover, .mentionStyles__mention___3Lcg0:focus {
   color: #677584;
   background: #edf5fd;
   outline: 0; /* reset for :focus */
 }
 
-.mentionStyles__mention___M8l1F:active {
+.mentionStyles__mention___3Lcg0:active {
   color: #222;
   background: #455261;
 }
-.mentionSuggestionsStyles__mentionSuggestions___hxm02 {
+.mentionSuggestionsStyles__mentionSuggestions___6Rk5s {
   border: 1px solid #eee;
   margin-top: 1.75em;
   position: absolute;
@@ -666,25 +686,32 @@
   padding-top: 8px;
   padding-bottom: 8px;
   z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   box-sizing: border-box;
-  transform: scale(0);
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
-.mentionSuggestionsEntryStyles__mentionSuggestionsEntry___23fhX {
+.mentionSuggestionsEntryStyles__mentionSuggestionsEntry___3AyDo {
   padding: 7px 10px 3px 10px;
+  -webkit-transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
   transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
 }
 
-.mentionSuggestionsEntryStyles__mentionSuggestionsEntry___23fhX:active {
+.mentionSuggestionsEntryStyles__mentionSuggestionsEntry___3AyDo:active {
   background-color: #cce7ff;
 }
 
-.mentionSuggestionsEntryStyles__mentionSuggestionsEntryFocused___poQs7 {
+.mentionSuggestionsEntryStyles__mentionSuggestionsEntryFocused___3YYZH {
   background-color: #e6f3ff;
 }
 
-.mentionSuggestionsEntryStyles__mentionSuggestionsEntryText___1GglE {
+.mentionSuggestionsEntryStyles__mentionSuggestionsEntryText___1ol1_ {
   display: inline-block;
   margin-left: 8px;
   white-space: nowrap;
@@ -695,14 +722,14 @@
   margin-bottom: 0.2em;
 }
 
-.mentionSuggestionsEntryStyles__mentionSuggestionsEntryAvatar___82x7t {
+.mentionSuggestionsEntryStyles__mentionSuggestionsEntryAvatar___1dTEd {
   display: inline-block;
   width: 24px;
   height: 24px;
   border-radius: 12px;
 }
 /* mentionStyles */
-.Mention__mention___1xTQm, .Mention__mention___1xTQm:visited {
+.Mention__mention___3m-x7, .Mention__mention___3m-x7:visited {
   color: #575f67;
   cursor: pointer;
   display: inline-block;
@@ -713,35 +740,37 @@
   text-decoration: none;
 }
 
-.Mention__mention___1xTQm:hover, .Mention__mention___1xTQm:focus {
+.Mention__mention___3m-x7:hover, .Mention__mention___3m-x7:focus {
   color: #677584;
   background: #edf5fd;
   outline: 0; /* reset for :focus */
 }
 
-.Mention__mention___1xTQm:active {
+.Mention__mention___3m-x7:active {
   color: #222;
   background: #455261;
 }
 
 /* mentionSuggestionsEntryStyles */
 
-.Mention__mentionSuggestionsEntry___2cWZ6 {
+.Mention__mentionSuggestionsEntry___2_kq4 {
   padding: 7px 10px 3px 10px;
+  -webkit-transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
   transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
 }
 
-.Mention__mentionSuggestionsEntry___2cWZ6:active {
+.Mention__mentionSuggestionsEntry___2_kq4:active {
   background-color: #cce7ff;
 }
 
-.Mention__mentionSuggestionsEntryFocused___19xK- {
+.Mention__mentionSuggestionsEntryFocused___fYjNN {
   padding: 7px 10px 3px 10px;
+  -webkit-transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
   transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
   background-color: #e6f3ff;
 }
 
-.Mention__mentionSuggestionsEntryText___MXwTa {
+.Mention__mentionSuggestionsEntryText___2nUEz {
   display: inline-block;
   margin-left: 8px;
   white-space: nowrap;
@@ -752,7 +781,7 @@
   margin-bottom: 0.2em;
 }
 
-.Mention__mentionSuggestionsEntryAvatar___QFu68 {
+.Mention__mentionSuggestionsEntryAvatar___2DuGa {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -761,7 +790,7 @@
 
 /* mentionSuggestionsStyles */
 
-.Mention__mentionSuggestions___31WQ3 {
+.Mention__mentionSuggestions___2A_lU {
   border: 1px solid #eee;
   margin-top: 1.75em;
   position: absolute;
@@ -774,16 +803,22 @@
   padding-top: 8px;
   padding-bottom: 8px;
   z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   box-sizing: border-box;
-  transform: scale(0);
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
-.buttonStyles__buttonWrapper___2EhHs {
+.buttonStyles__buttonWrapper___15neR {
   display: inline-block;
 }
 
-.buttonStyles__button___309Wg {
+.buttonStyles__button___21elG {
   background: #fbfbfb;
   color: #888;
   font-size: 18px;
@@ -794,31 +829,31 @@
   width: 36px;
 }
 
-.buttonStyles__button___309Wg svg {
+.buttonStyles__button___21elG svg {
   fill: #888;
 }
 
-.buttonStyles__button___309Wg:hover, .buttonStyles__button___309Wg:focus {
+.buttonStyles__button___21elG:hover, .buttonStyles__button___21elG:focus {
   background: #f3f3f3;
   outline: 0; /* reset for :focus */
 }
 
-.buttonStyles__active___2_Vlz {
+.buttonStyles__active___3app7 {
   background: #efefef;
   color: #444;
 }
 
-.buttonStyles__active___2_Vlz svg {
+.buttonStyles__active___3app7 svg {
   fill: #444;
 }
 
-.buttonStyles__separator___2oQf0 {
+.buttonStyles__separator___si1-g {
   display: inline-block;
   border-right: 1px solid #ddd;
   height: 24px;
   margin: 0 0.5em;
 }
-.blockTypeSelectStyles__blockType___3pRTR {
+.blockTypeSelectStyles__blockType___3l9D0 {
   box-sizing: border-box;
   border: 1px solid #ddd;
   background: #fff;
@@ -832,22 +867,24 @@
   text-align: center;
 }
 
-.blockTypeSelectStyles__blockType___3pRTR svg {
+.blockTypeSelectStyles__blockType___3l9D0 svg {
   fill: #888;
 }
 
-.blockTypeSelectStyles__spacer___qsPgz {
+.blockTypeSelectStyles__spacer___29qae {
   position: absolute;
   left: 50%;
-  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
   width: 74px;
   height: 8px;
 }
 
-.blockTypeSelectStyles__popup___oPT80 {
+.blockTypeSelectStyles__popup___2IkZB {
   position: absolute;
   left: 50%;
-  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
   background: #efefef;
   border: 1px solid #ddd;
   background: #fff;
@@ -859,7 +896,7 @@
   margin-top: 8px;
 }
 
-.blockTypeSelectStyles__popup___oPT80:after, .blockTypeSelectStyles__popup___oPT80:before {
+.blockTypeSelectStyles__popup___2IkZB:after, .blockTypeSelectStyles__popup___2IkZB:before {
   bottom: 100%;
   left: 50%;
   border: solid transparent;
@@ -870,30 +907,30 @@
   pointer-events: none;
 }
 
-.blockTypeSelectStyles__popup___oPT80:after {
+.blockTypeSelectStyles__popup___2IkZB:after {
   border-color: rgba(251, 251, 251, 0);
   border-bottom-color: #fbfbfb;
   border-width: 4px;
   margin-left: -4px;
 }
-.blockTypeSelectStyles__popup___oPT80:before {
+.blockTypeSelectStyles__popup___2IkZB:before {
   border-color: rgba(221, 221, 221, 0);
   border-bottom-color: #ddd;
   border-width: 6px;
   margin-left: -6px;
 }
-.toolbarStyles__wrapper___2MTG- {
+.toolbarStyles__wrapper___1JKsl {
   position: absolute;
 }
-.ToolbarButtonStyles__wrapper___2jfQV {
+.ToolbarButtonStyles__wrapper___1ql3V {
   position: absolute;
 }
 
-.ToolbarButtonStyles__buttonWrapper___1cO2q {
+.ToolbarButtonStyles__buttonWrapper___1gCG0 {
   display: inline-block;
 }
 
-.ToolbarButtonStyles__button___2PLqd {
+.ToolbarButtonStyles__button___1thdC {
   background: #333;
   color: #ddd;
   font-size: 18px;
@@ -905,26 +942,26 @@
   border-radius: 4px;
 }
 
-.ToolbarButtonStyles__button___2PLqd svg {
+.ToolbarButtonStyles__button___1thdC svg {
   fill: #ddd;
 }
 
-.ToolbarButtonStyles__button___2PLqd:hover, .ToolbarButtonStyles__button___2PLqd:focus {
+.ToolbarButtonStyles__button___1thdC:hover, .ToolbarButtonStyles__button___1thdC:focus {
   background: #444;
   outline: 0; /* reset for :focus */
 }
 
-.ToolbarButtonStyles__active___adkmx {
+.ToolbarButtonStyles__active___2z_jG {
   color: #6a9cc9;
 }
 
-.ToolbarButtonStyles__active___adkmx svg {
+.ToolbarButtonStyles__active___2z_jG svg {
   fill: #6a9cc9;
 }
-.ToolbarStyles__wrapper___3qTK3 {
+.ToolbarStyles__wrapper___2kVZz {
   position: absolute;
 }
-.ToolbarBlockTypeSelectStyles__blockType___1cuye {
+.ToolbarBlockTypeSelectStyles__blockType___2T-A8 {
   box-sizing: border-box;
   border: 1px solid #111;
   background: #333;
@@ -938,22 +975,24 @@
   text-align: center;
 }
 
-.ToolbarBlockTypeSelectStyles__blockType___1cuye svg {
+.ToolbarBlockTypeSelectStyles__blockType___2T-A8 svg {
   fill: #ddd;
 }
 
-.ToolbarBlockTypeSelectStyles__spacer___2EVd3 {
+.ToolbarBlockTypeSelectStyles__spacer___2TK4T {
   position: absolute;
   left: 50%;
-  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
   width: 74px;
   height: 8px;
 }
 
-.ToolbarBlockTypeSelectStyles__popup___1Zagy {
+.ToolbarBlockTypeSelectStyles__popup___1ogT8 {
   position: absolute;
   left: 50%;
-  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
   border: 1px solid #111;
   background: #333;
   border-radius: 2px;
@@ -964,7 +1003,7 @@
   margin-top: 8px;
 }
 
-.ToolbarBlockTypeSelectStyles__popup___1Zagy:after, .ToolbarBlockTypeSelectStyles__popup___1Zagy:before {
+.ToolbarBlockTypeSelectStyles__popup___1ogT8:after, .ToolbarBlockTypeSelectStyles__popup___1ogT8:before {
   bottom: 100%;
   left: 50%;
   border: solid transparent;
@@ -975,25 +1014,25 @@
   pointer-events: none;
 }
 
-.ToolbarBlockTypeSelectStyles__popup___1Zagy:after {
+.ToolbarBlockTypeSelectStyles__popup___1ogT8:after {
   border-color: rgba(251, 251, 251, 0);
   border-bottom-color: #333;
   border-width: 4px;
   margin-left: -4px;
 }
-.ToolbarBlockTypeSelectStyles__popup___1Zagy:before {
+.ToolbarBlockTypeSelectStyles__popup___1ogT8:before {
   border-color: rgba(221, 221, 221, 0);
   border-bottom-color: #111;
   border-width: 6px;
   margin-left: -6px;
 }
-.stickerStyles__sticker___2zKDT {
+.stickerStyles__sticker___tUkwK {
   margin: 0;
   position: relative;
   display: block;
 }
 
-.stickerStyles__stickerRemoveButton___3Kwzp {
+.stickerStyles__stickerRemoveButton___XN8Ny {
   background: #D9D9D9;
   color: #FFF;
   margin: 0;
@@ -1007,25 +1046,25 @@
   cursor: pointer;
 }
 
-.stickerStyles__stickerRemoveButton___3Kwzp:hover {
+.stickerStyles__stickerRemoveButton___XN8Ny:hover {
   background: #E4E4E4;
 }
 
-.stickerStyles__stickerRemoveButton___3Kwzp:active {
+.stickerStyles__stickerRemoveButton___XN8Ny:active {
   background: #CECECE;
   color: #EFEFEF;
 }
 
-.stickerStyles__stickerImage___2hZg0 {
+.stickerStyles__stickerImage___1_Kgk {
   width: 80px;
   height: 80px;
 }
-.selectStyles__select___1VYSv {
+.selectStyles__select___3cmq8 {
   background: #FFF;
   display: inline-block;
 }
 
-.selectStyles__selectPopover___6f6q3 {
+.selectStyles__selectPopover___1d_l3 {
   margin-top: 10px;
   background: #FFF;
   position: absolute;
@@ -1037,11 +1076,11 @@
   z-index: 1000;
 }
 
-.selectStyles__selectClosedPopover___3SETo {
+.selectStyles__selectClosedPopover___4XVNK {
   display: none;
 }
 
-.selectStyles__selectButton___2uO_U {
+.selectStyles__selectButton___3hF8E {
   box-sizing: border-box;
   background: #fff;
   border: 1px solid #ddd;
@@ -1057,23 +1096,23 @@
   margin: 0;
 }
 
-.selectStyles__selectButton___2uO_U:focus {
+.selectStyles__selectButton___3hF8E:focus {
   outline: 0; /* reset for :focus */
 }
 
-.selectStyles__selectButton___2uO_U:hover {
+.selectStyles__selectButton___3hF8E:hover {
   background: #f3f3f3;
 }
 
-.selectStyles__selectButton___2uO_U:active {
+.selectStyles__selectButton___3hF8E:active {
   background: #e6e6e6;
 }
 
-.selectStyles__selectPressedButton___24XFt {
+.selectStyles__selectPressedButton___5MeIF {
   background: #ededed;
 }
 
-.selectStyles__selectBottomGradient___1sjUJ {
+.selectStyles__selectBottomGradient___3fq0I {
   width: 100%;
   height: 1em;
   position: absolute;
@@ -1082,10 +1121,11 @@
   right: 0px;
   background-color: white;
   pointer-events: none;
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
   background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
 }
 
-.selectStyles__selectStickerList___S2Lys {
+.selectStyles__selectStickerList___jMmGZ {
   position: absolute;
   overflow-x: none;
   overflow-y: scroll;
@@ -1093,13 +1133,21 @@
   bottom: 0;
   left: 0;
   right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: row wrap;
-  align-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
 }
-.selectStickerStyles__selectSticker___2twmN {
+.selectStickerStyles__selectSticker___17iT7 {
   border: 0;
   border-radius: 4px;
   background: #fff;
@@ -1107,16 +1155,16 @@
   box-sizing: border-box;
 }
 
-.selectStickerStyles__selectSticker___2twmN:hover, .selectStickerStyles__root___3j3nM:focus {
+.selectStickerStyles__selectSticker___17iT7:hover, .selectStickerStyles__root___JrC4U:focus {
   background: #efefef;
   outline: 0; /* reset for :focus */
 }
 
-.selectStickerStyles__selectSticker___2twmN:active {
+.selectStickerStyles__selectSticker___17iT7:active {
   background: #dfdfdf;
 }
 
-.selectStickerStyles__selectStickerImage___207Mm {
+.selectStickerStyles__selectStickerImage___y1rnj {
   height: 80px;
   width: 80px;
   -webkit-user-drag: none;
@@ -1124,7 +1172,7 @@
 }
 /* selectStickerStyles */
 
-.StickerStyles__selectSticker___hPa7n {
+.StickerStyles__selectSticker___3NL3C {
   border: 0;
   border-radius: 4px;
   background: #fff;
@@ -1132,16 +1180,16 @@
   box-sizing: border-box;
 }
 
-.StickerStyles__selectSticker___hPa7n:hover, .StickerStyles__root___3uE5d:focus {
+.StickerStyles__selectSticker___3NL3C:hover, .StickerStyles__root___XsSyj:focus {
   background: #efefef;
   outline: 0; /* reset for :focus */
 }
 
-.StickerStyles__selectSticker___hPa7n:active {
+.StickerStyles__selectSticker___3NL3C:active {
   background: #dfdfdf;
 }
 
-.StickerStyles__selectStickerImage___UIb59 {
+.StickerStyles__selectStickerImage___Fk5Rs {
   height: 80px;
   width: 80px;
   -webkit-user-drag: none;
@@ -1150,12 +1198,12 @@
 
 /* selectStyles */
 
-.StickerStyles__select___2OAXD {
+.StickerStyles__select___1hSPe {
   background: #FFF;
   display: inline-block;
 }
 
-.StickerStyles__selectPopover___2ziFA {
+.StickerStyles__selectPopover___3YhfS {
   margin-top: 10px;
   background: #FFF;
   position: absolute;
@@ -1167,11 +1215,11 @@
   z-index: 1000;
 }
 
-.StickerStyles__selectClosedPopover___29F3V {
+.StickerStyles__selectClosedPopover___YGhWt {
   display: none;
 }
 
-.StickerStyles__selectButton___1VNgx {
+.StickerStyles__selectButton___RvRpt {
   box-sizing: border-box;
   background: #fff;
   border: 1px solid #ddd;
@@ -1187,23 +1235,23 @@
   margin: 0;
 }
 
-.StickerStyles__selectButton___1VNgx:focus {
+.StickerStyles__selectButton___RvRpt:focus {
   outline: 0; /* reset for :focus */
 }
 
-.StickerStyles__selectButton___1VNgx:hover {
+.StickerStyles__selectButton___RvRpt:hover {
   background: #f3f3f3;
 }
 
-.StickerStyles__selectButton___1VNgx:active {
+.StickerStyles__selectButton___RvRpt:active {
   background: #e6e6e6;
 }
 
-.StickerStyles__selectPressedButton___RoiGw {
+.StickerStyles__selectPressedButton___3iI3J {
   background: #ededed;
 }
 
-.StickerStyles__selectBottomGradient___3Dd9a {
+.StickerStyles__selectBottomGradient___2FRMI {
   width: 100%;
   height: 1em;
   position: absolute;
@@ -1212,10 +1260,11 @@
   right: 0px;
   background-color: white;
   pointer-events: none;
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
   background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
 }
 
-.StickerStyles__selectStickerList___1Le7H {
+.StickerStyles__selectStickerList___3YIkP {
   position: absolute;
   overflow-x: none;
   overflow-y: scroll;
@@ -1223,22 +1272,30 @@
   bottom: 0;
   left: 0;
   right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: row wrap;
-  align-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
 }
 
 /* stickerStyles */
 
-.StickerStyles__sticker___5KpYJ {
+.StickerStyles__sticker___1UC8B {
   margin: 0;
   position: relative;
   display: block;
 }
 
-.StickerStyles__stickerRemoveButton___1BRNi {
+.StickerStyles__stickerRemoveButton___1CbI2 {
   background: #D9D9D9;
   color: #FFF;
   margin: 0;
@@ -1252,20 +1309,20 @@
   cursor: pointer;
 }
 
-.StickerStyles__stickerRemoveButton___1BRNi:hover {
+.StickerStyles__stickerRemoveButton___1CbI2:hover {
   background: #E4E4E4;
 }
 
-.StickerStyles__stickerRemoveButton___1BRNi:active {
+.StickerStyles__stickerRemoveButton___1CbI2:active {
   background: #CECECE;
   color: #EFEFEF;
 }
 
-.StickerStyles__stickerImage___2NSNy {
+.StickerStyles__stickerImage___3Xc9v {
   width: 80px;
   height: 80px;
 }
-.styles__button___1rsMq {
+.styles__button___1BiuP {
   box-sizing: border-box;
   border: 1px solid #ddd;
   height: 1.5em;
@@ -1281,27 +1338,27 @@
   margin: 0;
 }
 
-.styles__button___1rsMq:focus {
+.styles__button___1BiuP:focus {
   background-color: #eee;
   color: #999;
   outline: 0; /* reset for :focus */
 }
 
-.styles__button___1rsMq:hover {
+.styles__button___1BiuP:hover {
   background-color: #eee;
   color: #999;
 }
 
-.styles__button___1rsMq:active {
+.styles__button___1BiuP:active {
   background-color: #ddd;
   color: #777;
 }
 
-.styles__button___1rsMq:disabled {
+.styles__button___1BiuP:disabled {
   background-color: #F5F5F5;
   color: #ccc;
 }
-.UndoStyles__button___3IXN- {
+.UndoStyles__button___1HKlo {
   box-sizing: border-box;
   border: 1px solid #ddd;
   height: 1.5em;
@@ -1317,23 +1374,23 @@
   margin: 0;
 }
 
-.UndoStyles__button___3IXN-:focus {
+.UndoStyles__button___1HKlo:focus {
   background-color: #eee;
   color: #999;
   outline: 0; /* reset for :focus */
 }
 
-.UndoStyles__button___3IXN-:hover {
+.UndoStyles__button___1HKlo:hover {
   background-color: #eee;
   color: #999;
 }
 
-.UndoStyles__button___3IXN-:active {
+.UndoStyles__button___1HKlo:active {
   background-color: #ddd;
   color: #777;
 }
 
-.UndoStyles__button___3IXN-:disabled {
+.UndoStyles__button___1HKlo:disabled {
   background-color: #F5F5F5;
   color: #ccc;
 }
