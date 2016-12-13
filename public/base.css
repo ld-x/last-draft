@@ -39,3 +39,11 @@ body {
 .options {
   margin-bottom: 20px;
 }
+
+.githubWrapper {
+  display: block;
+  margin-bottom: 2em;
+  height: 33px;
+  opacity: 0;
+  text-align: center;
+}
