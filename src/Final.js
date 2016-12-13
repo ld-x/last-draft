@@ -3,24 +3,20 @@ import Editor, { createEditorStateWithText, composeDecorators } from 'draft-js-p
 import { EditorState, convertFromRaw, convertToRaw, convertFromHTML, ContentState } from 'draft-js'
 import { stateToHTML } from 'draft-js-export-html'
 
-
-
-/* Counter plugin */
-import createCounterPlugin from 'draft-js-counter-plugin'
-import 'draft-js-counter-plugin/lib/plugin.css'
-const counterPlugin = createCounterPlugin()
-const { CharCounter, WordCounter } = counterPlugin
-
 /* Emoji plugin */
 import createEmojiPlugin from 'draft-js-emoji-plugin'
-import 'draft-js-emoji-plugin/lib/plugin.css'
-const emojiPlugin = createEmojiPlugin()
+import emojiStyles from './styles/EmojiStyles.css';
+const emojiPlugin = createEmojiPlugin({
+  theme: emojiStyles
+})
 const { EmojiSuggestions } = emojiPlugin
 
 /* Hashtag plugin */
 import createHashtagPlugin from 'draft-js-hashtag-plugin'
-import 'draft-js-hashtag-plugin/lib/plugin.css'
-const hashtagPlugin = createHashtagPlugin()
+import hashtagStyles from './styles/HashtagStyles.css';
+const hashtagPlugin = createHashtagPlugin({
+  theme: hashtagStyles
+})
 
 /* Image with Alignment, dnd, focus, resize plugin */
 import createImagePlugin from 'draft-js-image-plugin'
@@ -29,18 +25,17 @@ import createFocusPlugin from 'draft-js-focus-plugin'
 import createResizeablePlugin from 'draft-js-resizeable-plugin'
 import createDndPlugin from 'draft-js-dnd-plugin'
 
-import 'draft-js-alignment-plugin/lib/plugin.css'
-import 'draft-js-focus-plugin/lib/plugin.css'
-
-const focusPlugin = createFocusPlugin();
+import focusStyles from './styles/FocusStyles.css';
+const focusPlugin = createFocusPlugin({ theme: focusStyles });
 const resizeablePlugin = createResizeablePlugin();
 const dndPlugin = createDndPlugin();
-const alignmentPlugin = createAlignmentPlugin();
+import alignmentStyles from './styles/AlignmentStyles.css';
+const alignmentPlugin = createAlignmentPlugin({ theme: alignmentStyles });
 const { AlignmentTool } = alignmentPlugin
 
+/* alignmentPlugin.decorator, TODO: Needs theming */
 const decorator = composeDecorators(
   resizeablePlugin.decorator,
-  alignmentPlugin.decorator,
   focusPlugin.decorator,
   dndPlugin.decorator
 )
@@ -49,46 +44,66 @@ const imagePlugin = createImagePlugin({ decorator })
 /* inline toolbar */
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin'
 import 'draft-js-inline-toolbar-plugin/lib/plugin.css'
-const inlineToolbarPlugin = createInlineToolbarPlugin()
+import inlineToolbarStyles from './styles/inlineToolbarStyles.css';
+import inlineToolbarButtonStyles from './styles/InlineToolbarButtonStyles.css';
+const inlineToolbarPlugin = createInlineToolbarPlugin({
+  theme: { buttonStyles: inlineToolbarButtonStyles, toolbarStyles: inlineToolbarStyles }
+})
 const { InlineToolbar } = inlineToolbarPlugin
 
 /* Linkify */
 import createLinkifyPlugin from 'draft-js-linkify-plugin'
 import 'draft-js-linkify-plugin/lib/plugin.css'
-const linkifyPlugin = createLinkifyPlugin()
+import linkifyStyles from './styles/Linkify.css'
+const linkifyPlugin = createLinkifyPlugin({
+  theme: linkifyStyles
+})
 
 /* Mentions */
 import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
-import 'draft-js-mention-plugin/lib/plugin.css'
+import mentionsStyles from './styles/Mention.css'
 import mentions from './components/Mention/mentions'
 import { Entry, positionSuggestions} from './components/Mention/mentions'
-const mentionPlugin = createMentionPlugin({ mentions, positionSuggestions })
+const mentionPlugin = createMentionPlugin({
+  mentions,
+  positionSuggestions,
+  theme: mentionsStyles
+})
 const { MentionSuggestions } = mentionPlugin
 
 /* Side Toolbar */
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin'
-import 'draft-js-side-toolbar-plugin/lib/plugin.css'
-const sideToolbarPlugin = createSideToolbarPlugin()
+import buttonStyles from './styles/ToolbarButtonStyles.css';
+import toolbarStyles from './styles/ToolbarStyles.css';
+import blockTypeSelectStyles from './styles/ToolbarBlockTypeSelectStyles.css';
+const sideToolbarPlugin = createSideToolbarPlugin({
+  theme: { buttonStyles, toolbarStyles, blockTypeSelectStyles }
+})
 const { SideToolbar } = sideToolbarPlugin
 
 /* Stickers */
 import createStickerPlugin from 'draft-js-sticker-plugin'
 import stickers from './components/Sticker/stickers'
-import 'draft-js-sticker-plugin/lib/plugin.css'
-const stickerPlugin = createStickerPlugin({ stickers: stickers })
+import stickerStyles from './styles/StickerStyles.css';
+const stickerPlugin = createStickerPlugin({
+  stickers: stickers,
+  theme: stickerStyles
+})
 const { StickerSelect } = stickerPlugin
 
 /* Undo Redo */
 import createUndoPlugin from 'draft-js-undo-plugin'
-import 'draft-js-undo-plugin/lib/plugin.css'
-const undoPlugin = createUndoPlugin()
+import undoStyles from './styles/UndoStyles.css';
+const undoPlugin = createUndoPlugin(({
+  theme: { undo: undoStyles.button, redo: undoStyles.button }
+}))
 const { UndoButton, RedoButton } = undoPlugin
 
 
 /* init the plugins */
 const plugins = [
   dndPlugin, focusPlugin, alignmentPlugin, resizeablePlugin, imagePlugin,
-  counterPlugin, emojiPlugin, hashtagPlugin, inlineToolbarPlugin, linkifyPlugin,
+  emojiPlugin, hashtagPlugin, inlineToolbarPlugin, linkifyPlugin,
   mentionPlugin, sideToolbarPlugin, stickerPlugin, undoPlugin
 ]
 
@@ -158,7 +173,7 @@ export default class Final extends Component {
             plugins={plugins}
             ref={(element) => { this.editor = element; }}
           />
-          <AlignmentTool />
+          { /* <AlignmentTool /> */ }
           <InlineToolbar />
           <SideToolbar />
           <EmojiSuggestions />
@@ -170,9 +185,6 @@ export default class Final extends Component {
         </div>
 
         <div className='options'>
-          <div><CharCounter limit={300} /> characters out of an allowed 300</div>
-          <div><WordCounter limit={50} /> words out of an allowed 50</div>
-
           <StickerSelect editor={this} />
           <UndoButton />
           <RedoButton />
