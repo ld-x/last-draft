@@ -1,6 +1,6 @@
 {
   "name": "final-draft",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Final Draft...",
   "scripts": {
     "build": "npm run clean && NODE_ENV=prod webpack --config webpack.config.prod",
