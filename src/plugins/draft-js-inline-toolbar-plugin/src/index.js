@@ -1,4 +1,5 @@
 import decorateComponentWithProps from 'decorate-component-with-props';
+import { RichUtils } from 'draft-js';
 import {
   ItalicButton,
   BoldButton,
@@ -52,6 +53,15 @@ const createInlineToolbarPlugin = (config = {}) => {
         store.updateItem('isVisible', false);
       }
       return editorState;
+    },
+    handleKeyCommand(command, { getEditorState, setEditorState }) {
+      const editorState = getEditorState();
+      const newState = RichUtils.handleKeyCommand(editorState, command);
+      if (newState) {
+        setEditorState(newState);
+        return true;
+      }
+      return false;
     },
     InlineToolbar: decorateComponentWithProps(Toolbar, toolbarProps),
   };

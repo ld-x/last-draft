@@ -1,7 +1,6 @@
 /* eslint-disable no-continue */
 import React, { Component } from 'react';
 import {
-  RichUtils,
   Editor,
   EditorState,
   DefaultDraftBlockRenderMap,
@@ -318,15 +317,6 @@ class PluginEditor extends Component {
     return accessibilityProps;
   };
 
-  handleKeyCommand(command) {
-    const newState = RichUtils.handleKeyCommand(this.props.editorState, command);
-    if (newState) {
-      this.onChange(newState);
-      return 'handled';
-    }
-    return 'not-handled';
-  }
-
   render() {
     const pluginHooks = this.createPluginHooks();
     const customStyleMap = this.resolveCustomStyleMap();
@@ -337,7 +327,6 @@ class PluginEditor extends Component {
         {...this.props}
         {...accessibilityProps}
         {...pluginHooks}
-        handleKeyCommand={(command) => this.handleKeyCommand(command)}
         readOnly={this.props.readOnly || this.state.readOnly}
         customStyleMap={customStyleMap}
         blockRenderMap={blockRenderMap}
