@@ -5,14 +5,22 @@ const autoprefixer = require('autoprefixer')
 module.exports = {
   entry: './index.js',
   devtool: 'inline-source-map',
-  output: {
-    filename: 'bundle.js',
-    publicPath: ''
-  },
+  output: { filename: 'bundle.js', publicPath: '' },
   module: {
-    loaders: [
-      { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader' },
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-2' }
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { modules: true, importLoaders: 1 } },
+          { loader: 'postcss-loader' },
+        ]
+      },
+      {
+        test: /\.js$/,
+        use: [ { loader: 'babel-loader', options: { presets: ['es2015', 'react', 'stage-0'] } } ],
+        exclude: /node_modules/,
+      }
     ]
   },
   devServer: { historyApiFallback: true },

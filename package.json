@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/StevenIseki/final-draft"
+    "url": "https://github.com/vacenz/final-draft"
   },
   "author": "Steven Iseki <stevenisekimartin@gmail.com>",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "animateplus": "^1.4.0",
     "autoprefixer": "^6.5.4",
     "babel-core": "^6.7.6",
@@ -27,27 +27,27 @@
     "babel-runtime": "^6.6.1",
     "css-loader": "^0.26.1",
     "decorate-component-with-props": "^1.0.2",
-    "draft-js": "^0.9.1",
-    "draft-js-export-html": "^0.5.2",
-    "emojione": "^2.2.6",
-    "eslint-plugin-import": "^1.14.0",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
-    "find-with-regex": "^1.0.2",
     "html-webpack-plugin": "^2.16.0",
-    "immutable": "~3.7.4",
-    "linkify-it": "2.0.0",
-    "loader-utils": "^0.2.15",
-    "lodash.escaperegexp": "^4.1.2",
-    "lodash.keys": "^4.2.0",
     "postcss-loader": "^1.2.1",
     "react": ">=15.3.1",
     "react-dom": ">=15.3.1",
     "style-loader": "^0.13.1",
-    "tlds": "1.159.0",
-    "union-class-names": "^1.0.0",
     "webpack": "2.1.0-beta.27",
     "webpack-dev-server": "2.1.0-beta.12"
+  },
+  "dependencies": {
+    "emojione": "^2.2.6",
+    "draft-js": "^0.9.1",
+    "draft-js-export-html": "^0.5.2",
+    "find-with-regex": "^1.0.2",
+    "immutable": "~3.7.4",
+    "linkify-it": "2.0.0",
+    "lodash.escaperegexp": "^4.1.2",
+    "lodash.keys": "^4.2.0",
+    "tlds": "1.159.0",
+    "union-class-names": "^1.0.0"
   },
   "keywords": [
     "final draft",

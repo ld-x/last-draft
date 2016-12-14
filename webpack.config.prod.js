@@ -16,7 +16,7 @@ function plugins() {
 
 function loaders() {
   return [
-    { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-2' },
+    { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0' },
     {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract({
