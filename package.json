@@ -1,8 +1,8 @@
 {
   "name": "final-draft",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Final Draft... A Draft.js Editor using draft-js-plugins",
-   "main": "lib/Final.js",
+  "main": "lib/Final.js",
   "scripts": {
     "build": "babel src --out-dir lib",
     "site": "npm run clean && NODE_ENV=prod webpack --config webpack.config.prod",
