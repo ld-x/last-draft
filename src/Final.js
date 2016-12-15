@@ -1,124 +1,40 @@
 import React, { Component } from 'react'
-import Editor, { createEditorStateWithText, composeDecorators } from './plugins/draft-js-plugins-editor'
+import Editor, { createEditorStateWithText } from './plugins/draft-js-plugins/draft-js-plugins-editor'
 import { EditorState, convertFromRaw, convertToRaw, convertFromHTML, ContentState } from 'draft-js'
 import { stateToHTML } from 'draft-js-export-html'
+import { defaultSuggestionsFilter } from './plugins/draft-js-plugins/draft-js-mention-plugin'
 
-/* Emoji plugin */
-import createEmojiPlugin from './plugins/draft-js-emoji-plugin'
-import emojiStyles from './styles/EmojiStyles.css'
-const emojiPlugin = createEmojiPlugin({
-  theme: emojiStyles
-})
-const { EmojiSuggestions } = emojiPlugin
+/* init the plugins */
+import { components, plugins, data, setupToolbars } from './plugins'
 
-/* Hashtag plugin */
-import createHashtagPlugin from './plugins/draft-js-hashtag-plugin'
-import hashtagStyles from './styles/HashtagStyles.css'
-const hashtagPlugin = createHashtagPlugin({
-  theme: hashtagStyles
-})
+const { EmojiSuggestions, MentionSuggestions,
+  LinkAdd, ImageAdd, StickerSelect, Entry } = components
+const { focusPlugin, alignmentPlugin, resizeablePlugin, imagePlugin,
+  emojiPlugin, hashtagPlugin, linkifyPlugin,
+  mentionPlugin, stickerPlugin } = plugins
+const { mentions, stickers } = data
 
-/* Image with Alignment, dnd, focus, resize plugin */
-import createImagePlugin from './plugins/draft-js-image-plugin'
-import createAlignmentPlugin from './plugins/draft-js-alignment-plugin'
-import createFocusPlugin from './plugins/draft-js-focus-plugin'
-import createResizeablePlugin from './plugins/draft-js-resizeable-plugin'
+let linkAddElement = null
+let inlineToolbarElement = null
+const addLink = () => { linkAddElement.openPopover() }
 
-import focusStyles from './styles/FocusStyles.css'
-const focusPlugin = createFocusPlugin({ theme: focusStyles })
-const resizeablePlugin = createResizeablePlugin()
-import alignmentStyles from './styles/AlignmentStyles.css'
-const alignmentPlugin = createAlignmentPlugin({ theme: alignmentStyles })
-const { AlignmentTool } = alignmentPlugin
-
-/* alignmentPlugin.decorator, TODO: Needs theming */
-const decorator = composeDecorators(
-  resizeablePlugin.decorator,
-  focusPlugin.decorator,
-)
-const imagePlugin = createImagePlugin({ decorator })
-const { ImageAdd } = imagePlugin
 let imageAddElement = null
 const addImageFile = () => { imageAddElement.addImageFile() }
 
-/* inline toolbar */
-import createInlineToolbarPlugin from './plugins/draft-js-inline-toolbar-plugin'
-import inlineToolbarStyles from './styles/inlineToolbarStyles.css'
-import inlineToolbarButtonStyles from './styles/InlineToolbarButtonStyles.css'
-import {
-  ItalicButton, BoldButton, UnderlineButton,
-  CodeButton, HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
-  UnorderedListButton, BlockquoteButton, AddLinkButton
-} from './plugins/draft-js-buttons/src/'
-const addLink = () => { linkAddElement.openPopover() }
-let linkAddElement = null
-let inlineToolbarElement = null
-const inlineToolbarPlugin = createInlineToolbarPlugin({
-  structure: [
-    ItalicButton, BoldButton, UnderlineButton,
-    CodeButton, HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
-    UnorderedListButton, BlockquoteButton, AddLinkButton
-  ],
-  addLink,
-  theme: { buttonStyles: inlineToolbarButtonStyles, toolbarStyles: inlineToolbarStyles }
-})
+const { inlineToolbarPlugin, InlineToolbar,
+  sideToolbarPlugin, SideToolbar } = setupToolbars(addLink, addImageFile)
 
-const { InlineToolbar } = inlineToolbarPlugin
-
-/* Linkify */
-import createLinkifyPlugin from './plugins/draft-js-linkify-plugin'
-import linkifyStyles from './styles/Linkify.css'
-const linkifyPlugin = createLinkifyPlugin({ theme: linkifyStyles })
-const { LinkAdd } = linkifyPlugin
-
-/* Mentions */
-import createMentionPlugin, { defaultSuggestionsFilter } from './plugins/draft-js-mention-plugin'
-import mentionsStyles from './styles/Mention.css'
-import mentions from './components/Mention/mentions'
-import { Entry, positionSuggestions} from './components/Mention/mentions'
-const mentionPlugin = createMentionPlugin({
-  mentions,
-  positionSuggestions,
-  theme: mentionsStyles
-})
-const { MentionSuggestions } = mentionPlugin
-
-/* Side Toolbar */
-import createSideToolbarPlugin from './plugins/draft-js-side-toolbar-plugin'
-import buttonStyles from './styles/ToolbarButtonStyles.css'
-import toolbarStyles from './styles/ToolbarStyles.css'
-import blockTypeSelectStyles from './styles/ToolbarBlockTypeSelectStyles.css'
-const sideToolbarPlugin = createSideToolbarPlugin({
-  theme: { buttonStyles, toolbarStyles, blockTypeSelectStyles },
-  addImageFile
-})
-const { SideToolbar } = sideToolbarPlugin
-
-/* Stickers */
-import createStickerPlugin from './plugins/draft-js-sticker-plugin'
-import stickers from './components/Sticker/stickers'
-import stickerStyles from './styles/StickerStyles.css'
-const stickerPlugin = createStickerPlugin({
-  stickers: stickers,
-  theme: stickerStyles
-})
-const { StickerSelect } = stickerPlugin
-
-/* Undo Redo */
-import createUndoPlugin from './plugins/draft-js-undo-plugin'
-import undoStyles from './styles/UndoStyles.css'
-const undoPlugin = createUndoPlugin(({
-  theme: { undo: undoStyles.button, redo: undoStyles.button }
-}))
-const { UndoButton, RedoButton } = undoPlugin
-
-
-/* init the plugins */
-const plugins = [
-  focusPlugin, alignmentPlugin, resizeablePlugin, imagePlugin,
-  emojiPlugin, hashtagPlugin, inlineToolbarPlugin, linkifyPlugin,
-  mentionPlugin, sideToolbarPlugin, stickerPlugin, undoPlugin
-]
+let pluginList = {
+  imagePlugin: imagePlugin,
+  emojiPlugin: emojiPlugin,
+  hashtagPlugin: hashtagPlugin,
+  inlineToolbarPlugin: inlineToolbarPlugin,
+  linkifyPlugin: linkifyPlugin,
+  mentionPlugin: mentionPlugin,
+  sideToolbarPlugin: sideToolbarPlugin,
+  stickerPlugin: stickerPlugin,
+  stickerPlugin: stickerPlugin,
+}
 
 /* init the state, either from raw, html or text */
 import { text } from './initialState/text'
@@ -143,7 +59,7 @@ export default class Final extends Component {
 
   state = {
     editorState: STATE,
-    suggestions: mentions
+    suggestions: data.mentions
   }
 
   onChange = (editorState) => {
@@ -167,13 +83,93 @@ export default class Final extends Component {
 
   onSearchChange = ({ value }) => {
     this.setState({
-      suggestions: defaultSuggestionsFilter(value, mentions),
+      suggestions: defaultSuggestionsFilter(value, data.mentions),
     })
   }
 
-  customCountFunction(str) {
-    const wordArray = str.match(/\S+/g)
-    return wordArray ? wordArray.length : 0
+  getPlugins() {
+    let pluginArray = []
+    if(this.props.plugins === undefined) { return pluginArray }
+
+    Object.keys(pluginList).map((key, index) => {
+      if(this.props.plugins.includes(key)){
+        pluginArray.push(pluginList[key])
+      }
+    })
+
+    if (this.props.plugins.includes('imagePlugin')) {
+      pluginArray.push(focusPlugin)
+      pluginArray.push(resizeablePlugin)
+    }
+    return pluginArray
+  }
+
+  renderEmoji() {
+    if (this.props.plugins.includes('emojiPlugin')) {
+      return <EmojiSuggestions />
+    }
+  }
+
+  renderMention() {
+    if (this.props.plugins.includes('mentionPlugin')) {
+      return (
+        <MentionSuggestions
+          onSearchChange={this.onSearchChange}
+          suggestions={this.state.suggestions}
+          entryComponent={Entry}
+        />
+      )
+    }
+  }
+
+  renderInlineToolbar() {
+    if (this.props.plugins.includes('inlineToolbarPlugin')) {
+      return (
+        <InlineToolbar
+          ref={(element) => { inlineToolbarElement = element }} />
+      )
+    }
+  }
+
+  renderSideToolbar() {
+    if (this.props.plugins.includes('sideToolbarPlugin')) {
+      return <SideToolbar />
+    }
+  }
+
+  renderLinkAdd() {
+    if (this.props.plugins.includes('linkifyPlugin') &&
+        this.props.plugins.includes('inlineToolbarPlugin')) {
+      return (
+        <LinkAdd
+          ref={(element) => { linkAddElement = element }}
+          editorState={this.state.editorState}
+          onChange={this.onChange}
+          inlineToolbarElement={inlineToolbarElement}
+        />
+      )
+    }
+  }
+
+  renderImageAdd() {
+    if (this.props.plugins.includes('imagePlugin') &&
+        this.props.plugins.includes('sideToolbarPlugin')) {
+      return (
+        <ImageAdd
+          ref={(element) => { imageAddElement = element }}
+          editorState={this.state.editorState}
+          onChange={this.onChange}
+        />
+      )
+    }
+  }
+
+  renderSticker() {
+    if (this.props.plugins.includes('stickerPlugin')) {
+      return (
+        <StickerSelect editor={this} />
+      )
+    }
   }
 
   render() {
@@ -184,39 +180,19 @@ export default class Final extends Component {
             defaultKeyBindings={true}
             editorState={this.state.editorState}
             onChange={this.onChange}
-            plugins={plugins}
+            plugins={this.getPlugins()}
             ref={(element) => { this.editor = element }}
           />
-          { /* <AlignmentTool /> */ }
-          <InlineToolbar
-            ref={(element) => { inlineToolbarElement = element }}
-          />
-          <SideToolbar />
-          <EmojiSuggestions />
-          <MentionSuggestions
-            onSearchChange={this.onSearchChange}
-            suggestions={this.state.suggestions}
-            entryComponent={Entry}
-          />
+          {this.renderInlineToolbar()}
+          {this.renderSideToolbar()}
+          {this.renderEmoji()}
+          {this.renderMention()}
         </div>
-
-        <LinkAdd
-          ref={(element) => { linkAddElement = element }}
-          editorState={this.state.editorState}
-          onChange={this.onChange}
-          inlineToolbarElement={inlineToolbarElement}
-        />
-        <ImageAdd
-          ref={(element) => { imageAddElement = element }}
-          editorState={this.state.editorState}
-          onChange={this.onChange}
-        />
-        <div className='options'>
-          <StickerSelect editor={this} />
-          <UndoButton />
-          <RedoButton />
+        <div>
+          {this.renderLinkAdd()}
+          {this.renderImageAdd()}
+          {this.renderSticker()}
         </div>
-
       </div>
     )
   }

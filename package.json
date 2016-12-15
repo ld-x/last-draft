@@ -3,7 +3,8 @@
   "version": "1.0.3",
   "description": "Final Draft...",
   "scripts": {
-    "build": "npm run clean && NODE_ENV=prod webpack --config webpack.config.prod",
+    "build": "babel src --out-dir lib",
+    "site": "npm run clean && NODE_ENV=prod webpack --config webpack.config.prod",
     "clean": "rm public/bundle.js && rm public/style.css && rm public/vendor.js || true",
     "dev": "NODE_ENV=dev webpack-dev-server --port 3000 --inline --hot"
   },
