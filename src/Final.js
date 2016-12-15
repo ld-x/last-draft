@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Editor, { createEditorStateWithText, composeDecorators } from './plugins/draft-js-plugins-editor'
+import Editor, { createEditorStateWithText, composeDecorators } from './plugins/draft-js-plugins-editor/src/'
 import { EditorState, convertFromRaw, convertToRaw, convertFromHTML, ContentState } from 'draft-js'
 import { stateToHTML } from 'draft-js-export-html'
 
 /* Emoji plugin */
-import createEmojiPlugin from './plugins/draft-js-emoji-plugin'
+import createEmojiPlugin from './plugins/draft-js-emoji-plugin/src/'
 import emojiStyles from './styles/EmojiStyles.css'
 const emojiPlugin = createEmojiPlugin({
   theme: emojiStyles
@@ -12,17 +12,17 @@ const emojiPlugin = createEmojiPlugin({
 const { EmojiSuggestions } = emojiPlugin
 
 /* Hashtag plugin */
-import createHashtagPlugin from './plugins/draft-js-hashtag-plugin'
+import createHashtagPlugin from './plugins/draft-js-hashtag-plugin/src/'
 import hashtagStyles from './styles/HashtagStyles.css'
 const hashtagPlugin = createHashtagPlugin({
   theme: hashtagStyles
 })
 
 /* Image with Alignment, dnd, focus, resize plugin */
-import createImagePlugin from './plugins/draft-js-image-plugin'
-import createAlignmentPlugin from './plugins/draft-js-alignment-plugin'
-import createFocusPlugin from './plugins/draft-js-focus-plugin'
-import createResizeablePlugin from './plugins/draft-js-resizeable-plugin'
+import createImagePlugin from './plugins/draft-js-image-plugin/src/'
+import createAlignmentPlugin from './plugins/draft-js-alignment-plugin/src/'
+import createFocusPlugin from './plugins/draft-js-focus-plugin/src/'
+import createResizeablePlugin from './plugins/draft-js-resizeable-plugin/src/'
 
 import focusStyles from './styles/FocusStyles.css'
 const focusPlugin = createFocusPlugin({ theme: focusStyles })
@@ -42,7 +42,7 @@ let imageAddElement = null
 const addImageFile = () => { imageAddElement.addImageFile() }
 
 /* inline toolbar */
-import createInlineToolbarPlugin from './plugins/draft-js-inline-toolbar-plugin'
+import createInlineToolbarPlugin from './plugins/draft-js-inline-toolbar-plugin/src/'
 import inlineToolbarStyles from './styles/inlineToolbarStyles.css'
 import inlineToolbarButtonStyles from './styles/InlineToolbarButtonStyles.css'
 import {
@@ -66,13 +66,13 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
 const { InlineToolbar } = inlineToolbarPlugin
 
 /* Linkify */
-import createLinkifyPlugin from './plugins/draft-js-linkify-plugin'
+import createLinkifyPlugin from './plugins/draft-js-linkify-plugin/src/'
 import linkifyStyles from './styles/Linkify.css'
 const linkifyPlugin = createLinkifyPlugin({ theme: linkifyStyles })
 const { LinkAdd } = linkifyPlugin
 
 /* Mentions */
-import createMentionPlugin, { defaultSuggestionsFilter } from './plugins/draft-js-mention-plugin'
+import createMentionPlugin, { defaultSuggestionsFilter } from './plugins/draft-js-mention-plugin/src/'
 import mentionsStyles from './styles/Mention.css'
 import mentions from './components/Mention/mentions'
 import { Entry, positionSuggestions} from './components/Mention/mentions'
@@ -84,7 +84,7 @@ const mentionPlugin = createMentionPlugin({
 const { MentionSuggestions } = mentionPlugin
 
 /* Side Toolbar */
-import createSideToolbarPlugin from './plugins/draft-js-side-toolbar-plugin'
+import createSideToolbarPlugin from './plugins/draft-js-side-toolbar-plugin/src/'
 import buttonStyles from './styles/ToolbarButtonStyles.css'
 import toolbarStyles from './styles/ToolbarStyles.css'
 import blockTypeSelectStyles from './styles/ToolbarBlockTypeSelectStyles.css'
@@ -95,7 +95,7 @@ const sideToolbarPlugin = createSideToolbarPlugin({
 const { SideToolbar } = sideToolbarPlugin
 
 /* Stickers */
-import createStickerPlugin from './plugins/draft-js-sticker-plugin'
+import createStickerPlugin from './plugins/draft-js-sticker-plugin/src/'
 import stickers from './components/Sticker/stickers'
 import stickerStyles from './styles/StickerStyles.css'
 const stickerPlugin = createStickerPlugin({

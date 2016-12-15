@@ -4,7 +4,7 @@
   "description": "Final Draft... A Draft.js Editor using draft-js-plugins",
   "main": "lib/Final.js",
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "rm -rf lib && babel src --out-dir lib --copy-files",
     "site": "npm run clean && NODE_ENV=prod webpack --config webpack.config.prod",
     "clean": "rm public/bundle.js && rm public/style.css && rm public/vendor.js || true",
     "dev": "NODE_ENV=dev webpack-dev-server --port 3000 --inline --hot"
