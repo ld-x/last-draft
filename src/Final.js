@@ -265,6 +265,7 @@ export default class Final extends Component {
       <div>
         <div className='editor' onClick={this.focus}>
           <Editor
+            {...this.props}
             editorState={this.state.editorState}
             onChange={this.onChange}
             plugins={this.getPlugins()}

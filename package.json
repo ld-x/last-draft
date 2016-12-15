@@ -1,7 +1,8 @@
 {
   "name": "final-draft",
   "version": "1.0.3",
-  "description": "Final Draft...",
+  "description": "Final Draft... A Draft.js Editor using draft-js-plugins",
+   "main": "lib/Final.js",
   "scripts": {
     "build": "babel src --out-dir lib",
     "site": "npm run clean && NODE_ENV=prod webpack --config webpack.config.prod",
@@ -54,6 +55,8 @@
     "final draft",
     "final-draft",
     "draft-js",
+    "draft-js-plugins",
+    "draftjs plugins",
     "draftjs",
     "editor",
     "richtext",
