@@ -10,7 +10,6 @@ function plugins() {
     new webpack.DefinePlugin({ 'process.env':{ 'NODE_ENV': JSON.stringify('production')} }),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js' }),
-    new webpack.LoaderOptionsPlugin({ options: { postcss: [ autoprefixer ] } })
   ]
 }
 
@@ -19,11 +18,15 @@ function loaders() {
     { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0' },
     {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract({
+      exclude: /node_modules/,
+      loader: ExtractTextPlugin.extract({ // 'loader' instead of 'use' otherwise breaks.
         fallbackLoader: 'style-loader',
-        loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+        loader: [
+          { loader: 'css-loader', query: { modules: true, importLoaders: 1, localIdentName: '[name]__[local]__[hash:base64:5]' } }, // using 'query' instead of 'options' as ExtractTextPlugin doesnt seem to support it yet
+          'postcss-loader', // see postcss.config.js
+        ]
       })
-    }
+    },
   ]
 }
 
