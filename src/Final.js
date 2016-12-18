@@ -128,32 +128,46 @@ let pluginList = {
   videoPlugin: videoPlugin,
 }
 
-
-/* init the state, either from raw, html or text */
-import { text } from './initialState/text'
-import { raw } from './initialState/raw'
-import { html } from './initialState/html'
-
-/* from html
-const content = ContentState.createFromBlockArray(convertFromHTML(html))
-let STATE = EditorState.createWithContent(content)
-*/
-
-/* from text
-let STATE = createEditorStateWithText(text)
-*/
-
-/* from raw */
-const content = convertFromRaw(raw)
-console.log(JSON.stringify(raw))
-let STATE = EditorState.createWithContent(content)
-
-
 export default class Final extends Component {
 
-  state = {
-    editorState: STATE,
-    suggestions: mentions
+  static get defaultProps () {
+     return {
+       initialState: { content: '', type: 'text' },
+     }
+   }
+
+   constructor (props) {
+     super(props)
+     let STATE = ''
+     if(props.initialState.type === 'raw') {
+       STATE = this.getStateFromRaw(props.initialState.content)
+     } else if (props.initialState.type === 'html') {
+       STATE = this.getStateFromHtml(props.initialState.content)
+     } else if (props.initialState.type === 'text') {
+       STATE = this.getStateFromText(props.initialState.content)
+     }
+
+     this.state = {
+       editorState: STATE,
+       suggestions: mentions
+     }
+   }
+
+  getStateFromRaw(raw) {
+    const content = convertFromRaw(raw)
+    let STATE = EditorState.createWithContent(content)
+    return STATE
+  }
+
+  getStateFromHtml(html) {
+    const content = ContentState.createFromBlockArray(convertFromHTML(html))
+    let STATE = EditorState.createWithContent(content)
+    return STATE
+  }
+
+  getStateFromText(text) {
+    let STATE = createEditorStateWithText(text)
+    return STATE
   }
 
   onChange = (editorState) => {

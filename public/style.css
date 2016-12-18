@@ -429,12 +429,18 @@
   margin-left: -6px;
 }
 .inlineToolbarStyles__toolbar___2fsbe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   left: 50%;
   -webkit-transform: translate(-50%) scale(0);
           transform: translate(-50%) scale(0);
   position: absolute;
-  border: 1px solid #111;
-  background: #333;
+  background: #181818;
   border-radius: 4px;
   box-shadow: 0px 1px 3px 0px rgba(220,220,220,1);
   z-index: 2;
@@ -466,19 +472,21 @@
   margin-left: -6px;
 }
 .InlineToolbarButtonStyles__buttonWrapper___wrORK {
-  display: inline-block;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .InlineToolbarButtonStyles__button___3AK7- {
-  background: #333;
-  color: #ddd;
+  background: #181818;
+  color: #ccc;
   font-size: 18px;
   border: 0;
-  padding-top: 5px;
   vertical-align: bottom;
-  height: 34px;
-  width: 36px;
+  height: 56px;
+  width: 40px;
   border-radius: 4px;
+  line-height: 0.5rem;
 }
 
 .InlineToolbarButtonStyles__button___3AK7- svg {
@@ -486,8 +494,12 @@
 }
 
 .InlineToolbarButtonStyles__button___3AK7-:hover, .InlineToolbarButtonStyles__button___3AK7-:focus {
-  background: #444;
-  outline: 0; /* reset for :focus */
+  color: #fff;
+  outline: 0;
+}
+
+.InlineToolbarButtonStyles__button___3AK7-:hover svg, .InlineToolbarButtonStyles__button___3AK7-:focus svg {
+  fill: #fff;
 }
 
 .InlineToolbarButtonStyles__active___1LEYk {
@@ -503,7 +515,7 @@
 }
 
 .styles__addLinkPopover___HUD6d {
-  background: #FFF;
+  background: #181818;
   position: absolute;
   height: 54px;
   width: 300px;
@@ -521,10 +533,10 @@
 
 .styles__addLinkButton___1JoVg {
   box-sizing: border-box;
-  background: #fff;
-  border: 1px solid #ddd;
+  background: #181818;
+  border: none;
   padding: 0;
-  color: #888;
+  color: #fff;
   margin: 0;
   border-radius: 1.5em;
   cursor: pointer;
@@ -536,7 +548,7 @@
 }
 
 .styles__addLinkButton___1JoVg:focus {
-  outline: 0; /* reset for :focus */
+  outline: 0;
 }
 
 .styles__addLinkButton___1JoVg:hover {
@@ -566,14 +578,14 @@
 
 .styles__addLinkInput___6vP00 {
   box-sizing: border-box;
-  border: 1px solid #ddd;
+  border: none;
   cursor: text;
   padding: 4px;
   width: 78%;
   border-radius: 2px;
   margin-bottom: 1em;
-  box-shadow: inset 0px 1px 8px -3px #ABABAB;
-  background: #fefefe;
+  background: #181818;
+  color: #fff;
 }
 
 .styles__addLinkInput___6vP00:focus {
@@ -582,23 +594,20 @@
 
 .styles__addLinkInputError___i1EFU {
   color: darkred;
-  border: 1px solid darkred;
   box-shadow: none;
 }
 
 .styles__addLinkConfirmButton___2CKs2 {
   box-sizing: border-box;
-  background: #fff;
-  border: 1px solid #ddd;
+  background: #181818;
+  color: #ccc;
   padding: 0;
-  color: #888;
   margin: 0;
   border-radius: 0.4em;
+  border: none;
   cursor: pointer;
-  height: 2.1em;
   width: 8%;
-  font-size: 1em;
-  line-height: 2.1em;
+  font-size: 1.5em;
   margin: 0;
   margin-left: 1%;
 }
@@ -608,11 +617,11 @@
 }
 
 .styles__addLinkConfirmButton___2CKs2:hover {
-  background: #f3f3f3;
+  color: #fff;
 }
 
 .styles__addLinkConfirmButton___2CKs2:active {
-  background: #e6e6e6;
+  color: #fff;
 }
 
 .styles__addLinkError___2Rx48 {
@@ -931,15 +940,17 @@
 }
 
 .ToolbarButtonStyles__button___1thdC {
+  box-sizing: border-box;
+  border: 1px solid #111;
   background: #333;
-  color: #ddd;
-  font-size: 18px;
-  border: 0;
-  padding-top: 5px;
-  vertical-align: bottom;
-  height: 34px;
+  padding: 5px;
+  margin: 0;
+  margin-bottom: 0.2rem;
+  border-radius: 18px;
+  cursor: pointer;
+  height: 36px;
   width: 36px;
-  border-radius: 4px;
+  text-align: center;
 }
 
 .ToolbarButtonStyles__button___1thdC svg {
@@ -948,7 +959,7 @@
 
 .ToolbarButtonStyles__button___1thdC:hover, .ToolbarButtonStyles__button___1thdC:focus {
   background: #444;
-  outline: 0; /* reset for :focus */
+  outline: 0;
 }
 
 .ToolbarButtonStyles__active___2z_jG {
@@ -976,7 +987,9 @@
 }
 
 .ToolbarBlockTypeSelectStyles__blockType___2T-A8 svg {
-  fill: #ddd;
+  color: #fff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .ToolbarBlockTypeSelectStyles__spacer___2TK4T {
@@ -989,42 +1002,17 @@
 }
 
 .ToolbarBlockTypeSelectStyles__popup___1ogT8 {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
-  border: 1px solid #111;
-  background: #333;
-  border-radius: 2px;
-  box-shadow: 0px 1px 3px 0px rgba(220,220,220,1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   z-index: 3;
-  box-sizing: border-box;
-  width: 74px;
   margin-top: 8px;
-}
-
-.ToolbarBlockTypeSelectStyles__popup___1ogT8:after, .ToolbarBlockTypeSelectStyles__popup___1ogT8:before {
-  bottom: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-
-.ToolbarBlockTypeSelectStyles__popup___1ogT8:after {
-  border-color: rgba(251, 251, 251, 0);
-  border-bottom-color: #333;
-  border-width: 4px;
-  margin-left: -4px;
-}
-.ToolbarBlockTypeSelectStyles__popup___1ogT8:before {
-  border-color: rgba(221, 221, 221, 0);
-  border-bottom-color: #111;
-  border-width: 6px;
-  margin-left: -6px;
+  -webkit-transition: 0.4s all cubic-bezier(.3,1.2,.2,1);
+  transition: 0.4s all cubic-bezier(.3,1.2,.2,1);
 }
 .stickerStyles__sticker___tUkwK {
   margin: 0;
@@ -1322,75 +1310,15 @@
   width: 80px;
   height: 80px;
 }
-.styles__button___1BiuP {
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  height: 1.5em;
-  color: #888;
-  border-radius: 1.5em;
-  line-height: 1.2em;
-  cursor: pointer;
-  background-color: #fff;
-  width: 2.5em;
-  font-weight: bold;
-  font-size: 1.5em;
-  padding: 0;
-  margin: 0;
+.DefaultVideoComponent__iframeContainer___BWI8H {
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-bottom: 56.25%;
 }
 
-.styles__button___1BiuP:focus {
-  background-color: #eee;
-  color: #999;
-  outline: 0; /* reset for :focus */
-}
-
-.styles__button___1BiuP:hover {
-  background-color: #eee;
-  color: #999;
-}
-
-.styles__button___1BiuP:active {
-  background-color: #ddd;
-  color: #777;
-}
-
-.styles__button___1BiuP:disabled {
-  background-color: #F5F5F5;
-  color: #ccc;
-}
-.UndoStyles__button___1HKlo {
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  height: 1.5em;
-  color: #888;
-  border-radius: 1.5em;
-  line-height: 1.2em;
-  cursor: pointer;
-  background-color: #fff;
-  width: 2.5em;
-  font-weight: bold;
-  font-size: 1.5em;
-  padding: 0;
-  margin: 0;
-}
-
-.UndoStyles__button___1HKlo:focus {
-  background-color: #eee;
-  color: #999;
-  outline: 0; /* reset for :focus */
-}
-
-.UndoStyles__button___1HKlo:hover {
-  background-color: #eee;
-  color: #999;
-}
-
-.UndoStyles__button___1HKlo:active {
-  background-color: #ddd;
-  color: #777;
-}
-
-.UndoStyles__button___1HKlo:disabled {
-  background-color: #F5F5F5;
-  color: #ccc;
+.DefaultVideoComponent__invalidVideoSrc___1lDP0 {
+  text-align: center;
+  background-color: #eaeaea;
+  padding: 1em;
 }
