@@ -7,15 +7,17 @@
 }
 
 .button {
+  box-sizing: border-box;
+  border: 1px solid #111;
   background: #333;
-  color: #ddd;
-  font-size: 18px;
-  border: 0;
-  padding-top: 5px;
-  vertical-align: bottom;
-  height: 34px;
+  padding: 5px;
+  margin: 0;
+  margin-bottom: 0.2rem;
+  border-radius: 18px;
+  cursor: pointer;
+  height: 36px;
   width: 36px;
-  border-radius: 4px;
+  text-align: center;
 }
 
 .button svg {
@@ -24,7 +26,7 @@
 
 .button:hover, .button:focus {
   background: #444;
-  outline: 0; /* reset for :focus */
+  outline: 0;
 }
 
 .active {

@@ -31,17 +31,12 @@ export default ({ blockType, children }) => (
       const { theme } = this.props;
       const className = this.blockTypeIsActive() ? unionClassNames(theme.button, theme.active) : theme.button;
       return (
-        <div
-          className={theme.buttonWrapper}
-          onMouseDown={this.preventBubblingUp}
-        >
-          <button
-            className={className}
-            onClick={this.toggleStyle}
-            type="button"
-            children={children}
-          />
-        </div>
+        <button
+          className={className}
+          onClick={this.toggleStyle}
+          type="button"
+          children={children}
+        />
       );
     }
   }

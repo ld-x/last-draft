@@ -4,10 +4,7 @@ export default class BlockTypeSelect extends React.Component {
 
   state = {
     visible: false,
-    style: {
-      transform: 'translate(-50%) scale(0)',
-      transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
-    }
+    style: { opacity: '0' }
   }
 
   onClick = (e) => {
@@ -18,26 +15,24 @@ export default class BlockTypeSelect extends React.Component {
   show = () => {
     this.setState({
       visible: true,
-      style: { transform: 'translate(-50%) scale(1)' }
+      style: { opacity: '1' }
     });
   }
 
   hide = () => {
     this.setState({
       visible: false,
-      style: { transform: 'translate(-50%) scale(0)' }
+      style: { opacity: '0' }
     });
   }
 
   render() {
     const { theme, getEditorState, setEditorState, store } = this.props;
+    let blockRotateStyle = this.state.visible ? { transform: 'rotate(45deg)' } : {}
     return (
       <div onClick={this.onClick}>
         <div className={theme.blockTypeSelectStyles.blockType}>
-          <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-          </svg>
+          <svg style={blockRotateStyle} width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor" fill-rule="evenodd"><path d="M11 6h2v12h-2z"></path><path d="M18 11v2H6v-2z"></path></g></svg>
         </div>
         {/*
           The spacer is needed so the popup doesn't go away when moving from the
