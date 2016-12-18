@@ -10,10 +10,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [
           'style-loader',
           { loader: 'css-loader', options: { modules: true, importLoaders: 1, localIdentName: '[name]__[local]__[hash:base64:5]' } },
-          { loader: 'postcss-loader' },
+          'postcss-loader', // see postcss.config.js
         ]
       },
       {
@@ -26,6 +27,5 @@ module.exports = {
   devServer: { historyApiFallback: true },
   plugins: [
     new HtmlWebpackPlugin({ title: 'Example', template: './index.html' }),
-    new webpack.LoaderOptionsPlugin({ options: { postcss: [ autoprefixer ] } })
   ],
 }
