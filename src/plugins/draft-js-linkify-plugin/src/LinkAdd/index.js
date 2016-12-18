@@ -92,6 +92,8 @@ export default class LinkAdd extends Component {
     const inputClassName = this.state.linkError ?
       `${styles.addLinkInput} ${styles.addLinkInputError}` :
       styles.addLinkInput;
+    const plusStyle = { transform: 'translateY(4px) rotate(45deg)',  }
+    const crossStyle = { transform: 'translateY(4px)',  }
 
     return (
       <div className={styles.addLink}>
@@ -114,14 +116,18 @@ export default class LinkAdd extends Component {
             type="button"
             onClick={this.addLink}
           >
-            +
+          <svg style={plusStyle} width="20" height="20" viewBox="0 0 20 20">
+            <g fill="currentColor" fill-rule="evenodd"><path d="M16.95 5.636l1.414 1.414L7.05 18.364 5.636 16.95z"></path><path d="M16.95 18.364l1.414-1.414L7.05 5.636 5.636 7.05z"></path></g>
+          </svg>
           </button>
           <button
             className={styles.addLinkConfirmButton}
             type="button"
             onClick={this.closePopover}
           >
-            x
+            <svg style={crossStyle} width="20" height="20" viewBox="0 0 20 20">
+              <g fill="currentColor" fill-rule="evenodd"><path d="M16.95 5.636l1.414 1.414L7.05 18.364 5.636 16.95z"></path><path d="M16.95 18.364l1.414-1.414L7.05 5.636 5.636 7.05z"></path></g>
+            </svg>
           </button>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { getVisibleSelectionRect } from 'draft-js';
 
 // TODO make toolbarHeight to be determined or a parameter
-const toolbarHeight = 44;
+const toolbarHeight = 66;
 
 export default class Toolbar extends React.Component {
 
