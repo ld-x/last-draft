@@ -4,7 +4,7 @@ import Final from './src/Final'
 
 const plugins = [
   'imagePlugin', 'emojiPlugin', 'hashtagPlugin', 'inlineToolbarPlugin', 'linkifyPlugin',
-  'mentionPlugin', 'sideToolbarPlugin', 'stickerPlugin', 'undoPlugin'
+  'mentionPlugin', 'sideToolbarPlugin', 'stickerPlugin', 'undoPlugin', 'videoPlugin'
 ]
 
 export default class CustomMentionEditor extends Component {

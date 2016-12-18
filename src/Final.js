@@ -104,6 +104,15 @@ const stickerPlugin = createStickerPlugin({
 })
 const { StickerSelect } = stickerPlugin
 
+/* Video */
+import createVideoPlugin from './plugins/draft-js-video-plugin/src/'
+const videoDecorator = composeDecorators(
+  resizeablePlugin.decorator,
+  focusPlugin.decorator,
+);
+
+const videoPlugin = createVideoPlugin({ decorator: videoDecorator });
+
 
 /* init the plugins */
 let pluginList = {
@@ -116,6 +125,7 @@ let pluginList = {
   sideToolbarPlugin: sideToolbarPlugin,
   stickerPlugin: stickerPlugin,
   stickerPlugin: stickerPlugin,
+  videoPlugin: videoPlugin,
 }
 
 
@@ -135,6 +145,7 @@ let STATE = createEditorStateWithText(text)
 
 /* from raw */
 const content = convertFromRaw(raw)
+console.log(JSON.stringify(raw))
 let STATE = EditorState.createWithContent(content)
 
 
@@ -152,7 +163,7 @@ export default class Final extends Component {
     this.logState('raw state:', JSON.stringify(raw))
 
     let html = stateToHTML(editorState.getCurrentContent())
-    this.logState('html state:', html)
+    //this.logState('html state:', html)
   }
 
   logState(type, raw) {
@@ -185,7 +196,8 @@ export default class Final extends Component {
       }
     })
 
-    if (this.props.plugins.includes('imagePlugin')) {
+    if (this.props.plugins.includes('imagePlugin') ||
+        this.props.plugins.includes('videoPlugin')) {
       pluginArray.push(focusPlugin)
       pluginArray.push(resizeablePlugin)
     }

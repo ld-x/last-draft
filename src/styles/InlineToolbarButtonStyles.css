@@ -1,5 +1,5 @@
 .buttonWrapper {
-  display: inline-block;
+  flex: 1;
 }
 
 .button {

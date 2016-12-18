@@ -1,12 +1,26 @@
 export const raw = {
     "entityMap": {
-        "0": {
-            "type": "image",
-            "mutability": "IMMUTABLE",
-            "data": {
-                "src": "http://imgur.com/yrwFoXT.jpg"
-            }
+      "0": {
+        "type": "draft-js-video-plugin-video",
+        "mutability": "IMMUTABLE",
+        "data": {
+          "src": "https://www.youtube.com/watch?v=HBHJ0XGZfLs"
         }
+      },
+      "1": {
+        "type": "image",
+        "mutability": "IMMUTABLE",
+        "data": {
+          "src": "http://imgur.com/yrwFoXT.jpg"
+        }
+      },
+      "2": {
+        "type": "image",
+        "mutability": "IMMUTABLE",
+        "data": {
+          "src": "http://imgur.com/yrwFoXT.jpg"
+        }
+      }
     },
     "blocks": [{
         "key": "9gm3s",
