@@ -15,9 +15,6 @@ export default class extends Component {
     }
     this.renderButton = ::this.renderButton
     this.cancelEntity = ::this.cancelEntity
-    this.removeEntity = ::this.removeEntity
-    this.setError = ::this.setError
-    this.cancelError = ::this.cancelError
   }
 
   toggleInlineStyle(inlineStyle) {
@@ -167,29 +164,26 @@ export default class extends Component {
     if (!selection.isCollapsed()) {
       this.props.onChange(RichUtils.toggleLink(editorState, selection, null));
     }
-    this.cancelEntity();
+    this.cancelEntity()
   }
 
   cancelEntity() {
-    this.props.editor && this.props.editor.focus();
-    this.setState({
-      editingEntity: null,
-      error: null
-    });
+    this.props.editor && this.props.editor.focus()
+    this.setState({ editingEntity: null, error: null })
   }
   renderEntityInput(entityType) {
     if(!this.props.entityInputs) {
-      console.warn("no entityInputs provided");
-      return null;
+      console.warn("no entityInputs provided")
+      return null
     }
-    const Component = this.props.entityInputs[entityType];
-    const setEntity = data => this.setEntity(entityType, data);
-    let entityData = {};
-    let entity = null;
+    const Component = this.props.entityInputs[entityType]
+    const setEntity = data => this.setEntity(entityType, data)
+    let entityData = {}
+    let entity = null
     if(this.hasEntity(entityType)) {
-      entity = this.getCurrentEntity();
+      entity = this.getCurrentEntity()
       if(entity) {
-        entityData = entity.getData();
+        entityData = entity.getData()
       }
     }
     if(Component) {
@@ -200,16 +194,16 @@ export default class extends Component {
           entityType={entityType}
           onChange={this.props.onChange}
           cancelEntity={this.cancelEntity}
-          removeEntity={this.removeEntity}
-          setError={this.setError}
-          cancelError={this.cancelError}
+          removeEntity={::this.removeEntity}
+          setError={::this.setError}
+          cancelError={::this.cancelError}
           entity={entity}
           {...entityData}
           />
-      );
+      )
     } else {
-      console.warn("unknown entity type: "+entityType);
-      return null;
+      console.warn("unknown entity type: "+entityType)
+      return null
     }
   }
   renderToolList() {

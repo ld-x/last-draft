@@ -12,7 +12,6 @@ export default class extends Component {
 }
 
 const BlockContent = styled.div`
-  background-color: #eee;
   line-height: 100px;
   text-align: center;
   position: relative;

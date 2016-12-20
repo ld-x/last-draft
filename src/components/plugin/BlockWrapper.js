@@ -14,11 +14,11 @@ export default class extends Component {
 }
 
 const BlockHover = styled.div`
-  padding: 8px;
-  margin: -8px;
+  padding: 2px;
+  margin: -2px;
   &:hover {
     background-color: #eee;
-    border-radius: 4px;
+    border-radius: 2px;
   }
 `;
 

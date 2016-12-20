@@ -1,15 +1,6 @@
 import React, {Component} from "react"
-
-import {
-  BlockContent,
-  BlockData,
-  BlockInput,
-  CommonBlock
-} from "../../components/plugin"
-
+import { BlockContent, BlockData, BlockInput, CommonBlock } from "../../components/plugin"
 import icons from "../../icons"
-import ImageBlockStyle from "./ImageBlockStyle"
-
 
 export default class ImageBlock extends Component {
   constructor(props) {
@@ -31,10 +22,16 @@ export default class ImageBlock extends Component {
   }
 
   render(){
+    let ImageBlockStyle = {
+      display: 'inline-block',
+      maxWidth: '100%',
+      verticalAlign: 'middle'
+    }
+
     return (
       <CommonBlock {...this.props} actions={this.actions}>
         <BlockContent>
-          <img style={ImageBlockStyle.image} src={this.props.data.src} alt=""/>
+          <img style={ImageBlockStyle} src={this.props.data.src} alt=""/>
         </BlockContent>
 
         <BlockData>

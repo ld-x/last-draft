@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import ReactDOM from "react-dom"
 import icons from "../../icons"
 import insertDataBlock from "../../insertDataBlock"
 const styled = require('styled-components').default
@@ -10,19 +11,32 @@ export default class BlockButton extends Component {
 
   onClick(e) {
     e.preventDefault()
-    const src = window.prompt("Enter a URL")
-    if (!src) { return }
+    ReactDOM.findDOMNode(this.refs.fileInput).click()
+  }
 
-    const data = {src: src, type: "image"}
+  onChange(e) {
+    const { editorState, onChange } = this.props
+    const file = e.target.files[0]
+    const url = URL.createObjectURL(file)
+
+    if (!url) { return }
+    const data = {src: url, type: "image"}
     this.props.onChange(insertDataBlock(this.props.editorState, data))
   }
 
   render() {
     return (
-      <ImageButton type="button" onClick={::this.onClick}>
-        <icons.ImageIcon />
-      </ImageButton>
-    );
+      <div>
+        <ImageButton type="button" onClick={::this.onClick}>
+          <icons.ImageIcon />
+        </ImageButton>
+        <input
+          type="file"
+          ref='fileInput'
+          onChange={::this.onChange}
+          style={{ display: 'none' }} />
+      </div>
+    )
   }
 }
 

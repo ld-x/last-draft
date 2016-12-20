@@ -1,15 +1,6 @@
 import React, {Component} from "react"
-
-import {
-  BlockContent,
-  BlockData,
-  BlockInput,
-  CommonBlock
-} from "../../components/plugin"
-
+import { BlockContent, BlockData, BlockInput, CommonBlock } from "../../components/plugin"
 import icons from "../../icons"
-import VideoBlockStyle from "./VideoBlockStyle"
-
 
 export default class VideoBlock extends Component {
   constructor(props) {
@@ -25,10 +16,16 @@ export default class VideoBlock extends Component {
   }
 
   render() {
+    let VideoBlockStyle = {
+      display: 'inline-block',
+      maxWidth: '100%',
+      verticalAlign: 'middle'
+    }
+
     return (
       <CommonBlock {...this.props} actions={this.actions}>
         <BlockContent>
-          <video controls style={VideoBlockStyle.video} src={this.props.data.src} alt=""/>
+          <video controls style={VideoBlockStyle} src={this.props.data.src} alt=""/>
         </BlockContent>
 
         <BlockData>

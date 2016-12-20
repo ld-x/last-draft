@@ -35,26 +35,21 @@ export function getSelectedBlockElement(range) {
     }
     node = node.parentNode;
   } while (node !== null);
-  return null;
+  return null
 }
 
 export function getSelectionCoords(editor, toolbar) {
-  const editorBounds = editor.getBoundingClientRect();
-  const rangeBounds = getVisibleSelectionRect(window);
+  const editorBounds = editor.getBoundingClientRect()
+  const rangeBounds = getVisibleSelectionRect(window)
 
-  if (!rangeBounds || !toolbar) {
-    return null;
-  }
+  if (!rangeBounds || !toolbar) { return null }
 
-  const rangeWidth = rangeBounds.right - rangeBounds.left;
-
-  const toolbarHeight = toolbar.offsetHeight;
-  // const rangeHeight = rangeBounds.bottom - rangeBounds.top;
-  const offsetLeft = (rangeBounds.left - editorBounds.left)
-            + (rangeWidth / 2);
-  const offsetTop = rangeBounds.top - editorBounds.top - (toolbarHeight + 14);
-  const offsetBottom = editorBounds.bottom - rangeBounds.top + 14;
-  return { offsetLeft, offsetTop, offsetBottom };
+  const rangeWidth = rangeBounds.right - rangeBounds.left
+  const toolbarHeight = toolbar.offsetHeight
+  const offsetLeft = (rangeBounds.left - editorBounds.left) + (rangeWidth / 2)
+  const offsetTop = rangeBounds.top - editorBounds.top - (toolbarHeight + 14)
+  const offsetBottom = editorBounds.bottom - rangeBounds.top + 14
+  return { offsetLeft, offsetTop, offsetBottom }
 }
 
 export function createTypeStrategy(type) {

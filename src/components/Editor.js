@@ -8,6 +8,7 @@ import notFoundPlugin from "../plugins/not-found/plugin"
 import DEFAULT_PLUGINS from "../plugins/default"
 import DEFAULT_ACTIONS from "../actions/default"
 import DEFAULT_ENTITY_INPUTS from "../entity_inputs/default"
+import insertDataBlock from '../insertDataBlock'
 
 export default class extends Component {
   constructor(props) {
@@ -150,9 +151,26 @@ export default class extends Component {
     return <Toolbar {...props} />;
   }
 
+  handleDroppedFiles(selection, files) {
+    const file = files[0];
+    if (file.type.indexOf('image/') === 0) {
+      const src = URL.createObjectURL(file)
+      //const src = 'http://imgur.com/yrwFoXT.jpg'
+      /* callback, promise for image upload... */
+      const data = {src: src, type: "image"}
+      this.onChange(insertDataBlock(this.props.editorState, data, selection))
+    }
+  }
+
   render() {
     const {editorState, stripPastedStyles, spellCheck} = this.props
     const plugins = this.plugins
+
+    let dragDropStyle = {
+      background: '#08c',
+      color: '#fff',
+      padding: '100px 0'
+    }
 
     return (
       <div>
@@ -172,6 +190,7 @@ export default class extends Component {
             onTab={this.onTab}
             handleKeyCommand={this.handleKeyCommand}
             handleReturn={this.handleReturn}
+            handleDroppedFiles={::this.handleDroppedFiles}
             stripPastedStyles={stripPastedStyles}
             spellCheck={spellCheck}
             keyBindingFn={this.externalKeyBindings}
@@ -188,6 +207,6 @@ export default class extends Component {
           })}
         </div>
       </div>
-    );
+    )
   }
 }

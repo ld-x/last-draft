@@ -3,9 +3,14 @@ import {genKey, EditorState, ContentBlock, Modifier, BlockMapBuilder} from "draf
 
 const { List, Map } = Immutable
 
-function insertDataBlock(editorState, data) {
+function insertDataBlock(editorState, data, selection) {
   const contentState = editorState.getCurrentContent();
-  const selectionState = editorState.getSelection();
+  const selectionState =  selection !== undefined ? selection : editorState.getSelection()
+
+  if(selection !== undefined){
+    console.log(selectionState)
+    console.log(selection)
+  }
 
   const afterRemoval = Modifier.removeRange(
     contentState,
