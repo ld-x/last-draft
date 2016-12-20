@@ -47,7 +47,7 @@ Array of plugins to include, any of the following: `imagePlugin`, `emojiPlugin`,
 #### `initialState` (optional)
 An object with a `type` and `content`. The content is the actual initialState for the Editor, it can be type `raw`, `html` or `text`.
 
-e.g. `const INITIAL_STATE = { type: 'raw', content: raw }``
+e.g. `const INITIAL_STATE = { type: 'raw', content: raw }`
 
 ## Styles
 

@@ -25,7 +25,7 @@ body {
   height: 10rem;
 }
 
-.editor {
+.final-editor {
   box-sizing: border-box;
   border: 1px solid #ddd;
   cursor: text;
@@ -34,10 +34,6 @@ body {
   margin-bottom: 2em;
   box-shadow: inset 0px 1px 8px -3px #ABABAB;
   background: #fefefe;
-}
-
-.options {
-  margin-bottom: 20px;
 }
 
 .githubWrapper {
