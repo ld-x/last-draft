@@ -30,7 +30,21 @@ export default class CustomMentionEditor extends Component {
       <Editor
         editorState={this.state.value}
         placeholder="Text"
+        uploadImageCallBack={uploadImageCallBack}
         onChange={::this.onChange} />
     )
   }
+}
+
+
+function uploadImageCallBack(file) {
+  console.log(file)
+  return new Promise(
+    (resolve, reject) => {
+      /* simulate a 2 second call to parse file and return an img src... */
+      setTimeout( () => {
+        resolve({ src: 'http://imgur.com/yrwFoXT.jpg' });
+      }, 2000)
+    }
+  )
 }

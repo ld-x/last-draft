@@ -27,14 +27,14 @@ export default class Media extends Component {
       anchorOffset: 0,
       focusKey: keyAfter,
       focusOffset: this.props.block.getLength()
-    });
-    const newEditorState = EditorState.forceSelection(newState, newSelection);
-    this.onChange(newEditorState);
+    })
+    const newEditorState = EditorState.forceSelection(newState, newSelection)
+    this.onChange(newEditorState)
   }
 
   updateData(data) {
-    const {editorState} = this.props.blockProps;
-    const content = editorState.getCurrentContent();
+    const {editorState} = this.props.blockProps
+    const content = editorState.getCurrentContent()
     const selection = new SelectionState({
       anchorKey: this.props.block.key,
       anchorOffset: 0,
