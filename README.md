@@ -40,7 +40,6 @@ export default class ExampleEditor extends Component {
 }
 
 function uploadImageCallBack(file) {
-  console.log(file)
   return new Promise(
     (resolve, reject) => {
       /* simulate a 2 second call to parse file and return an img src... */

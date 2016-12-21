@@ -1,7 +1,3 @@
-/**
- * @providesModule DraftStyleDefault
- */
-
 .public/DraftStyleDefault/block {
   position: relative;
   white-space: pre-wrap;

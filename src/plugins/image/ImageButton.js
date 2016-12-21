@@ -7,7 +7,6 @@ const styled = require('styled-components').default
 export default class extends Component {
   constructor(props) {
     super(props)
-    console.log(props)
   }
 
   onClick(e) {

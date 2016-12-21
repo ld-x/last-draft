@@ -43,3 +43,72 @@ body {
   opacity: 0;
   text-align: center;
 }
+
+/* typography */
+
+.DraftEditor-editorContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.paragraph + .paragraph {
+  margin-top: 20px;
+}
+
+.public-DraftEditor-content figure {
+  margin: 20px 0;
+}
+
+.public-DraftStyleDefault-ul {
+  list-style-type: disc;
+}
+
+.public-DraftStyleDefault-ol {
+  list-style-type: decimal;
+}
+
+.public-DraftStyleDefault-ol,
+.public-DraftStyleDefault-ul {
+  line-height: 2;
+  margin: 24px 0 40px 0;
+  padding-left: 20px;
+}
+
+.public-DraftStyleDefault-ol li,
+.public-DraftStyleDefault-ul li {
+  padding-left: 10px;
+}
+
+.public-DraftEditorPlaceholder-root {
+  color: #999;
+  position: absolute;
+  z-index: 0;
+}
+
+blockquote {
+  border-left: 2px solid #ddd;
+  color: #999;
+  font-style: italic;
+  margin: 12px 0 40px 0;
+  padding: 6px 0 5px 18px;
+}
+
+.paragraph + blockquote {
+  margin-top: 20px
+}
+
+h2 {
+  font-weight: 700;
+  line-height: 2rem;
+  margin: 40px 0 20px 0;
+}
+
+h2:first-child {
+  margin-top: 0;
+}
+
+.editor__link {
+  color: #3192e7;
+  text-decoration: none;
+  cursor: pointer;
+}
