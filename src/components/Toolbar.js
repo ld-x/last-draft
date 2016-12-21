@@ -208,7 +208,7 @@ export default class extends Component {
   }
   renderToolList() {
     return (
-      <ToolbarList onMouseDown={(x) => {x.preventDefault()}}>
+      <ToolbarList onMouseDown={(e) => {e.preventDefault()}}>
         {this.props.actions.map(this.renderButton)}
       </ToolbarList>
     )
@@ -216,23 +216,34 @@ export default class extends Component {
   render() {
     if(this.props.readOnly) { return null }
 
-    const { position, show } = this.state
-    let display = { display: show ? 'block' : 'none' }
-    let toolbarStyle = display
+    const { position, show, error } = this.state
+
+    let toolbarStyle = { display: show ? 'block' : 'none' }
     if(position !== undefined) {
-      toolbarStyle = Object.assign(position, display)
+      toolbarStyle = Object.assign(position, toolbarStyle)
+    }
+    let toolbarWrapperStyle = {
+      backgroundColor: error ? '#E83F26' : '#181818'
+    }
+
+    let toolbarErrorStyle = {
+      margin: error ? '-8px 0 0 20px' : '0',
+      height: error ? '28px' : '0',
+      paddingBottom: error ? '12px' : '0'
     }
 
     return (
       <Toolbar ref="toolbarWrapper" style={toolbarStyle}>
         <div style={{position: "absolute", bottom: 0}}>
-          <ToolbarWrapper ref="toolbar">
+          <ToolbarWrapper ref="toolbar" style={toolbarWrapperStyle}>
             {
               this.state.editingEntity ?
               this.renderEntityInput(this.state.editingEntity) :
               this.renderToolList()
             }
-            <ToolbarErrorMsg>{this.state.error}</ToolbarErrorMsg>
+            <ToolbarErrorMsg style={toolbarErrorStyle}>
+              {this.state.error}
+            </ToolbarErrorMsg>
             <ToolbarArrow />
           </ToolbarWrapper>
         </div>
@@ -254,7 +265,7 @@ const Toolbar = styled.div`
 `;
 
 const ToolbarWrapper = styled.div`
-  background-color: #181818;
+  background: #181818;
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
   left: -50%;
@@ -287,4 +298,7 @@ const ToolbarErrorMsg = styled.p`
   margin: 0;
   height: 0;
   transition: height 0.2s ease-in-out;
+  color: #FFF;
+  font-size: 0.75rem;
+  font-weight: bold;
 `;

@@ -53,10 +53,10 @@ const ImageButton = styled.button`
   transition: all 0.5s ease;
   position: relative;
   background: none;
+  transform: scale(0.9);
 
   &:hover {
-    transform: scale(1.125);
-    background-color: #333333;
+    transform: scale(1);
   }
   &:before {
     transition: all 0.1s ease-in-out;

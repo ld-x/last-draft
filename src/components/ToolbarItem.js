@@ -40,7 +40,7 @@ export default class extends Component {
 const ToolbarItem = styled.li`
   display: inline-block;
   &:hover {
-    color: #fff;
+    color: #fff !important;
   }
 `;
 
@@ -49,7 +49,7 @@ const ToolbarButton = styled.button`
   color: inherit;
   cursor: pointer;
   border: 0;
-  height: 56px;
+  height: 46px;
   width: 40px;
   background: transparent;
 `;

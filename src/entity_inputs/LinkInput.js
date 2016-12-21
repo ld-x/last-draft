@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import ReactDOM from "react-dom"
 import icons from "../icons"
 const styled = require('styled-components').default
 
@@ -19,8 +20,8 @@ export default class LinkInput extends Component {
     const regex = new RegExp(expression);
 
     if (!url.match(regex)) {
-      this.props.setError(__("Invalid Link"));
-      this.refs.textInput.focus();
+      this.props.setError(("Invalid Link"));
+      ReactDOM.findDOMNode(this.refs.textInput).focus()
       return;
     }
 
@@ -56,7 +57,7 @@ export default class LinkInput extends Component {
   }
 
   componentDidMount() {
-    this.refs.textInput.focus()
+    ReactDOM.findDOMNode(this.refs.textInput).focus()
   }
 
   render() {
@@ -102,7 +103,7 @@ const ToolbarButton = styled.button`
   color: inherit;
   cursor: pointer;
   border: 0;
-  height: 56px;
+  height: 46px;
   width: 40px;
   background: transparent;
   padding-right: 16px;
