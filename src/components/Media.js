@@ -50,7 +50,7 @@ export default class Media extends Component {
   render() {
     const data = this.props.block.getData().toJS()
     const {plugin, setReadOnly} = this.props.blockProps
-    const Block = plugin.blockComponent
+    const Block = plugin.block
     return (
       <MediaWrapper setReadOnly={setReadOnly}>
         <Block data={data} container={this} blockProps={this.props.blockProps} />

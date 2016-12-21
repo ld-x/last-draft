@@ -3,6 +3,6 @@ import VideoBlock from "./VideoBlock"
 
 export default {
   type: "video",
-  buttonComponent: VideoButton,
-  blockComponent: VideoBlock
+  button: VideoButton,
+  block: VideoBlock
 }

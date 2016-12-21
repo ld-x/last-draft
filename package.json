@@ -5,9 +5,9 @@
   "main": "lib/Final.js",
   "scripts": {
     "build": "rm -rf lib && babel src --out-dir lib --copy-files",
-    "site": "npm run clean && NODE_ENV=prod webpack --config webpack.config.prod",
+    "site": "npm run clean && NODE_ENV=prod webpack --config example/webpack.config.prod",
     "clean": "rm public/bundle.js && rm public/vendor.js || true",
-    "dev": "NODE_ENV=dev webpack-dev-server --port 3000 --inline --hot"
+    "dev": "NODE_ENV=dev webpack-dev-server --port 3000 --inline --hot --config example/webpack.config"
   },
   "repository": {
     "type": "git",

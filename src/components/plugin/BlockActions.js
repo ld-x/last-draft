@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from "react"
-import BlockAction from "./BlockAction"
 const styled = require('styled-components').default
 
 export default class extends Component {
@@ -15,22 +14,41 @@ export default class extends Component {
   }
 
   renderItem(item) {
-    return(<BlockAction item={item} key={item.key} />);
+    return(
+      <BlockAction onClick={item.action} key={item.key}>
+        <item.icon />
+      </BlockAction>
+    )
   }
 
   render() {
     return(
-      <BlockActionGroup>
+      <BlockActions>
         {this.props.items.map(this.renderItem)}
-      </BlockActionGroup>
+      </BlockActions>
     )
   }
 }
 
-const BlockActionGroup = styled.ul`
+const BlockActions = styled.ul`
   color: #999;
   float: right;
   list-style: none;
   margin: 0;
   padding: 0;
+`;
+
+const BlockAction = styled.li`
+  display: inline-block;
+  padding: 0,
+  padding-left: 8px;
+  padding-right: 8px;
+  line-height: 40px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0;
+
+  &:hover {
+    color: '#000',
+  }
 `;

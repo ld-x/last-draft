@@ -3,7 +3,7 @@ import icons from "../../icons"
 import insertDataBlock from "../../insertDataBlock"
 const styled = require('styled-components').default
 
-export default class BlockButton extends Component {
+export default class extends Component {
   constructor(props) {
     super(props)
   }
@@ -22,10 +22,9 @@ export default class BlockButton extends Component {
       <VideoButton type="button" onClick={::this.onClick}>
         <icons.VideoIcon />
       </VideoButton>
-    );
+    )
   }
 }
-
 
 const VideoButton = styled.button`
   background: none;

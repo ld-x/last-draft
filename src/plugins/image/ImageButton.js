@@ -4,9 +4,10 @@ import icons from "../../icons"
 import insertDataBlock from "../../insertDataBlock"
 const styled = require('styled-components').default
 
-export default class BlockButton extends Component {
+export default class extends Component {
   constructor(props) {
     super(props)
+    console.log(props)
   }
 
   onClick(e) {
@@ -14,14 +15,24 @@ export default class BlockButton extends Component {
     ReactDOM.findDOMNode(this.refs.fileInput).click()
   }
 
-  onChange(e) {
-    const { editorState, onChange } = this.props
+  inputChange(e) {
+    const { editorState, onChange, uploadImageCallBack } = this.props
     const file = e.target.files[0]
-    const url = URL.createObjectURL(file)
+    if (file.type.indexOf('image/') !== 0) { return }
 
-    if (!url) { return }
-    const data = {src: url, type: "image"}
-    this.props.onChange(insertDataBlock(this.props.editorState, data))
+    if(uploadImageCallBack !== undefined){
+      uploadImageCallBack(file)
+      .then((data) => {
+        /* stop showing image placeholder */
+        const imageData = {src: data.src, type: "image"}
+        onChange(insertDataBlock(editorState, imageData))
+      })
+
+    } else {
+      const src = URL.createObjectURL(file)
+      const imageData = {src: src, type: "image"}
+      onChange(insertDataBlock(editorState, imageData))
+    }
   }
 
   render() {
@@ -33,13 +44,12 @@ export default class BlockButton extends Component {
         <input
           type="file"
           ref='fileInput'
-          onChange={::this.onChange}
+          onChange={::this.inputChange}
           style={{ display: 'none' }} />
       </div>
     )
   }
 }
-
 
 const ImageButton = styled.button`
   background: none;

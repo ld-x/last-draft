@@ -3,6 +3,6 @@ import ImageBlock from "./ImageBlock"
 
 export default {
   type: "image",
-  buttonComponent: ImageButton,
-  blockComponent: ImageBlock
+  button: ImageButton,
+  block: ImageBlock
 }

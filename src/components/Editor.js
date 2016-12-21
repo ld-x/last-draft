@@ -5,9 +5,9 @@ import DefaultToolbar from "./Toolbar"
 import Sidebar from "./Sidebar"
 import Media from "./Media"
 import notFoundPlugin from "../plugins/not-found/plugin"
-import DEFAULT_PLUGINS from "../plugins/default"
+import DEFAULT_PLUGINS from "../plugins/"
 import DEFAULT_ACTIONS from "../actions/default"
-import DEFAULT_ENTITY_INPUTS from "../entity_inputs/default"
+import DEFAULT_ENTITIES from "../entities/"
 import insertDataBlock from '../insertDataBlock'
 
 export default class extends Component {
@@ -19,7 +19,7 @@ export default class extends Component {
 
     this.actions = this.props.actions || DEFAULT_ACTIONS
     this.plugins = this.getValidPlugins()
-    this.entityInputs = this.props.entityInputs || DEFAULT_ENTITY_INPUTS
+    this.entityInputs = this.props.entityInputs || DEFAULT_ENTITIES
     this.pluginsByType = this.getPluginsByType()
     this.keyBindings = this.props.keyBindings || []
   }
@@ -38,7 +38,6 @@ export default class extends Component {
 
   getPluginsByType() {
     let pluginsByType = {}
-
     for (let plugin of this.plugins) {
       pluginsByType[plugin.type] = plugin
     }
@@ -71,9 +70,9 @@ export default class extends Component {
 
   handleKeyCommand(command) {
     if (this.keyBindings.length) {
-      const extKb = this.keyBindings.find(kb => kb.name === command);
-      if (extKb) {
-        extKb.action()
+      const kb = this.keyBindings.find(k => k.name === command);
+      if (kb) {
+        kb.action()
         return true
       }
     }
@@ -147,22 +146,22 @@ export default class extends Component {
   }
 
   handleDroppedFiles(selection, files) {
-    const { uploadImageCallBack } = this.props
+    const { uploadImageCallBack, editorState } = this.props
     const file = files[0];
-    if (file.type.indexOf('image/') === 0) {
-      if(uploadImageCallBack !== undefined){
-        uploadImageCallBack(file)
-        .then((data) => {
-          /* stop showing image placeholder */
-          const imageData = {src: data.src, type: "image"}
-          this.onChange(insertDataBlock(this.props.editorState, imageData, selection))
-        })
+    if (file.type.indexOf('image/') !== 0) { return }
 
-      } else {
-        const src = URL.createObjectURL(file)
-        const imageData = {src: src, type: "image"}
-        this.onChange(insertDataBlock(this.props.editorState, imageData, selection))
-      }
+    if(uploadImageCallBack !== undefined){
+      uploadImageCallBack(file)
+      .then((data) => {
+        /* stop showing image placeholder */
+        const imageData = {src: data.src, type: "image"}
+        this.onChange(insertDataBlock(editorState, imageData, selection))
+      })
+
+    } else {
+      const src = URL.createObjectURL(file)
+      const imageData = {src: src, type: "image"}
+      this.onChange(insertDataBlock(editorState, imageData, selection))
     }
   }
 
@@ -177,7 +176,8 @@ export default class extends Component {
             plugins,
             editorState,
             readOnly: this.state.readOnly,
-            onChange: this.onChange
+            onChange: this.onChange,
+            uploadImageCallBack: this.props.uploadImageCallBack
           })}
           <Editor
             readOnly={this.state.readOnly}

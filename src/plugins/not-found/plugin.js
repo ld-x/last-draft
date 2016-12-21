@@ -1,7 +1,7 @@
 import NotFoundBlock from "./NotFoundBlock"
 
 export default {
-  blockComponent: NotFoundBlock,
+  block: NotFoundBlock,
   options: {
     displayOptions: [],
     defaultDisplay: null

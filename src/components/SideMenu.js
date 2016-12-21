@@ -40,10 +40,11 @@ export default class extends Component {
 
           <SideMenuItems style={menuItemsStyle}>
             {this.props.plugins.map((item) => {
-              const Button = item.buttonComponent;
+              const Button = item.button
               return (
                 <SideMenuItem key={item.type} >
                   <Button
+                    uploadImageCallBack={this.props.uploadImageCallBack}
                     editorState={this.props.editorState}
                     onChange={::this.onChange}/>
                 </SideMenuItem>

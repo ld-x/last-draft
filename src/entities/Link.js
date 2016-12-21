@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import icons from "../icons"
 const styled = require('styled-components').default
 
-export default class LinkInput extends Component {
+export default class Link extends Component {
   constructor(props) {
     super(props);
     this.state = { url: props && props.url || '' }

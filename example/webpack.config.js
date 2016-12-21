@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './index.js',
+  entry: './example/index.js',
   devtool: 'inline-source-map',
   output: { filename: 'bundle.js', publicPath: '' },
   module: {
@@ -16,6 +16,6 @@ module.exports = {
   },
   devServer: { historyApiFallback: true },
   plugins: [
-    new HtmlWebpackPlugin({ title: 'Example', template: './index.html' })
+    new HtmlWebpackPlugin({ title: 'Example', template: './example/index.html' })
   ],
 }

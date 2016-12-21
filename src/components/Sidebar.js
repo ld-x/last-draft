@@ -26,7 +26,7 @@ export default class extends Component {
   getValidSidebarPlugins() {
     let plugins = [];
     for (let plugin of this.props.plugins) {
-      if (!plugin.buttonComponent || typeof plugin.buttonComponent !== "function") {
+      if (!plugin.button || typeof plugin.button !== "function") {
         continue;
       }
       plugins.push(plugin)
@@ -68,6 +68,7 @@ export default class extends Component {
       <Sidebar ref="container">
         <SidebarMenu style={{top: `${this.state.top}px`}}>
           <SideMenu
+            uploadImageCallBack={this.props.uploadImageCallBack}
             editorState={this.props.editorState}
             onChange={::this.onChange}
             plugins={this.getValidSidebarPlugins()}/>

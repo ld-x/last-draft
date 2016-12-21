@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import { BlockActionGroup, BlockControls, BlockWrapper } from "../../components/plugin"
+import { BlockActions, BlockControls, BlockWrapper } from "../../components/plugin"
 
 export default class extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class extends Component {
     return (
       <BlockWrapper>
         <BlockControls>
-          <BlockActionGroup items={this.props.actions} />
+          <BlockActions items={this.props.actions} />
         </BlockControls>
         {this.props.children}
       </BlockWrapper>
