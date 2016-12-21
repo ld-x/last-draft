@@ -16,7 +16,7 @@ export function editorStateFromHtml(html, decorator = defaultDecorator) {
   if (html === null) {
     return EditorState.createEmpty(decorator)
   }
-  return EditorState.createWithContent(html, decorator)
+  return EditorState.createWithContent(stateFromHTML(html), decorator)
 
   //const content = ContentState.createFromBlockArray(convertFromHTML(html))
   //return EditorState.createWithContent(content)
