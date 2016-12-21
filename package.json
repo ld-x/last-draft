@@ -1,6 +1,6 @@
 {
   "name": "final-draft",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Final Draft... A Draft.js Editor using draft-js-plugins",
   "main": "lib/Final.js",
   "scripts": {
