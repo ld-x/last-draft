@@ -39,7 +39,7 @@
     "draft-js-export-html": "^0.5.2",
     "immutable": "~3.7.4",
     "setimmediate": "^1.0.4",
-    "styled-components": "^1.2.1",
+    "styled-components": "^1.2.1"
   },
   "keywords": [
     "final draft",
