@@ -12,6 +12,7 @@ import * as utils from "./utils"
 const Final = {
   DraftJS: DraftJS,
   editorStateFromRaw: utils.editorStateFromRaw,
+  editorStateFromHtml: utils.editorStateFromHtml,
   editorStateToJSON: utils.editorStateToJSON,
   createTypeStrategy: utils.createTypeStrategy,
   insertDataBlock: insertDataBlock,

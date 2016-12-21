@@ -2,11 +2,18 @@ import {
   Entity,
   convertToRaw,
   convertFromRaw,
+  ContentState,
+  convertFromHTML,
   EditorState,
-  getVisibleSelectionRect} from "draft-js";
+  getVisibleSelectionRect} from "draft-js"
 
 import defaultDecorator from "./decorators/defaultDecorator"
 
+// additional
+export function editorStateFromHtml(html) {
+  const content = ContentState.createFromBlockArray(convertFromHTML(html))
+  return EditorState.createWithContent(content)
+}
 
 export function editorStateToJSON(editorState) {
   if (editorState) {

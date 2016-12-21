@@ -80,8 +80,8 @@ export default {
       "data": {
         "type": "image",
         "src": "http://imgur.com/yrwFoXT.jpg",
-        "caption": "Picture from StockSnap.io",
-        "rightsHolder": "By Tim Marshall",
+        "caption": "Picture from Somewhere",
+        "rightsHolder": "By Someone",
         "display": "big"
       }
     },
@@ -126,7 +126,7 @@ export default {
       "inlineStyleRanges": [],
       "entityRanges": [
         {
-          "offset": 13,
+          "offset": 15,
           "length": 3,
           "key": 1
         }

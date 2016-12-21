@@ -13,29 +13,42 @@ npm install final-draft --save
 
 ## Use
 ```jsx
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { render } from 'react-dom'
-import Final from 'final-draft'
+import {editorStateFromHtml, editorStateFromRaw} from 'final-draft'
+import { Editor } from 'final-draft'
 
-/* init the state, either from raw, html or text */
-import { text } from './initialState/text'
-import { raw } from './initialState/raw'
-import { html } from './initialState/html'
+export default class ExampleEditor extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { value: editorStateFromRaw(raw) }
+  }
 
-const plugins = [
-  'imagePlugin', 'emojiPlugin', 'hashtagPlugin', 'inlineToolbarPlugin', 'linkifyPlugin',
-  'mentionPlugin', 'sideToolbarPlugin', 'stickerPlugin', 'undoPlugin', 'videoPlugin'
-]
+  onChange(value) {
+    this.setState({ value })
+  }
 
-const INITIAL_STATE = { type: 'raw', content: raw }
-
-export default class CustomMentionEditor extends Component {
   render() {
     return (
-      <Final plugins={plugins}
-             initialState={INITIAL_STATE} />
+      <Editor
+        editorState={this.state.value}
+        placeholder="Text"
+        uploadImageCallBack={uploadImageCallBack}
+        onChange={::this.onChange} />
     )
   }
+}
+
+function uploadImageCallBack(file) {
+  console.log(file)
+  return new Promise(
+    (resolve, reject) => {
+      /* simulate a 2 second call to parse file and return an img src... */
+      setTimeout( () => {
+        resolve({ src: 'http://imgur.com/yrwFoXT.jpg' });
+      }, 2000)
+    }
+  )
 }
 ```
 
@@ -44,22 +57,9 @@ export default class CustomMentionEditor extends Component {
 #### `plugins` (required)
 Array of plugins to include, any of the following: `imagePlugin`, `emojiPlugin`, `hashtagPlugin`, `inlineToolbarPlugin`, `linkifyPlugin`, `mentionPlugin`, `sideToolbarPlugin`, `stickerPlugin`, `undoPlugin`, `videoPlugin`
 
-#### `initialState` (optional)
-An object with a `type` and `content`. The content is the actual initialState for the Editor, it can be type `raw`, `html` or `text`.
-
-e.g. `const INITIAL_STATE = { type: 'raw', content: raw }`
-
 ## Styles
 
-You will need to use webpack with style-loader, css-loader in css modules mode as shown in the example webpack.config.
-
-```
-use: [
-  'style-loader',
-  { loader: 'css-loader', options: { modules: true, importLoaders: 1, localIdentName: '[name]__[local]__[hash:base64:5]' } },
-  { loader: 'postcss-loader' },
-]
-```
+Are using styled-components so they should `just work` 💅 like magic. They append to a `<style>` tag if you want to be specific.
 
 ## Development
 
