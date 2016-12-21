@@ -8,7 +8,6 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
       editingEntity: null,
       link: "",
       error: null
@@ -93,7 +92,6 @@ export default class extends Component {
         this.state.position.bottom !== selectionCoords.offsetBottom ||
         this.state.position.left !== selectionCoords.offsetLeft) {
       this.setState({
-        show: true,
         position: {
           bottom: selectionCoords.offsetBottom,
           left: selectionCoords.offsetLeft
@@ -105,15 +103,6 @@ export default class extends Component {
   componentDidUpdate() {
     if (!this.props.editorState.getSelection().isCollapsed()) {
       return this.setBarPosition()
-    } else {
-      if (this.state.show) {
-        this.setState({
-          show: false,
-          editingEntity: null,
-          link: "",
-          error: null
-        })
-      }
     }
   }
 
@@ -214,11 +203,16 @@ export default class extends Component {
     )
   }
   render() {
+    const { position, error } = this.state
+
     if(this.props.readOnly) { return null }
 
-    const { position, show, error } = this.state
+    let showToolbar = true
+    if (this.props.editorState.getSelection().isCollapsed()) {
+      showToolbar = false
+    }
 
-    let toolbarStyle = { display: show ? 'block' : 'none' }
+    let toolbarStyle = { display: showToolbar ? 'block' : 'none' }
     if(position !== undefined) {
       toolbarStyle = Object.assign(position, toolbarStyle)
     }
