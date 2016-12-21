@@ -12,9 +12,12 @@ import {
 import defaultDecorator from "./decorators/defaultDecorator"
 
 // additional
-export function editorStateFromHtml(html) {
-  const content = html ? createEditorState(stateFromHTML(html)) : createEditorState()
-  return content
+export function editorStateFromHtml(html, decorator = defaultDecorator) {
+  if (html === null) {
+    return EditorState.createEmpty(decorator)
+  }
+  return EditorState.createWithContent(html, decorator)
+
   //const content = ContentState.createFromBlockArray(convertFromHTML(html))
   //return EditorState.createWithContent(content)
 }
