@@ -1,8 +1,10 @@
+import { stateFromHTML } from 'draft-js-import-html'
 import {
   Entity,
   convertToRaw,
   convertFromRaw,
   ContentState,
+  createEditorState,
   convertFromHTML,
   EditorState,
   getVisibleSelectionRect} from "draft-js"
@@ -11,8 +13,10 @@ import defaultDecorator from "./decorators/defaultDecorator"
 
 // additional
 export function editorStateFromHtml(html) {
-  const content = ContentState.createFromBlockArray(convertFromHTML(html))
-  return EditorState.createWithContent(content)
+  const content = html ? createEditorState(stateFromHTML(html)) : createEditorState()
+  return content
+  //const content = ContentState.createFromBlockArray(convertFromHTML(html))
+  //return EditorState.createWithContent(content)
 }
 
 export function editorStateToJSON(editorState) {
