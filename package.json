@@ -37,6 +37,7 @@
     "babel-cli": "^6.18.0",
     "draft-convert": "^1.3.1",
     "draft-js": "^0.9.1",
+    "draft-js-export-html": "^0.5.2",
     "immutable": "~3.7.4",
     "setimmediate": "^1.0.4",
     "styled-components": "^1.2.1"
