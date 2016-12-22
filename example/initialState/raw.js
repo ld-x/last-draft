@@ -81,7 +81,6 @@ export default {
         "type": "image",
         "src": "http://imgur.com/yrwFoXT.jpg",
         "caption": "Picture from Somewhere",
-        "rightsHolder": "By Someone",
         "display": "big"
       }
     },

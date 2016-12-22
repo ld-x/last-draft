@@ -9,7 +9,6 @@ import CrossIcon from "./icons/cross"
 import ImageIcon from "./icons/image"
 import VideoIcon from "./icons/video"
 import EditIcon from "./icons/edit"
-import DeleteIcon from "./icons/delete"
 import CropIcon from "./icons/crop"
 import ErrorIcon from "./icons/error"
 import UnlinkIcon from "./icons/unlink"
@@ -17,7 +16,7 @@ import CloseIcon from "./icons/close"
 
 const icons = {
   BoldIcon, ItalicIcon, ULIcon, OLIcon, H2Icon, BlockQuoteIcon, LinkIcon,
-  CrossIcon, ImageIcon, VideoIcon, EditIcon, DeleteIcon, CropIcon,
+  CrossIcon, ImageIcon, VideoIcon, EditIcon, CropIcon,
   ErrorIcon, UnlinkIcon, CloseIcon
 }
 

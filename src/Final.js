@@ -4,7 +4,6 @@ import insertDataBlock from "./insertDataBlock"
 import Media from "./components/Media"
 import Editor from "./components/Editor"
 import Icons from "./icons"
-import * as Plugin from "./components/plugin"
 import Sidebar from "./components/Sidebar"
 import Toolbar from "./components/Toolbar"
 import * as utils from "./utils"
@@ -20,7 +19,6 @@ const Final = {
   Media: Media,
   Editor: Editor,
   Icons: Icons,
-  Plugin: Plugin,
   Sidebar: Sidebar,
   Toolbar: Toolbar
 }

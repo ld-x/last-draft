@@ -1,13 +1,29 @@
 import React, {Component} from "react"
+import BlockActions from './BlockActions'
 const styled = require('styled-components').default
 
 export default class extends Component {
-  render() {
+  constructor(props) {
+    super(props)
+  }
+
+  handleDisplayChange(newValue) {
+    this.props.container.updateData({display: newValue})
+  }
+
+  render(){
+    const data = this.props.data
+    let options = this.props.blockProps.plugin.options || {}
+    options = {...options}
+
     return (
       <BlockHover>
-        <BlockWrapper>
+        <Block>
+          <div>
+            <BlockActions items={this.props.actions} />
+          </div>
           {this.props.children}
-        </BlockWrapper>
+        </Block>
       </BlockHover>
     )
   }
@@ -22,7 +38,7 @@ const BlockHover = styled.div`
   }
 `;
 
-const BlockWrapper = styled.div`
+const Block = styled.div`
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

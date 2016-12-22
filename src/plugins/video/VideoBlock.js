@@ -1,5 +1,7 @@
 import React, {Component} from "react"
-import { BlockContent, BlockData, BlockInput, CommonBlock } from "../../components/plugin"
+import BlockContent from '../block/BlockContent'
+import BlockInput from '../block/BlockInput'
+import Block from '../block/Block'
 import icons from "../../icons"
 
 export default class VideoBlock extends Component {
@@ -7,7 +9,11 @@ export default class VideoBlock extends Component {
     super(props)
 
     this.actions = [
-      {"key": "delete", "icon": icons.DeleteIcon, "action": this.props.container.remove}
+      {
+        key: 'delete',
+        icon: icons.CloseIcon,
+        action: this.props.container.remove
+      }
     ]
   }
 
@@ -23,18 +29,16 @@ export default class VideoBlock extends Component {
     }
 
     return (
-      <CommonBlock {...this.props} actions={this.actions}>
+      <Block {...this.props} actions={this.actions}>
         <BlockContent>
           <video controls style={VideoBlockStyle} src={this.props.data.src} alt=""/>
         </BlockContent>
 
-        <BlockData>
-          <BlockInput
-            placeholder="Caption"
-            value={this.props.data.caption}
-            onChange={::this.handleCaptionChange} />
-        </BlockData>
-      </CommonBlock>
+        <BlockInput
+          placeholder="Caption"
+          value={this.props.data.caption}
+          onChange={::this.handleCaptionChange} />
+      </Block>
     )
   }
 }

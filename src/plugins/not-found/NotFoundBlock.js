@@ -1,6 +1,6 @@
 import React, {Component} from "react"
-
-import { BlockContent, CommonBlock } from "../../components/plugin"
+import BlockContent from '../block/BlockContent'
+import Block from '../block/Block'
 import icons from "../../icons"
 
 export default class NotFoundBlock extends Component {

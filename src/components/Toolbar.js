@@ -293,6 +293,6 @@ const ToolbarErrorMsg = styled.p`
   height: 0;
   transition: height 0.2s ease-in-out;
   color: #FFF;
-  font-size: 0.75rem;
+  font-size: 12px;
   font-weight: bold;
 `;

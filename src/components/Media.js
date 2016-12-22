@@ -1,8 +1,8 @@
 import React, {Component} from "react"
 import {EditorState, SelectionState, Modifier} from "draft-js"
-import MediaWrapper from "./MediaWrapper"
+const styled = require('styled-components').default
 
-export default class Media extends Component {
+export default class extends Component {
   constructor(props) {
     super(props)
     this.remove = ::this.remove
@@ -47,14 +47,27 @@ export default class Media extends Component {
     this.onChange(newEditorState)
   }
 
+  handleFocus() {
+    const {setReadOnly} = this.props.blockProps
+    setReadOnly(true)
+  }
+
+  handleBlur() {
+    const {setReadOnly} = this.props.blockProps
+    setReadOnly(false)
+  }
+
   render() {
     const data = this.props.block.getData().toJS()
-    const {plugin, setReadOnly} = this.props.blockProps
+    const {plugin} = this.props.blockProps
     const Block = plugin.block
     return (
-      <MediaWrapper setReadOnly={setReadOnly}>
+      <Media onBlur={::this.handleBlur} onFocus={::this.handleFocus}>
         <Block data={data} container={this} blockProps={this.props.blockProps} />
-      </MediaWrapper>
+      </Media>
     )
   }
 }
+
+const Media = styled.div`
+`;

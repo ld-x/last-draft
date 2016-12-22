@@ -23,12 +23,19 @@ export default class extends Component {
 
   render() {
     return(
-      <BlockActions>
-        {this.props.items.map(this.renderItem)}
-      </BlockActions>
+      <BlockActionsWrapper>
+        <BlockActions>
+          {this.props.items.map(this.renderItem)}
+        </BlockActions>
+      </BlockActionsWrapper>
     )
   }
 }
+
+const BlockActionsWrapper = styled.div`
+  overflow: auto;
+  padding: 8px;
+`;
 
 const BlockActions = styled.ul`
   color: #999;
