@@ -1,186 +1,234 @@
-.public/DraftStyleDefault/block {
+.DraftEditor-editorContainer,
+.DraftEditor-root,
+.public-DraftEditor-content {
+  height: inherit;
+  text-align: initial;
+}
+
+.public-DraftEditor-content,
+.public-DraftEditorPlaceholder-root {
+  margin: -1rem;
+  padding: 1rem;
+}
+
+.public-DraftEditor-content {
+  min-height: 10rem;
+}
+.public-DraftEditor-content[contenteditable=true] {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+.public-DraftEditor-block {
+  position: relative;
+}
+
+.public-DraftEditorPlaceholder-root {
+  color: #9197a3;
+  position: absolute;
+  z-index: 0;
+  margin: 0;
+  padding-left: 0;
+}
+
+.public-DraftEditorPlaceholder-hasFocus {
+  color: #bdc1c9;
+}
+
+.DraftEditorPlaceholder-hidden {
+  display: none;
+}
+
+.public-DraftStyleDefault-block {
   position: relative;
   white-space: pre-wrap;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/ltr {
+.public-DraftStyleDefault-ltr {
   direction: ltr;
   text-align: left;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/rtl {
+.public-DraftStyleDefault-rtl {
   direction: rtl;
   text-align: right;
 }
 
-/**
- * These rules provide appropriate text direction for counter pseudo-elements.
- */
-/* @noflip */
-.public/DraftStyleDefault/listLTR {
+.public-DraftStyleDefault-listLTR {
   direction: ltr;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/listRTL {
+.public-DraftStyleDefault-listRTL {
   direction: rtl;
 }
 
-/**
- * Default spacing for list container elements. Override with CSS as needed.
- */
-.public/DraftStyleDefault/ul,
-.public/DraftStyleDefault/ol {
+.DraftEditor {
+  &-root {
+    position: relative;
+  }
+
+  &-alignLeft {
+    .public-DraftStyleDefault-block {
+      text-align: left;
+    }
+    .public-DraftEditorPlaceholder-root {
+      left: 0;
+      text-align: left;
+    }
+    .public-DraftStyleDefault-block {
+      text-align: center;
+    }
+    .public-DraftEditorPlaceholder-root {
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+    }
+    .public-DraftStyleDefault-block {
+      text-align: right;
+    }
+    .public-DraftEditorPlaceholder-root {
+      right: 0;
+      text-align: right;
+    }
+  }
+}
+
+.public-DraftStyleDefault-pre {
+  background-color: rgba(0, 0, 0, .05);
+  font-family: $mono;
+  font-size: 16px;
+  padding: 20px;
+}
+
+/* list styles */
+
+.public-DraftStyleDefault-orderedListItem,
+.public-DraftStyleDefault-unorderedListItem {
+  margin-bottom: 10px;
+}
+
+.public-DraftStyleDefault-orderedListItem,
+.public-DraftStyleDefault-unorderedListItem {
+  margin-bottom: 10px;
+}
+
+.public-DraftStyleDefault-ol,
+.public-DraftStyleDefault-ul {
   margin: 16px 0;
   padding: 0;
 }
 
-/**
- * Default counters and styles are provided for five levels of nesting.
- * If you require nesting beyond that level, you should use your own CSS
- * classes to do so. If you care about handling RTL languages, the rules you
- * create should look a lot like these.
- */
-
-/* @noflip */
-.public/DraftStyleDefault/depth0.public/DraftStyleDefault/listLTR {
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listLTR {
   margin-left: 1.5em;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/depth0.public/DraftStyleDefault/listRTL {
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listRTL {
   margin-right: 1.5em;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/depth1.public/DraftStyleDefault/listLTR {
+.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listLTR {
   margin-left: 3em;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/depth1.public/DraftStyleDefault/listRTL {
+.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listRTL {
   margin-right: 3em;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/depth2.public/DraftStyleDefault/listLTR {
+.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listLTR {
   margin-left: 4.5em;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/depth2.public/DraftStyleDefault/listRTL {
+.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listRTL {
   margin-right: 4.5em;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/depth3.public/DraftStyleDefault/listLTR {
+.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listLTR {
   margin-left: 6em;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/depth3.public/DraftStyleDefault/listRTL {
+.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listRTL {
   margin-right: 6em;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/depth4.public/DraftStyleDefault/listLTR {
+.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listLTR {
   margin-left: 7.5em;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/depth4.public/DraftStyleDefault/listRTL {
+.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listRTL {
   margin-right: 7.5em;
 }
 
-/**
- * Only use `square` list-style after the first two levels.
- */
-.public/DraftStyleDefault/unorderedListItem {
+.public-DraftStyleDefault-unorderedListItem {
   list-style-type: square;
   position: relative;
 }
 
-.public/DraftStyleDefault/unorderedListItem.public/DraftStyleDefault/depth0 {
+.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth0 {
   list-style-type: disc;
 }
 
-.public/DraftStyleDefault/unorderedListItem.public/DraftStyleDefault/depth1 {
+.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth1 {
   list-style-type: circle;
 }
 
-/**
- * Ordered list item counters are managed with CSS, since all list nesting is
- * purely visual.
- */
-.public/DraftStyleDefault/orderedListItem {
+.public-DraftStyleDefault-orderedListItem {
   list-style-type: none;
   position: relative;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/orderedListItem.public/DraftStyleDefault/listLTR:before {
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listLTR:before {
   left: -36px;
   position: absolute;
   text-align: right;
   width: 30px;
 }
 
-/* @noflip */
-.public/DraftStyleDefault/orderedListItem.public/DraftStyleDefault/listRTL:before {
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listRTL:before {
   position: absolute;
   right: -36px;
   text-align: left;
   width: 30px;
 }
 
-/**
- * Counters are reset in JavaScript. If you need different counter styles,
- * override these rules. If you need more nesting, create your own rules to
- * do so.
- */
-.public/DraftStyleDefault/orderedListItem:before {
+.public-DraftStyleDefault-orderedListItem:before {
   content: counter(ol0) ". ";
   counter-increment: ol0;
 }
 
-.public/DraftStyleDefault/orderedListItem.public/DraftStyleDefault/depth1:before {
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth1:before {
   content: counter(ol1) ". ";
   counter-increment: ol1;
 }
 
-.public/DraftStyleDefault/orderedListItem.public/DraftStyleDefault/depth2:before {
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth2:before {
   content: counter(ol2) ". ";
   counter-increment: ol2;
 }
 
-.public/DraftStyleDefault/orderedListItem.public/DraftStyleDefault/depth3:before {
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth3:before {
   content: counter(ol3) ". ";
   counter-increment: ol3;
 }
 
-.public/DraftStyleDefault/orderedListItem.public/DraftStyleDefault/depth4:before {
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth4:before {
   content: counter(ol4) ". ";
   counter-increment: ol4;
 }
 
-.public/DraftStyleDefault/depth0.public/DraftStyleDefault/reset {
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-reset {
   counter-reset: ol0;
 }
 
-.public/DraftStyleDefault/depth1.public/DraftStyleDefault/reset {
+.public-DraftStyleDefault-depth1.public-DraftStyleDefault-reset {
   counter-reset: ol1;
 }
 
-.public/DraftStyleDefault/depth2.public/DraftStyleDefault/reset {
+.public-DraftStyleDefault-depth2.public-DraftStyleDefault-reset {
   counter-reset: ol2;
 }
 
-.public/DraftStyleDefault/depth3.public/DraftStyleDefault/reset {
+.public-DraftStyleDefault-depth3.public-DraftStyleDefault-reset {
   counter-reset: ol3;
 }
 
-.public/DraftStyleDefault/depth4.public/DraftStyleDefault/reset {
+.public-DraftStyleDefault-depth4.public-DraftStyleDefault-reset {
   counter-reset: ol4;
 }

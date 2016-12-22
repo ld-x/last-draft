@@ -1,4 +1,6 @@
 import {convertFromHTML} from 'draft-convert'
+import {stateToHTML} from 'draft-js-export-html'
+
 import {
   Entity,
   convertToRaw,
@@ -16,13 +18,6 @@ export function editorStateFromHtml(html, decorator = defaultDecorator) {
   }
 
   const contentState = convertFromHTML({
-      htmlToStyle: (nodeName, node, currentStyle) => {
-          if (nodeName === 'span' && node.style.color === 'blue') {
-              return currentStyle.add('BLUE');
-          } else {
-              return currentStyle;
-          }
-      },
       htmlToEntity: (nodeName, node) => {
           if (nodeName === 'a') {
               return Entity.create(
@@ -43,6 +38,23 @@ export function editorStateFromHtml(html, decorator = defaultDecorator) {
   })(html);
 
   return EditorState.createWithContent(contentState, decorator)
+}
+
+export function editorStateToHtml(editorState) {
+  if (editorState) {
+    const content = editorState.getCurrentContent();
+    return stateToHTML(content, {
+      blockRenderers: {
+        atomic: (block) => {
+          let data = block.getData()
+          let url = data.get('src')
+          if (url) {
+            return `<img src="${url}" />`
+          }
+        }
+      }
+    })
+  }
 }
 
 export function editorStateToJSON(editorState) {

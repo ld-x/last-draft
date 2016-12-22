@@ -1,4 +1,4 @@
-import DraftJS from "draft-js";
+import DraftJS from "draft-js"
 
 import insertDataBlock from "./insertDataBlock"
 import Media from "./components/Media"
@@ -14,6 +14,7 @@ const Final = {
   editorStateFromRaw: utils.editorStateFromRaw,
   editorStateFromHtml: utils.editorStateFromHtml,
   editorStateToJSON: utils.editorStateToJSON,
+  editorStateToHtml: utils.editorStateToHtml,
   createTypeStrategy: utils.createTypeStrategy,
   insertDataBlock: insertDataBlock,
   Media: Media,
