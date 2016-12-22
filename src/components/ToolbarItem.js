@@ -51,5 +51,6 @@ const ToolbarButton = styled.button`
   border: 0;
   height: 46px;
   width: 40px;
+  line-height: 1;
   background: transparent;
 `;

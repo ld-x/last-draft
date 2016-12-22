@@ -4,9 +4,9 @@ const styled = require('styled-components').default
 
 export default class  extends Component {
   render() {
-    const {url} = Entity.get(this.props.entityKey).getData()
+    const {url, target} = Entity.get(this.props.entityKey).getData()
     return (
-      <Link href={url} title={url}>
+      <Link href={url} title={url} target={target}>
         {this.props.children}
       </Link>
     )

@@ -1,25 +1,48 @@
-import { stateFromHTML } from 'draft-js-import-html'
+import {convertFromHTML} from 'draft-convert'
 import {
   Entity,
   convertToRaw,
   convertFromRaw,
   ContentState,
   createEditorState,
-  convertFromHTML,
   EditorState,
   getVisibleSelectionRect} from "draft-js"
 
 import defaultDecorator from "./decorators/defaultDecorator"
 
-// additional
 export function editorStateFromHtml(html, decorator = defaultDecorator) {
   if (html === null) {
     return EditorState.createEmpty(decorator)
   }
-  return EditorState.createWithContent(stateFromHTML(html), decorator)
 
-  //const content = ContentState.createFromBlockArray(convertFromHTML(html))
-  //return EditorState.createWithContent(content)
+  const contentState = convertFromHTML({
+      htmlToStyle: (nodeName, node, currentStyle) => {
+          if (nodeName === 'span' && node.style.color === 'blue') {
+              return currentStyle.add('BLUE');
+          } else {
+              return currentStyle;
+          }
+      },
+      htmlToEntity: (nodeName, node) => {
+          if (nodeName === 'a') {
+              return Entity.create(
+                  'LINK',
+                  'MUTABLE',
+                  { url: node.href, target: node.target}
+              )
+          }
+      },
+      htmlToBlock: (nodeName, node) => {
+          if (nodeName === 'img') {
+              return {
+                  type: 'atomic',
+                  data: { src: node.src, type: 'image' }
+              };
+          }
+      }
+  })(html);
+
+  return EditorState.createWithContent(contentState, decorator)
 }
 
 export function editorStateToJSON(editorState) {

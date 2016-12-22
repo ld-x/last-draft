@@ -13,7 +13,7 @@ export default class NotFoundBlock extends Component {
   }
 
   render(){
-    const message = __(
+    const message = (
       "Can't show plugin, component \"{type}\" not found.").replace(
         "{type}", this.props.data.type);
     return (
