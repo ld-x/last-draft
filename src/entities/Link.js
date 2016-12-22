@@ -85,8 +85,8 @@ export default class Link extends Component {
 const ToolbarInput = styled.input`
   background-color: transparent;
   border: none;
-  color: #fafafa;
-  font-size: 0.875rem;
+  color: #fafafa !important;
+  font-size: 1.2rem;
   height: auto;
   line-height: 1.2rem;
   margin: 0;

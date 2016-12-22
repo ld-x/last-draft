@@ -39,6 +39,7 @@ export default class extends Component {
 
 const ToolbarItem = styled.li`
   display: inline-block;
+  margin: 0 !important;
   &:hover {
     color: #fff !important;
   }
