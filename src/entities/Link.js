@@ -86,7 +86,7 @@ const ToolbarInput = styled.input`
   background-color: transparent;
   border: none;
   color: #fafafa !important;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   height: auto;
   line-height: 1.2rem;
   margin: 0;

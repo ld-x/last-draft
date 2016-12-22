@@ -72,6 +72,7 @@ const SideMenu = styled.li`
 const SideMenuItems = styled.ul`
   list-style: none;
   padding: 0;
+  margin: 0;
   margin-top: 8px;
   transition: max-height 0.5s ease;
   overflow: hidden;
@@ -109,4 +110,5 @@ const SideMenuButton = styled.button`
 const SideMenuItem = styled.li`
   height: 40px;
   padding-top: 2px;
+  margin: 0;
 `;

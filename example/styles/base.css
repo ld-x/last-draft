@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.4;
   font-family: 'Open Sans', sans-serif;
   color: #555;
@@ -25,17 +25,6 @@ body {
   height: 10rem;
 }
 
-.final-editor {
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  cursor: text;
-  padding: 16px;
-  border-radius: 2px;
-  margin-bottom: 2em;
-  box-shadow: inset 0px 1px 8px -3px #ABABAB;
-  background: #fefefe;
-}
-
 .githubWrapper {
   display: block;
   margin-bottom: 2em;
@@ -44,7 +33,12 @@ body {
   text-align: center;
 }
 
-/* typography */
+/* final-draft specific styles */
+
+.final-editor {
+  cursor: text;
+  padding: 1rem;
+}
 
 .DraftEditor-editorContainer {
   position: relative;
@@ -85,30 +79,21 @@ body {
   z-index: 0;
 }
 
-blockquote {
-  border-left: 2px solid #ddd;
-  color: #999;
-  font-style: italic;
+.public-DraftEditor-content blockquote {
   margin: 12px 0 40px 0;
   padding: 6px 0 5px 18px;
 }
 
-.paragraph + blockquote {
+.public-DraftEditor-content .paragraph + blockquote {
   margin-top: 20px
 }
 
-h2 {
+.public-DraftEditor-content h2 {
   font-weight: 700;
   line-height: 2rem;
   margin: 40px 0 20px 0;
 }
 
-h2:first-child {
+.public-DraftEditor-content h2:first-child {
   margin-top: 0;
-}
-
-.editor__link {
-  color: #3192e7;
-  text-decoration: none;
-  cursor: pointer;
 }
