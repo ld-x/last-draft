@@ -73,7 +73,6 @@ const SideMenuItems = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-top: 8px;
   transition: max-height 0.5s ease;
   overflow: hidden;
   width: 36px;
