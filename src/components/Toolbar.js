@@ -5,8 +5,8 @@ import {getSelectionCoords} from '../utils'
 const styled = require('styled-components').default
 
 export default class extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       editingEntity: null,
       link: '',
@@ -16,28 +16,28 @@ export default class extends Component {
     this.cancelEntity = ::this.cancelEntity
   }
 
-  toggleInlineStyle(inlineStyle) {
+  toggleInlineStyle (inlineStyle) {
     const newEditorState = RichUtils.toggleInlineStyle(this.props.editorState, inlineStyle)
     this.props.onChange(newEditorState)
   }
 
-  toggleBlockStyle(blockType) {
+  toggleBlockStyle (blockType) {
     this.props.onChange(
       RichUtils.toggleBlockType(this.props.editorState, blockType)
     )
   }
 
-  toggleEntity(entity) {
+  toggleEntity (entity) {
     this.setState({editingEntity: entity})
   }
 
-  renderButton(item, position) {
+  renderButton (item, position) {
     let current = null
     let toggle = null
     let active = null
     let key = item.label
 
-    switch(item.type) {
+    switch (item.type) {
       case 'inline': {
         current = this.props.editorState.getCurrentInlineStyle()
         toggle = () => this.toggleInlineStyle(item.style)
@@ -45,7 +45,7 @@ export default class extends Component {
         break
       }
       case 'block': {
-        const selection = this.props.editorState.getSelection();
+        const selection = this.props.editorState.getSelection()
         current = this.props.editorState
           .getCurrentContent()
           .getBlockForKey(selection.getStartKey())
@@ -60,7 +60,7 @@ export default class extends Component {
       }
       case 'entity': {
         const {entity = 'LINK'} = item
-        key = 'entity-'+entity
+        key = 'entity-' + entity
         toggle = () => this.toggleEntity(entity)
         active = this.hasEntity(entity)
         break
@@ -72,18 +72,18 @@ export default class extends Component {
     )
   }
 
-  setError(errorMsg) {
+  setError (errorMsg) {
     this.setState({error: errorMsg})
   }
 
-  cancelError() {
+  cancelError () {
     this.setState({error: null})
   }
 
-  setBarPosition() {
-    const editor = this.props.editor;
-    const toolbar = this.refs.toolbar;
-    const selectionCoords = getSelectionCoords(editor, toolbar);
+  setBarPosition () {
+    const editor = this.props.editor
+    const toolbar = this.refs.toolbar
+    const selectionCoords = getSelectionCoords(editor, toolbar)
 
     if (!selectionCoords) { return null }
 
@@ -100,13 +100,13 @@ export default class extends Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     if (!this.props.editorState.getSelection().isCollapsed()) {
       return this.setBarPosition()
     }
   }
 
-  getCurrentEntityKey() {
+  getCurrentEntityKey () {
     const selection = this.props.editorState.getSelection()
     const anchorKey = selection.getAnchorKey()
     const contentState = this.props.editorState.getCurrentContent()
@@ -116,15 +116,15 @@ export default class extends Component {
     return anchorBlock.getEntityAt(index)
   }
 
-  getCurrentEntity() {
+  getCurrentEntity () {
     const entityKey = this.getCurrentEntityKey()
-    if(entityKey) {
+    if (entityKey) {
       return Entity.get(entityKey)
     }
     return null
   }
 
-  hasEntity(entityType) {
+  hasEntity (entityType) {
     const entity = this.getCurrentEntity()
     if (entity && entity.getType() === entityType) {
       return true
@@ -132,9 +132,9 @@ export default class extends Component {
     return false
   }
 
-  setEntity(entityType, data) {
-    const {editorState} = this.props;
-    const entityKey = Entity.create(entityType, 'MUTABLE', data);
+  setEntity (entityType, data) {
+    const {editorState} = this.props
+    const entityKey = Entity.create(entityType, 'MUTABLE', data)
     const newState = RichUtils.toggleLink(
       editorState,
       editorState.getSelection(),
@@ -144,38 +144,39 @@ export default class extends Component {
       newState, editorState.getSelection()
     )
 
-    this.props.onChange(selectionState);
+    this.props.onChange(selectionState)
   }
 
-  removeEntity() {
-    const {editorState} = this.props;
-    const selection = editorState.getSelection();
+  removeEntity () {
+    const {editorState} = this.props
+    const selection = editorState.getSelection()
     if (!selection.isCollapsed()) {
-      this.props.onChange(RichUtils.toggleLink(editorState, selection, null));
+      this.props.onChange(RichUtils.toggleLink(editorState, selection, null))
     }
     this.cancelEntity()
   }
 
-  cancelEntity() {
+  cancelEntity () {
     this.props.editor && this.props.editor.focus()
     this.setState({ editingEntity: null, error: null })
   }
-  renderEntityInput(entityType) {
-    if(!this.props.entityInputs) {
-      console.warn('no entityInputs provided')
+
+  renderEntityInput (entityType) {
+    if (!this.props.entityInputs) {
+      console.warn('no entities provided')
       return null
     }
     const Component = this.props.entityInputs[entityType]
     const setEntity = data => this.setEntity(entityType, data)
     let entityData = {}
     let entity = null
-    if(this.hasEntity(entityType)) {
+    if (this.hasEntity(entityType)) {
       entity = this.getCurrentEntity()
-      if(entity) {
+      if (entity) {
         entityData = entity.getData()
       }
     }
-    if(Component) {
+    if (Component) {
       return (
         <Component
           editorState={this.props.editorState}
@@ -191,21 +192,23 @@ export default class extends Component {
           />
       )
     } else {
-      console.warn('unknown entity type: '+entityType)
+      console.warn('unknown entity type: ' + entityType)
       return null
     }
   }
-  renderToolList() {
+
+  renderToolList () {
     return (
-      <ToolbarList onMouseDown={(e) => {e.preventDefault()}}>
+      <ToolbarList onMouseDown={(e) => { e.preventDefault() }}>
         {this.props.actions.map(this.renderButton)}
       </ToolbarList>
     )
   }
-  render() {
+
+  render () {
     const { position, error } = this.state
 
-    if(this.props.readOnly) { return null }
+    if (this.props.readOnly) { return null }
 
     let showToolbar = true
     if (this.props.editorState.getSelection().isCollapsed()) {
@@ -213,7 +216,7 @@ export default class extends Component {
     }
 
     let toolbarStyle = { display: showToolbar ? 'block' : 'none' }
-    if(position !== undefined) {
+    if (position !== undefined) {
       toolbarStyle = Object.assign(position, toolbarStyle)
     }
     let toolbarWrapperStyle = {
@@ -256,7 +259,7 @@ const Toolbar = styled.div`
   height: 0;
   position: relative;
   z-index: 10;
-`;
+`
 
 const ToolbarWrapper = styled.div`
   background: #181818;
@@ -265,13 +268,13 @@ const ToolbarWrapper = styled.div`
   left: -50%;
   position: relative;
   transition: background-color 0.2s ease-in-out;
-`;
+`
 
 const ToolbarList = styled.ul`
   padding: 0 8px;
   margin: 0;
   whiteSpace: nowrap;
-`;
+`
 
 const ToolbarArrow = styled.span`
   display: inline-block;
@@ -286,7 +289,7 @@ const ToolbarArrow = styled.span`
   borderColor: #181818 transparent transparent;
   marginLeft: -8px;
   transition: border-color 0.2s ease-in-out;
-`;
+`
 
 const ToolbarErrorMsg = styled.p`
   margin: 0;
@@ -295,4 +298,4 @@ const ToolbarErrorMsg = styled.p`
   color: #FFF;
   font-size: 12px;
   font-weight: bold;
-`;
+`

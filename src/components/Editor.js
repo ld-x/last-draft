@@ -11,12 +11,11 @@ import DEFAULT_ENTITIES from '../entities/'
 import insertDataBlock from '../insertDataBlock'
 
 export default class extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { readOnly: this.props.readOnly || false }
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
-
     this.actions = this.props.actions || DEFAULT_ACTIONS
     this.plugins = this.getValidPlugins()
     this.entityInputs = this.props.entityInputs || DEFAULT_ENTITIES
@@ -24,7 +23,7 @@ export default class extends Component {
     this.keyBindings = this.props.keyBindings || []
   }
 
-  getValidPlugins() {
+  getValidPlugins () {
     let plugins = []
     for (let plugin of this.props.plugins || DEFAULT_PLUGINS) {
       if (!plugin || typeof plugin.type !== 'string') {
@@ -36,7 +35,7 @@ export default class extends Component {
     return plugins
   }
 
-  getPluginsByType() {
+  getPluginsByType () {
     let pluginsByType = {}
     for (let plugin of this.plugins) {
       pluginsByType[plugin.type] = plugin
@@ -45,17 +44,17 @@ export default class extends Component {
     return pluginsByType
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps (nextProps) {
     if (this.props.readOnly !== nextProps.readOnly) {
       this.setState({readOnly: nextProps.readOnly})
     }
   }
 
-  onChange(editorState) {
+  onChange (editorState) {
     this.props.onChange(editorState)
   }
 
-  externalKeyBindings(e): string {
+  externalKeyBindings (e) {
     for (const kb of this.keyBindings) {
       if (kb.isKeyBound(e)) {
         return kb.name
@@ -64,13 +63,13 @@ export default class extends Component {
     return getDefaultKeyBinding(e)
   }
 
-  onTab(event) {
+  onTab (event) {
     event.preventDefault()
   }
 
-  handleKeyCommand(command) {
+  handleKeyCommand (command) {
     if (this.keyBindings.length) {
-      const kb = this.keyBindings.find(k => k.name === command);
+      const kb = this.keyBindings.find(k => k.name === command)
       if (kb) {
         kb.action()
         return true
@@ -86,7 +85,7 @@ export default class extends Component {
     return false
   }
 
-  handleReturn(event) {
+  handleReturn (event) {
     if (!event.shiftKey) { return false }
 
     const {editorState} = this.props
@@ -95,18 +94,18 @@ export default class extends Component {
     return true
   }
 
-  setReadOnly(readOnly) {
+  setReadOnly (readOnly) {
     this.setState({readOnly})
   }
 
-  handleBlockNotFound(block) {
+  handleBlockNotFound (block) {
     if (this.props.handleBlockNotFound) {
       return this.props.handleBlockNotFound(block)
     }
     return notFoundPlugin
   }
 
-  mediaBlockRenderer(block) {
+  mediaBlockRenderer (block) {
     if (block.getType() !== 'atomic') { return null }
 
     const type = block.getData().toObject().type
@@ -125,47 +124,46 @@ export default class extends Component {
     }
   }
 
-  blockStyleFn(contentBlock) {
+  blockStyleFn (contentBlock) {
     const type = contentBlock.getType()
     if (type === 'unstyled') {
       return 'paragraph'
     }
   }
 
-  renderSidebar(props) {
+  renderSidebar (props) {
     const { sidebarRendererFn } = this.props
-    if(typeof sidebarRendererFn === 'function') {
+    if (typeof sidebarRendererFn === 'function') {
       return sidebarRendererFn(props)
     }
     return <Sidebar {...props} />
   }
 
-  renderToolbar(props) {
+  renderToolbar (props) {
     const { Toolbar = DefaultToolbar } = this.props
     return <Toolbar {...props} />
   }
 
-  handleDroppedFiles(selection, files) {
+  handleDroppedFiles (selection, files) {
     const { uploadImageCallBack, editorState } = this.props
-    const file = files[0];
+    const file = files[0]
     if (file.type.indexOf('image/') !== 0) { return }
 
-    if(uploadImageCallBack !== undefined){
+    if (uploadImageCallBack !== undefined) {
       uploadImageCallBack(file)
       .then((data) => {
         /* stop showing image placeholder */
         const imageData = {src: data.src, type: 'image'}
         this.onChange(insertDataBlock(editorState, imageData, selection))
       })
-
     } else {
-      const src = URL.createObjectURL(file)
+      const src = window.URL.createObjectURL(file)
       const imageData = {src: src, type: 'image'}
       this.onChange(insertDataBlock(editorState, imageData, selection))
     }
   }
 
-  render() {
+  render () {
     const {editorState, stripPastedStyles, spellCheck} = this.props
     const plugins = this.plugins
 

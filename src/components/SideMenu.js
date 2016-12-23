@@ -4,20 +4,20 @@ import icons from '../icons'
 const styled = require('styled-components').default
 
 export default class extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { open: false }
   }
 
-  onChange(editorState) {
+  onChange (editorState) {
     this.props.onChange(editorState)
   }
 
-  toggle() {
+  toggle () {
     this.setState({ open: !this.state.open })
   }
 
-  render() {
+  render () {
     const { open } = this.state
 
     let menuButtonStyle = {
@@ -32,9 +32,10 @@ export default class extends Component {
       <SideMenuWrapper>
         <SideMenu>
           <SideMenuButton
-              onClick={::this.toggle}
-              style={menuButtonStyle}
-              type='button'>
+            onClick={::this.toggle}
+            style={menuButtonStyle}
+            type='button'
+          >
             <icons.CrossIcon />
           </SideMenuButton>
 
@@ -46,7 +47,7 @@ export default class extends Component {
                   <Button
                     uploadImageCallBack={this.props.uploadImageCallBack}
                     editorState={this.props.editorState}
-                    onChange={::this.onChange}/>
+                    onChange={::this.onChange} />
                 </SideMenuItem>
               )
             })}
@@ -61,13 +62,13 @@ const SideMenuWrapper = styled.ul`
   padding: 0;
   list-style: none;
   margin: 0;
-`;
+`
 
 const SideMenu = styled.li`
   position: relative;
   width: 36px;
   text-align: center;
-`;
+`
 
 const SideMenuItems = styled.ul`
   list-style: none;
@@ -77,7 +78,7 @@ const SideMenuItems = styled.ul`
   overflow: hidden;
   width: 36px;
   text-align: center;
-`;
+`
 
 const SideMenuButton = styled.button`
   border: 0;
@@ -104,10 +105,10 @@ const SideMenuButton = styled.button`
   &:focus {
     outline: 0;
   }
-`;
+`
 
 const SideMenuItem = styled.li`
   height: 40px;
   padding-top: 2px;
   margin: 0;
-`;
+`

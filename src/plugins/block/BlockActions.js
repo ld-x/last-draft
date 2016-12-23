@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react'
 const styled = require('styled-components').default
 
 export default class extends Component {
-
   static propTypes = {
     items: React.PropTypes.arrayOf(
       React.PropTypes.shape({
@@ -13,16 +12,16 @@ export default class extends Component {
     )
   }
 
-  renderItem(item) {
-    return(
+  renderItem (item) {
+    return (
       <BlockAction onClick={item.action} key={item.key}>
         <item.icon />
       </BlockAction>
     )
   }
 
-  render() {
-    return(
+  render () {
+    return (
       <BlockActionsWrapper>
         <BlockActions>
           {this.props.items.map(this.renderItem)}
@@ -35,7 +34,7 @@ export default class extends Component {
 const BlockActionsWrapper = styled.div`
   overflow: auto;
   padding: 8px;
-`;
+`
 
 const BlockActions = styled.ul`
   color: #999;
@@ -43,7 +42,7 @@ const BlockActions = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-`;
+`
 
 const BlockAction = styled.li`
   display: inline-block;
@@ -58,4 +57,4 @@ const BlockAction = styled.li`
   &:hover {
     color: '#000',
   }
-`;
+`

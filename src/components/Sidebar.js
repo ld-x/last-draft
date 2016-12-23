@@ -4,13 +4,13 @@ import SideMenu from './SideMenu'
 import 'setimmediate'
 const styled = require('styled-components').default
 
-function getSelectedBlockElement() {
+function getSelectedBlockElement () {
   const selection = window.getSelection()
   if (selection.rangeCount === 0) { return null }
   let node = selection.getRangeAt(0).startContainer
 
   do {
-    if (node.getAttribute && node.getAttribute('data-block') == 'true') {
+    if (node.getAttribute && node.getAttribute('data-block') === 'true') {
       return node
     }
     node = node.parentNode
@@ -18,27 +18,27 @@ function getSelectedBlockElement() {
 }
 
 export default class extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {top: 0}
   }
 
-  getValidSidebarPlugins() {
-    let plugins = [];
+  getValidSidebarPlugins () {
+    let plugins = []
     for (let plugin of this.props.plugins) {
       if (!plugin.button || typeof plugin.button !== 'function') {
-        continue;
+        continue
       }
       plugins.push(plugin)
     }
     return plugins
   }
 
-  onChange(editorState) {
+  onChange (editorState) {
     this.props.onChange(editorState)
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     if (this.updatingPosition) {
       clearImmediate(this.updatingPosition)
     }
@@ -48,7 +48,7 @@ export default class extends Component {
     })
   }
 
-  setBarPosition() {
+  setBarPosition () {
     const container = ReactDOM.findDOMNode(this.refs.container)
     const element = getSelectedBlockElement()
     if (!element || !container) { return }
@@ -62,8 +62,8 @@ export default class extends Component {
     }
   }
 
-  render() {
-    if(this.props.readOnly) { return null }
+  render () {
+    if (this.props.readOnly) { return null }
     return (
       <Sidebar ref='container'>
         <SidebarMenu style={{top: `${this.state.top}px`}}>
@@ -71,7 +71,7 @@ export default class extends Component {
             uploadImageCallBack={this.props.uploadImageCallBack}
             editorState={this.props.editorState}
             onChange={::this.onChange}
-            plugins={this.getValidSidebarPlugins()}/>
+            plugins={this.getValidSidebarPlugins()} />
         </SidebarMenu>
       </Sidebar>
     )
@@ -80,10 +80,10 @@ export default class extends Component {
 
 const Sidebar = styled.div`
   position: relative;
-`;
+`
 
 const SidebarMenu = styled.div`
   float: left;
   left: -45px;
   position: absolute;
-`;
+`

@@ -1,9 +1,6 @@
 import insertDataBlock from './insertDataBlock'
-import Media from './components/Media'
 import Editor from './components/Editor'
 import Icons from './icons'
-import Sidebar from './components/Sidebar'
-import Toolbar from './components/Toolbar'
 import * as utils from './utils'
 
 const Final = {
@@ -14,7 +11,7 @@ const Final = {
   createTypeStrategy: utils.createTypeStrategy,
   insertDataBlock: insertDataBlock,
   Editor: Editor,
-  Icons: Icons,
+  Icons: Icons
 }
 
 module.exports = Final

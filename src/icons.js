@@ -14,8 +14,20 @@ import UnlinkIcon from './icons/unlink'
 import CloseIcon from './icons/close'
 
 const icons = {
-  BoldIcon, ItalicIcon, ULIcon, OLIcon, H2Icon, BlockQuoteIcon, LinkIcon,
-  CrossIcon, ImageIcon, VideoIcon, CropIcon, ErrorIcon, UnlinkIcon, CloseIcon
+  BoldIcon,
+  ItalicIcon,
+  ULIcon,
+  OLIcon,
+  H2Icon,
+  BlockQuoteIcon,
+  LinkIcon,
+  CrossIcon,
+  ImageIcon,
+  VideoIcon,
+  CropIcon,
+  ErrorIcon,
+  UnlinkIcon,
+  CloseIcon
 }
 
 export default icons

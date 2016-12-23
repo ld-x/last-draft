@@ -4,11 +4,7 @@ import insertDataBlock from '../../insertDataBlock'
 const styled = require('styled-components').default
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  onClick(e) {
+  onClick (e) {
     e.preventDefault()
     const src = window.prompt('Enter a URL')
     if (!src) { return }
@@ -17,7 +13,7 @@ export default class extends Component {
     this.props.onChange(insertDataBlock(this.props.editorState, data))
   }
 
-  render() {
+  render () {
     return (
       <VideoButton type='button' onClick={::this.onClick}>
         <icons.VideoIcon />
@@ -54,4 +50,4 @@ const VideoButton = styled.button`
     display: inline-block;
     background-color: #181818;
   }
-`;
+`

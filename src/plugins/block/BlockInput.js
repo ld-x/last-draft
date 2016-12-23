@@ -2,20 +2,20 @@ import React, {Component} from 'react'
 const styled = require('styled-components').default
 
 export default class extends Component {
-  renderError(error) {
+  renderError (error) {
     if (!error) { return }
     return (
       <BlockInputErrorText>{error}</BlockInputErrorText>
     )
   }
 
-  handleDrop(e) {
+  handleDrop (e) {
     e.preventDefault()
     e.stopPropagation()
   }
 
-  render(){
-    let {value, error, ...props } = this.props
+  render () {
+    let {value, error, ...props} = this.props
 
     return (
       <BlockInputRow>
@@ -35,7 +35,7 @@ export default class extends Component {
 const BlockInputWrapper = styled.div`
   padding: 16px;
   position: relative;
-`;
+`
 
 const BlockInput = styled.input`
   border: 0;
@@ -53,14 +53,14 @@ const BlockInput = styled.input`
     border-color: #0072de;
     border-style: solid;
   }
-`;
+`
 
 const BlockInputErrorText = styled.div`
   color: #ff351e;
   margin-top: 6px;
   font-size: 12px;
-`;
+`
 
 const BlockInputRow = styled.div`
   line-height: 1;
-`;
+`

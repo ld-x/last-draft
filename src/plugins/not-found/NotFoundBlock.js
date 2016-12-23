@@ -4,7 +4,7 @@ import Block from '../block/Block'
 import icons from '../../icons'
 
 export default class NotFoundBlock extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.actions = [
@@ -16,15 +16,15 @@ export default class NotFoundBlock extends Component {
     ]
   }
 
-  render(){
-    const message =`Cannot show plugin, component ${this.props.data.type} not found.`
+  render () {
+    const message = `Cannot show plugin, component ${this.props.data.type} not found.`
     return (
-      <CommonBlock {...this.props} actions={this.actions}>
+      <Block {...this.props} actions={this.actions}>
         <BlockContent>
           <p>{message}</p>
           <icons.ErrorIcon />
         </BlockContent>
-      </CommonBlock>
-    );
+      </Block>
+    )
   }
 }

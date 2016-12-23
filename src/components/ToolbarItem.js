@@ -3,21 +3,17 @@ import Separator from './Separator'
 const styled = require('styled-components').default
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  toggleAction(action) {
+  toggleAction (action) {
     if (action.toggle) {
-      action.toggle(!action.active);
+      action.toggle(!action.active)
     }
   }
 
-  render() {
+  render () {
     const Icon = this.props.item.icon
     const { item, active } = this.props
 
-    if (item.type == 'separator') {
+    if (item.type === 'separator') {
       return <Separator />
     }
 
@@ -28,8 +24,9 @@ export default class extends Component {
     return (
       <ToolbarItem style={toolbarItemStyle}>
         <ToolbarButton
-            onClick={() => this.toggleAction(this.props)}
-            type='button'>
+          onClick={() => this.toggleAction(this.props)}
+          type='button'
+        >
           <Icon />
         </ToolbarButton>
       </ToolbarItem>
@@ -43,7 +40,7 @@ const ToolbarItem = styled.li`
   &:hover {
     color: #fff !important;
   }
-`;
+`
 
 const ToolbarButton = styled.button`
   padding: 0;
@@ -54,4 +51,4 @@ const ToolbarButton = styled.button`
   width: 40px;
   line-height: 1;
   background: transparent;
-`;
+`

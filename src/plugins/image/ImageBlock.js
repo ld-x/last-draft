@@ -5,7 +5,7 @@ import Block from '../block/Block'
 import icons from '../../icons'
 
 export default class ImageBlock extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.actions = [
@@ -17,12 +17,12 @@ export default class ImageBlock extends Component {
     ]
   }
 
-  handleCaptionChange(event) {
+  handleCaptionChange (event) {
     event.stopPropagation()
     this.props.container.updateData({caption: event.target.value})
   }
 
-  render(){
+  render () {
     let ImageBlockStyle = {
       display: 'inline-block',
       maxWidth: '100%',
@@ -32,7 +32,7 @@ export default class ImageBlock extends Component {
     return (
       <Block {...this.props} actions={this.actions}>
         <BlockContent>
-          <img style={ImageBlockStyle} src={this.props.data.src} alt=''/>
+          <img style={ImageBlockStyle} src={this.props.data.src} alt='' />
         </BlockContent>
 
         <BlockInput

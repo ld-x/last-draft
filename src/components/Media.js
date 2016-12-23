@@ -3,14 +3,14 @@ import {EditorState, SelectionState, Modifier} from 'draft-js'
 const styled = require('styled-components').default
 
 export default class extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.remove = ::this.remove
     this.updateData = ::this.updateData
     this.onChange = this.props.blockProps.onChange
   }
 
-  remove() {
+  remove () {
     const {editorState} = this.props.blockProps
     const selection = editorState.getSelection()
     const content = editorState.getCurrentContent()
@@ -32,7 +32,7 @@ export default class extends Component {
     this.onChange(newEditorState)
   }
 
-  updateData(data) {
+  updateData (data) {
     const {editorState} = this.props.blockProps
     const content = editorState.getCurrentContent()
     const selection = new SelectionState({
@@ -47,17 +47,17 @@ export default class extends Component {
     this.onChange(newEditorState)
   }
 
-  handleFocus() {
+  handleFocus () {
     const {setReadOnly} = this.props.blockProps
     setReadOnly(true)
   }
 
-  handleBlur() {
+  handleBlur () {
     const {setReadOnly} = this.props.blockProps
     setReadOnly(false)
   }
 
-  render() {
+  render () {
     const data = this.props.block.getData().toJS()
     const {plugin} = this.props.blockProps
     const Block = plugin.block
@@ -70,4 +70,4 @@ export default class extends Component {
 }
 
 const Media = styled.div`
-`;
+`

@@ -1,48 +1,45 @@
 import {convertFromHTML} from 'draft-convert'
 import {stateToHTML} from 'draft-js-export-html'
-
 import {
   Entity,
   convertToRaw,
   convertFromRaw,
-  ContentState,
-  createEditorState,
   EditorState,
   getVisibleSelectionRect} from 'draft-js'
 
 import defaultDecorator from './decorators/defaultDecorator'
 
-export function editorStateFromHtml(html, decorator = defaultDecorator) {
+export function editorStateFromHtml (html, decorator = defaultDecorator) {
   if (html === null) {
     return EditorState.createEmpty(decorator)
   }
 
   const contentState = convertFromHTML({
-      htmlToEntity: (nodeName, node) => {
-          if (nodeName === 'a') {
-              return Entity.create(
-                  'LINK',
-                  'MUTABLE',
-                  { url: node.href, target: node.target}
-              )
-          }
-      },
-      htmlToBlock: (nodeName, node) => {
-          if (nodeName === 'img') {
-              return {
-                  type: 'atomic',
-                  data: { src: node.src, type: 'image' }
-              };
-          }
+    htmlToEntity: (nodeName, node) => {
+      if (nodeName === 'a') {
+        return Entity.create(
+          'LINK',
+          'MUTABLE',
+          {url: node.href, target: node.target}
+        )
       }
-  })(html);
+    },
+    htmlToBlock: (nodeName, node) => {
+      if (nodeName === 'img') {
+        return {
+          type: 'atomic',
+          data: { src: node.src, type: 'image' }
+        }
+      }
+    }
+  })(html)
 
   return EditorState.createWithContent(contentState, decorator)
 }
 
-export function editorStateToHtml(editorState) {
+export function editorStateToHtml (editorState) {
   if (editorState) {
-    const content = editorState.getCurrentContent();
+    const content = editorState.getCurrentContent()
     return stateToHTML(content, {
       blockRenderers: {
         atomic: (block) => {
@@ -57,14 +54,14 @@ export function editorStateToHtml(editorState) {
   }
 }
 
-export function editorStateToJSON(editorState) {
+export function editorStateToJSON (editorState) {
   if (editorState) {
-    const content = editorState.getCurrentContent();
+    const content = editorState.getCurrentContent()
     return JSON.stringify(convertToRaw(content), null, 2)
   }
 }
 
-export function editorStateFromRaw(rawContent, decorator = defaultDecorator) {
+export function editorStateFromRaw (rawContent, decorator = defaultDecorator) {
   if (rawContent) {
     const content = convertFromRaw(rawContent)
     return EditorState.createWithContent(content, decorator)
@@ -73,21 +70,21 @@ export function editorStateFromRaw(rawContent, decorator = defaultDecorator) {
   }
 }
 
-export function getSelectedBlockElement(range) {
-  let node = range.startContainer;
+export function getSelectedBlockElement (range) {
+  let node = range.startContainer
   do {
     const nodeIsDataBlock = node.getAttribute
                             ? node.getAttribute('data-block')
-                            : null;
+                            : null
     if (nodeIsDataBlock) {
-      return node;
+      return node
     }
-    node = node.parentNode;
-  } while (node !== null);
+    node = node.parentNode
+  } while (node !== null)
   return null
 }
 
-export function getSelectionCoords(editor, toolbar) {
+export function getSelectionCoords (editor, toolbar) {
   const editorBounds = editor.getBoundingClientRect()
   const rangeBounds = getVisibleSelectionRect(window)
 
@@ -101,15 +98,15 @@ export function getSelectionCoords(editor, toolbar) {
   return { offsetLeft, offsetTop, offsetBottom }
 }
 
-export function createTypeStrategy(type) {
+export function createTypeStrategy (type) {
   return (contentBlock, callback) => {
     contentBlock.findEntityRanges(
       (character) => {
-        const entityKey = character.getEntity();
+        const entityKey = character.getEntity()
         return (
           entityKey !== null &&
           Entity.get(entityKey).getType() === type
-        );
+        )
       },
       callback
     )

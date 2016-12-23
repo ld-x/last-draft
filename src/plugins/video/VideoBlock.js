@@ -5,7 +5,7 @@ import Block from '../block/Block'
 import icons from '../../icons'
 
 export default class VideoBlock extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.actions = [
@@ -17,11 +17,11 @@ export default class VideoBlock extends Component {
     ]
   }
 
-  handleCaptionChange(event) {
+  handleCaptionChange (event) {
     this.props.container.updateData({caption: event.target.value})
   }
 
-  render() {
+  render () {
     let VideoBlockStyle = {
       display: 'inline-block',
       maxWidth: '100%',
@@ -31,7 +31,7 @@ export default class VideoBlock extends Component {
     return (
       <Block {...this.props} actions={this.actions}>
         <BlockContent>
-          <video controls style={VideoBlockStyle} src={this.props.data.src} alt=''/>
+          <video controls style={VideoBlockStyle} src={this.props.data.src} alt='' />
         </BlockContent>
 
         <BlockInput

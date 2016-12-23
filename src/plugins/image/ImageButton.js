@@ -5,36 +5,31 @@ import insertDataBlock from '../../insertDataBlock'
 const styled = require('styled-components').default
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  onClick(e) {
+  onClick (e) {
     e.preventDefault()
     ReactDOM.findDOMNode(this.refs.fileInput).click()
   }
 
-  inputChange(e) {
+  inputChange (e) {
     const { editorState, onChange, uploadImageCallBack } = this.props
     const file = e.target.files[0]
     if (file.type.indexOf('image/') !== 0) { return }
 
-    if(uploadImageCallBack !== undefined){
+    if (uploadImageCallBack !== undefined) {
       uploadImageCallBack(file)
       .then((data) => {
         /* stop showing image placeholder */
         const imageData = {src: data.src, type: 'image'}
         onChange(insertDataBlock(editorState, imageData))
       })
-
     } else {
-      const src = URL.createObjectURL(file)
+      const src = window.URL.createObjectURL(file)
       const imageData = {src: src, type: 'image'}
       onChange(insertDataBlock(editorState, imageData))
     }
   }
 
-  render() {
+  render () {
     return (
       <div>
         <ImageButton type='button' onClick={::this.onClick}>
@@ -78,4 +73,4 @@ const ImageButton = styled.button`
     display: inline-block;
     background-color: #181818;
   }
-`;
+`

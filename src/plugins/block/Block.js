@@ -3,19 +3,11 @@ import BlockActions from './BlockActions'
 const styled = require('styled-components').default
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  handleDisplayChange(newValue) {
+  handleDisplayChange (newValue) {
     this.props.container.updateData({display: newValue})
   }
 
-  render(){
-    const data = this.props.data
-    let options = this.props.blockProps.plugin.options || {}
-    options = {...options}
-
+  render () {
     return (
       <BlockHover>
         <Block>
@@ -36,7 +28,7 @@ const BlockHover = styled.div`
     background-color: #eee;
     border-radius: 2px;
   }
-`;
+`
 
 const Block = styled.div`
   -webkit-user-select: none;
@@ -47,4 +39,4 @@ const Block = styled.div`
   border-radius: 3px;
   border: solid 1px #ddd;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
-`;
+`

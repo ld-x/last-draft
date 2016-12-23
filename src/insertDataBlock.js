@@ -3,14 +3,14 @@ import {genKey, EditorState, ContentBlock, Modifier, BlockMapBuilder} from 'draf
 
 const { List, Map } = Immutable
 
-function insertDataBlock(editorState, data, selection) {
-  const contentState = editorState.getCurrentContent();
-  const selectionState =  selection !== undefined ? selection : editorState.getSelection()
-  const afterRemoval = Modifier.removeRange(contentState, selectionState,'backward')
+function insertDataBlock (editorState, data, selection) {
+  const contentState = editorState.getCurrentContent()
+  const selectionState = selection !== undefined ? selection : editorState.getSelection()
+  const afterRemoval = Modifier.removeRange(contentState, selectionState, 'backward')
   const targetSelection = afterRemoval.getSelectionAfter()
   const afterSplit = Modifier.splitBlock(afterRemoval, targetSelection)
   const insertionTarget = afterSplit.getSelectionAfter()
-  const asAtomicBlock = Modifier.setBlockType(afterSplit, insertionTarget,'atomic')
+  const asAtomicBlock = Modifier.setBlockType(afterSplit, insertionTarget, 'atomic')
 
   const block = new ContentBlock({
     key: genKey(),

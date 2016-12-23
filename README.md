@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/final-draft.svg)](https://badge.fury.io/js/final-draft)
 
+[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 ![](https://raw.githubusercontent.com/StevenIseki/final-draft/master/example/public/screenshot.png)
 
 final-draft is a Draft.js editor built using [draft-js-plugins](https://draft-js-plugins.com)
