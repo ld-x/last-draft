@@ -9,10 +9,11 @@ import DEFAULT_PLUGINS from '../plugins/'
 import DEFAULT_ACTIONS from '../actions/default'
 import DEFAULT_ENTITIES from '../entities/'
 
-import insertDataBlock from '../insertDataBlock'
-import blockRenderMap from './blockRenderMap'
-//import blockRendererFn from './blockRendererFn'
-import blockStyleFn from './blockStyleFn'
+import insertDataBlock from '../utils/insertDataBlock'
+import {blockRenderMap} from '../utils/block'
+import {blockStyleFn} from '../utils/block'
+//import blockRendererFn from '../utils/block'
+import Pullquote from './Pullquote'
 
 export default class extends Component {
   constructor (props) {
@@ -110,6 +111,11 @@ export default class extends Component {
   }
 
   blockRendererFn (block) {
+    console.log(block.getType())
+    if (block.getType() === 'pullquote') {
+      return { component: Pullquote }
+    }
+
     if (block.getType() !== 'atomic') { return null }
 
     const type = block.getData().toObject().type

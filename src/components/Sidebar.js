@@ -3,19 +3,7 @@ import ReactDOM from 'react-dom'
 import SideMenu from './SideMenu'
 import 'setimmediate'
 const styled = require('styled-components').default
-
-function getSelectedBlockElement () {
-  const selection = window.getSelection()
-  if (selection.rangeCount === 0) { return null }
-  let node = selection.getRangeAt(0).startContainer
-
-  do {
-    if (node.getAttribute && node.getAttribute('data-block') === 'true') {
-      return node
-    }
-    node = node.parentNode
-  } while (node != null)
-}
+import {getSelectedBlockElement} from '../utils/selection'
 
 export default class extends Component {
   constructor (props) {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {EditorState, RichUtils, Entity} from 'draft-js'
 import ToolbarItem from './ToolbarItem'
-import {getSelectionCoords} from '../utils'
+import {getSelectionCoords} from '../utils/selection'
 const styled = require('styled-components').default
 
 export default class extends Component {

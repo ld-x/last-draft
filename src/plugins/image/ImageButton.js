@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import icons from '../../icons'
-import insertDataBlock from '../../insertDataBlock'
+import insertDataBlock from '../../utils/insertDataBlock'
 const styled = require('styled-components').default
 
 export default class extends Component {

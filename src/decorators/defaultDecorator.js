@@ -1,5 +1,5 @@
 import {CompositeDecorator} from 'draft-js'
-import {createTypeStrategy} from '../utils'
+import {createTypeStrategy} from '../utils/strategy'
 import Link from '../components/Link'
 
 const decorator = new CompositeDecorator([

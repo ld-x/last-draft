@@ -1,14 +1,13 @@
-import insertDataBlock from './insertDataBlock'
+import insertDataBlock from './utils/insertDataBlock'
 import Editor from './components/Editor'
 import Icons from './icons'
-import * as utils from './utils'
+import * as convert from './utils/convert'
 
 const Final = {
-  editorStateFromRaw: utils.editorStateFromRaw,
-  editorStateFromHtml: utils.editorStateFromHtml,
-  editorStateToJSON: utils.editorStateToJSON,
-  editorStateToHtml: utils.editorStateToHtml,
-  createTypeStrategy: utils.createTypeStrategy,
+  editorStateFromRaw: convert.editorStateFromRaw,
+  editorStateFromHtml: convert.editorStateFromHtml,
+  editorStateToJSON: convert.editorStateToJSON,
+  editorStateToHtml: convert.editorStateToHtml,
   insertDataBlock: insertDataBlock,
   Editor: Editor,
   Icons: Icons
