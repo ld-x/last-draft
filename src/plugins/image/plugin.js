@@ -1,8 +1,8 @@
-import ImageButton from "./ImageButton"
-import ImageBlock from "./ImageBlock"
+import ImageButton from './ImageButton'
+import ImageBlock from './ImageBlock'
 
 export default {
-  type: "image",
+  type: 'image',
   button: ImageButton,
   block: ImageBlock
 }

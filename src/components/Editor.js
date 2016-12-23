@@ -1,13 +1,13 @@
-import React, {Component} from "react"
-import {Editor, RichUtils, getDefaultKeyBinding} from "draft-js"
+import React, {Component} from 'react'
+import {Editor, RichUtils, getDefaultKeyBinding} from 'draft-js'
 
-import DefaultToolbar from "./Toolbar"
-import Sidebar from "./Sidebar"
-import Media from "./Media"
-import notFoundPlugin from "../plugins/not-found/plugin"
-import DEFAULT_PLUGINS from "../plugins/"
-import DEFAULT_ACTIONS from "../actions/default"
-import DEFAULT_ENTITIES from "../entities/"
+import DefaultToolbar from './Toolbar'
+import Sidebar from './Sidebar'
+import Media from './Media'
+import notFoundPlugin from '../plugins/not-found/plugin'
+import DEFAULT_PLUGINS from '../plugins/'
+import DEFAULT_ACTIONS from '../actions/default'
+import DEFAULT_ENTITIES from '../entities/'
 import insertDataBlock from '../insertDataBlock'
 
 export default class extends Component {
@@ -27,8 +27,8 @@ export default class extends Component {
   getValidPlugins() {
     let plugins = []
     for (let plugin of this.props.plugins || DEFAULT_PLUGINS) {
-      if (!plugin || typeof plugin.type !== "string") {
-        console.warn("Plugin: Missing `type` field. Details: ", plugin)
+      if (!plugin || typeof plugin.type !== 'string') {
+        console.warn('Plugin: Missing `type` field. Details: ', plugin)
         continue
       }
       plugins.push(plugin)
@@ -107,7 +107,7 @@ export default class extends Component {
   }
 
   mediaBlockRenderer(block) {
-    if (block.getType() !== "atomic") { return null }
+    if (block.getType() !== 'atomic') { return null }
 
     const type = block.getData().toObject().type
     let plugin = this.pluginsByType[type] || this.handleBlockNotFound(block)
@@ -127,14 +127,14 @@ export default class extends Component {
 
   blockStyleFn(contentBlock) {
     const type = contentBlock.getType()
-    if (type === "unstyled") {
-      return "paragraph"
+    if (type === 'unstyled') {
+      return 'paragraph'
     }
   }
 
   renderSidebar(props) {
     const { sidebarRendererFn } = this.props
-    if(typeof sidebarRendererFn === "function") {
+    if(typeof sidebarRendererFn === 'function') {
       return sidebarRendererFn(props)
     }
     return <Sidebar {...props} />
@@ -154,13 +154,13 @@ export default class extends Component {
       uploadImageCallBack(file)
       .then((data) => {
         /* stop showing image placeholder */
-        const imageData = {src: data.src, type: "image"}
+        const imageData = {src: data.src, type: 'image'}
         this.onChange(insertDataBlock(editorState, imageData, selection))
       })
 
     } else {
       const src = URL.createObjectURL(file)
-      const imageData = {src: src, type: "image"}
+      const imageData = {src: src, type: 'image'}
       this.onChange(insertDataBlock(editorState, imageData, selection))
     }
   }
@@ -171,7 +171,7 @@ export default class extends Component {
 
     return (
       <div>
-        <div id="editor" ref="editor" className='final-editor'>
+        <div id='editor' ref='editor' className='final-editor'>
           {this.renderSidebar({
             plugins,
             editorState,

@@ -1,5 +1,5 @@
-import React, {Component} from "react"
-import {EditorState, SelectionState, Modifier} from "draft-js"
+import React, {Component} from 'react'
+import {EditorState, SelectionState, Modifier} from 'draft-js'
 const styled = require('styled-components').default
 
 export default class extends Component {
@@ -20,7 +20,7 @@ export default class extends Component {
       blockMap, selectionAfter: selection
     })
     const newState = EditorState.push(
-      editorState, withoutAtomicBlock, "remove-range"
+      editorState, withoutAtomicBlock, 'remove-range'
     )
     const newSelection = new SelectionState({
       anchorKey: keyAfter,

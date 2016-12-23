@@ -1,21 +1,23 @@
-import React, {Component} from "react"
+import React, {Component} from 'react'
 import BlockContent from '../block/BlockContent'
 import Block from '../block/Block'
-import icons from "../../icons"
+import icons from '../../icons'
 
 export default class NotFoundBlock extends Component {
   constructor(props) {
     super(props)
 
     this.actions = [
-      {"key": "delete", "icon": icons.DeleteIcon, "action": this.props.container.remove}
-    ];
+      {
+        key: 'delete',
+        icon: icons.DeleteIcon,
+        action: this.props.container.remove
+      }
+    ]
   }
 
   render(){
-    const message = (
-      "Can't show plugin, component \"{type}\" not found.").replace(
-        "{type}", this.props.data.type);
+    const message =`Cannot show plugin, component ${this.props.data.type} not found.`
     return (
       <CommonBlock {...this.props} actions={this.actions}>
         <BlockContent>

@@ -1,6 +1,6 @@
-import React, {Component} from "react"
-import icons from "../../icons"
-import insertDataBlock from "../../insertDataBlock"
+import React, {Component} from 'react'
+import icons from '../../icons'
+import insertDataBlock from '../../insertDataBlock'
 const styled = require('styled-components').default
 
 export default class extends Component {
@@ -10,16 +10,16 @@ export default class extends Component {
 
   onClick(e) {
     e.preventDefault()
-    const src = window.prompt("Enter a URL")
+    const src = window.prompt('Enter a URL')
     if (!src) { return }
 
-    const data = {src: src, type: "video"}
+    const data = {src: src, type: 'video'}
     this.props.onChange(insertDataBlock(this.props.editorState, data))
   }
 
   render() {
     return (
-      <VideoButton type="button" onClick={::this.onClick}>
+      <VideoButton type='button' onClick={::this.onClick}>
         <icons.VideoIcon />
       </VideoButton>
     )
@@ -47,7 +47,7 @@ const VideoButton = styled.button`
     transition: all 0.1s ease-in-out;
     background-color: #181818;
     transform: scale(1.125);
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     border-radius: 100%;

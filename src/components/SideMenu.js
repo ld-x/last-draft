@@ -1,6 +1,6 @@
-import React, {Component} from "react"
-import "setimmediate"
-import icons from "../icons"
+import React, {Component} from 'react'
+import 'setimmediate'
+import icons from '../icons'
 const styled = require('styled-components').default
 
 export default class extends Component {
@@ -34,7 +34,7 @@ export default class extends Component {
           <SideMenuButton
               onClick={::this.toggle}
               style={menuButtonStyle}
-              type="button">
+              type='button'>
             <icons.CrossIcon />
           </SideMenuButton>
 
@@ -93,7 +93,7 @@ const SideMenuButton = styled.button`
   background: none;
 
   &:before {
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     border-radius: 100%;

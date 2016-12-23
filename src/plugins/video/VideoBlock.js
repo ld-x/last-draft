@@ -1,8 +1,8 @@
-import React, {Component} from "react"
+import React, {Component} from 'react'
 import BlockContent from '../block/BlockContent'
 import BlockInput from '../block/BlockInput'
 import Block from '../block/Block'
-import icons from "../../icons"
+import icons from '../../icons'
 
 export default class VideoBlock extends Component {
   constructor(props) {
@@ -31,11 +31,11 @@ export default class VideoBlock extends Component {
     return (
       <Block {...this.props} actions={this.actions}>
         <BlockContent>
-          <video controls style={VideoBlockStyle} src={this.props.data.src} alt=""/>
+          <video controls style={VideoBlockStyle} src={this.props.data.src} alt=''/>
         </BlockContent>
 
         <BlockInput
-          placeholder="Caption"
+          placeholder='Caption'
           value={this.props.data.caption}
           onChange={::this.handleCaptionChange} />
       </Block>

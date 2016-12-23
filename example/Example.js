@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Editor, editorStateFromHtml, editorStateFromRaw} from "../src/Final"
+import { Editor, editorStateFromHtml, editorStateFromRaw} from '../src/Final'
 
 /* init the state, either from raw or html */
 import raw from './initialState/raw'
@@ -22,7 +22,7 @@ export default class ExampleEditor extends Component {
     return (
       <Editor
         editorState={this.state.value}
-        placeholder="Text"
+        placeholder='Text'
         uploadImageCallBack={uploadImageCallBack}
         onChange={::this.onChange} />
     )

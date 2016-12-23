@@ -1,5 +1,5 @@
-import Immutable from "immutable"
-import {genKey, EditorState, ContentBlock, Modifier, BlockMapBuilder} from "draft-js"
+import Immutable from 'immutable'
+import {genKey, EditorState, ContentBlock, Modifier, BlockMapBuilder} from 'draft-js'
 
 const { List, Map } = Immutable
 
@@ -14,8 +14,8 @@ function insertDataBlock(editorState, data, selection) {
 
   const block = new ContentBlock({
     key: genKey(),
-    type: "atomic",
-    text: "",
+    type: 'atomic',
+    text: '',
     characterList: List(),
     data: new Map(data)
   })
@@ -24,8 +24,8 @@ function insertDataBlock(editorState, data, selection) {
     block,
     new ContentBlock({
       key: genKey(),
-      type: "unstyled",
-      text: "",
+      type: 'unstyled',
+      text: '',
       characterList: List()
     })
   ]
@@ -40,10 +40,10 @@ function insertDataBlock(editorState, data, selection) {
 
   const newContent = withAtomicBlock.merge({
     selectionBefore: selectionState,
-    selectionAfter: withAtomicBlock.getSelectionAfter().set("hasFocus", true)
+    selectionAfter: withAtomicBlock.getSelectionAfter().set('hasFocus', true)
   })
 
-  return EditorState.push(editorState, newContent, "insert-fragment")
+  return EditorState.push(editorState, newContent, 'insert-fragment')
 }
 
 export default insertDataBlock

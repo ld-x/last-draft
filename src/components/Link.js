@@ -1,5 +1,5 @@
-import React, {Component} from "react"
-import {Entity} from "draft-js"
+import React, {Component} from 'react'
+import {Entity} from 'draft-js'
 const styled = require('styled-components').default
 
 export default class  extends Component {

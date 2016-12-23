@@ -8,9 +8,9 @@ import {
   ContentState,
   createEditorState,
   EditorState,
-  getVisibleSelectionRect} from "draft-js"
+  getVisibleSelectionRect} from 'draft-js'
 
-import defaultDecorator from "./decorators/defaultDecorator"
+import defaultDecorator from './decorators/defaultDecorator'
 
 export function editorStateFromHtml(html, decorator = defaultDecorator) {
   if (html === null) {
@@ -49,7 +49,7 @@ export function editorStateToHtml(editorState) {
           let data = block.getData()
           let url = data.get('src')
           if (url) {
-            return `<img src="${url}" />`
+            return `<img src='${url}' />`
           }
         }
       }
@@ -77,7 +77,7 @@ export function getSelectedBlockElement(range) {
   let node = range.startContainer;
   do {
     const nodeIsDataBlock = node.getAttribute
-                            ? node.getAttribute("data-block")
+                            ? node.getAttribute('data-block')
                             : null;
     if (nodeIsDataBlock) {
       return node;

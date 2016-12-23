@@ -1,7 +1,7 @@
-import React, {Component} from "react"
-import ReactDOM from "react-dom"
-import SideMenu from "./SideMenu"
-import "setimmediate"
+import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
+import SideMenu from './SideMenu'
+import 'setimmediate'
 const styled = require('styled-components').default
 
 function getSelectedBlockElement() {
@@ -10,7 +10,7 @@ function getSelectedBlockElement() {
   let node = selection.getRangeAt(0).startContainer
 
   do {
-    if (node.getAttribute && node.getAttribute("data-block") == "true") {
+    if (node.getAttribute && node.getAttribute('data-block') == 'true') {
       return node
     }
     node = node.parentNode
@@ -26,7 +26,7 @@ export default class extends Component {
   getValidSidebarPlugins() {
     let plugins = [];
     for (let plugin of this.props.plugins) {
-      if (!plugin.button || typeof plugin.button !== "function") {
+      if (!plugin.button || typeof plugin.button !== 'function') {
         continue;
       }
       plugins.push(plugin)
@@ -65,7 +65,7 @@ export default class extends Component {
   render() {
     if(this.props.readOnly) { return null }
     return (
-      <Sidebar ref="container">
+      <Sidebar ref='container'>
         <SidebarMenu style={{top: `${this.state.top}px`}}>
           <SideMenu
             uploadImageCallBack={this.props.uploadImageCallBack}

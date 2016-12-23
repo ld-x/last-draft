@@ -1,5 +1,5 @@
-import image from "./image/plugin"
-import video from "./video/plugin"
+import image from './image/plugin'
+import video from './video/plugin'
 
 export default [
   image,

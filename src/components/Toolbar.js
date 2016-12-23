@@ -1,7 +1,7 @@
-import React, {Component} from "react"
-import {EditorState, RichUtils, Entity} from "draft-js"
-import ToolbarItem from "./ToolbarItem"
-import {getSelectionCoords} from "../utils"
+import React, {Component} from 'react'
+import {EditorState, RichUtils, Entity} from 'draft-js'
+import ToolbarItem from './ToolbarItem'
+import {getSelectionCoords} from '../utils'
 const styled = require('styled-components').default
 
 export default class extends Component {
@@ -9,7 +9,7 @@ export default class extends Component {
     super(props);
     this.state = {
       editingEntity: null,
-      link: "",
+      link: '',
       error: null
     }
     this.renderButton = ::this.renderButton
@@ -38,13 +38,13 @@ export default class extends Component {
     let key = item.label
 
     switch(item.type) {
-      case "inline": {
+      case 'inline': {
         current = this.props.editorState.getCurrentInlineStyle()
         toggle = () => this.toggleInlineStyle(item.style)
         active = current.has(item.style)
         break
       }
-      case "block": {
+      case 'block': {
         const selection = this.props.editorState.getSelection();
         current = this.props.editorState
           .getCurrentContent()
@@ -54,13 +54,13 @@ export default class extends Component {
         active = item.style === current
         break
       }
-      case "separator": {
-        key = "sep-" + position
+      case 'separator': {
+        key = 'sep-' + position
         break
       }
-      case "entity": {
-        const {entity = "LINK"} = item
-        key = "entity-"+entity
+      case 'entity': {
+        const {entity = 'LINK'} = item
+        key = 'entity-'+entity
         toggle = () => this.toggleEntity(entity)
         active = this.hasEntity(entity)
         break
@@ -134,7 +134,7 @@ export default class extends Component {
 
   setEntity(entityType, data) {
     const {editorState} = this.props;
-    const entityKey = Entity.create(entityType, "MUTABLE", data);
+    const entityKey = Entity.create(entityType, 'MUTABLE', data);
     const newState = RichUtils.toggleLink(
       editorState,
       editorState.getSelection(),
@@ -162,7 +162,7 @@ export default class extends Component {
   }
   renderEntityInput(entityType) {
     if(!this.props.entityInputs) {
-      console.warn("no entityInputs provided")
+      console.warn('no entityInputs provided')
       return null
     }
     const Component = this.props.entityInputs[entityType]
@@ -191,7 +191,7 @@ export default class extends Component {
           />
       )
     } else {
-      console.warn("unknown entity type: "+entityType)
+      console.warn('unknown entity type: '+entityType)
       return null
     }
   }
@@ -227,9 +227,9 @@ export default class extends Component {
     }
 
     return (
-      <Toolbar ref="toolbarWrapper" style={toolbarStyle}>
-        <div style={{position: "absolute", bottom: 0}}>
-          <ToolbarWrapper ref="toolbar" style={toolbarWrapperStyle}>
+      <Toolbar ref='toolbarWrapper' style={toolbarStyle}>
+        <div style={{position: 'absolute', bottom: 0}}>
+          <ToolbarWrapper ref='toolbar' style={toolbarWrapperStyle}>
             {
               this.state.editingEntity ?
               this.renderEntityInput(this.state.editingEntity) :

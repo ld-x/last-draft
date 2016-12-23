@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React, {Component} from 'react'
 const styled = require('styled-components').default
 
 export default class extends Component {

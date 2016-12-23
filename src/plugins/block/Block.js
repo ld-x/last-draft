@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React, {Component} from 'react'
 import BlockActions from './BlockActions'
 const styled = require('styled-components').default
 

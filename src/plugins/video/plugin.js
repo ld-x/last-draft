@@ -1,8 +1,8 @@
-import VideoButton from "./VideoButton"
-import VideoBlock from "./VideoBlock"
+import VideoButton from './VideoButton'
+import VideoBlock from './VideoBlock'
 
 export default {
-  type: "video",
+  type: 'video',
   button: VideoButton,
   block: VideoBlock
 }

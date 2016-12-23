@@ -1,5 +1,5 @@
-import React, {Component} from "react"
-import Separator from "./Separator"
+import React, {Component} from 'react'
+import Separator from './Separator'
 const styled = require('styled-components').default
 
 export default class extends Component {
@@ -17,7 +17,7 @@ export default class extends Component {
     const Icon = this.props.item.icon
     const { item, active } = this.props
 
-    if (item.type == "separator") {
+    if (item.type == 'separator') {
       return <Separator />
     }
 
@@ -29,7 +29,7 @@ export default class extends Component {
       <ToolbarItem style={toolbarItemStyle}>
         <ToolbarButton
             onClick={() => this.toggleAction(this.props)}
-            type="button">
+            type='button'>
           <Icon />
         </ToolbarButton>
       </ToolbarItem>

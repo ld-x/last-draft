@@ -1,4 +1,4 @@
-import NotFoundBlock from "./NotFoundBlock"
+import NotFoundBlock from './NotFoundBlock'
 
 export default {
   block: NotFoundBlock,

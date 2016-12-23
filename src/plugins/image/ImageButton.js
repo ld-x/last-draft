@@ -1,7 +1,7 @@
-import React, {Component} from "react"
-import ReactDOM from "react-dom"
-import icons from "../../icons"
-import insertDataBlock from "../../insertDataBlock"
+import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
+import icons from '../../icons'
+import insertDataBlock from '../../insertDataBlock'
 const styled = require('styled-components').default
 
 export default class extends Component {
@@ -23,13 +23,13 @@ export default class extends Component {
       uploadImageCallBack(file)
       .then((data) => {
         /* stop showing image placeholder */
-        const imageData = {src: data.src, type: "image"}
+        const imageData = {src: data.src, type: 'image'}
         onChange(insertDataBlock(editorState, imageData))
       })
 
     } else {
       const src = URL.createObjectURL(file)
-      const imageData = {src: src, type: "image"}
+      const imageData = {src: src, type: 'image'}
       onChange(insertDataBlock(editorState, imageData))
     }
   }
@@ -37,11 +37,11 @@ export default class extends Component {
   render() {
     return (
       <div>
-        <ImageButton type="button" onClick={::this.onClick}>
+        <ImageButton type='button' onClick={::this.onClick}>
           <icons.ImageIcon />
         </ImageButton>
         <input
-          type="file"
+          type='file'
           ref='fileInput'
           onChange={::this.inputChange}
           style={{ display: 'none' }} />
@@ -71,7 +71,7 @@ const ImageButton = styled.button`
     transition: all 0.1s ease-in-out;
     background-color: #181818;
     transform: scale(1.125);
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     border-radius: 100%;

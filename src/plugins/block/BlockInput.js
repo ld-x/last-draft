@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React, {Component} from 'react'
 const styled = require('styled-components').default
 
 export default class extends Component {
@@ -23,7 +23,7 @@ export default class extends Component {
           <BlockInput
             {...props}
             defaultValue={value}
-            type="text"
+            type='text'
             onDrop={this.handleDrop} />
         </BlockInputWrapper>
         {this.renderError(error)}
