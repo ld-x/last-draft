@@ -19,7 +19,7 @@ export default {
     {
       "key": "ag6qs",
       "text": "Final Draft",
-      "type": "header-two",
+      "type": "pullquote",
       "depth": 0,
       "inlineStyleRanges": [],
       "entityRanges": [],

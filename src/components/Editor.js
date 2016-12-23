@@ -8,7 +8,11 @@ import notFoundPlugin from '../plugins/not-found/plugin'
 import DEFAULT_PLUGINS from '../plugins/'
 import DEFAULT_ACTIONS from '../actions/default'
 import DEFAULT_ENTITIES from '../entities/'
+
 import insertDataBlock from '../insertDataBlock'
+import blockRenderMap from './blockRenderMap'
+//import blockRendererFn from './blockRendererFn'
+import blockStyleFn from './blockStyleFn'
 
 export default class extends Component {
   constructor (props) {
@@ -105,7 +109,7 @@ export default class extends Component {
     return notFoundPlugin
   }
 
-  mediaBlockRenderer (block) {
+  blockRendererFn (block) {
     if (block.getType() !== 'atomic') { return null }
 
     const type = block.getData().toObject().type
@@ -121,13 +125,6 @@ export default class extends Component {
         editorState: this.props.editorState,
         setReadOnly: this.setReadOnly
       }
-    }
-  }
-
-  blockStyleFn (contentBlock) {
-    const type = contentBlock.getType()
-    if (type === 'unstyled') {
-      return 'paragraph'
     }
   }
 
@@ -180,9 +177,9 @@ export default class extends Component {
           <Editor
             readOnly={this.state.readOnly}
             plugins={plugins}
-            blockRenderMap={this.props.blockRenderMap}
-            blockRendererFn={::this.mediaBlockRenderer}
-            blockStyleFn={this.blockStyleFn}
+            blockRenderMap={blockRenderMap}
+            blockRendererFn={::this.blockRendererFn}
+            blockStyleFn={blockStyleFn}
             onTab={this.onTab}
             handleKeyCommand={::this.handleKeyCommand}
             handleReturn={::this.handleReturn}
@@ -193,14 +190,14 @@ export default class extends Component {
             editorState={editorState}
             placeholder={this.props.placeholder}
             onChange={this.onChange} />
-          {this.renderToolbar({
-            editor: this.refs.editor,
-            editorState,
-            readOnly: this.state.readOnly,
-            onChange: this.onChange,
-            actions: this.actions,
-            entityInputs: this.entityInputs
-          })}
+            {this.renderToolbar({
+              editor: this.refs.editor,
+              editorState,
+              readOnly: this.state.readOnly,
+              onChange: this.onChange,
+              actions: this.actions,
+              entityInputs: this.entityInputs
+            })}
         </div>
       </div>
     )

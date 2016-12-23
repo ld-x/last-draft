@@ -9,8 +9,8 @@ import html from './initialState/html'
 export default class ExampleEditor extends Component {
   constructor(props) {
     super(props)
-    //const INITIAL_STATE = editorStateFromRaw(raw)
-    const INITIAL_STATE = editorStateFromHtml(html)
+    const INITIAL_STATE = editorStateFromRaw(raw)
+    //const INITIAL_STATE = editorStateFromHtml(html)
     this.state = { value: INITIAL_STATE }
   }
 
