@@ -218,6 +218,7 @@ export default class extends Component {
     let toolbarStyle = { display: showToolbar ? 'block' : 'none' }
     if (position !== undefined) {
       toolbarStyle = Object.assign(position, toolbarStyle)
+      toolbarStyle = {...toolbarStyle }
     }
     let toolbarWrapperStyle = {
       backgroundColor: error ? '#E83F26' : '#181818'
