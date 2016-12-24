@@ -71,6 +71,18 @@ export default {
       "data": {}
     },
     {
+       "key":"77rjk",
+       "text":"Pretty #cool to see #hastags :)",
+       "type":"unstyled",
+       "depth":0,
+       "inlineStyleRanges":[
+       ],
+       "entityRanges":[
+       ],
+       "data":{
+       }
+    },
+    {
       "key": "9vgd",
       "text": "",
       "type": "atomic",
