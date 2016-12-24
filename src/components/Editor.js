@@ -111,7 +111,6 @@ export default class extends Component {
   }
 
   blockRendererFn (block) {
-    console.log(block.getType())
     if (block.getType() === 'pullquote') {
       return { component: Pullquote }
     }
