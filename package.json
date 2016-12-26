@@ -46,8 +46,10 @@
     "draft-js": "^0.9.1",
     "draft-js-export-html": "^0.5.2",
     "immutable": "~3.7.4",
+    "linkify-it": "^2.0.2",
     "setimmediate": "^1.0.4",
-    "styled-components": "^1.2.1"
+    "styled-components": "^1.2.1",
+    "tlds": "^1.182.0"
   },
   "keywords": [
     "final draft",

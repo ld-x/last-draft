@@ -2,6 +2,11 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import icons from '../icons'
 const styled = require('styled-components').default
+import linkifyIt from 'linkify-it'
+import tlds from 'tlds'
+
+const linkify = linkifyIt()
+linkify.tlds(tlds)
 
 export default class Link extends Component {
   constructor (props) {
@@ -11,15 +16,8 @@ export default class Link extends Component {
 
   setLink (event) {
     let {url} = this.state
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      url = `http://${url}`
-    }
 
-    /* https://gist.github.com/dperini/729294 */
-    const expression = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}\-\x{ffff}0-9]+-?)*[a-z\x{00a1}\-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}\-\x{ffff}0-9]+-?)*[a-z\x{00a1}\-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}\-\x{ffff}]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/ig
-    const regex = new RegExp(expression)
-
-    if (!url.match(regex)) {
+    if (!linkify.match(url)) {
       this.props.setError(('Invalid Link'))
       ReactDOM.findDOMNode(this.refs.textInput).focus()
       return
