@@ -4,6 +4,7 @@ import ULIcon from './icons/ul'
 import OLIcon from './icons/ol'
 import H2Icon from './icons/h2'
 import BlockQuoteIcon from './icons/blockquote'
+import PullQuoteIcon from './icons/pullquote'
 import LinkIcon from './icons/link'
 import CrossIcon from './icons/cross'
 import ImageIcon from './icons/image'
@@ -20,6 +21,7 @@ const icons = {
   OLIcon,
   H2Icon,
   BlockQuoteIcon,
+  PullQuoteIcon,
   LinkIcon,
   CrossIcon,
   ImageIcon,
