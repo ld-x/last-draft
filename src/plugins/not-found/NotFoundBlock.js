@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import BlockContent from '../block/BlockContent'
 import Block from '../block/Block'
-import icons from '../../icons'
+import icons from '../../components/Buttons/'
 
 export default class NotFoundBlock extends Component {
   constructor (props) {

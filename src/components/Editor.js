@@ -1,20 +1,22 @@
 import React, {Component} from 'react'
 import {Editor, RichUtils, getDefaultKeyBinding} from 'draft-js'
 
-import DefaultToolbar from './Toolbar'
-import Sidebar from './Sidebar'
-import Media from './Media'
+import Toolbar from './Toolbar/Toolbar'
+import Sidebar from './Sidebar/Sidebar'
+
+import Media from './Blocks/Media'
+import Pullquote from './Blocks/Pullquote'
+import Alignment from './Blocks/Alignment'
+
 import notFoundPlugin from '../plugins/not-found/plugin'
-import DEFAULT_PLUGINS from '../plugins/'
-import DEFAULT_ACTIONS from '../actions/default'
-import DEFAULT_ENTITIES from '../entities/'
+import Plugins from '../plugins/'
+import Actions from '../actions/'
+import Entities from '../entities/'
 
 import insertDataBlock from '../utils/insertDataBlock'
 import {blockRenderMap} from '../utils/block'
 import {blockStyleFn} from '../utils/block'
 //import blockRendererFn from '../utils/block'
-import Pullquote from './Pullquote'
-import Alignment from './Alignment'
 
 export default class extends Component {
   constructor (props) {
@@ -22,16 +24,16 @@ export default class extends Component {
     this.state = { readOnly: this.props.readOnly || false }
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
-    this.actions = this.props.actions || DEFAULT_ACTIONS
+    this.actions = Actions
     this.plugins = this.getValidPlugins()
-    this.entityInputs = this.props.entityInputs || DEFAULT_ENTITIES
+    this.entityInputs = Entities
     this.pluginsByType = this.getPluginsByType()
     this.keyBindings = this.props.keyBindings || []
   }
 
   getValidPlugins () {
     let plugins = []
-    for (let plugin of this.props.plugins || DEFAULT_PLUGINS) {
+    for (let plugin of this.props.plugins || Plugins) {
       if (!plugin || typeof plugin.type !== 'string') {
         console.warn('Plugin: Missing `type` field. Details: ', plugin)
         continue
@@ -146,7 +148,6 @@ export default class extends Component {
   }
 
   renderToolbar (props) {
-    const { Toolbar = DefaultToolbar } = this.props
     return <Toolbar {...props} />
   }
 

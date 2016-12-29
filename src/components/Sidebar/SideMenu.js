@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import 'setimmediate'
-import icons from '../icons'
+import icons from '../Buttons/'
+
 const styled = require('styled-components').default
 
 export default class extends Component {

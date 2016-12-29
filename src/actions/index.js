@@ -1,4 +1,4 @@
-import icons from '../icons'
+import icons from '../components/Buttons/'
 
 export default [
   {type: 'inline', label: 'B', style: 'BOLD', icon: icons.BoldIcon},

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import icons from '../../icons'
+import icons from '../../components/Buttons/'
 import insertDataBlock from '../../utils/insertDataBlock'
 const styled = require('styled-components').default
 
