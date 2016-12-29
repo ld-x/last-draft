@@ -1,24 +1,24 @@
-# [final-draft](http://finaldraft.vace.nz)
+# [last-draft](http://lastdraft.vace.nz)
 
-[![npm version](https://badge.fury.io/js/final-draft.svg)](https://badge.fury.io/js/final-draft)
+[![npm version](https://badge.fury.io/js/last-draft.svg)](https://badge.fury.io/js/last-draft)
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-![](https://raw.githubusercontent.com/StevenIseki/final-draft/master/example/public/screenshot.png)
+![](https://raw.githubusercontent.com/StevenIseki/last-draft/master/example/public/screenshot.png)
 
-final-draft is a Draft.js editor built using [draft-js-plugins](https://draft-js-plugins.com)
+last-draft is a Draft.js editor built with [draft-js-plugins](https://draft-js-plugins.com)
 
 ## Install
 ```jsx
-npm install final-draft --save
+npm install last-draft --save
 ```
 
 ## Use
 ```jsx
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import {editorStateFromHtml, editorStateFromRaw} from 'final-draft'
-import { Editor } from 'final-draft'
+import {editorStateFromHtml, editorStateFromRaw} from 'last-draft'
+import { Editor } from 'last-draft'
 
 export default class ExampleEditor extends Component {
   constructor(props) {

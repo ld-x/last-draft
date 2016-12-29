@@ -18,7 +18,7 @@ function loaders() {
 
 function entry() {
   return {
-    app: './index',
+    app: './example/index',
     vendor: [ 'react', 'react-dom', 'draft-js', 'immutable']
   }
 }

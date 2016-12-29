@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Editor, editorStateFromHtml, editorStateFromRaw} from '../src/Final'
+import { Editor, editorStateFromHtml, editorStateFromRaw} from '../src/'
 
 /* init the state, either from raw or html */
 import raw from './initialState/raw'

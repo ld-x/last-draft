@@ -20,12 +20,12 @@ class GithubButton extends Component {
       <a
         ref={(element) => { this.githubButton = element; }}
         className='github-button'
-        href='https://github.com/vacenz/final-draft'
+        href='https://github.com/vacenz/last-draft'
         data-style='mega'
-        data-count-href='/vacenz/final-draft/stargazers'
-        data-count-api='/repos/vacenz/final-draft#stargazers_count'
+        data-count-href='/vacenz/last-draft/stargazers'
+        data-count-api='/repos/vacenz/last-draft#stargazers_count'
         data-count-aria-label='# stargazers on GitHub'
-        aria-label='Star vacenz/final-draft on GitHub'
+        aria-label='Star vacenz/last-draft on GitHub'
       >
         Github
       </a>

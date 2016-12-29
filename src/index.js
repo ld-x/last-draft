@@ -3,7 +3,7 @@ import Editor from './components/Editor'
 import Icons from './components/Buttons/'
 import * as convert from './utils/convert'
 
-const Final = {
+const LD = {
   editorStateFromRaw: convert.editorStateFromRaw,
   editorStateFromHtml: convert.editorStateFromHtml,
   editorStateToJSON: convert.editorStateToJSON,
@@ -13,4 +13,4 @@ const Final = {
   Icons: Icons
 }
 
-module.exports = Final
+module.exports = LD

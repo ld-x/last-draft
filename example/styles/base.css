@@ -33,9 +33,9 @@ body {
   text-align: center;
 }
 
-/* final-draft specific styles */
+/* Last-draft specific styles */
 
-.final-editor {
+.last-draft-editor {
   cursor: text;
   padding: 1rem;
 }

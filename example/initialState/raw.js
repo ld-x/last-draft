@@ -18,7 +18,7 @@ export default {
   "blocks": [
     {
       "key": "ag6qs",
-      "text": "Final Draft",
+      "text": "Last Draft",
       "type": "pullquote",
       "depth": 0,
       "inlineStyleRanges": [],
@@ -27,7 +27,7 @@ export default {
     },
     {
       "key": "59kd9",
-      "text": "Final Draft is a ReactJS Rich Text editor built on top of Facebook's draft.js featuring:",
+      "text": "Last Draft is a ReactJS Rich Text editor built on top of Facebook's draft.js featuring:",
       "type": "unstyled",
       "depth": 0,
       "inlineStyleRanges": [],
@@ -131,7 +131,7 @@ export default {
     },
     {
       "key": "kst0",
-      "text": "Final Draft is MIT licensed.",
+      "text": "Last Draft is MIT licensed.",
       "type": "unstyled",
       "depth": 0,
       "inlineStyleRanges": [],

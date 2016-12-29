@@ -174,7 +174,7 @@ export default class extends Component {
 
     return (
       <div>
-        <div id='editor' ref='editor' className='final-editor'>
+        <div id='editor' ref='editor' className='last-draft-editor'>
           {this.renderSidebar({
             plugins,
             editorState,
