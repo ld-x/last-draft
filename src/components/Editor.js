@@ -11,7 +11,6 @@ import Alignment from './Blocks/Alignment'
 import notFoundPlugin from '../plugins/not-found/plugin'
 import Plugins from '../plugins/'
 import Actions from '../actions/'
-import Entities from '../entities/'
 
 import insertDataBlock from '../utils/insertDataBlock'
 import {blockRenderMap} from '../utils/block'
@@ -26,7 +25,6 @@ export default class extends Component {
     this.setReadOnly = ::this.setReadOnly
     this.actions = Actions
     this.plugins = this.getValidPlugins()
-    this.entityInputs = Entities
     this.pluginsByType = this.getPluginsByType()
     this.keyBindings = this.props.keyBindings || []
   }
@@ -205,8 +203,7 @@ export default class extends Component {
               editorState,
               readOnly: this.state.readOnly,
               onChange: this.onChange,
-              actions: this.actions,
-              entityInputs: this.entityInputs
+              actions: this.actions
             })}
         </div>
       </div>

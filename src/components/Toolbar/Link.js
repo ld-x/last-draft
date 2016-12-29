@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import icons from '../components/Buttons/'
+import icons from '../Buttons/'
 
 const styled = require('styled-components').default
 import linkifyIt from 'linkify-it'

@@ -17,24 +17,24 @@ export default class extends Component {
       return <Separator />
     }
 
-    let toolbarItemStyle = {
+    let toolbarStyle = {
       color: active ? '#3192e7' : '#ccc'
     }
 
     return (
-      <ToolbarItem style={toolbarItemStyle}>
+      <ToolbarButtonWrapper style={toolbarStyle}>
         <ToolbarButton
           onClick={() => this.toggleAction(this.props)}
           type='button'
         >
           <Icon />
         </ToolbarButton>
-      </ToolbarItem>
+      </ToolbarButtonWrapper>
     )
   }
 }
 
-const ToolbarItem = styled.li`
+const ToolbarButtonWrapper = styled.li`
   display: inline-block;
   margin: 0 !important;
   &:hover {
