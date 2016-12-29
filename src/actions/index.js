@@ -10,5 +10,7 @@ export default [
   {type: 'block', label: 'H2', style: 'header-two', icon: icons.H2Icon},
   {type: 'block', label: 'QT', style: 'blockquote', icon: icons.BlockQuoteIcon},
   {type: 'block', label: 'PQ', style: 'pullquote', icon: icons.PullQuoteIcon},
-  {type: 'block', label: 'AL', style: 'alignment', icon: icons.PullQuoteIcon}
+  {type: 'block', label: 'AL', style: 'alignment-left', icon: icons.AlignLeft},
+  {type: 'block', label: 'AC', style: 'alignment-center', icon: icons.AlignCenter},
+  {type: 'block', label: 'AR', style: 'alignment-right', icon: icons.AlignRight}
 ]

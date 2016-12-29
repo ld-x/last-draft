@@ -13,6 +13,7 @@ import CropIcon from './Crop'
 import ErrorIcon from './Error'
 import UnlinkIcon from './Unlink'
 import CloseIcon from './Close'
+import {AlignLeft, AlignCenter, AlignRight} from './Align'
 
 const icons = {
   BoldIcon,
@@ -29,7 +30,10 @@ const icons = {
   CropIcon,
   ErrorIcon,
   UnlinkIcon,
-  CloseIcon
+  CloseIcon,
+  AlignLeft,
+  AlignCenter,
+  AlignRight
 }
 
 export default icons

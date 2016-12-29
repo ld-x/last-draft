@@ -115,8 +115,14 @@ export default class extends Component {
     if (block.getType() === 'pullquote') {
       return { component: Pullquote }
     }
-    if (block.getType() === 'alignment') {
+    if (block.getType() === 'alignment-left') {
+      return { component: Alignment, props: { alignment: 'flex-start' } }
+    }
+    if (block.getType() === 'alignment-center') {
       return { component: Alignment, props: { alignment: 'center' } }
+    }
+    if (block.getType() === 'alignment-right') {
+      return { component: Alignment, props: { alignment: 'flex-end' } }
     }
 
     if (block.getType() !== 'atomic') { return null }
