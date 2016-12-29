@@ -14,6 +14,7 @@ import {blockRenderMap} from '../utils/block'
 import {blockStyleFn} from '../utils/block'
 //import blockRendererFn from '../utils/block'
 import Pullquote from './Pullquote'
+import Alignment from './Alignment'
 
 export default class extends Component {
   constructor (props) {
@@ -113,6 +114,9 @@ export default class extends Component {
   blockRendererFn (block) {
     if (block.getType() === 'pullquote') {
       return { component: Pullquote }
+    }
+    if (block.getType() === 'alignment') {
+      return { component: Alignment, props: { alignment: 'center' } }
     }
 
     if (block.getType() !== 'atomic') { return null }

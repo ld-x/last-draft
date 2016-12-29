@@ -8,6 +8,9 @@ export const blockRenderMap = Map({
   ['pullquote']: {
     element: 'cite',
   },
+  ['alignment']: {
+    element: 'div',
+  },
   ['image']: {
     element: 'figure',
   },
@@ -26,6 +29,9 @@ export function blockStyleFn (contentBlock) {
   }
   if (type === 'pullquote') {
     return 'pullquote'
+  }
+  if (type === 'alignment') {
+    return 'alignment'
   }
 }
 

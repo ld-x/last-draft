@@ -9,5 +9,6 @@ export default [
   {type: 'block', label: 'OL', style: 'ordered-list-item', icon: icons.OLIcon},
   {type: 'block', label: 'H2', style: 'header-two', icon: icons.H2Icon},
   {type: 'block', label: 'QT', style: 'blockquote', icon: icons.BlockQuoteIcon},
-  {type: 'block', label: 'PQ', style: 'pullquote', icon: icons.PullQuoteIcon}
+  {type: 'block', label: 'PQ', style: 'pullquote', icon: icons.PullQuoteIcon},
+  {type: 'block', label: 'AL', style: 'alignment', icon: icons.PullQuoteIcon}
 ]
