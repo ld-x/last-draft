@@ -15,7 +15,7 @@
 }
 
 .public-DraftEditor-content figure {
-  margin: 20px 0;
+  margin: 1rem 0;
 }
 
 .public-DraftStyleDefault-ul {
@@ -29,13 +29,13 @@
 .public-DraftStyleDefault-ol,
 .public-DraftStyleDefault-ul {
   line-height: 2;
-  margin: 24px 0 40px 0;
-  padding-left: 20px;
+  margin: 2.2rem 0 4rem 0;
+  padding-left: 2rem;
 }
 
 .public-DraftStyleDefault-ol li,
 .public-DraftStyleDefault-ul li {
-  padding-left: 10px;
+  padding-left: 1rem;
 }
 
 .public-DraftEditorPlaceholder-root {
@@ -62,11 +62,16 @@
 }
 
 .pullquote {
+  display: block;
   color: #223A87;
   font-style: italic;
-  font-size: 26px;
-  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
   margin: 4rem 0 2rem 0;
+}
+.pullquote:first-child {
+  margin-top: 0;
 }
 
 .header {

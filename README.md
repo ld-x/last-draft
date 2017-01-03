@@ -8,10 +8,12 @@
 
 last-draft is a Draft.js editor built with [draft-js-plugins](https://draft-js-plugins.com)
 
-## Install
+# Install
 ```jsx
 npm install last-draft --save
 ```
+
+# Docs
 
 ## Use
 ```jsx

@@ -159,7 +159,6 @@ export default class extends Component {
     const type = block.getData().toObject().type
     let plugin = this.pluginsByType[type] || this.handleBlockNotFound(block)
     if (!plugin) { return null }
-    console.log(plugin)
 
     return {
       component: Media,

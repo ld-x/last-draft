@@ -14,7 +14,7 @@ export default (props) => {
     }
     alignClass = `${props.blockProps.alignment}`
   }
-  console.log(props.blockProps)
+
   return (
     <AlignmentWrapper style={alignmentStyle} className='align-wrapper'>
       <Alignment className={alignClass}>

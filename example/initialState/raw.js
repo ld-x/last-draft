@@ -13,6 +13,13 @@ export default {
       "data": {
         "url": "https://isekivacenz.mit-license.org"
       }
+    },
+    "2": {
+      "type": "LINK",
+      "mutability": "MUTABLE",
+      "data": {
+        "url": "https://github.com/vacenz/last-draft#docs"
+      }
     }
   },
   "blocks": [
@@ -135,15 +142,15 @@ export default {
     },
     {
       "key": "cc4j7",
-      "text": "Coming soon... 🎉",
+      "text": "Documentation for Last Draft is here 🎉",
       "type": "unstyled",
       "depth": 0,
       "inlineStyleRanges": [],
       "entityRanges": [
         {
-          "offset": 22,
+          "offset": 32,
           "length": 4,
-          "key": 0
+          "key": 2
         }
       ],
       "data": {}
