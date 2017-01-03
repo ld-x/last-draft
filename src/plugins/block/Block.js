@@ -12,7 +12,7 @@ export default class extends Component {
       <BlockHover>
         <Block>
           <div>
-            <BlockActions items={this.props.actions} />
+            {this.props.actions && <BlockActions items={this.props.actions} />}
           </div>
           {this.props.children}
         </Block>

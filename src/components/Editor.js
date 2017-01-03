@@ -161,9 +161,14 @@ export default class extends Component {
     if (file.type.indexOf('image/') !== 0) { return }
 
     if (uploadImageCallBack !== undefined) {
+      /* show placeholder */
+      const src = window.URL.createObjectURL(file)
+      const imageData = {src: src, type: 'placeholder'}
+      this.onChange(insertDataBlock(editorState, imageData, selection))
+
       uploadImageCallBack(file)
       .then((data) => {
-        /* stop showing image placeholder */
+        /* show loaded image */
         const imageData = {src: data.src, type: 'image'}
         this.onChange(insertDataBlock(editorState, imageData, selection))
       })
