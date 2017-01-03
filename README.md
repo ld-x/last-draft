@@ -58,32 +58,119 @@ function uploadImageCallBack(file) {
 ## Props
 
 #### `plugins`
-Array of plugins to include, any of the following: `image`, `video` and `emoji` plugins. By default all plugins are included. `plugins: ['image', 'video', 'emoji']`
+Array of plugins to include, any of the following: `image`, `video` and `emoji` plugins.
+
+By default all plugins are included:
+
+```jsx
+plugins: ['image', 'video', 'emoji']
+```
 
 #### `toolbar`
-Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `link`, `ul`, `ol`, `h2`, `blockquote`, `pullquote`, `alignment`. By default all toolbar buttons are included: `toolbar: ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']`
+Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `link`, `ul`, `ol`, `h2`, `blockquote`, `pullquote`, `alignment`.
+
+By default all toolbar buttons are included:
+
+```jsx
+toolbar: ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']
+```
 
 ## Styles
 
-Last Draft uses styled-components 💅 and some inline styles for the base styling. It also allows for you to add some custom css to override this base styling with the following class names:
+Last Draft uses styled-components 💅 for the base styling. It also allows for you to add some custom css to override this base styling with the following class names:
 
 - Block styles
-`.header`
-`.unordered-list`
-`.ordered-list`
-`.pullquote`
-`.blockquote`
-`.align-wrapper`
-`.align-left`
-`.align-center`
-`.align-right`
+
+```css
+.header {}
+.unordered-list {}
+.ordered-list {}
+.pullquote {}
+.blockquote {}
+.align-wrapper {}
+.align-left {}
+.align-center {}
+.align-right {}
+```
+
+- Entity styles
+
+```css
+.ld-link {}
+.ld-hashtag {}
+```
 
 - Plugin Block styles
 
+```css
+.ld-block-wrapper {}
+.ld-block {}
+.ld-block-actions-wrapper {}
+.ld-block-actions {}
+.ld-block-action {}
+.ld-block-content {}
+.ld-block-input-wrapper {}
+.ld-block-input {}
+.ld-image-block {}
+.ld-image-placeholder-block {}
+.ld-image-block-button {}
+.ld-video-block-wrapper {}
+.ld-video-block {}
+.ld-video-block-button {}
+.ld-emoji {}
+.ld-emoji-modal {}
+.ld-emoji-close-icon {}
+.ld-emoji-block-button {}
+```
+
+- Button styles
+
+```css
+.ld-button-align-left {}
+.ld-button-align-center {}
+.ld-button-align-right {}
+.ld-button-blockquote {}
+.ld-button-bold {}
+.ld-button-close {}
+.ld-button-cross {}
+.ld-button-emoji {}
+.ld-button-error {}
+.ld-button-header {}
+.ld-button-image {}
+.ld-button-italic {}
+.ld-button-link {}
+.ld-button-ordered-list {}
+.ld-button-pullquote {}
+.ld-button-unordered-list {}
+.ld-button-unlink {}
+.ld-button-video {}
+```
+
 - Inline Toolbar
+
+```css
+.ld-toolbar-wrapper {}
+.ld-toolbar {}
+.ld-toolbar-error {}
+.ld-toolbar-arrow {}
+.ld-toolbar-button-wrapper {}
+.ld-toolbar-button {}
+.ld-link-toolbar-button {}
+.ld-link-toolbar-item {}
+.ld-link-toolbar-input {}
+```
 
 - Side Toolbar
 
+```css
+.ld-sidebar {}
+.ld-sidebar-menu-wrapper {}
+.ld-sidemenu-wrapper {}
+.ld-sidemenu {}
+.ld-sidemenu-button {}
+.ld-sidemenu-items {}
+.ld-sidemenu-item {}
+```
 
 ## Development
 

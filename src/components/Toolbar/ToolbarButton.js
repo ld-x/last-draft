@@ -22,8 +22,9 @@ export default class extends Component {
     }
 
     return (
-      <ToolbarButtonWrapper style={toolbarStyle}>
+      <ToolbarButtonWrapper style={toolbarStyle} className='ld-toolbar-button-wrapper'>
         <ToolbarButton
+          className='ld-toolbar-button'
           onClick={() => this.toggleAction(this.props)}
           type='button'
         >

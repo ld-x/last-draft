@@ -53,14 +53,14 @@ export default class extends Component {
   render () {
     if (this.props.readOnly) { return null }
     return (
-      <Sidebar ref='container'>
-        <SidebarMenu style={{top: `${this.state.top}px`}}>
+      <Sidebar ref='container' className='ld-sidebar'>
+        <SidebarMenuWrapper style={{top: `${this.state.top}px`}} className='ld-sidebar-menu-wrapper'>
           <SideMenu
             uploadImageCallBack={this.props.uploadImageCallBack}
             editorState={this.props.editorState}
             onChange={::this.onChange}
             plugins={this.getValidSidebarPlugins()} />
-        </SidebarMenu>
+        </SidebarMenuWrapper>
       </Sidebar>
     )
   }
@@ -70,7 +70,7 @@ const Sidebar = styled.div`
   position: relative;
 `
 
-const SidebarMenu = styled.div`
+const SidebarMenuWrapper = styled.div`
   float: left;
   left: -45px;
   position: absolute;

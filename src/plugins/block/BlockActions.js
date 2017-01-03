@@ -14,7 +14,7 @@ export default class extends Component {
 
   renderItem (item) {
     return (
-      <BlockAction onClick={item.action} key={item.key}>
+      <BlockAction className='ld-block-action' onClick={item.action} key={item.key}>
         <item.icon />
       </BlockAction>
     )
@@ -22,8 +22,8 @@ export default class extends Component {
 
   render () {
     return (
-      <BlockActionsWrapper>
-        <BlockActions>
+      <BlockActionsWrapper className='ld-block-actions-wrapper'>
+        <BlockActions className='ld-block-actions'>
           {this.props.items.map(this.renderItem)}
         </BlockActions>
       </BlockActionsWrapper>

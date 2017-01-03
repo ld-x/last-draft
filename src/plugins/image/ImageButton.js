@@ -37,7 +37,7 @@ export default class extends Component {
   render () {
     return (
       <div>
-        <ImageButton type='button' onClick={::this.onClick}>
+        <ImageButton type='button' onClick={::this.onClick} className='ld-image-block-button'>
           <icons.ImageIcon />
         </ImageButton>
         <input
@@ -77,5 +77,8 @@ const ImageButton = styled.button`
     border-radius: 100%;
     display: inline-block;
     background-color: #181818;
+  }
+  &:focus {
+    outline: none;
   }
 `

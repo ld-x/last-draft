@@ -9,19 +9,17 @@ export default class extends Component {
 
   render () {
     return (
-      <BlockHover>
-        <Block>
-          <div>
-            {this.props.actions && <BlockActions items={this.props.actions} />}
-          </div>
+      <BlockWrapper className='ld-block-wrapper'>
+        <Block className='ld-block'>
+          {this.props.actions && <BlockActions items={this.props.actions} />}
           {this.props.children}
         </Block>
-      </BlockHover>
+      </BlockWrapper>
     )
   }
 }
 
-const BlockHover = styled.div`
+const BlockWrapper = styled.div`
   padding: 2px;
   margin: -2px;
   &:hover {

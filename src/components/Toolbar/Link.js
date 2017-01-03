@@ -62,27 +62,29 @@ export default class Link extends Component {
   render () {
     return (
       <div style={{whiteSpace: 'nowrap'}}>
-        <ToolbarInput
+        <LinkToolbarInput
+          className='ld-link-toolbar-input'
           ref='textInput'
           type='text'
           onChange={::this.onLinkChange}
           value={this.state.url}
           onKeyDown={::this.onLinkKeyDown}
           placeholder='Type the link and press enter' />
-        <ToolbarItem style={{verticalAlign: 'bottom'}}>
-          <ToolbarButton
+        <LinkToolbarItem style={{verticalAlign: 'bottom'}} className='ld-link-toolbar-item'>
+          <LinkToolbarButton
+            className='ld-link-toolbar-button'
             onClick={this.props.removeEntity}
             type='button'
           >
             { this.props.entity ? <icons.UnlinkIcon /> : <icons.CloseIcon /> }
-          </ToolbarButton>
-        </ToolbarItem>
+          </LinkToolbarButton>
+        </LinkToolbarItem>
       </div>
     )
   }
 }
 
-const ToolbarInput = styled.input`
+const LinkToolbarInput = styled.input`
   background-color: transparent;
   border: none;
   color: #fafafa !important;
@@ -98,7 +100,7 @@ const ToolbarInput = styled.input`
   }
 `
 
-const ToolbarButton = styled.button`
+const LinkToolbarButton = styled.button`
   padding: 0;
   color: inherit;
   cursor: pointer;
@@ -109,7 +111,7 @@ const ToolbarButton = styled.button`
   padding-right: 16px;
 `
 
-const ToolbarItem = styled.span`
+const LinkToolbarItem = styled.span`
   display: inline-block;
   color: #ccc;
   &:hover {

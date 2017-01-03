@@ -33,7 +33,7 @@ export default class ImageBlock extends Component {
     return (
       <Block {...this.props} actions={this.actions}>
         <BlockContent>
-          <img style={ImageBlockStyle} src={this.props.data.src} alt='' />
+          <img style={ImageBlockStyle} src={this.props.data.src} alt='' className='ld-image-placeholder-block' />
         </BlockContent>
 
         <BlockInput

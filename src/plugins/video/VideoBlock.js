@@ -57,8 +57,9 @@ export default class extends Component {
 
     return (
       <Block {...this.props} actions={this.actions}>
-        <VideoBlockWrapper>
+        <VideoBlockWrapper className='ld-video-block-wrapper'>
           <VideoBlock src={videoSrc}
+                  className='ld-video-block'
                   frameBorder='0'
                   allowFullScreen />
         </VideoBlockWrapper>

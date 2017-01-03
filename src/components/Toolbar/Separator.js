@@ -4,7 +4,7 @@ const styled = require('styled-components').default
 export default class extends Component {
   render () {
     return (
-      <Separator />
+      <Separator className='ld-seperator' />
     )
   }
 }

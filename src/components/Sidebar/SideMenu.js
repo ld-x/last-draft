@@ -30,9 +30,10 @@ export default class extends Component {
     }
 
     return (
-      <SideMenuWrapper>
-        <SideMenu>
+      <SideMenuWrapper className='ld-sidemenu-wrapper'>
+        <SideMenu className='ld-sidemenu'>
           <SideMenuButton
+            className='ld-sidemenu-button'
             onClick={::this.toggle}
             style={menuButtonStyle}
             type='button'
@@ -40,11 +41,11 @@ export default class extends Component {
             <icons.CrossIcon />
           </SideMenuButton>
 
-          <SideMenuItems style={menuItemsStyle}>
+          <SideMenuItems style={menuItemsStyle} className='ld-sidemenu-items'>
             {this.props.plugins.map((item) => {
               const Button = item.button
               return (
-                <SideMenuItem key={item.type} >
+                <SideMenuItem key={item.type} className='ld-sidemenu-item'>
                   <Button
                     uploadImageCallBack={this.props.uploadImageCallBack}
                     editorState={this.props.editorState}
@@ -104,7 +105,7 @@ const SideMenuButton = styled.button`
   }
 
   &:focus {
-    outline: 0;
+    outline: none;
   }
 `
 

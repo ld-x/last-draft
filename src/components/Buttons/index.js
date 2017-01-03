@@ -9,7 +9,6 @@ import LinkIcon from './Link'
 import CrossIcon from './Cross'
 import ImageIcon from './Image'
 import VideoIcon from './Video'
-import CropIcon from './Crop'
 import ErrorIcon from './Error'
 import EmojiIcon from './Emoji'
 import UnlinkIcon from './Unlink'
@@ -28,7 +27,6 @@ const icons = {
   CrossIcon,
   ImageIcon,
   VideoIcon,
-  CropIcon,
   ErrorIcon,
   EmojiIcon,
   UnlinkIcon,

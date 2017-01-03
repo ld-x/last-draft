@@ -150,9 +150,9 @@ export default class extends Component {
 
 
     return (
-      <Toolbar ref='toolbarWrapper' style={toolbarStyle}>
+      <ToolbarWrapper ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
         <div style={{position: 'absolute', bottom: 0}}>
-          <ToolbarWrapper ref='toolbar' style={toolbarWrapperStyle}>
+          <Toolbar ref='toolbar' style={toolbarWrapperStyle} className='ld-toolbar'>
             {
               this.state.editingEntity ?
                 <LinkToolbar
@@ -163,18 +163,18 @@ export default class extends Component {
                   entityType={this.state.editingEntity} /> :
                 this.renderToolList()
             }
-            <ToolbarErrorMsg style={toolbarErrorStyle}>
+            <ToolbarErrorMsg style={toolbarErrorStyle} className='ld-toolbar-error'>
               {this.state.error}
             </ToolbarErrorMsg>
-            <ToolbarArrow />
-          </ToolbarWrapper>
+            <ToolbarArrow className='ld-toolbar-arrow' />
+          </Toolbar>
         </div>
-      </Toolbar>
+      </ToolbarWrapper>
     )
   }
 }
 
-const Toolbar = styled.div`
+const ToolbarWrapper = styled.div`
   font-family: Open Sans, sans-serif;
   color: #181818;
   font-size: 1.125rem;
@@ -186,7 +186,7 @@ const Toolbar = styled.div`
   z-index: 10;
 `
 
-const ToolbarWrapper = styled.div`
+const Toolbar = styled.div`
   background: #181818;
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);

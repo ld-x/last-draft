@@ -23,7 +23,7 @@ export default class extends Component {
     }
 
     return (
-      <Link href={href} title={href} target={target}>
+      <Link href={href} title={href} target={target} className='ld-link'>
         {this.props.children}
       </Link>
     )

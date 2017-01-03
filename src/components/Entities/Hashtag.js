@@ -13,7 +13,7 @@ export default class extends Component {
       ...otherProps
     } = this.props
     return (
-      <Hashtag {...otherProps} className='hashtag' />
+      <Hashtag {...otherProps} className='hashtag ld-hashtag' />
     )
   }
 }

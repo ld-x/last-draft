@@ -15,7 +15,7 @@ export default class extends Component {
 
   render () {
     return (
-      <VideoButton type='button' onClick={::this.onClick}>
+      <VideoButton type='button' onClick={::this.onClick} className='ld-video-block-button'>
         <icons.VideoIcon />
       </VideoButton>
     )
@@ -49,5 +49,8 @@ const VideoButton = styled.button`
     border-radius: 100%;
     display: inline-block;
     background-color: #181818;
+  }
+  &:focus {
+    outline: none;
   }
 `
