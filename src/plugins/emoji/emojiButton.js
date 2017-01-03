@@ -113,7 +113,6 @@ const EmojiModal = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 362px;
-  height: 192px;
   border: 1px solid #F1F1F1;
   padding: 15px;
   border-radius: 2px;
