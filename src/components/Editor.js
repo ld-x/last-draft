@@ -18,25 +18,54 @@ import {blockStyleFn} from '../utils/block'
 //import blockRendererFn from '../utils/block'
 
 export default class extends Component {
+  static get defaultProps () {
+    return {
+      plugins: ['image', 'video', 'emoji'],
+      toolbar: ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment'],
+      placeholder: 'Enter text...'
+    }
+  }
+
   constructor (props) {
     super(props)
     this.state = { readOnly: this.props.readOnly || false }
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
-    this.actions = Actions
+    this.actions = this.getActions()
     this.plugins = this.getValidPlugins()
     this.pluginsByType = this.getPluginsByType()
     this.keyBindings = this.props.keyBindings || []
   }
 
+  getActions () {
+    let actions = []
+    for (let action of Actions) {
+      if (!action || typeof action.type !== 'string') {
+        console.warn('Action: Missing `type` field. Details: ', action)
+        continue
+      }
+
+      let actionType = action.label
+      if (action.label.includes('alignment')) { actionType = 'alignment' }
+
+      if (this.props.toolbar.includes(actionType)) {
+        actions.push(action)
+      }
+    }
+    return actions
+  }
+
   getValidPlugins () {
     let plugins = []
-    for (let plugin of this.props.plugins || Plugins) {
+    for (let plugin of Plugins) {
       if (!plugin || typeof plugin.type !== 'string') {
         console.warn('Plugin: Missing `type` field. Details: ', plugin)
         continue
       }
-      plugins.push(plugin)
+
+      if (this.props.plugins.includes(plugin.type)) {
+        plugins.push(plugin)
+      }
     }
     return plugins
   }
@@ -116,13 +145,13 @@ export default class extends Component {
       return { component: Pullquote }
     }
     if (block.getType() === 'alignment-left') {
-      return { component: Alignment, props: { alignment: 'flex-start' } }
+      return { component: Alignment, props: { alignment: 'alignment-left' } }
     }
     if (block.getType() === 'alignment-center') {
       return { component: Alignment, props: { alignment: 'center' } }
     }
     if (block.getType() === 'alignment-right') {
-      return { component: Alignment, props: { alignment: 'flex-end' } }
+      return { component: Alignment, props: { alignment: 'alignment-right' } }
     }
 
     if (block.getType() !== 'atomic') { return null }
@@ -130,6 +159,7 @@ export default class extends Component {
     const type = block.getData().toObject().type
     let plugin = this.pluginsByType[type] || this.handleBlockNotFound(block)
     if (!plugin) { return null }
+    console.log(plugin)
 
     return {
       component: Media,
@@ -195,7 +225,6 @@ export default class extends Component {
           })}
           <Editor
             readOnly={this.state.readOnly}
-            plugins={plugins}
             blockRenderMap={blockRenderMap}
             blockRendererFn={::this.blockRendererFn}
             blockStyleFn={blockStyleFn}

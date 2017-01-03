@@ -55,12 +55,33 @@ function uploadImageCallBack(file) {
 
 ## Props
 
-#### `plugins` (required)
-Array of plugins to include, any of the following: `imagePlugin`, `emojiPlugin`, `hashtagPlugin`, `inlineToolbarPlugin`, `linkifyPlugin`, `mentionPlugin`, `sideToolbarPlugin`, `stickerPlugin`, `undoPlugin`, `videoPlugin`
+#### `plugins`
+Array of plugins to include, any of the following: `image`, `video` and `emoji` plugins. By default all plugins are included. `plugins: ['image', 'video', 'emoji']`
+
+#### `toolbar`
+Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `link`, `ul`, `ol`, `h2`, `blockquote`, `pullquote`, `alignment`. By default all toolbar buttons are included: `toolbar: ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']`
 
 ## Styles
 
-Are using styled-components so they should `just work` 💅 like magic. They append to a `<style>` tag if you want to be specific.
+Last Draft uses styled-components 💅 and some inline styles for the base styling. It also allows for you to add some custom css to override this base styling with the following class names:
+
+- Block styles
+`.header`
+`.unordered-list`
+`.ordered-list`
+`.pullquote`
+`.blockquote`
+`.align-wrapper`
+`.align-left`
+`.align-center`
+`.align-right`
+
+- Plugin Block styles
+
+- Inline Toolbar
+
+- Side Toolbar
+
 
 ## Development
 

@@ -6,7 +6,7 @@ export const blockRenderMap = Map({
     element: 'cite',
   },
   ['pullquote']: {
-    element: 'cite',
+    element: 'span',
   },
   ['alignment-left']: {
     element: 'div',
@@ -36,26 +36,15 @@ export function blockStyleFn (contentBlock) {
   if (type === 'pullquote') {
     return 'pullquote'
   }
-}
-
-/*
-export function blockRendererFn (setEditorState, getEditorState) => (block) => {
-  const type = contentBlock.getType()
-  if (block.getType() !== 'atomic') { return null }
-
-  const type = block.getData().toObject().type
-  let plugin = this.pluginsByType[type] || this.handleBlockNotFound(block)
-  if (!plugin) { return null }
-
-  return {
-    component: Media,
-    editable: false,
-    props: {
-      plugin: plugin,
-      onChange: this.onChange,
-      editorState: this.props.editorState,
-      setReadOnly: this.setReadOnly
-    }
+  if (type === 'header-two') {
+    return 'header'
+  }
+  if (type === 'unordered-list-item') {
+    return 'unordered-list'
+  }
+  if (type === 'ordered-list-item') {
+    return 'ordered-list'
   }
 }
-*/
+
+/* TODO: export function blockRendererFn here */
