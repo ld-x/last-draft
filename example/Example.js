@@ -35,7 +35,10 @@ function uploadImageCallBack(file) {
     (resolve, reject) => {
       /* simulate a 2 second call to parse file and return an img src... */
       setTimeout( () => {
-        resolve({ src: 'http://imgur.com/yrwFoXT.jpg' });
+        /* the image src would be a url from an S3 or database resouse */
+        const src = window.URL.createObjectURL(file)
+        //const src = 'http://imgur.com/yrwFoXT.jpg'
+        resolve({ src: src });
       }, 2000)
     }
   )

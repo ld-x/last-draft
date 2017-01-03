@@ -101,7 +101,7 @@ export default {
       "entityRanges": [],
       "data": {
         "type": "image",
-        "src": "http://imgur.com/yrwFoXT.jpg",
+        "src": "http://i.imgur.com/lN7yyxV.jpg",
         "caption": "Prayer of the Rollerboys!",
         "display": "big"
       }

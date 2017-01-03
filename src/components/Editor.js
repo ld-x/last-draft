@@ -62,8 +62,10 @@ export default class extends Component {
         console.warn('Plugin: Missing `type` field. Details: ', plugin)
         continue
       }
+      let pluginType = plugin.type
 
-      if (this.props.plugins.includes(plugin.type)) {
+      if (plugin.type.includes('placeholder')) { pluginType = 'image' }
+      if (this.props.plugins.includes(pluginType)) {
         plugins.push(plugin)
       }
     }
