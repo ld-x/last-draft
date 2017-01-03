@@ -11,6 +11,7 @@ import ImageIcon from './Image'
 import VideoIcon from './Video'
 import CropIcon from './Crop'
 import ErrorIcon from './Error'
+import EmojiIcon from './Emoji'
 import UnlinkIcon from './Unlink'
 import CloseIcon from './Close'
 import {AlignLeft, AlignCenter, AlignRight} from './Align'
@@ -29,6 +30,7 @@ const icons = {
   VideoIcon,
   CropIcon,
   ErrorIcon,
+  EmojiIcon,
   UnlinkIcon,
   CloseIcon,
   AlignLeft,
