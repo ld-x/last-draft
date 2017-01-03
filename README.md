@@ -4,7 +4,7 @@
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-![](https://raw.githubusercontent.com/StevenIseki/last-draft/master/example/public/screenshot.png)
+![](https://raw.githubusercontent.com/vacenz/last-draft/master/example/public/screenshot.png)
 
 last-draft is a Draft.js editor built with [draft-js-plugins](https://draft-js-plugins.com)
 
