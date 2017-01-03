@@ -107,13 +107,12 @@ const EmojiButton = styled.button`
 `
 
 const EmojiModal = styled.div`
-  overflow: auto;
   position: absolute;
   left: 2.5rem;
   margin-top: -2.4rem;
   display: flex;
   flex-wrap: wrap;
-  width: 382px;
+  width: 362px;
   height: 192px;
   border: 1px solid #F1F1F1;
   padding: 15px;

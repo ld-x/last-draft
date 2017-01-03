@@ -44,8 +44,8 @@ export default {
       "data": {}
     },
     {
-      "key": "1pdm1",
-      "text": "Custom Image and Video blocks",
+      "key": "4164j",
+      "text": "Full support for import and export to 🖊JSON and html",
       "type": "ordered-list-item",
       "depth": 0,
       "inlineStyleRanges": [],
@@ -54,7 +54,22 @@ export default {
     },
     {
       "key": "1sd0p",
-      "text": "A Customizable inline toolbar and Sidebar",
+      "text": "A Fully customizable inline toolbar and Sidebar",
+      "type": "ordered-list-item",
+      "depth": 0,
+      "inlineStyleRanges": [
+        {
+          "offset": 0,
+          "length": 47,
+          "style": "BOLD"
+        }
+      ],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "c4sc5",
+      "text": "#hastags and links http://vace.nz",
       "type": "ordered-list-item",
       "depth": 0,
       "inlineStyleRanges": [],
@@ -62,8 +77,8 @@ export default {
       "data": {}
     },
     {
-      "key": "c4sc5",
-      "text": "#hastags and links http://vace.nz",
+      "key": "1pdm1",
+      "text": "Custom Image and Video blocks",
       "type": "ordered-list-item",
       "depth": 0,
       "inlineStyleRanges": [],
@@ -80,8 +95,21 @@ export default {
       "data": {
         "type": "image",
         "src": "http://imgur.com/yrwFoXT.jpg",
-        "caption": "Picture from Somewhere",
+        "caption": "Prayer of the Rollerboys!",
         "display": "big"
+      }
+    },
+    {
+      "key": "d9v1o",
+      "text": "",
+      "type": "atomic",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [],
+      "data": {
+        "src": "https://www.youtube.com/watch?v=HBHJ0XGZfLs",
+        "type": "video",
+        "caption": "Fanta by easyFun",
       }
     },
     {

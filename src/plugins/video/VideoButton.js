@@ -6,7 +6,7 @@ const styled = require('styled-components').default
 export default class extends Component {
   onClick (e) {
     e.preventDefault()
-    const src = window.prompt('Enter a URL')
+    const src = window.prompt('Enter the video URL')
     if (!src) { return }
 
     const data = {src: src, type: 'video'}

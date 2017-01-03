@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Editor, editorStateFromHtml, editorStateFromRaw} from '../src/'
+import { Editor, editorStateFromHtml, editorStateFromRaw, editorStateToJSON } from '../src/'
 
 /* init the state, either from raw or html */
 import raw from './initialState/raw'
@@ -16,6 +16,7 @@ export default class ExampleEditor extends Component {
 
   onChange(value) {
     this.setState({ value })
+    console.log(editorStateToJSON(value))
   }
 
   render() {
