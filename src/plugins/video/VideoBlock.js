@@ -21,26 +21,39 @@ export default class extends Component {
     this.props.container.updateData({caption: event.target.value})
   }
 
-  getVideoId(url) {
-    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
-    var match = url.match(regExp)
+  getVideoIdYoutube(str) {
+    // link : https://youtube.com/watch?v=HBHJ0XGZfLs
+    // share : https://youtu.be/HBHJ0XGZfLs
+    // embed : https://youtube.com/embed/HBHJ0XGZfLs
+    var re = /\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9_\-]+)/i
+    var matches = re.exec(str)
+    return matches && matches[1]
+  }
 
-    if (match && match[2].length == 11) {
-      return match[2]
-    } else {
-      return null
-    }
+  getVideoIdVimeo(str) {
+    // embed & link: https://vimeo.com/713300
+    var re = /\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i
+    var matches = re.exec(str)
+    return matches && matches[1]
   }
 
   getVideoUrl(src) {
-    let id = this.getVideoId(src)
+    /* youtube */
+    let id = this.getVideoIdYoutube(src)
     if (id !== null) {
-      return `https://www.youtube.com/embed/${id}`
+      return `https://youtube.com/embed/${id}`
+    }
+
+    /* vimeo */
+    id = this.getVideoIdVimeo(src)
+    if (id !== null) {
+      return `https://player.vimeo.com/video/${id}`
     }
   }
 
   render () {
     let videoSrc = this.getVideoUrl(this.props.data.src)
+    if(videoSrc === undefined) { return null }
 
     return (
       <Block {...this.props} actions={this.actions}>
