@@ -40,6 +40,11 @@ class App extends Component {
     this.animateLogo()
   }
 
+  constructor (props) {
+    super(props)
+    this.state = { darkTheme: true }
+  }
+
   /* animated logo borrowed from the awesome https://www.draft-js-plugins.com/ */
   animateLogo = () => {
     const animate = require('animateplus')
@@ -94,9 +99,39 @@ class App extends Component {
     });
   };
 
+  switchTheme () {
+    console.log('ere we go...')
+    this.setState({darkTheme: !this.state.darkTheme}, () => {
+      /* switch off or on the dark styles */
+      let darkDisabled = !this.state.darkTheme
+      document.styleSheets[1].disabled = darkDisabled
+      document.styleSheets[3].disabled = darkDisabled
+    })
+  }
+
+  switchIcon () {
+    return (
+      <svg className='switch-icon' fill="#000000" height="24" viewBox="0 0 24 24" width="24">
+          <path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z" />
+          <path d="M0 0h24v24H0z" fill="none" />
+      </svg>
+    )
+  }
+
   render () {
     return (
       <div>
+        <span onClick={::this.switchTheme} className='switch-theme' >
+          {
+            this.state.darkTheme ? (
+              <p className='switch-to-normal'>normal theme</p>
+            ) : (
+              <p className='switch-to-dark'>dark theme</p>
+            )
+          }
+          { this.switchIcon() }
+        </span>
+
         <svg className='logo' viewBox='0 0 263 209' version='1.1'>
           <g id='Page-1' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
             <g id='Pencil' transform='translate(177.000000, 1.000000)' stroke='#979797' strokeWidth='2' fill='#FFFFFF'>
@@ -137,7 +172,7 @@ class App extends Component {
           </g>
         </svg>
 
-        <div className='githubWrapper' ref={(element) => { this.githubWrapper = element; }}>
+        <div className='github' ref={(element) => { this.githubWrapper = element; }}>
           <GithubButton />
         </div>
 

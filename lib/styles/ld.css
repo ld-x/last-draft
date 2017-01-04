@@ -1,0 +1,147 @@
+/* Last-draft specific styles */
+
+.last-draft-editor {
+  cursor: text;
+  padding: 1rem;
+}
+
+.DraftEditor-editorContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.paragraph + .paragraph {
+  margin-top: 2rem;
+}
+
+.public-DraftEditor-content figure {
+  margin: 1rem 0;
+}
+
+.public-DraftStyleDefault-ul {
+  list-style-type: disc;
+}
+
+.public-DraftStyleDefault-ol {
+  list-style-type: decimal;
+}
+
+.public-DraftStyleDefault-ol,
+.public-DraftStyleDefault-ul {
+  line-height: 2;
+  margin: 2.2rem 0 4rem 0;
+  padding-left: 2rem;
+}
+
+.public-DraftStyleDefault-ol li,
+.public-DraftStyleDefault-ul li {
+  padding-left: 1rem;
+}
+
+.public-DraftEditorPlaceholder-root {
+  color: #999;
+  position: absolute;
+  z-index: 0;
+}
+
+.public-DraftEditor-content h2 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 4rem 0 2rem 0;
+}
+
+.public-DraftEditor-content h2:first-child {
+  margin-top: 0;
+}
+
+/* blocks */
+.blockquote {
+  margin: 12px 0 40px 0;
+  padding: 1rem 2rem;
+  border-left: 2px solid #3192e7;
+}
+
+.pullquote {
+  display: block;
+  color: #223A87;
+  font-style: italic;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 4rem 0 2rem 0;
+}
+.pullquote:first-child {
+  margin-top: 0;
+}
+.header {
+  color: #223A87;
+}
+.hashtag {
+  color: red !important;
+}
+.unordered-list {}
+.ordered-list {}
+
+/* side toolbar blocks */
+.ld-block-wrapper {}
+.ld-block {}
+.ld-block-actions-wrapper {}
+.ld-block-actions {}
+.ld-block-action {}
+.ld-block-content {}
+.ld-block-input-wrapper {}
+.ld-block-input {}
+.ld-image-block {}
+.ld-image-placeholder-block {}
+.ld-image-block-button {}
+.ld-video-block-wrapper {}
+.ld-video-block {}
+.ld-video-button {}
+.ld-emoji {}
+.ld-emoji-modal {}
+.ld-emoji-close-icon {}
+.ld-emoji-block-button {}
+
+/* buttons */
+.ld-button-align-left {}
+.ld-button-align-center {}
+.ld-button-align-right {}
+.ld-blockquote {}
+.ld-button-bold {}
+.ld-button-close {}
+.ld-button-cross {}
+.ld-button-emoji {}
+.ld-button-error {}
+.ld-button-header {}
+.ld-button-image {}
+.ld-button-italic {}
+.ld-button-link {}
+.ld-button-ordered-list {}
+.ld-button-pullquote {}
+.ld-button-unordered-list {}
+.ld-button-unlink {}
+.ld-button-video {}
+
+/* entities */
+.ld-link {}
+.ld-hashtag {}
+
+/* sidebar */
+.ld-sidebar {}
+.ld-sidebar-menu-wrapper {}
+.ld-sidemenu-wrapper {}
+.ld-sidemenu {}
+.ld-sidemenu-button {}
+.ld-sidemenu-items {}
+.ld-sidemenu-item {}
+
+/* inline toolbar */
+.ld-toolbar-wrapper {}
+.ld-toolbar {}
+.ld-toolbar-error {}
+.ld-toolbar-arrow {}
+.ld-toolbar-button-wrapper {}
+.ld-toolbar-button {}
+.ld-link-toolbar-button {}
+.ld-link-toolbar-item {}
+.ld-link-toolbar-input {}

@@ -111,7 +111,11 @@ function uploadImageCallBack(file) {
 
 Last Draft uses styled-components 💅 for the base styling.
 
-You can add custom css to override this base styling with the following class names:
+You can add custom css to override this base styling with the following class names specified below:
+
+It is simple to customize elements in the editor, as shown in the [example](http://lastdraft.vace.nz) which switches between the base [ld.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/ld.css) styles and a dark theme of styles [ld-dark.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/ld-dark.css).
+
+You also need to include the base [draft.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/draft.css) styles, similar to with any Draft.js Editor.
 
 **Block styles**
 

@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "standard 'src/**/*.js' && tape test/index.js",
-    "build": "rm -rf lib && babel src --out-dir lib --copy-files",
+    "build": "rm -rf lib && babel src --out-dir lib --copy-files && npm run styles",
+    "styles": "cp -r example/styles lib && rm lib/styles/example.css && rm lib/styles/example-dark.css",
     "site": "NODE_ENV=prod webpack --config example/webpack.config.prod",
     "dev": "NODE_ENV=dev webpack-dev-server --port 3000 --inline --hot --config example/webpack.config"
   },

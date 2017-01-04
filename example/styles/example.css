@@ -10,11 +10,12 @@ body {
   font-size: 16px;
   line-height: 1.4;
   font-family: 'Open Sans', sans-serif;
+  /* light theme */
   color: #555;
+  background: #fff;
 }
 
 #root {
-  background: white;
   margin: 5rem;
   margin-top: 1rem;
 }
@@ -25,10 +26,53 @@ body {
   height: 10rem;
 }
 
-.githubWrapper {
+.github {
   display: block;
   margin-bottom: 2em;
   height: 33px;
   opacity: 0;
   text-align: center;
+}
+
+.switch-theme {
+  position: fixed;
+  display: flex;
+  top: 0;
+  right: 0;
+}
+.switch-theme:after {
+  content: '';
+  border-right: 8rem solid #9d1d20;
+  border-bottom: 8rem solid transparent;
+}
+
+.switch-theme p {
+  position: absolute;
+  right: 0.4rem;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+
+.switch-to-dark {
+  font-family: 'Shadows Into Light', cursive;
+  color: #fff;
+}
+.switch-to-normal {
+  color: #fff;
+  font-size: 14px;
+  margin-top: 1rem;
+}
+
+.switch-icon {
+  position: absolute;
+  right: 0.4rem;
+  top: 2.4rem;
+  width: 2rem;
+  height: 2rem;
+  fill: #fff;
+  cursor: pointer;
+}
+
+.switch-icon:hover {
+  opacity: 0.7;
 }
