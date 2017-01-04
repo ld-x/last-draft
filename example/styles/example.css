@@ -42,8 +42,8 @@ body {
 }
 .switch-theme:after {
   content: '';
-  border-right: 8rem solid #9d1d20;
-  border-bottom: 8rem solid transparent;
+  border-right: 9rem solid #9d1d20;
+  border-bottom: 9rem solid transparent;
 }
 
 .switch-theme p {
@@ -59,8 +59,8 @@ body {
 }
 .switch-to-normal {
   color: #fff;
-  font-size: 14px;
-  margin-top: 1rem;
+  font-size: 13.2px;
+  margin-top: 1.2rem;
 }
 
 .switch-icon {
