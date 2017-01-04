@@ -6,7 +6,7 @@
 
 ![](https://raw.githubusercontent.com/vacenz/last-draft/master/example/public/screenshot.png)
 
-last-draft is a Draft.js editor built with inspired heavily by [MegaDraft](https://github.com/globocom/megadraft) and [draft-js-plugins](https://draft-js-plugins.com)
+last-draft is a Draft.js editor inspired heavily by [MegaDraft](https://github.com/globocom/megadraft) and [draft-js-plugins](https://draft-js-plugins.com)
 
 # Install
 ```jsx
