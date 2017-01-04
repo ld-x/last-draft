@@ -17,12 +17,8 @@ export default class extends Component {
       return <Separator />
     }
 
-    let toolbarStyle = {
-      color: active ? '#3192e7' : '#ccc'
-    }
-
     return (
-      <ToolbarButtonWrapper style={toolbarStyle} className='ld-toolbar-button-wrapper'>
+      <ToolbarButtonWrapper active={active} className='ld-toolbar-button-wrapper'>
         <ToolbarButton
           className='ld-toolbar-button'
           onClick={() => this.toggleAction(this.props)}
@@ -38,8 +34,12 @@ export default class extends Component {
 const ToolbarButtonWrapper = styled.li`
   display: inline-block;
   margin: 0 !important;
+  color: ${props => props.active ? '#3192e7' : '#ccc'};
   &:hover {
-    color: #fff !important;
+    color: #fff;
+  }
+  &:aci {
+    color: #fff;
   }
 `
 

@@ -138,21 +138,11 @@ export default class extends Component {
       toolbarStyle = Object.assign(position, toolbarStyle)
       toolbarStyle = {...toolbarStyle }
     }
-    let toolbarWrapperStyle = {
-      backgroundColor: error ? '#E83F26' : '#181818'
-    }
-
-    let toolbarErrorStyle = {
-      margin: error ? '-8px 0 0 20px' : '0',
-      height: error ? '28px' : '0',
-      paddingBottom: error ? '12px' : '0'
-    }
-
 
     return (
       <ToolbarWrapper ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
         <div style={{position: 'absolute', bottom: 0}}>
-          <Toolbar ref='toolbar' style={toolbarWrapperStyle} className='ld-toolbar'>
+          <Toolbar ref='toolbar' error={error} className='ld-toolbar'>
             {
               this.state.editingEntity ?
                 <LinkToolbar
@@ -163,9 +153,9 @@ export default class extends Component {
                   entityType={this.state.editingEntity} /> :
                 this.renderToolList()
             }
-            <ToolbarErrorMsg style={toolbarErrorStyle} className='ld-toolbar-error'>
+            <ToolbarError error={error} className='ld-toolbar-error'>
               {this.state.error}
-            </ToolbarErrorMsg>
+            </ToolbarError>
             <ToolbarArrow className='ld-toolbar-arrow' />
           </Toolbar>
         </div>
@@ -187,7 +177,7 @@ const ToolbarWrapper = styled.div`
 `
 
 const Toolbar = styled.div`
-  background: #181818;
+  background: ${props => props.error ? '#E83F26' : '#181818'};
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
   left: -50%;
@@ -216,9 +206,10 @@ const ToolbarArrow = styled.span`
   transition: border-color 0.2s ease-in-out;
 `
 
-const ToolbarErrorMsg = styled.p`
-  margin: 0;
-  height: 0;
+const ToolbarError = styled.p`
+  margin: ${props => props.error ? '-8px 0 0 20px' : '0'};
+  height: ${props => props.error ? '28px' : '0'};
+  padding-bottom: ${props => props.error ? '12px' : '0'};
   transition: height 0.2s ease-in-out;
   color: #FFF;
   font-size: 12px;
