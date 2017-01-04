@@ -18,7 +18,8 @@ npm install last-draft --save
 ## Example
 
 Check out this awesome 🌠🎉🏄 [Last Draft example](https://github.com/vacenz/last-draft-example)
-To run the example simply `git clone` the repo, then run `yarn install` and `npm run dev`
+
+To run the example simply `git clone`, then run `yarn install` and `npm run dev`
 
 ## Use
 ```jsx
@@ -108,7 +109,9 @@ function uploadImageCallBack(file) {
 
 ## Styles
 
-Last Draft uses styled-components 💅 for the base styling. It also allows you to add some custom css to override this base styling with the following class names:
+Last Draft uses styled-components 💅 for the base styling.
+
+You can add custom css to override this base styling with the following class names:
 
 **Block styles**
 

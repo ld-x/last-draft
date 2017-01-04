@@ -46,5 +46,3 @@ export function blockStyleFn (contentBlock) {
     return 'ordered-list'
   }
 }
-
-/* TODO: export function blockRendererFn here */
