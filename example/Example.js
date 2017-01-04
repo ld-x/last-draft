@@ -1,34 +1,47 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Editor, editorStateFromHtml, editorStateFromRaw, editorStateToJSON } from '../src/'
+import {Editor, editorStateFromHtml, editorStateToHtml, editorStateFromRaw, editorStateToJSON} from '../src/'
 
 /* init the state, either from raw or html */
-import raw from './initialState/raw'
-import html from './initialState/html'
+import RAW from './initialState/raw'
+import HTML from './initialState/html'
+
+/* init inline and side toolbars, optional if you want all items present */
+let SIDE_TOOLBAR = ['image', 'video', 'emoji']
+let INLINE_TOOLBAR = ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']
 
 export default class ExampleEditor extends Component {
   constructor(props) {
     super(props)
-    const INITIAL_STATE = editorStateFromRaw(raw)
-    //const INITIAL_STATE = editorStateFromHtml(html)
+    const INITIAL_STATE = editorStateFromRaw(RAW)
+    //const INITIAL_STATE = editorStateFromHtml(HTML)
     this.state = { value: INITIAL_STATE }
   }
 
-  onChange(value) {
-    this.setState({ value })
-    console.log(editorStateToJSON(value))
+  onChange(editorState) {
+    this.setState({ value: editorState })
+    /*
+      You would normally save this to your database here instead of logging it
+      There will be a small performance overhead doing this onChange
+      You could instead only save to state when explicitly required, e.g. clicking on save button.
+    */
+    console.log(editorStateToHtml(editorState))
+    console.log(editorStateToJSON(editorState))
   }
 
   render() {
     return (
       <Editor
         editorState={this.state.value}
+        sideToolbar={SIDE_TOOLBAR}
+        inlineToolbar={INLINE_TOOLBAR}
         placeholder='Text'
         uploadImageCallBack={uploadImageCallBack}
         onChange={::this.onChange} />
     )
   }
 }
+
 
 function uploadImageCallBack(file) {
   return new Promise(

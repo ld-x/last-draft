@@ -20,8 +20,8 @@ import {blockStyleFn} from '../utils/block'
 export default class extends Component {
   static get defaultProps () {
     return {
-      plugins: ['image', 'video', 'emoji'],
-      toolbar: ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment'],
+      sideToolbar: ['image', 'video', 'emoji'],
+      inlineToolbar: ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment'],
       placeholder: 'Enter text...'
     }
   }
@@ -48,7 +48,7 @@ export default class extends Component {
       let actionType = action.label
       if (action.label.includes('alignment')) { actionType = 'alignment' }
 
-      if (this.props.toolbar.includes(actionType)) {
+      if (this.props.inlineToolbar.includes(actionType)) {
         actions.push(action)
       }
     }
@@ -63,9 +63,9 @@ export default class extends Component {
         continue
       }
       let pluginType = plugin.type
-
       if (plugin.type.includes('placeholder')) { pluginType = 'image' }
-      if (this.props.plugins.includes(pluginType)) {
+
+      if (this.props.sideToolbar.includes(pluginType)) {
         plugins.push(plugin)
       }
     }

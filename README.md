@@ -15,71 +15,102 @@ npm install last-draft --save
 
 # Docs
 
+## Example
+
+Check out this awesome 🌠🎉🏄 [Last Draft example](https://github.com/vacenz/last-draft-example)
+To run the example simply `git clone` the repo, then run `yarn install` and `npm run dev`
+
 ## Use
 ```jsx
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import {editorStateFromHtml, editorStateFromRaw} from 'last-draft'
-import { Editor } from 'last-draft'
+import {Editor, editorStateFromHtml, editorStateToHtml, editorStateFromRaw, editorStateToJSON} from 'last-draft'
+
+/* init the state, either from raw or html */
+import raw from './initialState/raw'
 
 export default class ExampleEditor extends Component {
   constructor(props) {
     super(props)
-    this.state = { value: editorStateFromRaw(raw) }
+    const INITIAL_STATE = editorStateFromRaw(raw)
+    this.state = { value: INITIAL_STATE }
   }
 
-  onChange(value) {
-    this.setState({ value })
+  onChange(editorState) {
+    this.setState({ value: editorState })
+    console.log(editorStateToHtml(editorState))
+    console.log(editorStateToJSON(editorState))
   }
 
   render() {
     return (
       <Editor
         editorState={this.state.value}
-        placeholder="Text"
-        uploadImageCallBack={uploadImageCallBack}
+        placeholder='Enter text...'
         onChange={::this.onChange} />
     )
   }
 }
+```
+
+## Props
+
+#### `sideToolbar`
+Array of plugins to include in the sideToolbar, any of the following: `image`, `video` and `emoji` plugins.
+
+By default all sideToolbar plugins are included:
+
+```jsx
+let SIDE_TOOLBAR = ['image', 'video', 'emoji']
+
+<Editor
+  editorState={this.state.value}
+  sideToolbar={SIDE_TOOLBAR}
+  onChange={::this.onChange} />
+```
+
+#### `inlineToolbar`
+Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `link`, `ul`, `ol`, `h2`, `blockquote`, `pullquote`, `alignment`.
+
+By default all inlineToolbar buttons are included:
+
+```jsx
+let INLINE_TOOLBAR = ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']
+
+<Editor
+  editorState={this.state.value}
+  inlineToolbar={INLINE_TOOLBAR}
+  onChange={::this.onChange} />
+```
+
+#### `uploadImageCallBack`
+
+A callback to parse the url for example uploading the file to S3 or a database and returning the url. Returns a promise which should return an object with a src property e.g. `resolve({ src: 'http://imgur.com/yrwFoXT.jpg' })`
+
+```jsx
+<Editor
+  editorState={this.state.value}
+  uploadImageCallBack={uploadImageCallBack}
+  onChange={::this.onChange} />
 
 function uploadImageCallBack(file) {
   return new Promise(
     (resolve, reject) => {
-      /* simulate a 2 second call to parse file and return an img src... */
+      /* simulating a 2 second call to parse file and return an img src... */
       setTimeout( () => {
-        resolve({ src: 'http://imgur.com/yrwFoXT.jpg' });
+        const src = 'http://imgur.com/yrwFoXT.jpg'
+        resolve({ src: src })
       }, 2000)
     }
   )
 }
 ```
 
-## Props
-
-#### `plugins`
-Array of plugins to include, any of the following: `image`, `video` and `emoji` plugins.
-
-By default all plugins are included:
-
-```jsx
-plugins: ['image', 'video', 'emoji']
-```
-
-#### `toolbar`
-Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `link`, `ul`, `ol`, `h2`, `blockquote`, `pullquote`, `alignment`.
-
-By default all toolbar buttons are included:
-
-```jsx
-toolbar: ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']
-```
-
 ## Styles
 
-Last Draft uses styled-components 💅 for the base styling. It also allows for you to add some custom css to override this base styling with the following class names:
+Last Draft uses styled-components 💅 for the base styling. It also allows you to add some custom css to override this base styling with the following class names:
 
-- Block styles
+**Block styles**
 
 ```css
 .header {}
@@ -93,14 +124,14 @@ Last Draft uses styled-components 💅 for the base styling. It also allows for 
 .align-right {}
 ```
 
-- Entity styles
+**Entity styles**
 
 ```css
 .ld-link {}
 .ld-hashtag {}
 ```
 
-- Plugin Block styles
+**Plugin Block styles**
 
 ```css
 .ld-block-wrapper {}
@@ -123,7 +154,7 @@ Last Draft uses styled-components 💅 for the base styling. It also allows for 
 .ld-emoji-block-button {}
 ```
 
-- Button styles
+**Button styles**
 
 ```css
 .ld-button-align-left {}
@@ -146,7 +177,7 @@ Last Draft uses styled-components 💅 for the base styling. It also allows for 
 .ld-button-video {}
 ```
 
-- Inline Toolbar
+**Inline Toolbar**
 
 ```css
 .ld-toolbar-wrapper {}
@@ -160,7 +191,7 @@ Last Draft uses styled-components 💅 for the base styling. It also allows for 
 .ld-link-toolbar-input {}
 ```
 
-- Side Toolbar
+**Side Toolbar**
 
 ```css
 .ld-sidebar {}
