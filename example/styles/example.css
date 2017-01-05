@@ -16,8 +16,11 @@ body {
 }
 
 #root {
-  margin: 5rem;
+  margin: 2rem;
   margin-top: 1rem;
+}
+@media (min-width: 768px) {
+  #root { margin: 5rem; }
 }
 
 .logo {

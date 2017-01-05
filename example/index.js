@@ -124,7 +124,7 @@ class App extends Component {
         <span onClick={::this.switchTheme} className='switch-theme' >
           {
             this.state.darkTheme ? (
-              <p className='switch-to-normal'>try normal theme</p>
+              <p className='switch-to-normal'>try light theme</p>
             ) : (
               <p className='switch-to-dark'>try dark theme</p>
             )

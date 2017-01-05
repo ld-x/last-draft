@@ -71,12 +71,12 @@ let SIDE_TOOLBAR = ['image', 'video', 'emoji']
 ```
 
 #### `inlineToolbar`
-Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `link`, `ul`, `ol`, `h2`, `blockquote`, `pullquote`, `alignment`.
+Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `strikethrough`, `code`, `link`, `ul`, `ol`, `h2`, `blockquote`, `pullquote`, `alignment`.
 
 By default all inlineToolbar buttons are included:
 
 ```jsx
-let INLINE_TOOLBAR = ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']
+let INLINE_TOOLBAR = ['bold', 'italic', 'strikethrough', 'code' 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']
 
 <Editor
   editorState={this.state.value}

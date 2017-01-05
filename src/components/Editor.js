@@ -16,12 +16,13 @@ import insertDataBlock from '../utils/insertDataBlock'
 import {blockRenderMap} from '../utils/block'
 import {blockStyleFn} from '../utils/block'
 //import blockRendererFn from '../utils/block'
+import {styleMap} from '../utils/block'
 
 export default class extends Component {
   static get defaultProps () {
     return {
       sideToolbar: ['image', 'video', 'emoji'],
-      inlineToolbar: ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment'],
+      inlineToolbar: ['bold', 'italic', 'code', 'strikethrough', 'dropcaps', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote'],
       placeholder: 'Enter text...'
     }
   }
@@ -225,6 +226,7 @@ export default class extends Component {
             uploadImageCallBack: this.props.uploadImageCallBack
           })}
           <Editor
+            customStyleMap={styleMap}
             readOnly={this.state.readOnly}
             blockRenderMap={blockRenderMap}
             blockRendererFn={::this.blockRendererFn}

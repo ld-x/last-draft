@@ -13,6 +13,8 @@ import ErrorIcon from './Error'
 import EmojiIcon from './Emoji'
 import UnlinkIcon from './Unlink'
 import CloseIcon from './Close'
+import Code from './Code'
+import Strike from './Strike'
 import {AlignLeft, AlignCenter, AlignRight} from './Align'
 
 const icons = {
@@ -33,7 +35,9 @@ const icons = {
   CloseIcon,
   AlignLeft,
   AlignCenter,
-  AlignRight
+  AlignRight,
+  Code,
+  Strike
 }
 
 export default icons

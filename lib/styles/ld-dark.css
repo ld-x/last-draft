@@ -118,7 +118,7 @@
 .ld-button-align-right {}
 .ld-blockquote {}
 .ld-button-bold {}
-.ld-button-close {}
+.ld-button-close { color: #80172F !important; }
 .ld-button-cross {}
 .ld-button-emoji {}
 .ld-button-error {}
@@ -153,8 +153,8 @@
 }
 
 .ld-toolbar { background: white !important; }
-.ld-toolbar-error {}
-.ld-toolbar-arrow {}
+.ld-toolbar-error { color: #181818 !important; }
+.ld-toolbar-arrow { border-color: white transparent transparent !important; }
 .ld-toolbar-button-wrapper { color: #181818 !important; }
 .ld-toolbar-button-wrapper:hover {
   color: #181818 !important;
@@ -164,4 +164,4 @@
 .ld-toolbar-button {}
 .ld-link-toolbar-button {}
 .ld-link-toolbar-item {}
-.ld-link-toolbar-input {}
+.ld-link-toolbar-input { color: #181818 !important; }

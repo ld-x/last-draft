@@ -8,7 +8,7 @@ import HTML from './initialState/html'
 
 /* init inline and side toolbars, optional if you want all items present */
 let SIDE_TOOLBAR = ['image', 'video', 'emoji']
-let INLINE_TOOLBAR = ['bold', 'italic', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']
+let INLINE_TOOLBAR = ['bold', 'italic', 'strikethrough', 'code', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote']
 
 export default class ExampleEditor extends Component {
   constructor(props) {
