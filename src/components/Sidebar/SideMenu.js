@@ -26,7 +26,8 @@ export default class extends Component {
     }
 
     let menuItemsStyle = {
-      maxHeight: open ? '116px' : 0
+      maxHeight: open ? '116px' : 0,
+      opacity: open ? 1 : 0
     }
 
     return (
@@ -76,10 +77,11 @@ const SideMenuItems = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  transition: max-height 0.5s ease;
+  transition: all 0.3s ease;
   overflow: hidden;
   width: 36px;
   text-align: center;
+  border-radius:30px;
 `
 
 const SideMenuButton = styled.button`
@@ -90,8 +92,8 @@ const SideMenuButton = styled.button`
   font-size: 0;
   padding: 0;
   width: 32px;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
   background: none;
 
