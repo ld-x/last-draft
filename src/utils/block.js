@@ -31,18 +31,18 @@ export function blockStyleFn (contentBlock) {
     return 'paragraph'
   }
   if (type === 'blockquote') {
-    return 'blockquote'
+    return 'ld-blockquote'
   }
   if (type === 'pullquote') {
-    return 'pullquote'
+    return 'ld-pullquote'
   }
   if (type === 'header-two') {
-    return 'header'
+    return 'ld-header'
   }
   if (type === 'unordered-list-item') {
-    return 'unordered-list'
+    return 'ld-unordered-list'
   }
   if (type === 'ordered-list-item') {
-    return 'ordered-list'
+    return 'ld-ordered-list'
   }
 }

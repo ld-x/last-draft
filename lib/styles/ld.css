@@ -55,13 +55,13 @@
 }
 
 /* blocks */
-.blockquote {
+.ld-blockquote {
   margin: 12px 0 40px 0;
   padding: 1rem 2rem;
   border-left: 2px solid #3192e7;
 }
 
-.pullquote {
+.ld-pullquote {
   display: block;
   color: #223A87;
   font-style: italic;
@@ -70,17 +70,17 @@
   line-height: 1.2;
   margin: 4rem 0 2rem 0;
 }
-.pullquote:first-child {
+.ld-pullquote:first-child {
   margin-top: 0;
 }
 .header {
   color: #223A87;
 }
-.hashtag {
+.ld-hashtag {
   color: red !important;
 }
-.unordered-list {}
-.ordered-list {}
+.ld-unordered-list {}
+.ld-ordered-list {}
 
 /* side toolbar blocks */
 .ld-block-wrapper {}
@@ -106,7 +106,7 @@
 .ld-button-align-left {}
 .ld-button-align-center {}
 .ld-button-align-right {}
-.ld-blockquote {}
+.ld-button-blockquote {}
 .ld-button-bold {}
 .ld-button-close {}
 .ld-button-cross {}

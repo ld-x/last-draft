@@ -25,6 +25,22 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
           data: { src: node.src, type: 'image' }
         }
       }
+
+      if (nodeName === 'span') {
+        if(node.className === 'ld-pullquote'){
+          return {
+            type: 'pullquote'
+          };
+        }
+      }
+
+      if (nodeName === 'blockquote') {
+        if(node.className === 'ld-blockquote'){
+          return {
+            type: 'blockquote'
+          };
+        }
+      }
     }
   })(html)
 
@@ -42,6 +58,14 @@ export function editorStateToHtml (editorState) {
           if (url) {
             return `<img src='${url}' />`
           }
+        },
+        blockquote: (block) => {
+          let text = block.getText()
+          return `<blockquote class='ld-blockquote' >${text}</blockquote>`
+        },
+        pullquote: (block) => {
+          let text = block.getText()
+          return `<span class='ld-pullquote' >${text}</span>`
         }
       }
     })

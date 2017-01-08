@@ -57,13 +57,13 @@
 }
 
 /* blocks */
-.blockquote {
+.ld-blockquote {
   margin: 12px 0 40px 0;
   padding: 1rem 2rem;
   border-left: 2px solid #80172F;
 }
 
-.pullquote {
+.ld-pullquote {
   display: block;
   color: #80172F;
   font-style: italic;
@@ -73,14 +73,14 @@
   margin: 4rem 0 2rem 0;
   font-family: 'Shadows Into Light', cursive;
 }
-.pullquote:first-child { margin-top: 0; }
-.header {
+.ld-pullquote:first-child { margin-top: 0; }
+.ld-header {
   color: #80172F;
   font-family: 'Shadows Into Light', cursive;
 }
-.hashtag { color: #C50002 !important; }
-.unordered-list {}
-.ordered-list {}
+.ld-hashtag { color: #C50002 !important; }
+.ld-unordered-list {}
+.ld-ordered-list {}
 
 /* side toolbar blocks */
 .ld-block-wrapper { }
@@ -116,7 +116,7 @@
 .ld-button-align-left {}
 .ld-button-align-center {}
 .ld-button-align-right {}
-.ld-blockquote {}
+.ld-button-blockquote {}
 .ld-button-bold {}
 .ld-button-close { color: #80172F !important; }
 .ld-button-cross {}

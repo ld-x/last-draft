@@ -44,6 +44,7 @@ const ImageButton = styled.button`
   transition: all 0.5s ease;
   position: relative;
   background: none;
+  margin-top: 1px;
 
   &:before {
     transition: all 0.1s ease-in-out;

@@ -120,15 +120,15 @@ You also need to include the base [draft.css](https://github.com/vacenz/last-dra
 **Block styles**
 
 ```css
-.header {}
-.unordered-list {}
-.ordered-list {}
-.pullquote {}
-.blockquote {}
-.align-wrapper {}
-.align-left {}
-.align-center {}
-.align-right {}
+.ld-header {}
+.ld-unordered-list {}
+.ld-ordered-list {}
+.ld-pullquote {}
+.ld-blockquote {}
+.ld-align-wrapper {}
+.ld-align-left {}
+.ld-align-center {}
+.ld-align-right {}
 ```
 
 **Entity styles**
