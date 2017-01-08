@@ -170,7 +170,6 @@ const ToolbarWrapper = styled.div`
   font-size: 1.125rem;
   letter-spacing: -0.037rem;
   line-height: 1.75rem;
-  background: yellow;
   height: 0;
   position: relative;
   z-index: 10;
@@ -212,6 +211,6 @@ const ToolbarError = styled.p`
   padding-bottom: ${props => props.error ? '12px' : '0'};
   transition: height 0.2s ease-in-out;
   color: #FFF;
-  font-size: 12px;
+  font-size: 12px !important;
   font-weight: bold;
 `

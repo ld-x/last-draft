@@ -16,7 +16,7 @@ export default class extends React.Component {
 
 const CrossIcon = styled.svg`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -12px 0 0 -12px;
+  transform: scale(0.8);
+  top: 0;
+  left: 0;
 `

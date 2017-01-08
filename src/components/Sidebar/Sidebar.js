@@ -73,6 +73,6 @@ const Sidebar = styled.div`
 
 const SidebarMenuWrapper = styled.div`
   float: left;
-  left: -45px;
+  left: -44px;
   position: absolute;
 `

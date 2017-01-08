@@ -90,9 +90,9 @@ const LinkToolbarInput = styled.input`
   color: #fafafa;
   font-size: 14px;
   height: auto;
-  line-height: 1.2rem;
+  line-height: 1.2;
   margin: 0;
-  padding: 20px;
+  padding: 14px;
   width: 250px;
 
   &:focus {
@@ -105,7 +105,7 @@ const LinkToolbarButton = styled.button`
   color: inherit;
   cursor: pointer;
   border: 0;
-  height: 46px;
+  height: 40px;
   width: 40px;
   background: transparent;
   padding-right: 16px;

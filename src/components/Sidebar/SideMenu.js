@@ -75,9 +75,11 @@ const SideMenu = styled.li`
 `
 
 const SideMenuItems = styled.ul`
+  maxHeight: ${props => props.open ? '116px' : 0};
+  opacity: ${props => props.open ? 1 : 0};
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-top: -2px;
   transition: all 0.3s ease;
   overflow: hidden;
   width: 36px;
@@ -86,14 +88,14 @@ const SideMenuItems = styled.ul`
 `
 
 const SideMenuButton = styled.button`
+  transform: ${props => props.open ? 'rotate(45deg)' : 'none'};
   border: 0;
   color: #fff;
   cursor: pointer;
-  height: 32px;
+  height: 24px;
   font-size: 0;
   padding: 0;
-  width: 32px;
-  -webkit-transition: all 0.3s ease;
+  width: 24px;
   transition: all 0.3s ease;
   position: relative;
   background: none;
@@ -104,7 +106,7 @@ const SideMenuButton = styled.button`
     height: 100%;
     border-radius: 100%;
     display: inline-block;
-    background-color: #181818;
+    background-color: ${props => props.open ? '#9d1d20' : '#181818'};
   }
 
   &:focus {
@@ -113,7 +115,7 @@ const SideMenuButton = styled.button`
 `
 
 const SideMenuItem = styled.li`
-  height: 40px;
-  padding-top: 2px;
+  padding: 0;
   margin: 0;
+  height: 30px;
 `

@@ -7,10 +7,7 @@ import BlockQuoteIcon from './Blockquote'
 import PullQuoteIcon from './Pullquote'
 import LinkIcon from './Link'
 import CrossIcon from './Cross'
-import ImageIcon from './Image'
-import VideoIcon from './Video'
 import ErrorIcon from './Error'
-import EmojiIcon from './Emoji'
 import UnlinkIcon from './Unlink'
 import CloseIcon from './Close'
 import Code from './Code'
@@ -27,10 +24,7 @@ const icons = {
   PullQuoteIcon,
   LinkIcon,
   CrossIcon,
-  ImageIcon,
-  VideoIcon,
   ErrorIcon,
-  EmojiIcon,
   UnlinkIcon,
   CloseIcon,
   AlignLeft,

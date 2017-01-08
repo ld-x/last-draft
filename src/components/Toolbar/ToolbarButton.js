@@ -34,7 +34,7 @@ export default class extends Component {
 const ToolbarButtonWrapper = styled.li`
   display: inline-block;
   margin: 0 !important;
-  color: ${props => props.active ? '#3192e7' : '#ccc'};
+  color: ${props => props.active ? '#9d1d20' : '#ccc'};
   &:hover {
     color: #fff;
   }
@@ -48,7 +48,7 @@ const ToolbarButton = styled.button`
   color: inherit;
   cursor: pointer;
   border: 0;
-  height: 46px;
+  height: 40px;
   width: 40px;
   line-height: 1;
   background: transparent;
