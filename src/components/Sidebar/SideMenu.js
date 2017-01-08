@@ -49,6 +49,7 @@ export default class extends Component {
                 <SideMenuItem key={item.type} className='ld-sidemenu-item'>
                   <Button
                     uploadImageCallBack={this.props.uploadImageCallBack}
+                    uploadFile={this.props.uploadFile}
                     editorState={this.props.editorState}
                     onChange={::this.onChange} />
                 </SideMenuItem>

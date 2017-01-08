@@ -11,27 +11,8 @@ export default class extends Component {
   }
 
   inputChange (e) {
-    const { editorState, onChange, uploadImageCallBack } = this.props
     const file = e.target.files[0]
-    if (file.type.indexOf('image/') !== 0) { return }
-
-    if (uploadImageCallBack !== undefined) {
-      /* show placeholder */
-      const src = window.URL.createObjectURL(file)
-      const imageData = {src: src, type: 'placeholder'}
-      onChange(insertDataBlock(editorState, imageData))
-
-      uploadImageCallBack(file)
-      .then((data) => {
-        /* show loaded image */
-        const imageData = {src: data.src, type: 'image'}
-        onChange(insertDataBlock(editorState, imageData))
-      })
-    } else {
-      const src = window.URL.createObjectURL(file)
-      const imageData = {src: src, type: 'image'}
-      onChange(insertDataBlock(editorState, imageData))
-    }
+    this.props.uploadFile(file)
   }
 
   render () {

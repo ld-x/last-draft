@@ -29,9 +29,13 @@ export default class extends Component {
 
   constructor (props) {
     super(props)
-    this.state = { readOnly: this.props.readOnly || false }
+    this.state = {
+      readOnly: this.props.readOnly || false,
+      uploading: false
+    }
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
+    this.uploadFile = ::this.uploadFile
     this.actions = this.getActions()
     this.plugins = this.getValidPlugins()
     this.pluginsByType = this.getPluginsByType()
@@ -187,10 +191,14 @@ export default class extends Component {
     return <Toolbar {...props} />
   }
 
-  handleDroppedFiles (selection, files) {
+  uploadFile(file, selection) {
     const { uploadImageCallBack, editorState } = this.props
-    const file = files[0]
+    const { uploading } = this.state
+
     if (file.type.indexOf('image/') !== 0) { return }
+    if (uploading) { return }
+
+    this.setState({ uploading: true })
 
     if (uploadImageCallBack !== undefined) {
       /* show placeholder */
@@ -203,12 +211,19 @@ export default class extends Component {
         /* show loaded image */
         const imageData = {src: data.src, type: 'image'}
         this.onChange(insertDataBlock(editorState, imageData, selection))
+        this.setState({ uploading: false })
       })
     } else {
       const src = window.URL.createObjectURL(file)
       const imageData = {src: src, type: 'image'}
       this.onChange(insertDataBlock(editorState, imageData, selection))
+      this.setState({ uploading: false })
     }
+  }
+
+  handleDroppedFiles (selection, files) {
+    const file = files[0]
+    this.uploadFile(file, selection)
   }
 
   render () {
@@ -223,6 +238,7 @@ export default class extends Component {
             editorState,
             readOnly: this.state.readOnly,
             onChange: this.onChange,
+            uploadFile: this.uploadFile,
             uploadImageCallBack: this.props.uploadImageCallBack
           })}
           <Editor
