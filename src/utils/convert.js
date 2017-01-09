@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2016, Globo.com (https://github.com/globocom)
+ * Copyright (c) 2016, vace.nz (https://github.com/vacenz)
+ *
+ * License: MIT
+ */
+
 import {convertFromHTML} from 'draft-convert'
 import {stateToHTML} from 'draft-js-export-html'
 import {Entity, convertToRaw, convertFromRaw, EditorState} from 'draft-js'

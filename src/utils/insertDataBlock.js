@@ -1,6 +1,12 @@
+/*
+ * Copyright (c) 2016, Globo.com (https://github.com/globocom)
+ * Copyright (c) 2016, vace.nz (https://github.com/vacenz)
+ *
+ * License: MIT
+ */
+
 import Immutable from 'immutable'
 import {genKey, EditorState, ContentBlock, Modifier, BlockMapBuilder} from 'draft-js'
-
 const { List, Map } = Immutable
 
 function insertDataBlock (editorState, data, selection) {

@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2016, Globo.com (https://github.com/globocom)
+ * Copyright (c) 2016, vace.nz (https://github.com/vacenz)
+ *
+ * License: MIT
+ */
+
 import {RichUtils, Entity, EditorState} from 'draft-js'
 
 export function hasEntity (entityType, editorState) {

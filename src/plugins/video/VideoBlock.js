@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2016, Globo.com (https://github.com/globocom)
+ * Copyright (c) 2016, vace.nz (https://github.com/vacenz)
+ *
+ * License: MIT
+ */
+
 import React, {Component} from 'react'
 import BlockInput from '../block/BlockInput'
 import Block from '../block/Block'
