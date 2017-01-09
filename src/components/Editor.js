@@ -8,7 +8,6 @@ import Media from './Blocks/Media'
 import Pullquote from './Blocks/Pullquote'
 import Alignment from './Blocks/Alignment'
 
-import notFoundPlugin from '../plugins/not-found/plugin'
 import Plugins from '../plugins/'
 import Actions from '../actions/'
 
@@ -140,13 +139,6 @@ export default class extends Component {
     this.setState({readOnly})
   }
 
-  handleBlockNotFound (block) {
-    if (this.props.handleBlockNotFound) {
-      return this.props.handleBlockNotFound(block)
-    }
-    return notFoundPlugin
-  }
-
   blockRendererFn (block) {
     if (block.getType() === 'pullquote') {
       return { component: Pullquote }
@@ -164,7 +156,7 @@ export default class extends Component {
     if (block.getType() !== 'atomic') { return null }
 
     const type = block.getData().toObject().type
-    let plugin = this.pluginsByType[type] || this.handleBlockNotFound(block)
+    let plugin = this.pluginsByType[type] || null
     if (!plugin) { return null }
 
     return {
