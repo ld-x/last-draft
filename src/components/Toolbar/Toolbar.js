@@ -38,7 +38,6 @@ export default class extends Component {
 
   toggleEntity (entity, active) {
     this.setState({editingEntity: entity})
-    if(entity === 'DROPCAP') { this.toggleDropcap(active) }
   }
 
   removeEntity () {
@@ -96,15 +95,6 @@ export default class extends Component {
     return (
       <ToolbarButton key={key} active={active} toggle={toggle} item={item} />
     )
-  }
-
-  toggleDropcap (active) {
-    const {editorState, onChange} = this.props
-    if (active) {
-      this.removeEntity()
-    } else {
-      setEntity('DROPCAP', {}, editorState, onChange)
-    }
   }
 
   setBarPosition () {

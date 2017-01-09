@@ -9,6 +9,13 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
   }
 
   const contentState = convertFromHTML({
+    htmlToStyle: (nodeName, node, currentStyle) => {
+      if (nodeName === 'span' && node.className === 'ld-dropcap') {
+        return currentStyle.add('DROPCAP')
+      } else {
+        return currentStyle
+      }
+    },
     htmlToEntity: (nodeName, node) => {
       if (nodeName === 'a') {
         return Entity.create(
@@ -51,6 +58,12 @@ export function editorStateToHtml (editorState) {
   if (editorState) {
     const content = editorState.getCurrentContent()
     return stateToHTML(content, {
+      inlineStyles: {
+        'DROPCAP': {
+          element: 'span',
+          attributes: {class: 'ld-dropcap'}
+        }
+      },
       blockRenderers: {
         atomic: (block) => {
           let data = block.getData()
@@ -66,6 +79,10 @@ export function editorStateToHtml (editorState) {
         quote: (block) => {
           let text = block.getText()
           return `<span class='ld-quote' >${text}</span>`
+        },
+        'header-two': (block) => {
+          let text = block.getText()
+          return `<h2 class='ld-header' >${text}</h2>`
         }
       }
     })

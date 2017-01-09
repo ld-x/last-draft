@@ -16,13 +16,13 @@ import insertDataBlock from '../utils/insertDataBlock'
 import {blockRenderMap} from '../utils/block'
 import {blockStyleFn} from '../utils/block'
 //import blockRendererFn from '../utils/block'
-import {styleMap} from '../utils/block'
+import {styleMap} from '../utils/styleMap'
 
 export default class extends Component {
   static get defaultProps () {
     return {
       sideToolbar: ['image', 'video', 'emoji'],
-      inlineToolbar: ['bold', 'italic', 'code', 'strikethrough', 'dropcaps', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote'],
+      inlineToolbar: ['bold', 'italic', 'code', 'strikethrough', 'dropcap', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote'],
       placeholder: 'Enter text...'
     }
   }
