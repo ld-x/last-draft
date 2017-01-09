@@ -21,7 +21,8 @@ export function getSelectionCoords (editor, toolbar) {
 
   const rangeWidth = rangeBounds.right - rangeBounds.left
   const toolbarHeight = toolbar.offsetHeight
-  const offsetLeft = (rangeBounds.left - editorBounds.left) + (rangeWidth / 2)
+  let offsetLeft = (rangeBounds.left - editorBounds.left) + (rangeWidth / 2)
+  if (offsetLeft < 130) { offsetLeft = 130 }
   const offsetTop = rangeBounds.top - editorBounds.top - (toolbarHeight)
   const offsetBottom = editorBounds.bottom - rangeBounds.top
   return { offsetLeft, offsetTop, offsetBottom }
