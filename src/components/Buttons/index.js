@@ -4,7 +4,7 @@ import ULIcon from './Ul'
 import OLIcon from './Ol'
 import H2Icon from './H2'
 import BlockQuoteIcon from './Blockquote'
-import PullQuoteIcon from './Pullquote'
+import QuoteIcon from './Quote'
 import LinkIcon from './Link'
 import CrossIcon from './Cross'
 import ErrorIcon from './Error'
@@ -12,6 +12,7 @@ import UnlinkIcon from './Unlink'
 import CloseIcon from './Close'
 import Code from './Code'
 import Strike from './Strike'
+import Dropcap from './Dropcap'
 import {AlignLeft, AlignCenter, AlignRight} from './Align'
 
 const icons = {
@@ -21,7 +22,7 @@ const icons = {
   OLIcon,
   H2Icon,
   BlockQuoteIcon,
-  PullQuoteIcon,
+  QuoteIcon,
   LinkIcon,
   CrossIcon,
   ErrorIcon,
@@ -31,7 +32,8 @@ const icons = {
   AlignCenter,
   AlignRight,
   Code,
-  Strike
+  Strike,
+  Dropcap
 }
 
 export default icons

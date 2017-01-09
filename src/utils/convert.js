@@ -27,9 +27,9 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
       }
 
       if (nodeName === 'span') {
-        if(node.className === 'ld-pullquote'){
+        if(node.className === 'ld-quote'){
           return {
-            type: 'pullquote'
+            type: 'quote'
           };
         }
       }
@@ -63,9 +63,9 @@ export function editorStateToHtml (editorState) {
           let text = block.getText()
           return `<blockquote class='ld-blockquote' >${text}</blockquote>`
         },
-        pullquote: (block) => {
+        quote: (block) => {
           let text = block.getText()
-          return `<span class='ld-pullquote' >${text}</span>`
+          return `<span class='ld-quote' >${text}</span>`
         }
       }
     })

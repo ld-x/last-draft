@@ -26,7 +26,7 @@ export default {
     {
       "key": "ag6qs",
       "text": "Last Draft",
-      "type": "pullquote",
+      "type": "quote",
       "depth": 0,
       "inlineStyleRanges": [],
       "entityRanges": [],

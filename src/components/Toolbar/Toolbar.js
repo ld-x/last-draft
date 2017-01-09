@@ -3,8 +3,7 @@ import {EditorState, RichUtils, Entity} from 'draft-js'
 import ToolbarButton from './ToolbarButton'
 import LinkToolbar from './LinkToolbar'
 import {getSelectionCoords} from '../../utils/selection'
-import {hasEntity} from '../../utils/entity'
-
+import {hasEntity,setEntity} from '../../utils/entity'
 const styled = require('styled-components').default
 
 export default class extends Component {
@@ -37,8 +36,18 @@ export default class extends Component {
     )
   }
 
-  toggleEntity (entity) {
+  toggleEntity (entity, active) {
     this.setState({editingEntity: entity})
+    if(entity === 'DROPCAP') { this.toggleDropcap(active) }
+  }
+
+  removeEntity () {
+    const {editorState, onChange} = this.props
+    const selection = editorState.getSelection()
+    if (!selection.isCollapsed()) {
+      onChange(RichUtils.toggleLink(editorState, selection, null))
+    }
+    this.cancelEntity()
   }
 
   cancelEntity () {
@@ -78,8 +87,8 @@ export default class extends Component {
       case 'entity': {
         const {entity = 'LINK'} = item
         key = 'entity-' + entity
-        toggle = () => this.toggleEntity(entity)
         active = hasEntity(entity, editorState)
+        toggle = () => this.toggleEntity(entity, active)
         break
       }
     }
@@ -87,6 +96,15 @@ export default class extends Component {
     return (
       <ToolbarButton key={key} active={active} toggle={toggle} item={item} />
     )
+  }
+
+  toggleDropcap (active) {
+    const {editorState, onChange} = this.props
+    if (active) {
+      this.removeEntity()
+    } else {
+      setEntity('DROPCAP', {}, editorState, onChange)
+    }
   }
 
   setBarPosition () {
@@ -124,7 +142,7 @@ export default class extends Component {
   }
 
   render () {
-    const { position, error } = this.state
+    const { position, error, editingEntity } = this.state
 
     if (this.props.readOnly) { return null }
 
@@ -141,21 +159,22 @@ export default class extends Component {
 
     return (
       <ToolbarWrapper ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
-        <div style={{position: 'absolute', bottom: 0}}>
+        <div style={{position: 'absolute', bottom: '0'}}>
           <Toolbar ref='toolbar' error={error} className='ld-toolbar'>
             {
-              this.state.editingEntity ?
+              editingEntity === 'LINK' ?
                 <LinkToolbar
                   {...this.props}
                   setError={::this.setError}
                   cancelError={::this.cancelError}
                   cancelEntity={::this.cancelEntity}
+                  removeEntity={::this.removeEntity}
                   entityType={this.state.editingEntity} /> :
                 this.renderToolList()
             }
-            <ToolbarError error={error} className='ld-toolbar-error'>
+            {this.state.error && <ToolbarError error={error} className='ld-toolbar-error'>
               {this.state.error}
-            </ToolbarError>
+            </ToolbarError>}
             <ToolbarArrow className='ld-toolbar-arrow' />
           </Toolbar>
         </div>

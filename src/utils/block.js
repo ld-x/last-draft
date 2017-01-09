@@ -5,7 +5,7 @@ export const blockRenderMap = Map({
   ['caption']: {
     element: 'cite',
   },
-  ['pullquote']: {
+  ['quote']: {
     element: 'span',
   },
   ['alignment-left']: {
@@ -33,8 +33,8 @@ export function blockStyleFn (contentBlock) {
   if (type === 'blockquote') {
     return 'ld-blockquote'
   }
-  if (type === 'pullquote') {
-    return 'ld-pullquote'
+  if (type === 'quote') {
+    return 'ld-quote'
   }
   if (type === 'header-two') {
     return 'ld-header'

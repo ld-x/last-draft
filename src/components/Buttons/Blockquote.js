@@ -3,8 +3,10 @@ import React from 'react'
 export default class extends React.Component {
   render () {
     return (
-      <svg width='24' height='24' viewBox='0 0 24 24' className='ld-button-blockquote'>
-        <path d='M6 17h3l2-4V7H5v6h3l-2 4zm8 0h3l2-4V7h-6v6h3l-2 4z' fill='currentColor' fillRule='evenodd' />
+      <svg height='24' viewBox='0 0 24 24' width='24' fill='currentColor' className='ld-button-quote'>
+        <defs><path d='M0 0h24v24H0V0z' id='a'/></defs>
+        <clipPath id='b'><use overflow='visible' /></clipPath>
+        <path d='M4 9h16v2H4zm0 4h10v2H4z'/>
       </svg>
     )
   }

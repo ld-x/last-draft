@@ -61,7 +61,7 @@
   border-left: 2px solid #3192e7;
 }
 
-.ld-pullquote {
+.ld-quote {
   display: block;
   color: #223A87;
   font-style: italic;
@@ -70,7 +70,7 @@
   line-height: 1.2;
   margin: 4rem 0 2rem 0;
 }
-.ld-pullquote:first-child {
+.ld-quote:first-child {
   margin-top: 0;
 }
 .header {
@@ -81,6 +81,16 @@
 }
 .ld-unordered-list {}
 .ld-ordered-list {}
+
+.ld-dropcap {
+  float: left;
+  font-size: 3.25em;
+  line-height: 0.8;
+  margin-left: -0.05em;
+  margin-bottom: -0.05em;
+  padding: 0.05em 0.075em 0 0;
+  position: relative;
+}
 
 /* side toolbar blocks */
 .ld-block-wrapper {}
@@ -117,7 +127,7 @@
 .ld-button-italic {}
 .ld-button-link {}
 .ld-button-ordered-list {}
-.ld-button-pullquote {}
+.ld-button-quote {}
 .ld-button-unordered-list {}
 .ld-button-unlink {}
 .ld-button-video {}

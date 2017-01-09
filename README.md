@@ -71,12 +71,12 @@ let SIDE_TOOLBAR = ['image', 'video', 'emoji']
 ```
 
 #### `inlineToolbar`
-Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `strikethrough`, `code`, `link`, `ul`, `ol`, `h2`, `blockquote`, `pullquote`, `alignment`.
+Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `strikethrough`, `code`, `link`, `ul`, `ol`, `h2`, `blockquote`, `quote`, `alignment`.
 
 By default all inlineToolbar buttons are included:
 
 ```jsx
-let INLINE_TOOLBAR = ['bold', 'italic', 'strikethrough', 'code' 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote', 'alignment']
+let INLINE_TOOLBAR = ['bold', 'italic', 'strikethrough', 'code' 'link', 'ul', 'ol', 'h2', 'blockquote', 'quote', 'alignment']
 
 <Editor
   editorState={this.state.value}
@@ -123,7 +123,7 @@ You also need to include the base [draft.css](https://github.com/vacenz/last-dra
 .ld-header {}
 .ld-unordered-list {}
 .ld-ordered-list {}
-.ld-pullquote {}
+.ld-quote {}
 .ld-blockquote {}
 .ld-align-wrapper {}
 .ld-align-left {}
@@ -178,7 +178,7 @@ You also need to include the base [draft.css](https://github.com/vacenz/last-dra
 .ld-button-italic {}
 .ld-button-link {}
 .ld-button-ordered-list {}
-.ld-button-pullquote {}
+.ld-button-quote {}
 .ld-button-unordered-list {}
 .ld-button-unlink {}
 .ld-button-video {}
