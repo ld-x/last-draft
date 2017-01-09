@@ -3,12 +3,47 @@ import insertDataBlock from '../../utils/insertDataBlock'
 const styled = require('styled-components').default
 
 export default class extends Component {
+  getVideoIdYoutube(str) {
+    // link : https://youtube.com/watch?v=HBHJ0XGZfLs
+    // share : https://youtu.be/HBHJ0XGZfLs
+    // embed : https://youtube.com/embed/HBHJ0XGZfLs
+    var re = /\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9_\-]+)/i
+    var matches = re.exec(str)
+    return matches && matches[1]
+  }
+
+  getVideoIdVimeo(str) {
+    // embed & link: https://vimeo.com/713300
+    var re = /\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i
+    var matches = re.exec(str)
+    return matches && matches[1]
+  }
+
+
+  getVideoUrl(src) {
+    /* youtube */
+    let id = this.getVideoIdYoutube(src)
+    if (id !== null) {
+      return `https://youtube.com/embed/${id}`
+    }
+
+    /* vimeo */
+    id = this.getVideoIdVimeo(src)
+    if (id !== null) {
+      return `https://player.vimeo.com/video/${id}`
+    }
+    return '';
+  }
+
   onClick (e) {
     e.preventDefault()
     const src = window.prompt('Enter the video URL')
     if (!src) { return }
 
-    const data = {src: src, type: 'video'}
+    let videoSrc = this.getVideoUrl(src)
+    if(videoSrc === undefined) { return }
+
+    const data = {src: videoSrc, type: 'video'}
     this.props.onChange(insertDataBlock(this.props.editorState, data))
   }
 

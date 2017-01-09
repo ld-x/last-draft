@@ -2,6 +2,7 @@ import {convertFromHTML} from 'draft-convert'
 import {stateToHTML} from 'draft-js-export-html'
 import {Entity, convertToRaw, convertFromRaw, EditorState} from 'draft-js'
 import defaultDecorator from '../decorators/defaultDecorator'
+import {html} from 'common-tags'
 
 export function editorStateFromHtml (html, decorator = defaultDecorator) {
   if (html === null) {
@@ -54,9 +55,31 @@ export function editorStateToHtml (editorState) {
       blockRenderers: {
         atomic: (block) => {
           let data = block.getData()
+          let type = data.get('type')
           let url = data.get('src')
-          if (url) {
-            return `<img src='${url}' />`
+          let caption = data.get('caption')
+          if (url && type == 'image') {
+            return html`
+              <figure>
+                <img src="${url}" alt="${caption}">
+                <figcaption>${caption}</figcaption>
+              </figure>
+            `
+          }
+          if(url && type == 'video'){
+            return html`
+            <figure>
+              <iframe
+                width="560"
+                height="315"
+                src="${url}"
+                className="ld-video-block"
+                frameBorder="0"
+                allowFullScreen>
+              </iframe>
+              <figcaption>${caption}</figcaption>
+            </figure>
+            `
           }
         },
         blockquote: (block) => {
