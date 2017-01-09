@@ -12,7 +12,7 @@ import Toolbar from './Toolbar/Toolbar'
 import Sidebar from './Sidebar/Sidebar'
 
 import Media from './Blocks/Media'
-import Pullquote from './Blocks/Pullquote'
+import Quote from './Blocks/Quote'
 import Alignment from './Blocks/Alignment'
 
 import Plugins from '../plugins/'
@@ -28,7 +28,7 @@ export default class extends Component {
   static get defaultProps () {
     return {
       sideToolbar: ['image', 'video', 'emoji'],
-      inlineToolbar: ['bold', 'italic', 'code', 'strikethrough', 'dropcap', 'link', 'ul', 'ol', 'h2', 'blockquote', 'pullquote'],
+      inlineToolbar: ['bold', 'italic', 'code', 'strikethrough', 'dropcap', 'link', 'ul', 'ol', 'h2', 'blockquote', 'quote'],
       placeholder: 'Enter text...'
     }
   }
@@ -147,8 +147,8 @@ export default class extends Component {
   }
 
   blockRendererFn (block) {
-    if (block.getType() === 'pullquote') {
-      return { component: Pullquote }
+    if (block.getType() === 'quote') {
+      return { component: Quote }
     }
     if (block.getType() === 'alignment-left') {
       return { component: Alignment, props: { alignment: 'alignment-left' } }
