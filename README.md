@@ -190,7 +190,6 @@ You also need to include the base [draft.css](https://github.com/vacenz/last-dra
 .ld-toolbar-wrapper {}
 .ld-toolbar {}
 .ld-toolbar-error {}
-.ld-toolbar-arrow {}
 .ld-toolbar-button-wrapper {}
 .ld-toolbar-button {}
 .ld-link-toolbar-button {}

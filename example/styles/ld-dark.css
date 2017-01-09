@@ -154,7 +154,6 @@
 
 .ld-toolbar { background: white !important; }
 .ld-toolbar-error { color: #181818 !important; }
-.ld-toolbar-arrow { border-color: white transparent transparent !important; }
 .ld-toolbar-button-wrapper { color: #181818 !important; }
 .ld-toolbar-button-wrapper:hover {
   color: #181818 !important;

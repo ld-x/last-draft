@@ -165,7 +165,6 @@ export default class extends Component {
             {this.state.error && <ToolbarError error={error} className='ld-toolbar-error'>
               {this.state.error}
             </ToolbarError>}
-            <ToolbarArrow className='ld-toolbar-arrow' />
           </Toolbar>
         </div>
       </ToolbarWrapper>
@@ -197,21 +196,6 @@ const ToolbarList = styled.ul`
   padding: 0 8px;
   margin: 0;
   whiteSpace: nowrap;
-`
-
-const ToolbarArrow = styled.span`
-  display: inline-block;
-  top: 100%;
-  left: 50%;
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointerEvents: none;
-  borderWidth: 8px;
-  borderStyle: solid;
-  borderColor: #181818 transparent transparent;
-  marginLeft: -8px;
-  transition: border-color 0.2s ease-in-out;
 `
 
 const ToolbarError = styled.p`

@@ -63,7 +63,7 @@
   border-left: 2px solid #80172F;
 }
 
-.ld-pullquote {
+.ld-quote {
   display: block;
   color: #80172F;
   font-style: italic;
@@ -73,7 +73,7 @@
   margin: 4rem 0 2rem 0;
   font-family: 'Shadows Into Light', cursive;
 }
-.ld-pullquote:first-child { margin-top: 0; }
+.ld-quote:first-child { margin-top: 0; }
 .ld-header {
   color: #80172F;
   font-family: 'Shadows Into Light', cursive;
@@ -127,7 +127,7 @@
 .ld-button-italic {}
 .ld-button-link {}
 .ld-button-ordered-list {}
-.ld-button-pullquote {}
+.ld-button-quote {}
 .ld-button-unordered-list {}
 .ld-button-unlink {}
 .ld-button-video {}
@@ -154,7 +154,6 @@
 
 .ld-toolbar { background: white !important; }
 .ld-toolbar-error { color: #181818 !important; }
-.ld-toolbar-arrow { border-color: white transparent transparent !important; }
 .ld-toolbar-button-wrapper { color: #181818 !important; }
 .ld-toolbar-button-wrapper:hover {
   color: #181818 !important;
