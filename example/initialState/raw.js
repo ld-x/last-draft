@@ -114,7 +114,7 @@ export default {
       "inlineStyleRanges": [],
       "entityRanges": [],
       "data": {
-        "src": "https://www.youtube.com/watch?v=HBHJ0XGZfLs",
+        "src": "https://www.youtube.com/embed/HBHJ0XGZfLs",
         "type": "video",
         "caption": "Fanta by easyFun",
       }
@@ -127,7 +127,7 @@ export default {
       "inlineStyleRanges": [],
       "entityRanges": [],
       "data": {
-        "src": "https://vimeo.com/713300",
+        "src": "https://player.vimeo.com/video/713300",
         "type": "video"
       }
     },
