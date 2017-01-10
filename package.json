@@ -1,6 +1,6 @@
 {
   "name": "last-draft",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Last Draft... A Draft.js Editor using draft-js-plugins",
   "main": "lib/index.js",
   "scripts": {
