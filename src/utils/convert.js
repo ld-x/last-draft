@@ -41,6 +41,24 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
         }
       }
 
+      if (nodeName === 'figure') {
+        if (!node.children.length) { return null }
+
+        let caption = '', src = '', blockType = 'image'
+        let captionNode = node.children[1]
+        if (captionNode !== undefined) { caption = captionNode.innerHTML }
+        let blockNode = node.children[0]
+        if (blockNode !== undefined) { src = blockNode.src }
+
+        let type = blockNode.tagName.toLowerCase()
+        if (type === 'iframe') { blockType = 'video' }
+
+        return {
+          type: 'atomic',
+          data: { src: src, type: blockType, caption: caption }
+        }
+      }
+
       if (nodeName === 'span') {
         if(node.className === 'ld-quote'){
           return {
