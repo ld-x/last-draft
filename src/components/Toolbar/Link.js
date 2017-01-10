@@ -77,7 +77,7 @@ export default class Link extends Component {
           value={this.state.url}
           onKeyDown={::this.onLinkKeyDown}
           placeholder='Type the link and press enter' />
-        <LinkToolbarItem style={{verticalAlign: 'bottom'}} className='ld-link-toolbar-item'>
+        <LinkToolbarItem className='ld-link-toolbar-item'>
           <LinkToolbarButton
             className='ld-link-toolbar-button'
             onClick={this.props.removeEntity}
@@ -95,11 +95,11 @@ const LinkToolbarInput = styled.input`
   background-color: transparent;
   border: none;
   color: #fafafa;
-  font-size: 14px;
+  font-size: 15px;
   height: auto;
   line-height: 1.2;
   margin: 0;
-  padding: 14px;
+  padding: 16px;
   width: 250px;
 
   &:focus {
@@ -120,6 +120,7 @@ const LinkToolbarButton = styled.button`
 
 const LinkToolbarItem = styled.span`
   display: inline-block;
+  vertical-align: middle;
   color: #ccc;
   &:hover {
     color: #fff;

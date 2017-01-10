@@ -182,25 +182,24 @@ export default class extends Component {
 const ToolbarWrapper = styled.div`
   font-family: Open Sans, sans-serif;
   color: #181818;
-  font-size: 1.125rem;
   letter-spacing: -0.037rem;
   line-height: 1.75rem;
   height: 0;
   position: relative;
   z-index: 10;
+  transform: translateY(8px);
 `
 
 const Toolbar = styled.div`
   background: ${props => props.error ? '#E83F26' : '#181818'};
-  border-radius: 4px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
   left: -50%;
   position: relative;
   transition: background-color 0.2s ease-in-out;
 `
 
 const ToolbarList = styled.ul`
-  padding: 0 8px;
+  padding: 4px 6px;
   margin: 0;
   whiteSpace: nowrap;
 `
