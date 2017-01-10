@@ -40,7 +40,9 @@ export function linkifyStrategy (contentBlock, callback) {
   const links = linkify.match(contentBlock.get('text'))
   if (typeof links !== 'undefined' && links !== null) {
     for (let i = 0; i < links.length; i += 1) {
-      callback(links[i].index, links[i].lastIndex)
+      if (links[i].schema !== '') {
+        callback(links[i].index, links[i].lastIndex)
+      }
     }
   }
 }

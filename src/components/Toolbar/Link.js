@@ -25,16 +25,30 @@ export default class Link extends Component {
   setLink (event) {
     let {url} = this.state
 
-    if (!linkify.match(url)) {
+    let match = linkify.match(url)
+
+    if (match === null) {
       this.props.setError(('Invalid Link'))
       ReactDOM.findDOMNode(this.refs.textInput).focus()
       return
     }
 
-    this.props.setEntity({url})
+    let matchedUrl = match[0].url
+
+    this.setState({url: matchedUrl}, () => {
+      ReactDOM.findDOMNode(this.refs.textInput).value = matchedUrl
+    })
+
+    this.props.setEntity({url: matchedUrl})
     this.reset()
     event.target.blur()
   }
+
+  reset () {
+    this.setState({ url: '' })
+    this.props.cancelEntity()
+  }
+
 
   reset () {
     this.setState({ url: '' })
