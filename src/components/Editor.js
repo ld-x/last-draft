@@ -29,7 +29,15 @@ export default class extends Component {
     return {
       sideToolbar: ['image', 'video', 'emoji'],
       inlineToolbar: ['bold', 'italic', 'code', 'strikethrough', 'dropcap', 'link', 'ul', 'ol', 'h2', 'blockquote', 'quote'],
-      placeholder: 'Enter text...'
+      placeholder: 'Enter text...',
+      autofocus: false
+    }
+  }
+
+  componentDidMount() {
+    const { autofocus } = this.props
+    if (autofocus) {
+      this.refs.editor.focus()
     }
   }
 
@@ -231,7 +239,7 @@ export default class extends Component {
 
     return (
       <div>
-        <div id='editor' ref='editor' className='last-draft-editor'>
+        <div id='editor' ref='editorWrapper' className='last-draft-editor'>
           {this.renderSidebar({
             plugins,
             editorState,
@@ -241,6 +249,7 @@ export default class extends Component {
             uploadImageCallBack: this.props.uploadImageCallBack
           })}
           <Editor
+            ref='editor'
             customStyleMap={styleMap}
             readOnly={this.state.readOnly}
             blockRenderMap={blockRenderMap}
@@ -257,7 +266,7 @@ export default class extends Component {
             placeholder={this.props.placeholder}
             onChange={this.onChange} />
             {this.renderToolbar({
-              editor: this.refs.editor,
+              editorWrapper: this.refs.editorWrapper,
               editorState,
               readOnly: this.state.readOnly,
               onChange: this.onChange,

@@ -107,6 +107,15 @@ function uploadImageCallBack(file) {
 }
 ```
 
+#### `autofocus`
+Whether to focus the Editor on component mount. Default is `false`
+
+```
+<Editor
+  editorState={this.state.value}
+  autofocus={true}
+```
+
 ## Styles
 
 Last Draft uses styled-components 💅 for the base styling.

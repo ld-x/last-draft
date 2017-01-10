@@ -57,8 +57,8 @@ export default class extends Component {
   }
 
   cancelEntity () {
-    const {editor} = this.props
-    editor && editor.focus()
+    const {editorWrapper} = this.props
+    editorWrapper && editorWrapper.focus()
     this.setState({ editingEntity: null, error: null })
   }
 
@@ -105,9 +105,9 @@ export default class extends Component {
   }
 
   setBarPosition () {
-    const editor = this.props.editor
+    const editorWrapper = this.props.editorWrapper
     const toolbar = this.refs.toolbar
-    const selectionCoords = getSelectionCoords(editor, toolbar)
+    const selectionCoords = getSelectionCoords(editorWrapper, toolbar)
 
     if (!selectionCoords) { return null }
 

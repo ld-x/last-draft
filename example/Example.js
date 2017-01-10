@@ -28,6 +28,7 @@ export default class ExampleEditor extends Component {
   render() {
     return (
       <Editor
+        autofocus={true}
         editorState={this.state.value}
         sideToolbar={SIDE_TOOLBAR}
         inlineToolbar={INLINE_TOOLBAR}
