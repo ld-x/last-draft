@@ -10,6 +10,13 @@ import {stateToHTML} from 'draft-js-export-html'
 import {Entity, convertToRaw, convertFromRaw, EditorState} from 'draft-js'
 import defaultDecorator from '../decorators/defaultDecorator'
 import {html} from 'common-tags'
+import linkifyIt from 'linkify-it'
+import tlds from 'tlds'
+import {extractHashtagsWithIndices} from './hashtag';
+
+const linkify = linkifyIt()
+linkify
+  .tlds(tlds);
 
 export function editorStateFromHtml (html, decorator = defaultDecorator) {
   if (html === null) {
@@ -83,7 +90,7 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 export function editorStateToHtml (editorState) {
   if (editorState) {
     const content = editorState.getCurrentContent()
-    return stateToHTML(content, {
+    const convertedHTML = stateToHTML(content, {
       inlineStyles: {
         'DROPCAP': {
           element: 'span',
@@ -134,6 +141,24 @@ export function editorStateToHtml (editorState) {
         }
       }
     })
+    // We look for the URLs in the complete HTML with linkify
+    const linkifyMatch = linkify.match(convertedHTML);
+    const convertedHTMLwithLinks = linkifyMatch.filter(function(match){
+      // For each match we look if there is already a wrapped iframe or a tag
+      if(/(src|ref)=('|")/.test(convertedHTML.slice(match.index - 5, match.index))){
+        return;
+      } else {
+        return match;
+      }
+    }).reduce(function(current, match){
+      return current.replace(match.url, `<a href="${match.url}">${match.url}</a>`);
+    }, convertedHTML);
+
+    // We do the same logic for the hashtag
+    const hashtifyMatch = extractHashtagsWithIndices(convertedHTMLwithLinks);
+    return hashtifyMatch.reduce(function(current, match){
+      return current.replace('#'+match.hashtag, `<span class="hashtag">${'#'+match.hashtag}</span>`);
+    }, convertedHTMLwithLinks);
   }
 }
 
