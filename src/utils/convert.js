@@ -98,8 +98,8 @@ export function editorStateToHtml (editorState) {
           let caption = data.get('caption')
           if (url && type == 'image') {
             return html`
-              <figure class="ld-image-block">
-                <img src="${url}" alt="${caption}">
+              <figure>
+                <img src="${url}" alt="${caption}" class="ld-image-block">
                 <figcaption class="ld-image-caption">${caption}</figcaption>
               </figure>
             `
