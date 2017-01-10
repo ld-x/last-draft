@@ -98,9 +98,9 @@ export function editorStateToHtml (editorState) {
           let caption = data.get('caption')
           if (url && type == 'image') {
             return html`
-              <figure>
+              <figure class="ld-image-block">
                 <img src="${url}" alt="${caption}">
-                <figcaption>${caption}</figcaption>
+                <figcaption class="ld-image-caption">${caption}</figcaption>
               </figure>
             `
           }
@@ -111,11 +111,11 @@ export function editorStateToHtml (editorState) {
                 width="560"
                 height="315"
                 src="${url}"
-                className="ld-video-block"
+                class="ld-video-block"
                 frameBorder="0"
                 allowFullScreen>
               </iframe>
-              <figcaption>${caption}</figcaption>
+              <figcaption class="ld-video-caption">${caption}</figcaption>
             </figure>
             `
           }
