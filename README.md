@@ -160,6 +160,7 @@ You also need to include the base [draft.css](https://github.com/vacenz/last-dra
 .ld-block-input {}
 .ld-image-block {}
 .ld-image-placeholder-block {}
+.ld-image-placeholder-block-loader {}
 .ld-image-block-button {}
 .ld-video-block-wrapper {}
 .ld-video-block {}

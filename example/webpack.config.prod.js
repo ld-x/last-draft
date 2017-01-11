@@ -35,6 +35,7 @@ function output() {
 module.exports = {
   entry: entry(),
   output: output(),
+  resolve: { alias: { 'styled-components$': 'styled-components/lib/index.js' } },
   module: { loaders: loaders() },
   plugins: plugins()
 }

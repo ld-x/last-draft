@@ -29,6 +29,7 @@ export default class extends Component {
 const BlockWrapper = styled.div`
   padding: 2px;
   margin: -2px;
+  position: relative;
   &:hover {
     background-color: #eee;
     border-radius: 2px;
