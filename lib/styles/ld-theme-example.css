@@ -1,0 +1,37 @@
+/* Last-draft specific styles - dark theme */
+
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+
+/* blocks */
+.ld-blockquote {
+  margin: 12px 0 40px 0;
+  padding: 1rem 2rem;
+  border-left: 2px solid #80172F;
+}
+.ld-quote {
+  display: block;
+  color: #80172F;
+  font-style: italic;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 4rem 0 2rem 0;
+  font-family: 'Shadows Into Light', cursive;
+}
+.ld-quote:first-child { margin-top: 0; }
+.ld-header { color: #80172F; font-family: 'Shadows Into Light', cursive; }
+.ld-hashtag { color: #C50002 !important; }
+
+/* buttons */
+.ld-button-close { color: #80172F !important; }
+
+/* entities */
+.ld-link { color: #80172F !important; }
+
+/* inline toolbar */
+.ld-toolbar-wrapper { color: #181818 !important; background: white !important; }
+.ld-toolbar { background: white !important; }
+.ld-toolbar-error { color: #181818 !important; }
+.ld-toolbar-button-wrapper { color: #181818 !important; }
+.ld-toolbar-button-wrapper:hover { color: #181818 !important; opacity: 0.4; }
+.ld-link-toolbar-input { color: #181818 !important; }

@@ -80,9 +80,11 @@ export default class Link extends Component {
   }
 
   render () {
+    const {theme} = this.props
     return (
       <div style={{whiteSpace: 'nowrap'}}>
         <LinkToolbarInput
+          theme={theme}
           className='ld-link-toolbar-input'
           ref='textInput'
           type='text'
@@ -90,7 +92,7 @@ export default class Link extends Component {
           value={this.state.url}
           onKeyDown={::this.onLinkKeyDown}
           placeholder='Type the link and press enter' />
-        <LinkToolbarItem className='ld-link-toolbar-item'>
+        <LinkToolbarItem className='ld-link-toolbar-item' theme={theme}>
           <LinkToolbarButton
             className='ld-link-toolbar-button'
             onClick={this.props.removeEntity}
@@ -136,6 +138,6 @@ const LinkToolbarItem = styled.span`
   vertical-align: middle;
   color: #ccc;
   &:hover {
-    color: #fff;
+    color: ${props => props.theme.color};
   }
 `

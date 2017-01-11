@@ -40,6 +40,7 @@ export default class extends Component {
       <SideMenuWrapper className='ld-sidemenu-wrapper'>
         <SideMenu className='ld-sidemenu'>
           <SideMenuButton
+            theme={this.props.theme}
             className='ld-sidemenu-button'
             onClick={::this.toggle}
             style={menuButtonStyle}
@@ -96,7 +97,7 @@ const SideMenuItems = styled.ul`
 const SideMenuButton = styled.button`
   transform: ${props => props.open ? 'rotate(45deg)' : 'none'};
   border: 0;
-  color: #fff;
+  color: ${props => props.theme.color};
   cursor: pointer;
   height: 24px;
   font-size: 0;
@@ -112,7 +113,7 @@ const SideMenuButton = styled.button`
     height: 100%;
     border-radius: 100%;
     display: inline-block;
-    background-color: ${props => props.open ? '#9d1d20' : '#181818'};
+    background-color: ${props => props.open ? props.theme.highlight : props.theme.backgroundColor};
   }
 
   &:focus {

@@ -110,21 +110,34 @@ function uploadImageCallBack(file) {
 #### `autofocus`
 Whether to focus the Editor on component mount. Default is `false`
 
-```
-<Editor
-  editorState={this.state.value}
-  autofocus={true}
-```
+#### `theme`
+Pass in a custom theme to override the base Last Draft styles. An object with the following properties: `{ backgroundColor: '#181818', color: '#66ff00', highlight: '#a80077' }`. See Styles section below.
 
 ## Styles
 
 Last Draft uses styled-components 💅 for the base styling.
 
-You can add custom css to override this base styling with the following class names specified below:
+You need to include the base [draft.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/draft.css) styles, similar to with any Draft.js Editor.
 
-It is simple to customize elements in the editor, as shown in the [example](http://lastdraft.vace.nz) which switches between the base [ld.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/ld.css) styles and a dark theme of styles [ld-dark.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/ld-dark.css).
+You can set a custom theme for the Last Draft Editor. As shown in the [last draft example](http://lastdraft.vace.nz)
 
-You also need to include the base [draft.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/draft.css) styles, similar to with any Draft.js Editor.
+```jsx
+let THEME = {
+  backgroundColor: '#181818',
+  color: '#66ff00',
+  highlight: '#a80077'
+}
+
+<Editor
+  theme={THEME}
+```
+
+## Custom Styles with CSS
+
+You can also add custom css to override the base styling with the following class names specified below:
+
+It is simple to customize elements in the editor, as shown in the [ld-theme-example.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/ld-theme-example.css).
+
 
 **Block styles**
 

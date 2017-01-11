@@ -16,6 +16,7 @@ import styled from 'styled-components'
 export default class extends Component {
   constructor (props) {
     super(props)
+    console.log(props)
     this.state = {
       editingEntity: null,
       link: '',
@@ -63,7 +64,7 @@ export default class extends Component {
   }
 
   renderButton (item, position) {
-    const {editorState} = this.props
+    const {editorState, theme} = this.props
     let current = null
     let toggle = null
     let active = null
@@ -100,7 +101,7 @@ export default class extends Component {
     }
 
     return (
-      <ToolbarButton key={key} active={active} toggle={toggle} item={item} />
+      <ToolbarButton theme={theme} key={key} active={active} toggle={toggle} item={item} />
     )
   }
 
@@ -140,6 +141,7 @@ export default class extends Component {
 
   render () {
     const { position, error, editingEntity } = this.state
+    const { theme } = this.props
 
     if (this.props.readOnly) { return null }
 
@@ -155,9 +157,9 @@ export default class extends Component {
     }
 
     return (
-      <ToolbarWrapper ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
+      <ToolbarWrapper theme={theme} ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
         <div style={{position: 'absolute', bottom: '0'}}>
-          <Toolbar ref='toolbar' error={error} className='ld-toolbar'>
+          <Toolbar ref='toolbar' error={error} theme={theme} className='ld-toolbar'>
             {
               editingEntity === 'LINK' ?
                 <LinkToolbar
@@ -181,7 +183,7 @@ export default class extends Component {
 
 const ToolbarWrapper = styled.div`
   font-family: Open Sans, sans-serif;
-  color: #181818;
+  color: ${props => props.theme.color};
   letter-spacing: -0.037rem;
   line-height: 1.75rem;
   height: 0;
@@ -191,7 +193,7 @@ const ToolbarWrapper = styled.div`
 `
 
 const Toolbar = styled.div`
-  background: ${props => props.error ? '#E83F26' : '#181818'};
+  background: ${props => props.error ? '#E83F26' : props.theme.backgroundColor };
   box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
   left: -50%;
   position: relative;

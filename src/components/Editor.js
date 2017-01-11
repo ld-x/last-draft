@@ -29,7 +29,12 @@ export default class extends Component {
       sideToolbar: ['image', 'video', 'emoji'],
       inlineToolbar: ['bold', 'italic', 'code', 'strikethrough', 'dropcap', 'link', 'ul', 'ol', 'h2', 'blockquote', 'quote'],
       placeholder: 'Enter text...',
-      autofocus: false
+      autofocus: false,
+      theme: {
+        color: '#fff',
+        backgroundColor: '#181818',
+        highlight: '#9d1d20'
+      }
     }
   }
 
@@ -186,10 +191,6 @@ export default class extends Component {
   }
 
   renderSidebar (props) {
-    const { sidebarRendererFn } = this.props
-    if (typeof sidebarRendererFn === 'function') {
-      return sidebarRendererFn(props)
-    }
     return <Sidebar {...props} />
   }
 
@@ -233,7 +234,7 @@ export default class extends Component {
   }
 
   render () {
-    const {editorState, stripPastedStyles, spellCheck} = this.props
+    const {editorState, stripPastedStyles, spellCheck, theme} = this.props
     const plugins = this.plugins
 
     return (
@@ -242,6 +243,7 @@ export default class extends Component {
           {this.renderSidebar({
             plugins,
             editorState,
+            theme,
             readOnly: this.state.readOnly,
             onChange: this.onChange,
             uploadFile: this.uploadFile,
@@ -267,6 +269,7 @@ export default class extends Component {
             {this.renderToolbar({
               editorWrapper: this.refs.editorWrapper,
               editorState,
+              theme,
               readOnly: this.state.readOnly,
               onChange: this.onChange,
               actions: this.actions

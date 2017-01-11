@@ -1,3 +1,25 @@
+/* override the quote for the Last Draft header style */
+/* Last-draft specific styles - dark theme */
+
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+
+/* blocks */
+.ld-blockquote {
+  margin: 12px 0 40px 0;
+  padding: 1rem 2rem;
+  border-left: 2px solid #80172F;
+}
+.ld-quote {
+  display: block;
+  color: #80172F;
+  font-style: italic;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 4rem 0 2rem 0;
+  font-family: 'Shadows Into Light', cursive;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -10,17 +32,19 @@ body {
   font-size: 16px;
   line-height: 1.4;
   font-family: 'Open Sans', sans-serif;
-  /* light theme */
   color: #555;
   background: #fff;
 }
 
 #root {
-  margin: 2rem;
+  margin: 2.5rem;
   margin-top: 1rem;
 }
 @media (min-width: 768px) {
-  #root { margin: 5rem; }
+  #root {
+    margin: 5rem;
+    margin-top: 8rem;
+  }
 }
 
 .logo {
@@ -29,53 +53,27 @@ body {
   height: 10rem;
 }
 
-.github {
-  display: block;
-  margin-bottom: 2em;
-  height: 33px;
-  opacity: 0;
-  text-align: center;
+.color-picker-wrapper {
+  position: static;
+}
+@media (min-width: 768px) {
+  .color-picker-wrapper {
+    position: absolute;
+    right: 2rem;
+    top: 0;
+  }
 }
 
-.switch-theme {
-  position: fixed;
-  display: flex;
-  top: 0;
-  right: 0;
-}
-.switch-theme:after {
-  content: '';
-  border-right: 9rem solid #9d1d20;
-  border-bottom: 9rem solid transparent;
-}
-
-.switch-theme p {
-  position: absolute;
-  right: 0.4rem;
-}
-
-@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
-
-.switch-to-dark {
+.color-picker {
+  color: #a80077;
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 2rem 0;
   font-family: 'Shadows Into Light', cursive;
-  color: #fff;
-}
-.switch-to-normal {
-  color: #fff;
-  font-size: 13.2px;
-  margin-top: 1.2rem;
 }
 
-.switch-icon {
-  position: absolute;
-  right: 0.4rem;
-  top: 2.4rem;
-  width: 2rem;
-  height: 2rem;
-  fill: #fff;
-  cursor: pointer;
-}
-
-.switch-icon:hover {
-  opacity: 0.7;
+.color-picker-green {
+  color: #66ff00;
 }

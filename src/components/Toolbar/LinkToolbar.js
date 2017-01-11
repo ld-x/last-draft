@@ -11,7 +11,7 @@ import Link from './Link'
 
 export default class extends Component {
   render () {
-    const {editorState, onChange} = this.props
+    const {editorState, onChange, theme} = this.props
 
     const se = data => setEntity('LINK', data, editorState, onChange)
     let entityData = {}
@@ -23,6 +23,7 @@ export default class extends Component {
 
     return (
       <Link
+        theme={theme}
         editorState={editorState}
         setEntity={se}
         onChange={onChange}

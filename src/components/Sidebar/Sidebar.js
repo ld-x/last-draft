@@ -64,6 +64,7 @@ export default class extends Component {
       <Sidebar ref='container' className='ld-sidebar'>
         <SidebarMenuWrapper style={{top: `${this.state.top}px`}} className='ld-sidebar-menu-wrapper'>
           <SideMenu
+            theme={this.props.theme}
             uploadImageCallBack={this.props.uploadImageCallBack}
             uploadFile={this.props.uploadFile}
             editorState={this.props.editorState}

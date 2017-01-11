@@ -18,14 +18,14 @@ export default class extends Component {
 
   render () {
     const Icon = this.props.item.icon
-    const { item, active } = this.props
+    const { item, active, theme } = this.props
 
     if (item.type === 'separator') {
       return <Separator />
     }
 
     return (
-      <ToolbarButtonWrapper active={active} className='ld-toolbar-button-wrapper'>
+      <ToolbarButtonWrapper theme={theme} active={active} className='ld-toolbar-button-wrapper'>
         <ToolbarButton
           className='ld-toolbar-button'
           onClick={() => this.toggleAction(this.props)}
@@ -41,12 +41,12 @@ export default class extends Component {
 const ToolbarButtonWrapper = styled.li`
   display: inline-block;
   margin: 0 !important;
-  color: ${props => props.active ? '#9d1d20' : '#ccc'};
+  color: ${props => props.active ? props.theme.highlight : props.theme.color};
   &:hover {
-    color: #fff;
+    color: ${props => props.theme.color};
   }
-  &:aci {
-    color: #fff;
+  &:active {
+    color: ${props => props.theme.color};
   }
 `
 
