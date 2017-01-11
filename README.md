@@ -111,7 +111,9 @@ function uploadImageCallBack(file) {
 Whether to focus the Editor on component mount. Default is `false`
 
 #### `theme`
-Pass in a custom theme to override the base Last Draft styles. An object with the following properties: `{ backgroundColor: '#181818', color: '#66ff00', highlight: '#a80077' }`. See Styles section below.
+Pass in a custom theme to override the base Last Draft styles. An object with the following properties:
+
+`let THEME = { backgroundColor: '#181818', color: '#66ff00', highlight: '#a80077' }`
 
 ## Styles
 
