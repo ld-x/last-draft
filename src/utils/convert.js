@@ -15,8 +15,7 @@ import tlds from 'tlds'
 import {extractHashtagsWithIndices} from './hashtag';
 
 const linkify = linkifyIt()
-linkify
-  .tlds(tlds);
+linkify.tlds(tlds)
 
 export function editorStateFromHtml (html, decorator = defaultDecorator) {
   if (html === null) {
@@ -90,6 +89,7 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 export function editorStateToHtml (editorState) {
   if (editorState) {
     const content = editorState.getCurrentContent()
+
     const convertedHTML = stateToHTML(content, {
       inlineStyles: {
         'DROPCAP': {
@@ -141,24 +141,32 @@ export function editorStateToHtml (editorState) {
         }
       }
     })
-    // We look for the URLs in the complete HTML with linkify
-    const linkifyMatch = linkify.match(convertedHTML);
-    const convertedHTMLwithLinks = linkifyMatch.filter(function(match){
-      // For each match we look if there is already a wrapped iframe or a tag
-      if(/(src|ref)=('|")/.test(convertedHTML.slice(match.index - 5, match.index))){
-        return;
-      } else {
-        return match;
-      }
-    }).reduce(function(current, match){
-      return current.replace(match.url, `<a href="${match.url}">${match.url}</a>`);
-    }, convertedHTML);
 
-    // We do the same logic for the hashtag
-    const hashtifyMatch = extractHashtagsWithIndices(convertedHTMLwithLinks);
-    return hashtifyMatch.reduce(function(current, match){
-      return current.replace('#'+match.hashtag, `<span class="hashtag">${'#'+match.hashtag}</span>`);
-    }, convertedHTMLwithLinks);
+    /* logic for linkify due to no Entity support in stateToHTML */
+    let convertedHTMLLinkify = convertedHTML
+    const linkifyMatch = linkify.match(convertedHTML)
+    if (linkifyMatch !== null) {
+      convertedHTMLLinkify = linkifyMatch.filter(function(match) {
+        if(/(src|ref)=('|")/.test(convertedHTML.slice(match.index - 5, match.index))){
+          return
+        } else {
+          return match
+        }
+      }).reduce( (current, match) => {
+        return current.replace(match.url, `<a href="${match.url}">${match.url}</a>`)
+      }, convertedHTML)
+    }
+
+    /* logic for hashtags due to no Entity support in stateToHTML */
+    let convertedHTMLHash = convertedHTMLLinkify
+    const hashMatch = extractHashtagsWithIndices(convertedHTMLHash)
+    if (hashMatch !== null) {
+      convertedHTMLHash = hashMatch.reduce((current, match) => {
+        return current.replace('#' + match.hashtag, `<span class="hashtag">${'#'+match.hashtag}</span>`)
+      }, convertedHTMLLinkify)
+    }
+
+    return convertedHTMLHash
   }
 }
 
