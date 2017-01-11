@@ -48,7 +48,7 @@ function uploadImageCallBack(file) {
         const src = window.URL.createObjectURL(file)
         //const src = 'http://imgur.com/yrwFoXT.jpg'
         resolve({ src: src });
-      }, 8000)
+      }, 4000)
     }
   )
 }

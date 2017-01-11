@@ -21,7 +21,6 @@ import Actions from '../actions/'
 import insertDataBlock from '../utils/insertDataBlock'
 import {blockRenderMap} from '../utils/block'
 import {blockStyleFn} from '../utils/block'
-//import blockRendererFn from '../utils/block'
 import {styleMap} from '../utils/styleMap'
 
 export default class extends Component {
@@ -60,7 +59,7 @@ export default class extends Component {
     let actions = []
     for (let action of Actions) {
       if (!action || typeof action.type !== 'string') {
-        console.warn('Action: Missing `type` field. Details: ', action)
+        console.warn('Action: Missing type field: ', action)
         continue
       }
 
@@ -78,7 +77,7 @@ export default class extends Component {
     let plugins = []
     for (let plugin of Plugins) {
       if (!plugin || typeof plugin.type !== 'string') {
-        console.warn('Plugin: Missing `type` field. Details: ', plugin)
+        console.warn('Plugin: Missing type field: ', plugin)
         continue
       }
       let pluginType = plugin.type

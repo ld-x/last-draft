@@ -45,7 +45,8 @@ export default class extends Component {
 
   setBarPosition () {
     const container = ReactDOM.findDOMNode(this.refs.container)
-    const element = getSelectedBlockElement()
+    const element = getSelectedBlockElement(this.props.editorState)
+
     if (!element || !container) { return }
 
     const containerTop = container.getBoundingClientRect().top - document.documentElement.clientTop

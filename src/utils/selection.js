@@ -6,18 +6,22 @@
  */
 
 import {getVisibleSelectionRect} from 'draft-js'
+import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
 
-export function getSelectedBlockElement () {
-  const selection = window.getSelection()
-  if (selection.rangeCount === 0) { return null }
-  let node = selection.getRangeAt(0).startContainer
+export function getSelectedBlockElement (editorState) {
+  const selectionState = editorState.getSelection()
+  const contentState = editorState.getCurrentContent()
+  const block = contentState.getBlockForKey(selectionState.getStartKey())
 
-  do {
-    if (node.getAttribute && node.getAttribute('data-block') === 'true') {
-      return node
-    }
-    node = node.parentNode
-  } while (node != null)
+  const offsetKey = DraftOffsetKey.encode(block.getKey(), 0, 0)
+
+  let node = document.querySelectorAll(`[data-offset-key="${offsetKey}"]`)[0]
+
+  if (node.getAttribute && node.getAttribute('data-block') === 'true') {
+    return node
+  } else {
+    return null
+  }
 }
 
 export function getSelectionCoords (editor, toolbar) {
