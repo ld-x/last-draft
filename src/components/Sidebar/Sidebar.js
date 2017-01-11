@@ -9,7 +9,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import SideMenu from './SideMenu'
 import 'setimmediate'
-const styled = require('styled-components').default
+import styled from 'styled-components'
 import {getSelectedBlockElement} from '../../utils/selection'
 
 export default class extends Component {

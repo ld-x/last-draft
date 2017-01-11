@@ -8,8 +8,7 @@
 import React, {Component} from 'react'
 import 'setimmediate'
 import icons from '../Buttons/'
-
-const styled = require('styled-components').default
+import styled from 'styled-components'
 
 export default class extends Component {
   constructor (props) {

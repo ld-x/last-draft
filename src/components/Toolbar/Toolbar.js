@@ -11,7 +11,7 @@ import ToolbarButton from './ToolbarButton'
 import LinkToolbar from './LinkToolbar'
 import {getSelectionCoords} from '../../utils/selection'
 import {hasEntity,setEntity} from '../../utils/entity'
-const styled = require('styled-components').default
+import styled from 'styled-components'
 
 export default class extends Component {
   constructor (props) {

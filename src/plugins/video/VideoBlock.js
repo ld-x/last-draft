@@ -9,7 +9,7 @@ import React, {Component} from 'react'
 import BlockInput from '../block/BlockInput'
 import Block from '../block/Block'
 import icons from '../../components/Buttons/'
-const styled = require('styled-components').default
+import styled from 'styled-components'
 
 export default class extends Component {
   constructor (props) {

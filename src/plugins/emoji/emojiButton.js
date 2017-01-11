@@ -8,7 +8,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import icons from '../../components/Buttons/'
 import { Modifier, EditorState } from 'draft-js'
-const styled = require('styled-components').default
+import styled from 'styled-components'
 
 const EMOJIS = ['😀', '😁', '😂', '😃', '😉', '😋', '😎', '😍', '😗', '🤗', '🤔', '😣', '😫', '😴', '😌',
   '🤓', '😛', '😜', '😠', '😇', '😷', '😈', '👻', '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '🙈', '🙉', '🙊',

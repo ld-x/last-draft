@@ -7,7 +7,7 @@
 
 import React, {Component} from 'react'
 import Separator from './Separator'
-const styled = require('styled-components').default
+import styled from 'styled-components'
 
 export default class extends Component {
   toggleAction (action) {

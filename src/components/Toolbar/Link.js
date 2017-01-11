@@ -8,8 +8,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import icons from '../Buttons/'
-
-const styled = require('styled-components').default
+import styled from 'styled-components'
 import linkifyIt from 'linkify-it'
 import tlds from 'tlds'
 

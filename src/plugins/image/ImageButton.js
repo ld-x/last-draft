@@ -8,7 +8,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import insertDataBlock from '../../utils/insertDataBlock'
-const styled = require('styled-components').default
+import styled from 'styled-components'
 
 export default class extends Component {
   onClick (e) {

@@ -7,7 +7,7 @@
 
 import React, {Component} from 'react'
 import insertDataBlock from '../../utils/insertDataBlock'
-const styled = require('styled-components').default
+import styled from 'styled-components'
 
 export default class extends Component {
   getVideoIdYoutube(str) {

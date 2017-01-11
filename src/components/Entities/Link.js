@@ -9,7 +9,7 @@ import React, {Component} from 'react'
 import {Entity} from 'draft-js'
 import linkifyIt from 'linkify-it'
 import tlds from 'tlds'
-const styled = require('styled-components').default
+import styled from 'styled-components'
 
 const linkify = linkifyIt()
 linkify.tlds(tlds)

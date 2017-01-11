@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { EditorBlock } from 'draft-js'
-const styled = require('styled-components').default
+import styled from 'styled-components'
 
 export default (props) => {
   let alignClass = ''
