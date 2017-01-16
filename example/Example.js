@@ -6,9 +6,8 @@ import {Editor, editorStateFromHtml, editorStateToHtml, editorStateFromRaw, edit
 import RAW from './initialState/raw'
 import HTML from './initialState/html'
 
-/* init inline and side toolbars, optional if you want all items present */
-let SIDE_TOOLBAR = ['image', 'video', 'emoji']
-let INLINE_TOOLBAR = ['bold', 'italic', 'dropcap', 'code', 'link', 'ul', 'ol', 'h2', 'blockquote', 'quote']
+import emoji from 'ld-emoji'
+let plugins = [emoji]
 
 export default class ExampleEditor extends Component {
   constructor(props) {
@@ -29,10 +28,9 @@ export default class ExampleEditor extends Component {
     return (
       <Editor
         theme={this.props.theme}
+        plugins={plugins}
         autofocus={true}
         editorState={this.state.value}
-        sideToolbar={SIDE_TOOLBAR}
-        inlineToolbar={INLINE_TOOLBAR}
         placeholder='Text'
         uploadImageCallBack={uploadImageCallBack}
         onChange={::this.onChange} />

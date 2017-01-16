@@ -33,6 +33,7 @@
     "babel-runtime": "^6.6.1",
     "express": "^4.13.4",
     "html-webpack-plugin": "^2.16.0",
+    "ld-emoji": "1.0.2",
     "react": ">=15.3.1",
     "react-dom": ">=15.3.1",
     "standard": "^8.6.0",
@@ -47,17 +48,18 @@
     "draft-js-export-html": "^0.5.2",
     "immutable": "~3.7.4",
     "linkify-it": "^2.0.2",
-    "setimmediate": "^1.0.4",
     "styled-components": "^1.2.1",
     "tlds": "^1.182.0"
   },
   "keywords": [
+    "ld",
     "last draft",
     "last-draft",
     "draft-js",
     "draft-js-plugins",
     "draftjs plugins",
     "draftjs",
+    "draft.js",
     "editor",
     "richtext",
     "react"

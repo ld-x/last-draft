@@ -50,10 +50,6 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-animateplus@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/animateplus/-/animateplus-1.4.0.tgz#e6a11c89dccfc6f923bb19e2cf7b6c9a103d1905"
-
 ansi-escapes@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
@@ -2685,6 +2681,13 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
+ld-emoji@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-1.0.2.tgz#ab8f0747cc3184e459e27791d3ec6b8ae8390183"
+  dependencies:
+    draft-js "^0.9.1"
+    styled-components "^1.2.1"
+
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"
@@ -3605,10 +3608,6 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
 set-immediate-shim@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/set-immediate-shim/-/set-immediate-shim-1.0.1.tgz#4b2b1b27eb808a9f8dcc481a58e5e56f599f3f61"
-
-setimmediate@^1.0.4:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
 
 setprototypeof@1.0.2:
   version "1.0.2"

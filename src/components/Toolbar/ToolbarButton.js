@@ -9,7 +9,27 @@ import React, {Component} from 'react'
 import Separator from './Separator'
 import styled from 'styled-components'
 
-export default class extends Component {
+export class PluginButton extends Component {
+  render () {
+    const Button = this.props.item.icon
+    const { item, theme } = this.props
+
+    return (
+      <ToolbarButtonWrapper theme={theme} active={false} className='ld-toolbar-button-wrapper'>
+        <LdToolbarButton className='ld-toolbar-button' type='button'>
+          <Button
+            onChange={::this.props.onChange }
+            uploadImageCallBack={this.props.uploadImageCallBack}
+            uploadFile={this.props.uploadFile}
+            editorState={this.props.editorState}
+            />
+        </LdToolbarButton>
+      </ToolbarButtonWrapper>
+    )
+  }
+}
+
+export class ToolbarButton extends Component {
   toggleAction (action) {
     if (action.toggle) {
       action.toggle(!action.active)
@@ -26,13 +46,13 @@ export default class extends Component {
 
     return (
       <ToolbarButtonWrapper theme={theme} active={active} className='ld-toolbar-button-wrapper'>
-        <ToolbarButton
+        <LdToolbarButton
           className='ld-toolbar-button'
           onClick={() => this.toggleAction(this.props)}
           type='button'
         >
           <Icon />
-        </ToolbarButton>
+        </LdToolbarButton>
       </ToolbarButtonWrapper>
     )
   }
@@ -50,7 +70,7 @@ const ToolbarButtonWrapper = styled.li`
   }
 `
 
-const ToolbarButton = styled.button`
+const LdToolbarButton = styled.button`
   padding: 0;
   color: inherit;
   cursor: pointer;

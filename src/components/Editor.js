@@ -9,8 +9,6 @@ import React, {Component} from 'react'
 import {Editor, RichUtils, getDefaultKeyBinding} from 'draft-js'
 
 import Toolbar from './Toolbar/Toolbar'
-import Sidebar from './Sidebar/Sidebar'
-
 import Media from './Blocks/Media'
 import Quote from './Blocks/Quote'
 import Alignment from './Blocks/Alignment'
@@ -26,8 +24,8 @@ import {styleMap} from '../utils/styleMap'
 export default class extends Component {
   static get defaultProps () {
     return {
-      sideToolbar: ['image', 'video', 'emoji'],
-      inlineToolbar: ['bold', 'italic', 'code', 'strikethrough', 'dropcap', 'link', 'ul', 'ol', 'h2', 'blockquote', 'quote'],
+      inline: ['bold', 'italic', 'dropcap', 'link'],
+      blocks: ['blockquote', 'quote', 'code'],
       placeholder: 'Enter text...',
       autofocus: false,
       theme: {
@@ -54,14 +52,38 @@ export default class extends Component {
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
     this.uploadFile = ::this.uploadFile
-    this.actions = this.getActions()
+    this.openToolbar = ::this.openToolbar
     this.plugins = this.getValidPlugins()
+    this.actions = this.getActions()
     this.pluginsByType = this.getPluginsByType()
     this.keyBindings = this.props.keyBindings || []
   }
 
   getActions () {
     let actions = []
+    for (let inline of this.props.inline) {
+      let action = this.getAction(inline)
+      actions.push(action)
+    }
+
+    actions.push({type: "separator"})
+
+    for (let block of this.props.blocks) {
+      let action = this.getAction(block)
+      actions.push(action)
+    }
+
+    actions.push({type: "separator"})
+
+    for (let plugin of this.plugins) {
+      if (plugin.type !== 'placeholder') {
+        actions.push({type: 'plugin', label: plugin.type, icon: plugin.button})
+      }
+    }
+    return actions
+  }
+
+  getAction (label) {
     for (let action of Actions) {
       if (!action || typeof action.type !== 'string') {
         console.warn('Action: Missing type field: ', action)
@@ -71,27 +93,32 @@ export default class extends Component {
       let actionType = action.label
       if (action.label.includes('alignment')) { actionType = 'alignment' }
 
-      if (this.props.inlineToolbar.includes(actionType)) {
-        actions.push(action)
+      if (actionType === label) {
+        return action
       }
     }
-    return actions
   }
 
   getValidPlugins () {
     let plugins = []
+    /* default plusing image, video */
     for (let plugin of Plugins) {
+      let pluginType = plugin.type
+      if (plugin.type.includes('placeholder')) { pluginType = 'image' }
+      plugins.push(plugin)
+    }
+
+    if (!this.props.plugins) { return plugins }
+
+    /* props.plugins any extra plugins */
+    for (let plugin of this.props.plugins) {
       if (!plugin || typeof plugin.type !== 'string') {
         console.warn('Plugin: Missing type field: ', plugin)
         continue
       }
-      let pluginType = plugin.type
-      if (plugin.type.includes('placeholder')) { pluginType = 'image' }
-
-      if (this.props.sideToolbar.includes(pluginType)) {
-        plugins.push(plugin)
-      }
+      plugins.push(plugin)
     }
+
     return plugins
   }
 
@@ -112,6 +139,18 @@ export default class extends Component {
 
   onChange (editorState) {
     this.props.onChange(editorState)
+    this.closeToolbar(editorState)
+  }
+
+  openToolbar () {
+    this.setState({showToolbar: true})
+  }
+
+  closeToolbar (editorState) {
+    let hasFocus = editorState.getSelection().getHasFocus()
+    if (hasFocus) {
+      this.setState({showToolbar: false})
+    }
   }
 
   externalKeyBindings (e) {
@@ -190,10 +229,6 @@ export default class extends Component {
     }
   }
 
-  renderSidebar (props) {
-    return <Sidebar {...props} />
-  }
-
   renderToolbar (props) {
     return <Toolbar {...props} />
   }
@@ -240,15 +275,6 @@ export default class extends Component {
     return (
       <div>
         <div id='editor' ref='editorWrapper' className='last-draft-editor'>
-          {this.renderSidebar({
-            plugins,
-            editorState,
-            theme,
-            readOnly: this.state.readOnly,
-            onChange: this.onChange,
-            uploadFile: this.uploadFile,
-            uploadImageCallBack: this.props.uploadImageCallBack
-          })}
           <Editor
             ref='editor'
             customStyleMap={styleMap}
@@ -270,7 +296,11 @@ export default class extends Component {
               editorWrapper: this.refs.editorWrapper,
               editorState,
               theme,
+              showToolbar: this.state.showToolbar,
               readOnly: this.state.readOnly,
+              openToolbar: this.openToolbar,
+              uploadFile: this.uploadFile,
+              uploadImageCallBack: this.props.uploadImageCallBack,
               onChange: this.onChange,
               actions: this.actions
             })}
