@@ -18,7 +18,6 @@ import SideMenu from './SideMenu'
 export default class extends Component {
   constructor (props) {
     super(props)
-    console.log(props)
     this.state = {
       editingEntity: null,
       link: '',
@@ -53,20 +52,15 @@ export default class extends Component {
     )
   }
 
+  /* entity */
   toggleEntity (entity, active) {
     this.setState({editingEntity: entity})
   }
 
-  openToolbar () {
-    this.setState({ position: { bottom: this.state.position.bottom, left: 220 } })
-    this.props.openToolbar()
-  }
-
   removeEntity () {
-    const {editorState, onChange} = this.props
-    const selection = editorState.getSelection()
+    const selection = this.props.editorState.getSelection()
     if (!selection.isCollapsed()) {
-      onChange(RichUtils.toggleLink(editorState, selection, null))
+      this.props.onChange(RichUtils.toggleLink(this.props.editorState, selection, null))
     }
     this.cancelEntity()
   }
@@ -75,6 +69,24 @@ export default class extends Component {
     const {editorWrapper} = this.props
     editorWrapper && editorWrapper.focus()
     this.setState({ editingEntity: null, error: null })
+  }
+
+  /* plugin modal */
+
+  submitEditModal(html) {
+    this.props.submitEditModal(html)
+    this.closeModal()
+  }
+
+  toggleModal (modal) {
+    this.setState({modal: modal})
+    this.setState({showModal: !this.state.showModal})
+  }
+
+  closeModal () {
+    const {editorWrapper} = this.props
+    editorWrapper && editorWrapper.focus()
+    this.setState({ showModal: false })
   }
 
   setBarPosition () {
@@ -110,8 +122,13 @@ export default class extends Component {
     }
   }
 
+  openToolbar () {
+    this.setState({ position: { bottom: this.state.position.bottom, left: 220 } })
+    this.props.openToolbar()
+  }
+
   renderButton (item, position) {
-    const {editorState, theme} = this.props
+    const {editorState} = this.props
     let current = null
     let toggle = null
     let active = null
@@ -146,13 +163,18 @@ export default class extends Component {
         break
       }
       case 'plugin': {
+
+        if(item.modal) {
+          toggle = () => this.toggleModal(item.modal)
+          break
+        }
+
         return (
           <PluginButton
             uploadImageCallBack={this.props.uploadImageCallBack}
             uploadFile={this.props.uploadFile}
             editorState={this.props.editorState}
             onChange={::this.props.onChange}
-            theme={theme}
             key={key}
             item={item} />
         )
@@ -161,15 +183,47 @@ export default class extends Component {
     }
 
     return (
-      <ToolbarButton theme={theme} key={key} active={active} toggle={toggle} item={item} />
+      <ToolbarButton key={key} active={active} toggle={toggle} item={item} />
     )
   }
 
-  renderToolList () {
+  renderToolbar() {
+    const { editingEntity, showModal } = this.state
+
+    let toolbar = null
+    if (editingEntity === 'LINK') {
+      toolbar = (
+        <LinkToolbar
+          {...this.props}
+          setError={::this.setError}
+          cancelError={::this.cancelError}
+          cancelEntity={::this.cancelEntity}
+          removeEntity={::this.removeEntity}
+          entityType={this.state.editingEntity} />
+      )
+    } else if (showModal) {
+      let Modal = this.state.modal
+      toolbar = (
+        <Modal
+          {...this.props}
+          closeModal={::this.closeModal}
+          submitEditModal={::this.submitEditModal} />
+      )
+    } else {
+      toolbar = (
+        <ToolbarList onMouseDown={(e) => { e.preventDefault() }}>
+          {this.props.actions.map(this.renderButton)}
+        </ToolbarList>
+      )
+    }
+    return toolbar
+  }
+
+  renderError () {
     return (
-      <ToolbarList onMouseDown={(e) => { e.preventDefault() }}>
-        {this.props.actions.map(this.renderButton)}
-      </ToolbarList>
+      <ToolbarError error={this.state.error} className='ld-toolbar-error'>
+        {this.state.error}
+      </ToolbarError>
     )
   }
 
@@ -199,20 +253,8 @@ export default class extends Component {
         <ToolbarWrapper theme={theme} ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
           <div style={{position: 'absolute', bottom: '0'}}>
             <Toolbar ref='toolbar' error={error} theme={theme} className='ld-toolbar'>
-              {
-                editingEntity === 'LINK' ?
-                  <LinkToolbar
-                    {...this.props}
-                    setError={::this.setError}
-                    cancelError={::this.cancelError}
-                    cancelEntity={::this.cancelEntity}
-                    removeEntity={::this.removeEntity}
-                    entityType={this.state.editingEntity} /> :
-                  this.renderToolList()
-              }
-              {this.state.error && <ToolbarError error={error} className='ld-toolbar-error'>
-                {this.state.error}
-              </ToolbarError>}
+              {this.renderToolbar()}
+              {this.state.error && this.renderError()}
             </Toolbar>
           </div>
         </ToolbarWrapper>

@@ -7,6 +7,7 @@
 
 import React, {Component} from 'react'
 import {Editor, RichUtils, getDefaultKeyBinding} from 'draft-js'
+import {editorStateFromHtml} from '../utils/convert'
 
 import Toolbar from './Toolbar/Toolbar'
 import Media from './Blocks/Media'
@@ -46,6 +47,7 @@ export default class extends Component {
     this.setReadOnly = ::this.setReadOnly
     this.uploadFile = ::this.uploadFile
     this.openToolbar = ::this.openToolbar
+    this.resetStateFromHtml = ::this.resetStateFromHtml
     this.plugins = this.getValidPlugins()
     this.actions = this.getActions()
     this.pluginsByType = this.getPluginsByType()
@@ -82,10 +84,17 @@ export default class extends Component {
     actions.push({type: "separator"})
 
     for (let plugin of this.plugins) {
-      if (plugin.type !== 'placeholder') {
+      if (plugin.type === 'placeholder') {
+        continue
+      }
+
+      if (plugin.modal) {
+        actions.push({type: 'plugin', label: plugin.type, icon: plugin.button, modal: plugin.modal})
+      } else {
         actions.push({type: 'plugin', label: plugin.type, icon: plugin.button})
       }
     }
+
     return actions
   }
 
@@ -268,6 +277,11 @@ export default class extends Component {
     this.uploadFile(file, selection)
   }
 
+  resetStateFromHtml(html) {
+    this.onChange(editorStateFromHtml(html))
+    //this.setState({ value: editorStateFromHtml(html) })
+  }
+
   render () {
     const {editorState, stripPastedStyles, spellCheck, theme} = this.props
     const plugins = this.plugins
@@ -301,6 +315,7 @@ export default class extends Component {
               openToolbar: this.openToolbar,
               uploadFile: this.uploadFile,
               uploadImageCallBack: this.props.uploadImageCallBack,
+              submitEditModal: this.resetStateFromHtml,
               onChange: this.onChange,
               actions: this.actions
             })}
