@@ -36,13 +36,6 @@ export default class extends Component {
     }
   }
 
-  componentDidMount() {
-    const { autofocus } = this.props
-    if (autofocus) {
-      this.refs.editor.focus()
-    }
-  }
-
   constructor (props) {
     super(props)
     this.state = {
@@ -57,6 +50,19 @@ export default class extends Component {
     this.actions = this.getActions()
     this.pluginsByType = this.getPluginsByType()
     this.keyBindings = this.props.keyBindings || []
+  }
+
+  componentDidMount() {
+    const { autofocus } = this.props
+    if (autofocus) {
+      this.refs.editor.focus()
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (this.props.readOnly !== nextProps.readOnly) {
+      this.setState({readOnly: nextProps.readOnly})
+    }
   }
 
   getActions () {
@@ -129,12 +135,6 @@ export default class extends Component {
     }
 
     return pluginsByType
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (this.props.readOnly !== nextProps.readOnly) {
-      this.setState({readOnly: nextProps.readOnly})
-    }
   }
 
   onChange (editorState) {

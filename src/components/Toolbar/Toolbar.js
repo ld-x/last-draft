@@ -6,10 +6,11 @@
  */
 
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import {EditorState, RichUtils, Entity} from 'draft-js'
 import {ToolbarButton, PluginButton} from './ToolbarButton'
 import LinkToolbar from './LinkToolbar'
-import {getSelectionCoords} from '../../utils/selection'
+import {getSelectionCoords, getSelectedBlockElement} from '../../utils/selection'
 import {hasEntity,setEntity} from '../../utils/entity'
 import styled from 'styled-components'
 import SideMenu from './SideMenu'
@@ -22,9 +23,15 @@ export default class extends Component {
       editingEntity: null,
       link: '',
       error: null,
-      position: {}
+      position: {},
+      sidebarBottom: 0,
     }
     this.renderButton = ::this.renderButton
+  }
+
+  componentDidUpdate () {
+    this.setBarPosition()
+    this.setSideBarPosition()
   }
 
   setError (errorMsg) {
@@ -68,6 +75,39 @@ export default class extends Component {
     const {editorWrapper} = this.props
     editorWrapper && editorWrapper.focus()
     this.setState({ editingEntity: null, error: null })
+  }
+
+  setBarPosition () {
+    const editorWrapper = this.props.editorWrapper
+    const toolbar = this.refs.toolbar
+    const selectionCoords = getSelectionCoords(editorWrapper, toolbar)
+
+    if (!selectionCoords) { return null }
+
+    if (selectionCoords &&
+        !this.state.position ||
+        this.state.position.bottom !== selectionCoords.offsetBottom ||
+        this.state.position.left !== selectionCoords.offsetLeft) {
+      this.setState({
+        position: {
+          bottom: selectionCoords.offsetBottom,
+          left: selectionCoords.offsetLeft
+        }
+      })
+    }
+  }
+
+  setSideBarPosition () {
+    const container = ReactDOM.findDOMNode(this.refs.sidebar)
+    const element = getSelectedBlockElement(this.props.editorState)
+    if (!element || !container) { return }
+
+    const containerBottom = container.getBoundingClientRect().bottom
+    let bottom = Math.abs(element.getBoundingClientRect().top - 4 - containerBottom)
+
+    if (this.state.sidebarBottom !== bottom) {
+      this.setState({ sidebarBottom: bottom })
+    }
   }
 
   renderButton (item, position) {
@@ -125,30 +165,6 @@ export default class extends Component {
     )
   }
 
-  setBarPosition () {
-    const editorWrapper = this.props.editorWrapper
-    const toolbar = this.refs.toolbar
-    const selectionCoords = getSelectionCoords(editorWrapper, toolbar)
-
-    if (!selectionCoords) { return null }
-
-    if (selectionCoords &&
-        !this.state.position ||
-        this.state.position.bottom !== selectionCoords.offsetBottom ||
-        this.state.position.left !== selectionCoords.offsetLeft) {
-      this.setState({
-        position: {
-          bottom: selectionCoords.offsetBottom,
-          left: selectionCoords.offsetLeft
-        }
-      })
-    }
-  }
-
-  componentDidUpdate () {
-    return this.setBarPosition()
-  }
-
   renderToolList () {
     return (
       <ToolbarList onMouseDown={(e) => { e.preventDefault() }}>
@@ -201,8 +217,8 @@ export default class extends Component {
           </div>
         </ToolbarWrapper>
 
-        <Sidebar ref='container' className='ld-sidebar'>
-          <SidebarMenuWrapper style={{bottom: `${this.state.position.bottom - 40}px`}} className='ld-sidebar-menu-wrapper'>
+        <Sidebar ref='sidebar' className='ld-sidebar'>
+          <SidebarMenuWrapper style={{bottom: `${this.state.sidebarBottom - 30}px`}} className='ld-sidebar-menu-wrapper'>
             <SideMenu
               openToolbar={::this.openToolbar}
               editorState={this.props.editorState} />
