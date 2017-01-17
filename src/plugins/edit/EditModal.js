@@ -52,9 +52,10 @@ export default class EditModal extends Component {
 
   render () {
     const {code, width} = this.state
+    const {rangeLeft} = this.props
 
     return (
-      <Wrapper style={{ width: `${width}px`, left: '-220px' }}>
+      <Wrapper style={{ width: `${width}px`, left: `-${rangeLeft}px` }}>
         <EditCodeTextArea
           className='ld-edit-code-textarea'
           ref='textArea'

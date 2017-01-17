@@ -24,6 +24,7 @@ export default class extends Component {
       error: null,
       position: {},
       sidebarBottom: 0,
+      rangeLeft: 220
     }
     this.renderButton = ::this.renderButton
   }
@@ -103,6 +104,7 @@ export default class extends Component {
         this.state.position.bottom !== selectionCoords.offsetBottom ||
         this.state.position.left !== selectionCoords.offsetLeft) {
       this.setState({
+        rangeLeft: selectionCoords.rangeLeft,
         position: {
           bottom: selectionCoords.offsetBottom,
           left: selectionCoords.offsetLeft
@@ -209,7 +211,8 @@ export default class extends Component {
         <Modal
           {...this.props}
           closeModal={::this.closeModal}
-          submitEditModal={::this.submitEditModal} />
+          submitEditModal={::this.submitEditModal}
+          rangeLeft={this.state.rangeLeft} />
       )
     } else {
       toolbar = (
