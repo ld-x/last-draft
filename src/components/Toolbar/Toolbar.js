@@ -93,8 +93,10 @@ export default class extends Component {
     const editorWrapper = this.props.editorWrapper
     const toolbar = this.refs.toolbar
     const selectionCoords = getSelectionCoords(editorWrapper, toolbar)
+    const hasFocus = this.props.editorState.getSelection().getHasFocus()
 
     if (!selectionCoords) { return null }
+    if (!hasFocus) { return null }
 
     if (selectionCoords &&
         !this.state.position ||
