@@ -2688,9 +2688,12 @@ ld-emoji@1.0.2:
     draft-js "^0.9.1"
     styled-components "^1.2.1"
 
-ld-html@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ld-html/-/ld-html-1.0.0.tgz#a778a3f51814beca1b45cf621627d0fa9f90437d"
+ld-html@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ld-html/-/ld-html-1.0.3.tgz#cfcd5b533f9a88c1d8ae7c20d08fac09a26edbcb"
+  dependencies:
+    draft-js "^0.9.1"
+    styled-components "^1.2.1"
 
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"

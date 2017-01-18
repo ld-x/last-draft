@@ -7,7 +7,7 @@
 
 import React, {Component} from 'react'
 import {Editor, RichUtils, getDefaultKeyBinding} from 'draft-js'
-import {editorStateFromHtml} from '../utils/convert'
+import {editorStateFromHtml, editorStateToHtml} from '../utils/convert'
 
 import Toolbar from './Toolbar/Toolbar'
 import Media from './Blocks/Media'
@@ -49,6 +49,7 @@ export default class extends Component {
     this.uploadFile = ::this.uploadFile
     this.openToolbar = ::this.openToolbar
     this.resetStateFromHtml = ::this.resetStateFromHtml
+    this.returnStateAsHtml = ::this.returnStateAsHtml
     this.plugins = this.getValidPlugins()
     this.actions = this.getActions()
     this.pluginsByType = this.getPluginsByType()
@@ -285,7 +286,10 @@ export default class extends Component {
 
   resetStateFromHtml(html) {
     this.onChange(editorStateFromHtml(html))
-    //this.setState({ value: editorStateFromHtml(html) })
+  }
+
+  returnStateAsHtml() {
+    return editorStateToHtml(this.props.editorState)
   }
 
   render () {
@@ -322,6 +326,7 @@ export default class extends Component {
               uploadFile: this.uploadFile,
               uploadImageCallBack: this.props.uploadImageCallBack,
               submitHtmlModal: this.resetStateFromHtml,
+              returnStateAsHtml: this.returnStateAsHtml,
               onChange: this.onChange,
               actions: this.actions
             })}

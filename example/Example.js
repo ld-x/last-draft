@@ -7,7 +7,8 @@ import RAW from './initialState/raw'
 import HTML from './initialState/html'
 
 import emoji from 'ld-emoji'
-let plugins = [emoji]
+import html from 'ld-html'
+let plugins = [emoji, html]
 
 export default class ExampleEditor extends Component {
   constructor(props) {
