@@ -74,8 +74,8 @@ export default class extends Component {
 
   /* plugin modal */
 
-  submitEditModal(html) {
-    this.props.submitEditModal(html)
+  submitHtmlModal(html) {
+    this.props.submitHtmlModal(html)
     this.closeModal()
   }
 
@@ -211,7 +211,7 @@ export default class extends Component {
         <Modal
           {...this.props}
           closeModal={::this.closeModal}
-          submitEditModal={::this.submitEditModal}
+          submitHtmlModal={::this.submitHtmlModal}
           rangeLeft={this.state.rangeLeft} />
       )
     } else {

@@ -29,6 +29,8 @@ export default class ExampleEditor extends Component {
       <Editor
         theme={this.props.theme}
         plugins={plugins}
+        inline={['bold', 'italic', 'dropcap']}
+        blocks={['ol', 'h2', 'quote']}
         autofocus={true}
         editorState={this.state.value}
         placeholder='Text'

@@ -56,31 +56,50 @@ export default class ExampleEditor extends Component {
 
 ## Props
 
-#### `sideToolbar`
-Array of plugins to include in the sideToolbar, any of the following: `image`, `video` and `emoji` plugins.
-
-By default all sideToolbar plugins are included:
+#### `inline`
+Array of inline styles to use in the toolbar. Any of the following: `bold`, `italic`, `strikethrough`, `code`, `dropcap`. By default all are included:
 
 ```jsx
-let SIDE_TOOLBAR = ['image', 'video', 'emoji']
-
 <Editor
   editorState={this.state.value}
-  sideToolbar={SIDE_TOOLBAR}
+  inline={['bold', 'italic', 'dropcap']}
   onChange={::this.onChange} />
 ```
 
-#### `inlineToolbar`
-Customize the buttons on the inline toolbar to toggle inline styles, block styles and link entities, any of the following: `bold`, `italic`, `strikethrough`, `code`, `link`, `ul`, `ol`, `h2`, `blockquote`, `quote`, `alignment`.
-
-By default all inlineToolbar buttons are included:
+#### `blocks`
+Array of block styles to use in the toolbar. Any of the following: `ul`, `ol`, `h2`, `blockquote`, `quote`, `alignment`. By default all are included:
 
 ```jsx
-let INLINE_TOOLBAR = ['bold', 'italic', 'strikethrough', 'code' 'link', 'ul', 'ol', 'h2', 'blockquote', 'quote', 'alignment']
+<Editor
+  editorState={this.state.value}
+  blocks={['blockquote', 'quote', 'code']}
+  onChange={::this.onChange} />
+```
+
+#### `entities`
+Array of entities to use in. Any of the following: `link`, `hashtag`. By default all are included:
+
+```jsx
+<Editor
+  editorState={this.state.value}
+  entities={['link']}
+  onChange={::this.onChange} />
+```
+
+#### `plugins`
+Plugins include custom functionality which can be activated from a button in the toolbar. By default the `image` and `video` plugins are included. However you can create your own plugins! Some examples are below:
+
+[ld-html](https://github.com/StevenIseki/ld-html) - Adds Edit html functionality
+[ld-emoji](https://github.com/StevenIseki/ld-emoji) - Adds emoji functionality
+
+```jsx
+import emoji from 'ld-emoji'
+import html from 'ld-html'
+let plugins = [emoji,html]
 
 <Editor
   editorState={this.state.value}
-  inlineToolbar={INLINE_TOOLBAR}
+  plugins={plugins}
   onChange={::this.onChange} />
 ```
 

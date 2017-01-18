@@ -25,8 +25,9 @@ import {styleMap} from '../utils/styleMap'
 export default class extends Component {
   static get defaultProps () {
     return {
-      inline: ['bold', 'italic', 'dropcap', 'link'],
-      blocks: ['blockquote', 'quote', 'code'],
+      inline: ['bold', 'italic', 'strikethrough', 'code', 'dropcap'],
+      entities: ['link'],
+      blocks: ['ul', 'ol', 'h2', 'blockquote', 'quote'],
       placeholder: 'Enter text...',
       autofocus: false,
       theme: {
@@ -71,6 +72,11 @@ export default class extends Component {
     let actions = []
     for (let inline of this.props.inline) {
       let action = this.getAction(inline)
+      actions.push(action)
+    }
+
+    for (let ent of this.props.entities) {
+      let action = this.getAction(ent)
       actions.push(action)
     }
 
@@ -315,7 +321,7 @@ export default class extends Component {
               openToolbar: this.openToolbar,
               uploadFile: this.uploadFile,
               uploadImageCallBack: this.props.uploadImageCallBack,
-              submitEditModal: this.resetStateFromHtml,
+              submitHtmlModal: this.resetStateFromHtml,
               onChange: this.onChange,
               actions: this.actions
             })}
