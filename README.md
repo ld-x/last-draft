@@ -89,8 +89,8 @@ Array of entities to use in. Any of the following: `link`, `hashtag`. By default
 #### `plugins`
 Plugins include custom functionality which can be activated from a button in the toolbar. By default the `image` and `video` plugins are included. However you can create your own plugins! Some examples are below:
 
-[ld-html](https://github.com/StevenIseki/ld-html) - Adds Edit html functionality
-[ld-emoji](https://github.com/StevenIseki/ld-emoji) - Adds emoji functionality
+- [ld-html](https://github.com/vacenz/ld-html) - Adds Edit html functionality
+- [ld-emoji](https://github.com/vacenz/ld-emoji) - Adds emoji functionality
 
 ```jsx
 import emoji from 'ld-emoji'
@@ -149,8 +149,7 @@ let THEME = {
   highlight: '#a80077'
 }
 
-<Editor
-  theme={THEME}
+<Editor theme={THEME}
 ```
 
 ## Custom Styles with CSS

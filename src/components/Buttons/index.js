@@ -13,7 +13,7 @@ import H2Icon from './H2'
 import BlockQuoteIcon from './BlockQuote'
 import QuoteIcon from './Quote'
 import LinkIcon from './Link'
-import CrossIcon from './Cross'
+import MenuIcon from './Menu'
 import ErrorIcon from './Error'
 import UnlinkIcon from './Unlink'
 import CloseIcon from './Close'
@@ -31,7 +31,7 @@ const icons = {
   BlockQuoteIcon,
   QuoteIcon,
   LinkIcon,
-  CrossIcon,
+  MenuIcon,
   ErrorIcon,
   UnlinkIcon,
   CloseIcon,

@@ -11,19 +11,17 @@ import styled from 'styled-components'
 export default class extends React.Component {
   render () {
     return (
-      <CrossIcon width='24' height='24' viewBox='0 0 24 24' className='ld-button-cross'>
-        <g fill='currentColor' fillRule='evenodd'>
-          <path d='M11 6h2v12h-2z' />
-          <path d='M18 11v2H6v-2z' />
-        </g>
-      </CrossIcon>
+      <MenuIcon fill="currentColor" height="24" viewBox="0 0 24 24" width="24">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </MenuIcon>
     )
   }
 }
 
-const CrossIcon = styled.svg`
+const MenuIcon = styled.svg`
   position: absolute;
-  transform: scale(0.8);
+  transform: scale(0.6);
   top: 0;
   left: 0;
 `

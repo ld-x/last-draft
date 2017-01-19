@@ -178,6 +178,9 @@ export function editorStateToJSON (editorState) {
 }
 
 export function editorStateFromRaw (rawContent, decorator = defaultDecorator) {
+  if (Object.keys(rawContent).length === 0) {
+    return EditorState.createEmpty(decorator)
+  }
   if (rawContent) {
     const content = convertFromRaw(rawContent)
     return EditorState.createWithContent(content, decorator)

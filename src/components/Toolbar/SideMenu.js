@@ -20,7 +20,7 @@ export default class extends Component {
             onClick={::this.openToolbar}
             type='button'
           >
-            <icons.CrossIcon />
+            <icons.MenuIcon />
           </SideMenuButton>
         </SideMenu>
       </SideMenuWrapper>
