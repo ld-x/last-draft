@@ -10,6 +10,7 @@ import {Editor, RichUtils, getDefaultKeyBinding} from 'draft-js'
 import {editorStateFromHtml, editorStateToHtml} from '../utils/convert'
 
 import Toolbar from './Toolbar/Toolbar'
+import Atomic from './Blocks/Atomic'
 import Media from './Blocks/Media'
 import Quote from './Blocks/Quote'
 import Alignment from './Blocks/Alignment'
@@ -169,7 +170,7 @@ export default class extends Component {
     }
   }
 
-  externalKeyBindings (e) {
+  keyBindingFn (e) {
     for (const kb of this.keyBindings) {
       if (kb.isKeyBound(e)) {
         return kb.name
@@ -231,11 +232,18 @@ export default class extends Component {
 
     const type = block.getData().toObject().type
     let plugin = this.pluginsByType[type] || null
-    if (!plugin) { return null }
+    if (!plugin) {
+      return null
+      /* need to get the key and find the plugin type of the parent, which should be in this case Todo */
+      //plugin = this.pluginsByType['todo']
+    }
+
+    let component = Atomic
+    if (type === 'image' || type === 'video') { component = Media }
 
     return {
-      component: Media,
-      editable: false,
+      component: component,
+      editable: true,
       props: {
         plugin: plugin,
         onChange: this.onChange,
@@ -312,7 +320,7 @@ export default class extends Component {
             handleDroppedFiles={::this.handleDroppedFiles}
             stripPastedStyles={stripPastedStyles}
             spellCheck={spellCheck}
-            keyBindingFn={::this.externalKeyBindings}
+            keyBindingFn={::this.keyBindingFn}
             editorState={editorState}
             placeholder={this.props.placeholder}
             onChange={this.onChange} />

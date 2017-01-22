@@ -54,31 +54,16 @@ export default class extends Component {
     this.onChange(newEditorState)
   }
 
-  handleFocus () {
-    const {setReadOnly} = this.props.blockProps
-    setReadOnly(true)
-  }
-
-  handleBlur () {
-    const {setReadOnly} = this.props.blockProps
-    setReadOnly(false)
-  }
-
   render () {
     const data = this.props.block.getData().toJS()
     const {plugin} = this.props.blockProps
     const Block = plugin.block
     return (
-      <Media onBlur={::this.handleBlur} onFocus={::this.handleFocus}>
-        <Block
-          {...this.props}
-          data={data}
-          container={this}
-          blockProps={this.props.blockProps} />
-      </Media>
+      <Block
+        {...this.props}
+        data={data}
+        container={this}
+        blockProps={this.props.blockProps} />
     )
   }
 }
-
-const Media = styled.div`
-`

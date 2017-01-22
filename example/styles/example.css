@@ -47,11 +47,7 @@ body {
   }
 }
 
-.logo {
-  margin-bottom: 2rem;
-  width: 100%;
-  height: 10rem;
-}
+/* color picker */
 
 .color-picker-wrapper {
   position: static;
