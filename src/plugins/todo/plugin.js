@@ -6,9 +6,11 @@
 
 import TodoButton from './TodoButton'
 import TodoBlock from './TodoBlock'
+import TodoWrapper from './TodoWrapper'
 
 export default {
   type: 'todo',
   button: TodoButton,
-  block: TodoBlock
+  block: TodoBlock,
+  wrapper: TodoWrapper
 }

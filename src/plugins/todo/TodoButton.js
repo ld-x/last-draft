@@ -4,39 +4,15 @@
  * License: MIT
  */
 
-import {Editor, EditorState, RichUtils, getDefaultKeyBinding, DefaultDraftBlockRenderMap, EditorBlock} from 'draft-js'
 import React, {Component} from 'react'
-
-const resetBlockType = (editorState, newType = Block.UNSTYLED) => {
-  const contentState = editorState.getCurrentContent()
-  const selectionState = editorState.getSelection()
-  const key = selectionState.getStartKey()
-  const blockMap = contentState.getBlockMap()
-  const block = blockMap.get(key)
-  let newText = ''
-  const text = block.getText()
-  if (block.getLength() >= 2) { newText = text.substr(1) }
-  const newBlock = block.merge({
-    text: newText,
-    type: newType,
-    data: { checked: false, type: 'todo' },
-  })
-  const newContentState = contentState.merge({
-    blockMap: blockMap.set(key, newBlock),
-    selectionAfter: selectionState.merge({ anchorOffset: 0, focusOffset: 0 })
-  })
-
-  return EditorState.push(editorState, newContentState, 'change-block-type')
-}
+import insertDataBlock from './insertDataBlock'
 
 export default class extends Component {
   onClick (e) {
-    const { editorState } = this.props
     e.preventDefault()
-    const selection = editorState.getSelection()
-    const currentBlock = editorState.getCurrentContent().getBlockForKey(selection.getStartKey())
-    const blockType = currentBlock.getType()
-    this.props.onChange(resetBlockType(editorState, 'atomic'))
+    const { editorState } = this.props
+    const data = {type: 'todo'}
+    this.props.onChange(insertDataBlock(editorState, data))
   }
 
   render () {

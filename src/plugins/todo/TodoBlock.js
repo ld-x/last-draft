@@ -24,7 +24,7 @@ export default class extends React.Component {
   }
 
   updateData() {
-    const { block, blockProps } = this.props;
+    const { block, blockProps } = this.props
 
     const { onChange, editorState } = blockProps
     const data = block.getData()
@@ -37,7 +37,7 @@ export default class extends React.Component {
     const data = this.props.block.getData()
     const checked = data.get('checked') === true
     return (
-      <TodoWrapper checked={checked}>
+      <TodoWrapper data-plugin-type='todo'>
         <TodoInput type='checkbox' checked={checked} onChange={this.updateData} />
         <TodoBlock>
           <EditorBlock {...this.props} />

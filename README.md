@@ -67,12 +67,12 @@ Array of inline styles to use in the toolbar. Any of the following: `bold`, `ita
 ```
 
 #### `blocks`
-Array of block styles to use in the toolbar. Any of the following: `ul`, `ol`, `h2`, `blockquote`, `quote`, `alignment`. By default all are included:
+Array of block styles to use in the toolbar. Any of the following: `ul`, `ol`, `h2`, `blockquote`, `alignment`. By default all are included:
 
 ```jsx
 <Editor
   editorState={this.state.value}
-  blocks={['blockquote', 'quote', 'code']}
+  blocks={['blockquote', 'code']}
   onChange={::this.onChange} />
 ```
 
@@ -165,7 +165,6 @@ It is simple to customize elements in the editor, as shown in the [ld-theme-exam
 .ld-header {}
 .ld-unordered-list {}
 .ld-ordered-list {}
-.ld-quote {}
 .ld-blockquote {}
 .ld-align-wrapper {}
 .ld-align-left {}
@@ -221,7 +220,6 @@ It is simple to customize elements in the editor, as shown in the [ld-theme-exam
 .ld-button-italic {}
 .ld-button-link {}
 .ld-button-ordered-list {}
-.ld-button-quote {}
 .ld-button-unordered-list {}
 .ld-button-unlink {}
 .ld-button-video {}

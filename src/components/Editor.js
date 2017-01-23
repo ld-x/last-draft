@@ -12,15 +12,12 @@ import {editorStateFromHtml, editorStateToHtml} from '../utils/convert'
 import Toolbar from './Toolbar/Toolbar'
 import Atomic from './Blocks/Atomic'
 import Media from './Blocks/Media'
-import Quote from './Blocks/Quote'
-import Alignment from './Blocks/Alignment'
 
 import Plugins from '../plugins/'
 import Actions from '../actions/'
 
 import insertDataBlock from '../utils/insertDataBlock'
-import {blockRenderMap} from '../utils/block'
-import {blockStyleFn} from '../utils/block'
+import {blockRenderMap, blockStyleFn, getPluginTypeForBlock} from '../utils/block'
 import {styleMap} from '../utils/styleMap'
 
 export default class extends Component {
@@ -28,7 +25,7 @@ export default class extends Component {
     return {
       inline: ['bold', 'italic', 'strikethrough', 'code', 'dropcap'],
       entities: ['link'],
-      blocks: ['ul', 'ol', 'h2', 'blockquote', 'quote'],
+      blocks: ['ul', 'ol', 'h2', 'blockquote'],
       placeholder: 'Enter text...',
       autofocus: false,
       theme: {
@@ -124,7 +121,7 @@ export default class extends Component {
 
   getValidPlugins () {
     let plugins = []
-    /* default plusing image, video */
+    /* default plugins: image, video */
     for (let plugin of Plugins) {
       let pluginType = plugin.type
       if (plugin.type.includes('placeholder')) { pluginType = 'image' }
@@ -215,35 +212,30 @@ export default class extends Component {
   }
 
   blockRendererFn (block) {
-    if (block.getType() === 'quote') {
-      return { component: Quote }
-    }
-    if (block.getType() === 'alignment-left') {
-      return { component: Alignment, props: { alignment: 'alignment-left' } }
-    }
-    if (block.getType() === 'alignment-center') {
-      return { component: Alignment, props: { alignment: 'center' } }
-    }
-    if (block.getType() === 'alignment-right') {
-      return { component: Alignment, props: { alignment: 'alignment-right' } }
-    }
 
     if (block.getType() !== 'atomic') { return null }
 
     const type = block.getData().toObject().type
     let plugin = this.pluginsByType[type] || null
     if (!plugin) {
-      return null
-      /* need to get the key and find the plugin type of the parent, which should be in this case Todo */
-      //plugin = this.pluginsByType['todo']
+      const pluginType = getPluginTypeForBlock(this.props.editorState, block)
+      if (pluginType !== null) {
+        plugin = this.pluginsByType[pluginType]
+      }
     }
+    if (!plugin) { return null }
 
     let component = Atomic
-    if (type === 'image' || type === 'video') { component = Media }
+    let editable = true
+
+    if (type === 'image' || type === 'video') {
+      component = Media,
+      editable = false
+    }
 
     return {
       component: component,
-      editable: true,
+      editable: editable,
       props: {
         plugin: plugin,
         onChange: this.onChange,

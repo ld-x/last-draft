@@ -58,6 +58,7 @@ export default class extends Component {
     const data = this.props.block.getData().toJS()
     const {plugin} = this.props.blockProps
     const Block = plugin.block
+
     return (
       <Block
         {...this.props}

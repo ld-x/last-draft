@@ -6,31 +6,19 @@
  */
 
 import { Map } from 'immutable'
-import { DefaultDraftBlockRenderMap } from 'draft-js'
+import { DefaultDraftBlockRenderMap, getVisibleSelectionRect} from 'draft-js'
+import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
+import React, {Component} from 'react'
+import Wrapper from '../components/Blocks/Wrapper'
 
-export const blockRenderMap = Map({
-  ['caption']: {
-    element: 'cite',
-  },
-  ['quote']: {
-    element: 'span',
-  },
-  ['alignment-left']: {
+const blockRenderMapCustom = Map({
+  'atomic': {
     element: 'div',
-  },
-  ['alignment-center']: {
-    element: 'div',
-  },
-  ['alignment-right']: {
-    element: 'div',
-  },
-  ['image']: {
-    element: 'figure',
-  },
-  ['break']: {
-    element: 'div',
-  },
-}).merge(DefaultDraftBlockRenderMap)
+    wrapper: <Wrapper />
+  }
+})
+export const blockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMapCustom)
+
 
 export function blockStyleFn (contentBlock) {
   const type = contentBlock.getType()
@@ -39,9 +27,6 @@ export function blockStyleFn (contentBlock) {
   }
   if (type === 'blockquote') {
     return 'ld-blockquote'
-  }
-  if (type === 'quote') {
-    return 'ld-quote'
   }
   if (type === 'header-two') {
     return 'ld-header'
@@ -52,4 +37,20 @@ export function blockStyleFn (contentBlock) {
   if (type === 'ordered-list-item') {
     return 'ld-ordered-list'
   }
+}
+
+export function getPluginTypeForBlock (editorState, block) {
+  /* gets the parent blocks plugin type as the node may not yet be in the dom */
+  const selectionState = editorState.getSelection()
+  const contentState = editorState.getCurrentContent()
+
+  let prevBlock = contentState.getBlockBefore(block.getKey())
+  const offsetKey = DraftOffsetKey.encode(prevBlock.getKey(), 0, 0)
+  let node = document.querySelector(`[data-offset-key="${offsetKey}"]`)
+  if (node === undefined || node === null) { return null }
+  let pluginNode = node.querySelector('div[data-plugin-type]')
+  if (pluginNode === undefined || pluginNode === null) { return null }
+  let pluginType = pluginNode.getAttribute('data-plugin-type')
+  if (pluginType === undefined || pluginType === null) { return null }
+  return pluginType
 }
