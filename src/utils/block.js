@@ -13,7 +13,7 @@ import Wrapper from '../components/Blocks/Wrapper'
 
 const blockRenderMapCustom = Map({
   'atomic': {
-    element: 'div',
+    element: 'figure',
     wrapper: <Wrapper />
   }
 })
