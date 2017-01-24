@@ -15,6 +15,9 @@ const blockRenderMapCustom = Map({
   'atomic': {
     element: 'figure',
     wrapper: <Wrapper />
+  },
+  'quote': {
+    element: 'span'
   }
 })
 export const blockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMapCustom)
@@ -36,6 +39,9 @@ export function blockStyleFn (contentBlock) {
   }
   if (type === 'ordered-list-item') {
     return 'ld-ordered-list'
+  }
+  if (type === 'quote') {
+    return 'ld-quote'
   }
 }
 

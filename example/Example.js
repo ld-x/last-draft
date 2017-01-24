@@ -15,8 +15,8 @@ export default class ExampleEditor extends Component {
   constructor(props) {
     super(props)
     /* examples of initial state */
-    //const INITIAL_STATE = editorStateFromRaw(RAW)
-    const INITIAL_STATE = editorStateFromRaw({})
+    const INITIAL_STATE = editorStateFromRaw(RAW)
+    //const INITIAL_STATE = editorStateFromRaw({})
 
     //const INITIAL_STATE = editorStateFromHtml(HTML)
     //const INITIAL_STATE = editorStateFromHtml('<div />')
@@ -36,7 +36,7 @@ export default class ExampleEditor extends Component {
         theme={this.props.theme}
         plugins={plugins}
         inline={['bold', 'italic', 'dropcap']}
-        blocks={['ol', 'h2']}
+        blocks={['ol', 'h2', 'quote']}
         autofocus={true}
         editorState={this.state.value}
         placeholder='Text'
@@ -55,7 +55,7 @@ function uploadImageCallBack(file) {
         const src = window.URL.createObjectURL(file)
         //const src = 'http://imgur.com/yrwFoXT.jpg'
         resolve({ src: src });
-      }, 4000)
+      }, 2000)
     }
   )
 }

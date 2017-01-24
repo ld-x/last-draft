@@ -19,4 +19,5 @@ export default [
   {type: 'block', label: 'ol', style: 'ordered-list-item', icon: icons.OLIcon},
   {type: 'block', label: 'h2', style: 'header-two', icon: icons.H2Icon},
   {type: 'block', label: 'blockquote', style: 'blockquote', icon: icons.BlockQuoteIcon},
+  {type: 'block', label: 'quote', style: 'quote', icon: icons.QuoteIcon}
 ]

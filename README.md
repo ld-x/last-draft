@@ -67,7 +67,7 @@ Array of inline styles to use in the toolbar. Any of the following: `bold`, `ita
 ```
 
 #### `blocks`
-Array of block styles to use in the toolbar. Any of the following: `ul`, `ol`, `h2`, `blockquote`, `alignment`. By default all are included:
+Array of block styles to use in the toolbar. Any of the following: `ul`, `ol`, `h2`, `blockquote`, `quote`. By default all are included:
 
 ```jsx
 <Editor
