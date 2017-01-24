@@ -2695,6 +2695,13 @@ ld-html@1.0.3:
     draft-js "^0.9.1"
     styled-components "^1.2.1"
 
+ld-todo@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ld-todo/-/ld-todo-1.0.0.tgz#5867442bacfdcd815b4ef76f51368d7b2d732927"
+  dependencies:
+    draft-js "^0.9.1"
+    styled-components "^1.2.1"
+
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"

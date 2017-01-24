@@ -36,6 +36,7 @@
     "html-webpack-plugin": "^2.16.0",
     "ld-emoji": "1.0.2",
     "ld-html": "1.0.3",
+    "ld-todo": "1.0.0",
     "react": ">=15.3.1",
     "react-dom": ">=15.3.1",
     "standard": "^8.6.0",

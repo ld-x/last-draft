@@ -7,11 +7,9 @@
 
 import {image, placeholder} from './image/plugin'
 import video from './video/plugin'
-import todo from './todo/plugin'
 
 export default [
   image,
   placeholder,
-  video,
-  todo
+  video
 ]

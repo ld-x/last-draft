@@ -91,11 +91,13 @@ Plugins include custom functionality which can be activated from a button in the
 
 - [ld-html](https://github.com/vacenz/ld-html) - Adds Edit html functionality
 - [ld-emoji](https://github.com/vacenz/ld-emoji) - Adds emoji functionality
+- [ld-todo](https://github.com/vacenz/ld-todo) - Adds todo functionality
 
 ```jsx
 import emoji from 'ld-emoji'
 import html from 'ld-html'
-let plugins = [emoji,html]
+import todo from 'ld-todo'
+let plugins = [emoji, html, todo]
 
 <Editor
   editorState={this.state.value}

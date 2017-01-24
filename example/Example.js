@@ -8,7 +8,8 @@ import HTML from './initialState/html'
 
 import emoji from 'ld-emoji'
 import html from 'ld-html'
-let plugins = [emoji, html]
+import todo from 'ld-todo'
+let plugins = [emoji, html, todo]
 
 export default class ExampleEditor extends Component {
   constructor(props) {
