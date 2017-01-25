@@ -10,6 +10,7 @@ import {Editor, RichUtils, getDefaultKeyBinding} from 'draft-js'
 import {editorStateFromHtml, editorStateToHtml} from '../utils/convert'
 
 import Toolbar from './Toolbar/Toolbar'
+import Sidebar from './Sidebar/Sidebar'
 import Atomic from './Blocks/Atomic'
 import Media from './Blocks/Media'
 
@@ -19,6 +20,7 @@ import Actions from '../actions/'
 import insertDataBlock from '../utils/insertDataBlock'
 import {blockRenderMap, blockStyleFn, getPluginTypeForBlock} from '../utils/block'
 import {styleMap} from '../utils/styleMap'
+import styled from 'styled-components'
 
 export default class extends Component {
   static get defaultProps () {
@@ -249,6 +251,10 @@ export default class extends Component {
     return <Toolbar {...props} />
   }
 
+  renderSidebar (props) {
+    return <Sidebar {...props} />
+  }
+
   uploadFile(file, selection) {
     const { uploadImageCallBack, editorState } = this.props
     const { uploading } = this.state
@@ -299,6 +305,12 @@ export default class extends Component {
     return (
       <div>
         <div id='editor' ref='editorWrapper' className='last-draft-editor'>
+          {this.renderSidebar({
+            editorState,
+            openToolbar: this.openToolbar,
+            readOnly: this.state.readOnly,
+            onChange: this.onChange
+          })}
           <Editor
             ref='editor'
             customStyleMap={styleMap}

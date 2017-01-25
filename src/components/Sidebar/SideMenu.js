@@ -3,21 +3,13 @@ import icons from '../Buttons/'
 import styled from 'styled-components'
 
 export default class extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  openToolbar () {
-    this.props.openToolbar()
-  }
-
   render () {
     return (
       <SideMenuWrapper className='ld-sidemenu-wrapper'>
         <SideMenu className='ld-sidemenu'>
           <SideMenuButton
             className='ld-sidemenu-button'
-            onClick={::this.openToolbar}
+            onClick={::this.props.openToolbar}
             type='button'
           >
             <icons.MenuIcon />

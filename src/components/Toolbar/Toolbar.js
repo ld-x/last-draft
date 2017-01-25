@@ -13,7 +13,6 @@ import LinkToolbar from './LinkToolbar'
 import {getSelectionCoords, getSelectedBlockElement} from '../../utils/selection'
 import {hasEntity,setEntity} from '../../utils/entity'
 import styled from 'styled-components'
-import SideMenu from './SideMenu'
 
 export default class extends Component {
   constructor (props) {
@@ -23,7 +22,6 @@ export default class extends Component {
       link: '',
       error: null,
       position: {},
-      sidebarBottom: 0,
       rangeLeft: 220
     }
     this.renderButton = ::this.renderButton
@@ -31,7 +29,6 @@ export default class extends Component {
 
   componentDidUpdate () {
     this.setBarPosition()
-    this.setSideBarPosition()
   }
 
   setError (errorMsg) {
@@ -110,19 +107,6 @@ export default class extends Component {
           left: selectionCoords.offsetLeft
         }
       })
-    }
-  }
-
-  setSideBarPosition () {
-    const container = ReactDOM.findDOMNode(this.refs.sidebar)
-    const element = getSelectedBlockElement(this.props.editorState)
-    if (!element || !container) { return }
-
-    const containerBottom = container.getBoundingClientRect().bottom
-    let bottom = Math.abs(element.getBoundingClientRect().top - 4 - containerBottom)
-
-    if (this.state.sidebarBottom !== bottom) {
-      this.setState({ sidebarBottom: bottom })
     }
   }
 
@@ -254,24 +238,14 @@ export default class extends Component {
     }
 
     return (
-      <div>
-        <ToolbarWrapper theme={theme} ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
-          <div style={{position: 'absolute', bottom: '0'}}>
-            <Toolbar ref='toolbar' error={error} theme={theme} className='ld-toolbar'>
-              {this.renderToolbar()}
-              {this.state.error && this.renderError()}
-            </Toolbar>
-          </div>
-        </ToolbarWrapper>
-
-        <Sidebar ref='sidebar' className='ld-sidebar'>
-          <SidebarMenuWrapper style={{bottom: `${this.state.sidebarBottom - 30}px`}} className='ld-sidebar-menu-wrapper'>
-            <SideMenu
-              openToolbar={::this.openToolbar}
-              editorState={this.props.editorState} />
-          </SidebarMenuWrapper>
-        </Sidebar>
-      </div>
+      <ToolbarWrapper theme={theme} ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
+        <div style={{position: 'absolute', bottom: '0'}}>
+          <Toolbar ref='toolbar' error={error} theme={theme} className='ld-toolbar'>
+            {this.renderToolbar()}
+            {this.state.error && this.renderError()}
+          </Toolbar>
+        </div>
+      </ToolbarWrapper>
     )
   }
 }
@@ -309,14 +283,4 @@ const ToolbarError = styled.p`
   color: #FFF;
   font-size: 12px !important;
   font-weight: bold;
-`
-
-const Sidebar = styled.div`
-  position: relative;
-`
-
-const SidebarMenuWrapper = styled.div`
-  float: left;
-  left: -44px;
-  position: absolute;
 `
