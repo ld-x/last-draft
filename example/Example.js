@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import {Editor, editorStateFromHtml, editorStateToHtml, editorStateFromRaw, editorStateToJSON} from '../src/'
+import {Editor, editorStateFromHtml, editorStateToHtml, editorStateFromRaw, editorStateToJSON, editorStateFromText} from '../src/'
 
 /* init the state, either from raw or html */
 import RAW from './initialState/raw'
@@ -17,7 +17,7 @@ export default class ExampleEditor extends Component {
     /* examples of initial state */
     const INITIAL_STATE = editorStateFromRaw(RAW)
     //const INITIAL_STATE = editorStateFromRaw({})
-
+    //const INITIAL_STATE = editorStateFromText('this is a cooel editor... 🏄🌠🏀')
     //const INITIAL_STATE = editorStateFromHtml(HTML)
     //const INITIAL_STATE = editorStateFromHtml('<div />')
     this.state = { value: INITIAL_STATE }

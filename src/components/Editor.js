@@ -7,7 +7,7 @@
 
 import React, {Component} from 'react'
 import {Editor, RichUtils, getDefaultKeyBinding} from 'draft-js'
-import {editorStateFromHtml, editorStateToHtml} from '../utils/convert'
+import {editorStateFromHtml, editorStateToHtml, editorStateFromText} from '../utils/convert'
 
 import Toolbar from './Toolbar/Toolbar'
 import Sidebar from './Sidebar/Sidebar'
@@ -292,6 +292,10 @@ export default class extends Component {
 
   resetStateFromHtml(html) {
     this.onChange(editorStateFromHtml(html))
+  }
+
+  resetStateFromText (text) {
+    this.onChange(editorStateFromText(text))
   }
 
   returnStateAsHtml() {

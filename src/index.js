@@ -13,6 +13,7 @@ import * as convert from './utils/convert'
 const LD = {
   editorStateFromRaw: convert.editorStateFromRaw,
   editorStateFromHtml: convert.editorStateFromHtml,
+  editorStateFromText: convert.editorStateFromText,
   editorStateToJSON: convert.editorStateToJSON,
   editorStateToHtml: convert.editorStateToHtml,
   insertDataBlock: insertDataBlock,

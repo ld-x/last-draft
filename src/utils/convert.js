@@ -7,7 +7,7 @@
 
 import {convertFromHTML} from 'draft-convert'
 import {stateToHTML} from 'draft-js-export-html'
-import {Entity, convertToRaw, convertFromRaw, EditorState} from 'draft-js'
+import {Entity, convertToRaw, convertFromRaw, EditorState, ContentState} from 'draft-js'
 import defaultDecorator from '../decorators/defaultDecorator'
 import {html} from 'common-tags'
 import linkifyIt from 'linkify-it'
@@ -184,6 +184,15 @@ export function editorStateFromRaw (rawContent, decorator = defaultDecorator) {
   if (rawContent) {
     const content = convertFromRaw(rawContent)
     return EditorState.createWithContent(content, decorator)
+  } else {
+    return EditorState.createEmpty(decorator)
+  }
+}
+
+
+export function editorStateFromText (text, decorator = defaultDecorator) {
+  if (text) {
+    return EditorState.createWithContent(ContentState.createFromText(text), decorator)
   } else {
     return EditorState.createEmpty(decorator)
   }
