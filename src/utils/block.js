@@ -5,22 +5,25 @@
  * License: MIT
  */
 
-import { Map } from 'immutable'
+ import { Map } from 'immutable'
 import { DefaultDraftBlockRenderMap, getVisibleSelectionRect} from 'draft-js'
 import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
 import React, {Component} from 'react'
-import Wrapper from '../components/Blocks/Wrapper'
 
-const blockRenderMapCustom = Map({
-  'atomic': {
-    element: 'figure',
-    wrapper: <Wrapper />
+export const blockRenderMap = Map({
+  ['caption']: {
+    element: 'cite',
   },
-  'quote': {
-    element: 'span'
-  }
-})
-export const blockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMapCustom)
+  ['quote']: {
+    element: 'span',
+  },
+  ['image']: {
+    element: 'figure',
+  },
+  ['break']: {
+    element: 'div',
+  },
+}).merge(DefaultDraftBlockRenderMap)
 
 
 export function blockStyleFn (contentBlock) {

@@ -18,7 +18,7 @@ import Plugins from '../plugins/'
 import Actions from '../actions/'
 
 import insertDataBlock from '../utils/insertDataBlock'
-import {blockRenderMap, blockStyleFn, getPluginTypeForBlock} from '../utils/block'
+import {blockStyleFn, blockRenderMap, getPluginTypeForBlock} from '../utils/block'
 import {styleMap} from '../utils/styleMap'
 import styled from 'styled-components'
 
@@ -214,7 +214,6 @@ export default class extends Component {
   }
 
   blockRendererFn (block) {
-
     if (block.getType() !== 'atomic') { return null }
 
     const type = block.getData().toObject().type
