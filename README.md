@@ -89,15 +89,17 @@ Array of entities to use in. Any of the following: `link`, `hashtag`. By default
 #### `plugins`
 Plugins include custom functionality which can be activated from a button in the toolbar. By default the `image` and `video` plugins are included. However you can create your own plugins! Some examples are below:
 
-- [ld-html](https://github.com/vacenz/ld-html) - Adds Edit html functionality
+- [ld-html](https://github.com/steveniseki/ld-html) - Adds Edit html functionality
 - [ld-emoji](https://github.com/vacenz/ld-emoji) - Adds emoji functionality
 - [ld-todo](https://github.com/vacenz/ld-todo) - Adds todo functionality
+- [ld-color-picker](https://github.com/steveniseki/ld-color-picker) - Adds Color picker functionality
 
 ```jsx
 import emoji from 'ld-emoji'
 import html from 'ld-html'
 import todo from 'ld-todo'
-let plugins = [emoji, html, todo]
+import color from 'ld-color-picker'
+let plugins = [emoji, html, todo, color]
 
 <Editor
   editorState={this.state.value}

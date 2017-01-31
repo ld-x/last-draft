@@ -2681,6 +2681,13 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
+ld-color-picker@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ld-color-picker/-/ld-color-picker-1.0.2.tgz#2299ab9e5f84a024a7c3075e4be9892aeb00830a"
+  dependencies:
+    draft-js "^0.9.1"
+    styled-components "^1.2.1"
+
 ld-emoji@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-1.0.2.tgz#ab8f0747cc3184e459e27791d3ec6b8ae8390183"
@@ -2695,9 +2702,9 @@ ld-html@1.0.3:
     draft-js "^0.9.1"
     styled-components "^1.2.1"
 
-ld-todo@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ld-todo/-/ld-todo-1.0.0.tgz#5867442bacfdcd815b4ef76f51368d7b2d732927"
+ld-todo@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ld-todo/-/ld-todo-1.0.1.tgz#2e52348ee0d5c4c4e73009ea7655ffb2aa92e5fc"
   dependencies:
     draft-js "^0.9.1"
     styled-components "^1.2.1"

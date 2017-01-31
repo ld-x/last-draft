@@ -19,7 +19,7 @@ import Actions from '../actions/'
 
 import insertDataBlock from '../utils/insertDataBlock'
 import {blockStyleFn, blockRenderMap, getPluginTypeForBlock} from '../utils/block'
-import {styleMap} from '../utils/styleMap'
+import styleMap from '../utils/styleMap'
 import styled from 'styled-components'
 
 export default class extends Component {

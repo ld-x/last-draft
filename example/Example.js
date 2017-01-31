@@ -9,7 +9,8 @@ import HTML from './initialState/html'
 import emoji from 'ld-emoji'
 import html from 'ld-html'
 import todo from 'ld-todo'
-let plugins = [emoji, html, todo]
+import color from 'ld-color-picker'
+let plugins = [emoji, html, todo, color]
 
 export default class ExampleEditor extends Component {
   constructor(props) {
