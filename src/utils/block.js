@@ -5,7 +5,7 @@
  * License: MIT
  */
 
- import { Map } from 'immutable'
+import { Map } from 'immutable'
 import { DefaultDraftBlockRenderMap, getVisibleSelectionRect} from 'draft-js'
 import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
 import React, {Component} from 'react'

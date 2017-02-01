@@ -33,6 +33,4 @@ colors.map((c, i) => {
   styleMap[`color-${c}`] = { color: c }
 })
 
-console.log(styleMap)
-
 export default styleMap

@@ -233,6 +233,7 @@ export default class extends Component {
       component = Media,
       editable = false
     }
+    if (plugin.editable !== undefined) { editable = plugin.editable }
 
     return {
       component: component,
