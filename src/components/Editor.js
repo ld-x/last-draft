@@ -315,6 +315,20 @@ export default class extends Component {
             readOnly: this.state.readOnly,
             onChange: this.onChange
           })}
+          {this.renderToolbar({
+            editorWrapper: this.refs.editorWrapper,
+            editorState,
+            theme,
+            showToolbar: this.state.showToolbar,
+            readOnly: this.state.readOnly,
+            openToolbar: this.openToolbar,
+            uploadFile: this.uploadFile,
+            uploadImageCallBack: this.props.uploadImageCallBack,
+            submitHtmlModal: this.resetStateFromHtml,
+            returnStateAsHtml: this.returnStateAsHtml,
+            onChange: this.onChange,
+            actions: this.actions
+          })}
           <Editor
             ref='editor'
             customStyleMap={styleMap}
@@ -332,20 +346,6 @@ export default class extends Component {
             editorState={editorState}
             placeholder={this.props.placeholder}
             onChange={this.onChange} />
-            {this.renderToolbar({
-              editorWrapper: this.refs.editorWrapper,
-              editorState,
-              theme,
-              showToolbar: this.state.showToolbar,
-              readOnly: this.state.readOnly,
-              openToolbar: this.openToolbar,
-              uploadFile: this.uploadFile,
-              uploadImageCallBack: this.props.uploadImageCallBack,
-              submitHtmlModal: this.resetStateFromHtml,
-              returnStateAsHtml: this.returnStateAsHtml,
-              onChange: this.onChange,
-              actions: this.actions
-            })}
         </div>
       </div>
     )

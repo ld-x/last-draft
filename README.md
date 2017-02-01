@@ -1,4 +1,4 @@
-# [last-draft](http://lastdraft.vace.nz)
+# [last-draft](http://lastdraft.xyz)
 
 [![npm version](https://badge.fury.io/js/last-draft.svg)](https://badge.fury.io/js/last-draft)
 
@@ -77,7 +77,7 @@ Array of block styles to use in the toolbar. Any of the following: `ul`, `ol`, `
 ```
 
 #### `entities`
-Array of entities to use in. Any of the following: `link`, `hashtag`. By default all are included:
+Array of entities to use. Any of the following: `link`, `hashtag`. By default all are included:
 
 ```jsx
 <Editor
@@ -146,7 +146,7 @@ Last Draft uses styled-components 💅 for the base styling.
 
 You need to include the base [draft.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/draft.css) styles, similar to with any Draft.js Editor.
 
-You can set a custom theme for the Last Draft Editor. As shown in the [last draft example](http://lastdraft.vace.nz)
+You can set a custom theme for the Last Draft Editor. As shown in the [last draft example](http://lastdraft.xyz)
 
 ```jsx
 let THEME = {

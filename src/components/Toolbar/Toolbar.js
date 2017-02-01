@@ -22,7 +22,7 @@ export default class extends Component {
       link: '',
       error: null,
       position: {},
-      rangeLeft: 220
+      rangeLeft: 250
     }
     this.renderButton = ::this.renderButton
   }
@@ -89,8 +89,7 @@ export default class extends Component {
 
   setBarPosition () {
     const editorWrapper = this.props.editorWrapper
-    const toolbar = this.refs.toolbar
-    const selectionCoords = getSelectionCoords(editorWrapper, toolbar)
+    const selectionCoords = getSelectionCoords(editorWrapper)
     const hasFocus = this.props.editorState.getSelection().getHasFocus()
 
     if (!selectionCoords) { return null }
@@ -98,12 +97,12 @@ export default class extends Component {
 
     if (selectionCoords &&
         !this.state.position ||
-        this.state.position.bottom !== selectionCoords.offsetBottom ||
+        this.state.position.top !== selectionCoords.offsetTop ||
         this.state.position.left !== selectionCoords.offsetLeft) {
       this.setState({
         rangeLeft: selectionCoords.rangeLeft,
         position: {
-          bottom: selectionCoords.offsetBottom,
+          top: selectionCoords.offsetTop,
           left: selectionCoords.offsetLeft
         }
       })
@@ -111,7 +110,7 @@ export default class extends Component {
   }
 
   openToolbar () {
-    this.setState({ position: { bottom: this.state.position.bottom, left: 220 } })
+    //this.setState({ position: { bottom: this.state.position.bottom, left: 220 } })
     this.props.openToolbar()
   }
 

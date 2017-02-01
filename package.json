@@ -1,7 +1,7 @@
 {
   "name": "last-draft",
   "version": "1.2.2",
-  "description": "Last Draft... A Draft.js Editor using draft-js-plugins",
+  "description": "Last Draft... A Draft.js Editor",
   "main": "lib/index.js",
   "scripts": {
     "test": "tape test/index.js",

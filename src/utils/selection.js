@@ -24,17 +24,16 @@ export function getSelectedBlockElement (editorState) {
   }
 }
 
-export function getSelectionCoords (editor, toolbar) {
+export function getSelectionCoords (editor) {
   const editorBounds = editor.getBoundingClientRect()
   const rangeBounds = getVisibleSelectionRect(window)
-
-  if (!rangeBounds || !toolbar) { return null }
-
+  if (!rangeBounds) { return null }
   const rangeWidth = rangeBounds.right - rangeBounds.left
-  const toolbarHeight = toolbar.offsetHeight
+  const toolbarHeight = 34
+
   let offsetLeft = (rangeBounds.left - editorBounds.left) + (rangeWidth / 2)
-  if (offsetLeft < 220) { offsetLeft = 220 }
-  const offsetTop = rangeBounds.top - editorBounds.top - (toolbarHeight)
+  if (offsetLeft < 250) { offsetLeft = 250 }
+  const offsetTop = rangeBounds.top - editorBounds.top - toolbarHeight
   const offsetBottom = editorBounds.bottom - rangeBounds.top
   const rangeLeft = rangeBounds.left
   return { offsetLeft, offsetTop, offsetBottom, rangeLeft }
