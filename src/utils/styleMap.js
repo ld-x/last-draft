@@ -9,13 +9,13 @@ const styleMap = {
   'STRIKETHROUGH': {
     textDecoration: 'line-through'
   },
-  'CODE': {
+  'ld-code': {
     fontFamily: 'Courier, monospace',
     margin: '4px 0',
     fontSize: '1em',
     padding: '1px 3px'
   },
-  'DROPCAP': {
+  'ld-dropcap': {
     float: 'left',
     fontSize: '3.25em',
     lineHeight: '0.8',
@@ -30,7 +30,8 @@ const styleMap = {
 }
 
 colors.map((c, i) => {
-  styleMap[`color-${c}`] = { color: c }
+  const safeName = c.replace('#', '');
+  styleMap[`color-${safeName}`] = { color: c }
 })
-
+console.log(styleMap);
 export default styleMap

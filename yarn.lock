@@ -2689,9 +2689,9 @@ ld-audio@1.0.3:
     immutable "~3.7.4"
     styled-components "^1.2.1"
 
-ld-color-picker@1.0.2:
+"ld-color-picker@git+https://github.com/stagfoo/ld-color-picker.git":
   version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ld-color-picker/-/ld-color-picker-1.0.2.tgz#2299ab9e5f84a024a7c3075e4be9892aeb00830a"
+  resolved "git+https://github.com/stagfoo/ld-color-picker.git#642c7e2dca084cee4f3262e021678c6e970dc3bf"
   dependencies:
     draft-js "^0.9.1"
     styled-components "^1.2.1"

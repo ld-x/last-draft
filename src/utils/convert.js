@@ -12,7 +12,9 @@ import defaultDecorator from '../decorators/defaultDecorator'
 import {html} from 'common-tags'
 import linkifyIt from 'linkify-it'
 import tlds from 'tlds'
-import {extractHashtagsWithIndices} from './hashtag';
+import { extractHashtagsWithIndices } from './hashtag';
+import styleMap from './styleMap';
+
 
 const linkify = linkifyIt()
 linkify.tlds(tlds)
@@ -24,8 +26,8 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 
   const contentState = convertFromHTML({
     htmlToStyle: (nodeName, node, currentStyle) => {
-      if (nodeName === 'span' && node.className === 'ld-dropcap') {
-        return currentStyle.add('DROPCAP')
+      if (node.className !== undefined) {
+        return currentStyle.add(node.className)
       } else {
         return currentStyle
       }
@@ -86,15 +88,28 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
   return EditorState.createWithContent(contentState, decorator)
 }
 
-export function editorStateToHtml (editorState) {
+export function editorStateToHtml(editorState) {
   if (editorState) {
-    const content = editorState.getCurrentContent()
-
+    const content = editorState.getCurrentContent();
+    const exportColors = Object.keys(styleMap).map((name) => {
+    const colorStyle = styleMap[name].color ? `color: ${styleMap[name].color}` : ``;
+      return Object.assign({}, {
+        [name]: {
+          element: 'span',
+          attributes: { class: name, style: colorStyle }
+        }
+      });
+    });
+    console.log(exportColors);
     const convertedHTML = stateToHTML(content, {
       inlineStyles: {
-        'DROPCAP': {
+        'ld-dropcap': {
           element: 'span',
-          attributes: {class: 'ld-dropcap'}
+          attributes: {class: 'ld-dropcap' }
+        },
+        'color-191919': {
+          element: 'span',
+          attributes: {class: 'color-191919' }
         }
       },
       blockRenderers: {

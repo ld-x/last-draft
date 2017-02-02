@@ -17,10 +17,10 @@ export default class ExampleEditor extends Component {
   constructor(props) {
     super(props)
     /* examples of initial state */
-    const INITIAL_STATE = editorStateFromRaw(RAW)
+    // const INITIAL_STATE = editorStateFromRaw(RAW)
     //const INITIAL_STATE = editorStateFromRaw({})
     //const INITIAL_STATE = editorStateFromText('this is a cooel editor... 🏄🌠🏀')
-    //const INITIAL_STATE = editorStateFromHtml(HTML)
+    const INITIAL_STATE = editorStateFromHtml('<span class="color-0074D9">built</span>')
     //const INITIAL_STATE = editorStateFromHtml('<div />')
     this.state = { value: INITIAL_STATE }
   }
@@ -28,12 +28,15 @@ export default class ExampleEditor extends Component {
   onChange(editorState) {
     this.setState({ value: editorState })
     /* You would normally save this to your database here instead of logging it */
-    //console.log(editorStateToHtml(editorState))
-    //console.log(editorStateToJSON(editorState))
+    // console.log(editorStateToJSON(editorState))
+  }
+  showState() {
+    console.log(editorStateToHtml(this.state.value))
   }
 
   render() {
     return (
+      <div>
       <Editor
         theme={this.props.theme}
         plugins={plugins}
@@ -44,6 +47,8 @@ export default class ExampleEditor extends Component {
         placeholder='Text'
         uploadImageCallBack={uploadImageCallBack}
         onChange={::this.onChange} />
+        <button type="button" onClick={::this.showState}>Log State</button>
+      </div>
     )
   }
 }
