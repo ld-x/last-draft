@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-// import from '../src/utils/'
 const colors = [
   '#191919', '#3B3738', '#161616', '#000000',
   '#2B2B2B', '#404040', '#585858', '#191919',

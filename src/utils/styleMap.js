@@ -33,5 +33,4 @@ colors.map((c, i) => {
   const safeName = c.replace('#', '');
   styleMap[`color-${safeName}`] = { color: c }
 })
-console.log(styleMap);
 export default styleMap
