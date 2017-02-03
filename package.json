@@ -35,7 +35,7 @@
     "express": "^4.13.4",
     "html-webpack-plugin": "^2.16.0",
     "ld-audio": "1.0.3",
-    "ld-emoji": "1.0.2",
+    "ld-emoji": "1.0.4",
     "ld-html": "1.0.3",
     "ld-todo": "1.0.1",
     "ld-color-picker": "1.0.2",
