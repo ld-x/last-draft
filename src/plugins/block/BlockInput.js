@@ -34,11 +34,12 @@ const BlockInputWrapper = styled.div`
   padding: 16px;
   position: relative;
   line-height: 1;
+  flex: 1;
 `
 
 const BlockInput = styled.input`
   border: 0;
-  border-bottom: 1px dashed transparent;
+  border-bottom: 1px solid transparent;
   color: #333;
   display: block;
   padding: 8px 0;

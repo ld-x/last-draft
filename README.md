@@ -114,7 +114,7 @@ To create and test your own plugin, I would advise to test it in this repo, by s
 
 #### `uploadImageCallBack`
 
-A callback to parse the url for example uploading the file to S3 or a database and returning the url. Returns a promise which should return an object with a src property e.g. `resolve({ src: 'http://imgur.com/yrwFoXT.jpg' })`
+A callback to parse the url for example uploading the file to S3 or a database and returning the url. Returns a promise which should return an object with a src property e.g. `resolve({ src: 'http://imgur.com/yrwFoXT.jpg' })`. You can also return `srcSet` prop for responsive images `resolve({ src: 'x.jpg' srcSet: 'y.jpg' })`
 
 ```jsx
 <Editor
