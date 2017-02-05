@@ -62,6 +62,7 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 
         let caption = '', title = '', alt = '', src = '', srcSet = '', blockType = 'image'
         let captionNode = node.children[1]
+        if (captionNode !== undefined) { caption = captionNode.innerHTML }
 
         let blockNode = node.children[0]
         if (blockNode !== undefined) {
