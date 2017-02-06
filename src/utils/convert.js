@@ -96,13 +96,6 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
         }
       }
 
-      if (nodeName === 'blockquote') {
-        if(node.className === 'ld-blockquote'){
-          return {
-            type: 'blockquote'
-          };
-        }
-      }
     }
   })(html)
 
@@ -156,18 +149,10 @@ export function editorStateToHtml (editorState) {
             `
           }
         },
-        blockquote: (block) => {
-          let text = block.getText()
-          return `<blockquote class='ld-blockquote' >${text}</blockquote>`
-        },
         quote: (block) => {
           let text = block.getText()
           return `<span class='ld-quote' >${text}</span>`
         },
-        'header-two': (block) => {
-          let text = block.getText()
-          return `<h2 class='ld-header' >${text}</h2>`
-        }
       }
     })
 
