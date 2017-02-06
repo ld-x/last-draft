@@ -273,7 +273,9 @@ export default class extends Component {
       uploadImageCallBack(file)
       .then((data) => {
         /* show loaded image */
-        const imageData = {src: data.src, type: 'image'}
+        let srcSet = data.srcSet
+        if (srcSet === undefined) { srcSet = data.src }
+        const imageData = {src: data.src, srcSet: srcSet, type: 'image'}
         this.onChange(insertDataBlock(editorState, imageData, selection))
         this.setState({ uploading: false })
       })

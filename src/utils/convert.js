@@ -43,27 +43,50 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
     },
     htmlToBlock: (nodeName, node) => {
       if (nodeName === 'img') {
+        let caption = '', title = '', alt = '', src = '', srcSet= '', blockType = 'image'
+        if (node.title) { title = node.title }
+        if (node.alt) { alt = node.alt }
+        if (node.srcset) { srcSet = node.srcset } else { srcSet = node.src }
         return {
           type: 'atomic',
-          data: { src: node.src, type: 'image' }
+          data: {
+            src: node.src,
+            srcSet: srcSet,
+            type: blockType,
+            title: title,
+            alt: alt
+          }
         }
       }
 
       if (nodeName === 'figure') {
         if (!node.children.length) { return null }
 
-        let caption = '', src = '', blockType = 'image'
+        let caption = '', title = '', alt = '', src = '', srcSet = '', blockType = 'image'
         let captionNode = node.children[1]
         if (captionNode !== undefined) { caption = captionNode.innerHTML }
+
         let blockNode = node.children[0]
-        if (blockNode !== undefined) { src = blockNode.src }
+        if (blockNode !== undefined) {
+          src = blockNode.src
+          srcSet = blockNode.srcset
+          alt = blockNode.alt
+          title = blockNode.title
+        }
 
         let type = blockNode.tagName.toLowerCase()
         if (type === 'iframe') { blockType = 'video' }
 
         return {
           type: 'atomic',
-          data: { src: src, type: blockType, caption: caption }
+          data: {
+            src: src,
+            type: blockType,
+            srcSet: srcSet,
+            caption: caption,
+            title: title,
+            alt: alt
+          }
         }
       }
 
@@ -75,13 +98,6 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
         }
       }
 
-      if (nodeName === 'blockquote') {
-        if(node.className === 'ld-blockquote'){
-          return {
-            type: 'blockquote'
-          };
-        }
-      }
     }
   })(html)
 
@@ -112,23 +128,29 @@ export function editorStateToHtml(editorState) {
         atomic: (block) => {
           let data = block.getData()
           let type = data.get('type')
-          let url = data.get('src')
+          let src = data.get('src')
+          let srcSet = data.get('srcSet')
+          let alt = data.get('alt')
+          let title = data.get('title')
           let caption = data.get('caption')
-          if (url && type == 'image') {
+          if (alt === '') { alt = caption }
+          if (title === '') { title = caption }
+
+          if (src && type == 'image') {
             return html`
               <figure>
-                <img src="${url}" alt="${caption}" class="ld-image-block">
+                <img src="${src}" srcset="${srcSet}" alt="${alt}" title="${title}" class="ld-image-block">
                 <figcaption class="ld-image-caption">${caption}</figcaption>
               </figure>
             `
           }
-          if(url && type == 'video'){
+          if (src && type == 'video') {
             return html`
             <figure>
               <iframe
                 width="560"
                 height="315"
-                src="${url}"
+                src="${src}"
                 class="ld-video-block"
                 frameBorder="0"
                 allowFullScreen>
@@ -138,18 +160,10 @@ export function editorStateToHtml(editorState) {
             `
           }
         },
-        blockquote: (block) => {
-          let text = block.getText()
-          return `<blockquote class='ld-blockquote' >${text}</blockquote>`
-        },
         quote: (block) => {
           let text = block.getText()
           return `<span class='ld-quote' >${text}</span>`
         },
-        'header-two': (block) => {
-          let text = block.getText()
-          return `<h2 class='ld-header' >${text}</h2>`
-        }
       }
     })
 

@@ -109,9 +109,12 @@ let plugins = [audio, color, emoji, html, todo]
   onChange={::this.onChange} />
 ```
 
+#### Creating your own plugin
+To create and test your own plugin, I would advise to test it in this repo, by simply adding the plugin to the plugins folder and then import it in the `index.js` e.g. `import newplugin from './video/newplugin'`. Copy any of the above `ld-` plugins as a starting point. Once it is working then create your new plugin repo `npm run build` it, then publish it to npm.
+
 #### `uploadImageCallBack`
 
-A callback to parse the url for example uploading the file to S3 or a database and returning the url. Returns a promise which should return an object with a src property e.g. `resolve({ src: 'http://imgur.com/yrwFoXT.jpg' })`
+A callback to parse the url for example uploading the file to S3 or a database and returning the url. Returns a promise which should return an object with a src property e.g. `resolve({ src: 'http://imgur.com/yrwFoXT.jpg' })`. You can also return `srcSet` prop for responsive images `resolve({ src: 'x.jpg' srcSet: 'y.jpg' })`
 
 ```jsx
 <Editor

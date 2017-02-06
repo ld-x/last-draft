@@ -2696,9 +2696,9 @@ ld-audio@1.0.3:
     draft-js "^0.9.1"
     styled-components "^1.2.1"
 
-ld-emoji@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-1.0.2.tgz#ab8f0747cc3184e459e27791d3ec6b8ae8390183"
+ld-emoji@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-1.0.4.tgz#640f4fc303448d14bc646ce9dad983eaa0695535"
   dependencies:
     draft-js "^0.9.1"
     styled-components "^1.2.1"

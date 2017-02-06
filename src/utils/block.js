@@ -11,6 +11,9 @@ import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
 import React, {Component} from 'react'
 
 export const blockRenderMap = Map({
+  ['em']: {
+    element: 'em',
+  },
   ['caption']: {
     element: 'cite',
   },
@@ -19,6 +22,15 @@ export const blockRenderMap = Map({
   },
   ['image']: {
     element: 'figure',
+  },
+  ['break']: {
+    element: 'div',
+  },
+  ['span']: {
+    element: 'span',
+  },
+  ['section']: {
+    element: 'section',
   },
   ['break']: {
     element: 'div',

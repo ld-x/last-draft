@@ -6,12 +6,19 @@
  */
 
 import React, {Component} from 'react'
+import styled from 'styled-components'
 import BlockContent from '../block/BlockContent'
 import BlockInput from '../block/BlockInput'
 import Block from '../block/Block'
 import icons from '../../components/Buttons/'
 
 export default class ImageBlock extends Component {
+  static get defaultProps () {
+    return {
+      showImageAttributes: false
+    }
+  }
+
   constructor (props) {
     super(props)
 
@@ -29,24 +36,57 @@ export default class ImageBlock extends Component {
     this.props.container.updateData({caption: event.target.value})
   }
 
-  render () {
-    let ImageBlockStyle = {
-      display: 'inline-block',
-      maxWidth: '100%',
-      verticalAlign: 'middle'
-    }
+  handleAltChange (event) {
+    event.stopPropagation()
+    this.props.container.updateData({alt: event.target.value})
+  }
 
+  handleTitleChange (event) {
+    event.stopPropagation()
+    this.props.container.updateData({title: event.target.value})
+  }
+
+  render () {
     return (
       <Block {...this.props} actions={this.actions}>
         <BlockContent>
-          <img style={ImageBlockStyle} src={this.props.data.src} alt='' className='ld-image-block' />
+          <Image
+            src={this.props.data.src}
+            srcSet={this.props.data.srcSet}
+            alt={this.props.data.alt}
+            title={this.props.data.title}
+            className='ld-image-block' />
         </BlockContent>
 
         <BlockInput
           placeholder='Caption'
           value={this.props.data.caption}
           onChange={::this.handleCaptionChange} />
+
+        {
+          this.props.showImageAttributes &&
+            <InputWrap>
+              <BlockInput
+                placeholder='Title'
+                value={this.props.data.title}
+                onChange={::this.handleTitleChange} />
+              <BlockInput
+                placeholder='Alt'
+                value={this.props.data.alt}
+                onChange={::this.handleAltChange} />
+            </InputWrap>
+        }
       </Block>
-    )
+      )
+    }
   }
-}
+
+const Image = styled.img`
+  display: inline-block;
+  maxWidth: 100%;
+  verticalAlign: middle;
+`
+
+const InputWrap = styled.div`
+  display: flex;
+`
