@@ -96,6 +96,17 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
         }
       }
 
+      if (nodeName === 'iframe') {
+        return {
+          type: 'atomic',
+          data: {
+            src: node.getAttribute('src'),
+            type: 'video',
+            caption: ''
+          }
+        };
+      }
+
     }
   })(html)
 
