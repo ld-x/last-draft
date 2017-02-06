@@ -87,31 +87,27 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 
   return EditorState.createWithContent(contentState, decorator)
 }
+function reactToInline(o){ 
+      var elm=new Option; 
+      Object.keys(o).forEach(function(a){elm.style[a]=o[a];}); 
+      return elm.getAttribute("style"); 
+    }
 
 export function editorStateToHtml(editorState) {
   if (editorState) {
     const content = editorState.getCurrentContent();
-    const exportColors = Object.keys(styleMap).map((name) => {
-    const colorStyle = styleMap[name].color ? `color: ${styleMap[name].color}` : ``;
-      return Object.assign({}, {
-        [name]: {
+    // object full of each inline style converted
+    const exportInlineStyles = {};
+    Object.keys(styleMap).map((name) => {
+      // using array notation push each style into the object
+        exportInlineStyles[name] = {
           element: 'span',
-          attributes: { class: name, style: colorStyle }
-        }
-      });
+          attributes: { class: name, style: reactToInline(styleMap[name]) }          
+        };
     });
-    console.log(exportColors);
+
     const convertedHTML = stateToHTML(content, {
-      inlineStyles: {
-        'ld-dropcap': {
-          element: 'span',
-          attributes: {class: 'ld-dropcap' }
-        },
-        'color-191919': {
-          element: 'span',
-          attributes: {class: 'color-191919' }
-        }
-      },
+      inlineStyles: exportInlineStyles,
       blockRenderers: {
         atomic: (block) => {
           let data = block.getData()
