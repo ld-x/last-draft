@@ -30,7 +30,7 @@ const styleMap = {
 }
 
 colors.map((c, i) => {
-  styleMap[`color-${c}`] = { color: c }
+  const safeName = c.replace('#', '');
+  styleMap[`color-${safeName}`] = { color: c }
 })
-
 export default styleMap

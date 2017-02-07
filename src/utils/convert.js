@@ -12,7 +12,9 @@ import defaultDecorator from '../decorators/defaultDecorator'
 import {html} from 'common-tags'
 import linkifyIt from 'linkify-it'
 import tlds from 'tlds'
-import {extractHashtagsWithIndices} from './hashtag';
+import { extractHashtagsWithIndices } from './hashtag';
+import styleMap from './styleMap';
+
 
 const linkify = linkifyIt()
 linkify.tlds(tlds)
@@ -24,8 +26,8 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 
   const contentState = convertFromHTML({
     htmlToStyle: (nodeName, node, currentStyle) => {
-      if (nodeName === 'span' && node.className === 'ld-dropcap') {
-        return currentStyle.add('DROPCAP')
+      if (node.className !== undefined) {
+        return currentStyle.add(node.className)
       } else {
         return currentStyle
       }
@@ -101,18 +103,27 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 
   return EditorState.createWithContent(contentState, decorator)
 }
+function reactToInline(o){ 
+      var elm=new Option; 
+      Object.keys(o).forEach(function(a){elm.style[a]=o[a];}); 
+      return elm.getAttribute("style"); 
+    }
 
-export function editorStateToHtml (editorState) {
+export function editorStateToHtml(editorState) {
   if (editorState) {
-    const content = editorState.getCurrentContent()
+    const content = editorState.getCurrentContent();
+    // object full of each inline style converted
+    const exportInlineStyles = {};
+    Object.keys(styleMap).map((name) => {
+      // using array notation push each style into the object
+        exportInlineStyles[name] = {
+          element: 'span',
+          attributes: { class: name, style: reactToInline(styleMap[name]) }          
+        };
+    });
 
     const convertedHTML = stateToHTML(content, {
-      inlineStyles: {
-        'DROPCAP': {
-          element: 'span',
-          attributes: {class: 'ld-dropcap'}
-        }
-      },
+      inlineStyles: exportInlineStyles,
       blockRenderers: {
         atomic: (block) => {
           let data = block.getData()
