@@ -60,7 +60,6 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 
       if (nodeName === 'figure') {
         if (!node.children.length) { return null }
-
         let caption = '', title = '', alt = '', src = '', srcSet = '', blockType = 'image'
         let captionNode = node.children[1]
         if (captionNode !== undefined) { caption = captionNode.innerHTML }
@@ -171,7 +170,7 @@ export function editorStateToHtml(editorState) {
     const linkifyMatch = linkify.match(convertedHTML)
     if (linkifyMatch !== null) {
       convertedHTMLLinkify = linkifyMatch.filter(function(match) {
-        if(/(src|ref)=('|")/.test(convertedHTML.slice(match.index - 5, match.index))){
+        if(/(src|ref|set)=('|")/.test(convertedHTML.slice(match.index - 5, match.index))){
           return
         } else {
           return match
