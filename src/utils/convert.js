@@ -82,7 +82,7 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 
         if (blockNode !== undefined) {
           src = blockType === 'video' ? node.children[0].getAttribute('src') : blockNode.src
-          srcSet = blockNode.srcset
+          srcSet = blockNode.srcset || node.children[0].getAttribute('src')
           alt = blockNode.alt
           title = blockNode.title
         }
