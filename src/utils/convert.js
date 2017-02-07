@@ -15,7 +15,6 @@ import tlds from 'tlds'
 import { extractHashtagsWithIndices } from './hashtag';
 import styleMap from './styleMap';
 
-
 const linkify = linkifyIt()
 linkify.tlds(tlds)
 
@@ -103,24 +102,24 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
 
   return EditorState.createWithContent(contentState, decorator)
 }
-function reactToInline(o){ 
-      var elm=new Option; 
-      Object.keys(o).forEach(function(a){elm.style[a]=o[a];}); 
-      return elm.getAttribute("style"); 
-    }
+
+function reactToInline(o){
+  var elem = new Option
+  Object.keys(o).forEach(function(a){ elem.style[a]=o[a] })
+  return elem.getAttribute('style')
+}
 
 export function editorStateToHtml(editorState) {
   if (editorState) {
     const content = editorState.getCurrentContent();
-    // object full of each inline style converted
-    const exportInlineStyles = {};
+    const exportInlineStyles = {}
     Object.keys(styleMap).map((name) => {
-      // using array notation push each style into the object
-        exportInlineStyles[name] = {
-          element: 'span',
-          attributes: { class: name, style: reactToInline(styleMap[name]) }          
-        };
-    });
+      // Push each style into the object
+      exportInlineStyles[name] = {
+        element: 'span',
+        attributes: { class: name, style: reactToInline(styleMap[name]) }
+      }
+    })
 
     const convertedHTML = stateToHTML(content, {
       inlineStyles: exportInlineStyles,
@@ -213,7 +212,6 @@ export function editorStateFromRaw (rawContent, decorator = defaultDecorator) {
     return EditorState.createEmpty(decorator)
   }
 }
-
 
 export function editorStateFromText (text, decorator = defaultDecorator) {
   if (text) {
