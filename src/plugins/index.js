@@ -5,11 +5,5 @@
  * License: MIT
  */
 
-import {image, placeholder} from './image/plugin'
-import video from './video/plugin'
-
-export default [
-  image,
-  placeholder,
-  video
-]
+export * from './image/plugin'
+export video from './video/plugin'
