@@ -2717,6 +2717,14 @@ ld-todo@1.0.1:
     draft-js "^0.9.1"
     styled-components "^1.2.1"
 
+ld-video@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ld-video/-/ld-video-1.0.1.tgz#401eb4d6949418389ac99a3c9bdb4e5110a9b789"
+  dependencies:
+    draft-js "^0.9.1"
+    immutable "~3.7.4"
+    styled-components "^1.2.1"
+
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"

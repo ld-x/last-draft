@@ -87,8 +87,9 @@ Array of entities to use. Any of the following: `link`, `hashtag`. By default al
 ```
 
 #### `plugins`
-Plugins include custom functionality which can be activated from a button in the toolbar. By default the `image` and `video` plugins are included. However you can create your own plugins! Some examples are below:
+Plugins include custom functionality which can be activated from a button in the toolbar. By default the `image` plugin is always included. However you can create your own plugins! Some examples are below:
 
+- [ld-video](https://github.com/vacenz/ld-video) - Adds embed video functionality from youtube and vimeo
 - [ld-audio](https://github.com/steveniseki/ld-audio) - Adds an audio player with soundcloud support
 - [ld-color-picker](https://github.com/steveniseki/ld-color-picker) - Adds Color picker functionality
 - [ld-emoji](https://github.com/vacenz/ld-emoji) - Adds emoji functionality
@@ -96,12 +97,13 @@ Plugins include custom functionality which can be activated from a button in the
 - [ld-todo](https://github.com/vacenz/ld-todo) - Adds todo functionality
 
 ```jsx
+import audio from 'ld-video'
 import audio from 'ld-audio'
 import color from 'ld-color-picker'
 import emoji from 'ld-emoji'
 import html from 'ld-html'
 import todo from 'ld-todo'
-let plugins = [audio, color, emoji, html, todo]
+let plugins = [video, audio, color, emoji, html, todo]
 
 <Editor
   editorState={this.state.value}
@@ -110,7 +112,19 @@ let plugins = [audio, color, emoji, html, todo]
 ```
 
 #### Creating your own plugin
-To create and test your own plugin, I would advise to test it in this repo, by simply adding the plugin to the plugins folder and then import it in the `index.js` e.g. `import newplugin from './video/newplugin'`. Copy any of the above `ld-` plugins as a starting point. Once it is working then create your new plugin repo `npm run build` it, then publish it to npm.
+To create and test your own plugin, I would advise to test it in this repo, by following these steps, using the `video plugin` as an example.
+
+Create a new `/video` folder in `/plugins` copying the `src\video` folder from [ld-video](https://github.com/vacenz/ld-video)
+
+Add the following line to `/plugins/index`: `export video from './video/plugin'`
+
+Import your test plugin to the Editor in `last-draft/src/components/Editor` by:
+
+Updating the plugin import at the top `import {image, placeholder, video} from '../plugins/'`
+
+And then adding updating the following line in the `getValidPlugins ()` function: `let plugins = [image, placeholder, video]`.
+
+Copy any of the above `ld-` plugins as a starting point. Once it is working then create your new plugin repo `npm run build` it, then publish it to npm.
 
 #### `uploadImageCallBack`
 

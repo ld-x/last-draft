@@ -6,12 +6,13 @@ import {Editor, editorStateFromHtml, editorStateToHtml, editorStateFromRaw, edit
 import RAW from './initialState/raw'
 import HTML from './initialState/html'
 
+import video from 'ld-video'
 import audio from 'ld-audio'
 import color from 'ld-color-picker'
 import emoji from 'ld-emoji'
 import html from 'ld-html'
 import todo from 'ld-todo'
-let plugins = [audio, color, emoji, html, todo]
+let plugins = [video, audio, color, emoji, html, todo]
 
 export default class ExampleEditor extends Component {
   constructor(props) {
