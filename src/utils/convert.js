@@ -58,6 +58,17 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
         }
       }
 
+      if (nodeName === 'iframe' && node.className !== 'ld-video-block') {
+        return {
+          type: 'atomic',
+          data: {
+            src: node.getAttribute('src'),
+            type: 'video',
+            caption: ''
+          }
+        };
+      }
+
       if (nodeName === 'figure') {
         if (!node.children.length) { return null }
 
@@ -66,15 +77,15 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
         if (captionNode !== undefined) { caption = captionNode.innerHTML }
 
         let blockNode = node.children[0]
+        let type = blockNode.tagName.toLowerCase()
+        if (type === 'iframe') { blockType = 'video' }
+
         if (blockNode !== undefined) {
-          src = blockNode.src
-          srcSet = blockNode.srcset
+          src = blockType === 'video' ? node.children[0].getAttribute('src') : blockNode.src
+          srcSet = blockNode.srcset || node.children[0].getAttribute('src')
           alt = blockNode.alt
           title = blockNode.title
         }
-
-        let type = blockNode.tagName.toLowerCase()
-        if (type === 'iframe') { blockType = 'video' }
 
         return {
           type: 'atomic',
@@ -136,26 +147,20 @@ export function editorStateToHtml(editorState) {
           if (title === '') { title = caption }
 
           if (src && type == 'image') {
-            return html`
-              <figure>
-                <img src="${src}" srcset="${srcSet}" alt="${alt}" title="${title}" class="ld-image-block">
-                <figcaption class="ld-image-caption">${caption}</figcaption>
-              </figure>
+            return html`\
+              <figure>\
+                <img src="${src}" srcset="${srcSet}" alt="${alt}" title="${title}" class="ld-image-block">\
+                <figcaption class="ld-image-caption">${caption}</figcaption>\
+              </figure>\
             `
           }
           if (src && type == 'video') {
-            return html`
-            <figure>
-              <iframe
-                width="560"
-                height="315"
-                src="${src}"
-                class="ld-video-block"
-                frameBorder="0"
-                allowFullScreen>
-              </iframe>
-              <figcaption class="ld-video-caption">${caption}</figcaption>
-            </figure>
+            return html`\
+            <figure>\
+              <iframe width="560" height="315" src="${src}" class="ld-video-block" frameBorder="0" allowFullScreen>\
+              </iframe>\
+              <figcaption class="ld-video-caption">${caption}</figcaption>\
+            </figure>\
             `
           }
         },
@@ -171,7 +176,7 @@ export function editorStateToHtml(editorState) {
     const linkifyMatch = linkify.match(convertedHTML)
     if (linkifyMatch !== null) {
       convertedHTMLLinkify = linkifyMatch.filter(function(match) {
-        if(/(src|ref)=('|")/.test(convertedHTML.slice(match.index - 5, match.index))){
+        if(/(src|ref|set)=('|")/.test(convertedHTML.slice(match.index - 5, match.index))){
           return
         } else {
           return match
