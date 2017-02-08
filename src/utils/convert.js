@@ -147,20 +147,20 @@ export function editorStateToHtml(editorState) {
           if (title === '') { title = caption }
 
           if (src && type == 'image') {
-            return html`\
-              <figure>\
-                <img src="${src}" srcset="${srcSet}" alt="${alt}" title="${title}" class="ld-image-block">\
-                <figcaption class="ld-image-caption">${caption}</figcaption>\
-              </figure>\
+            return html`
+              <figure>
+                <img src="${src}" srcset="${srcSet}" alt="${alt}" title="${title}" class="ld-image-block">
+                <figcaption class="ld-image-caption">${caption}</figcaption>
+              </figure>
             `
           }
           if (src && type == 'video') {
-            return html`\
-            <figure>\
-              <iframe width="560" height="315" src="${src}" class="ld-video-block" frameBorder="0" allowFullScreen>\
-              </iframe>\
-              <figcaption class="ld-video-caption">${caption}</figcaption>\
-            </figure>\
+            return html`
+            <figure>
+              <iframe width="560" height="315" src="${src}" class="ld-video-block" frameBorder="0" allowFullScreen>
+              </iframe>
+              <figcaption class="ld-video-caption">${caption}</figcaption>
+            </figure>
             `
           }
         },
