@@ -39,6 +39,7 @@ export class ToolbarButton extends Component {
   render () {
     const Icon = this.props.item.icon
     const { item, active, theme } = this.props
+    console.log(theme)
 
     if (item.type === 'separator') {
       return <Separator />

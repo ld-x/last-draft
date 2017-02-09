@@ -170,7 +170,7 @@ export default class extends Component {
     }
 
     return (
-      <ToolbarButton key={key} active={active} toggle={toggle} item={item} />
+      <ToolbarButton key={key} active={active} theme={this.props.theme} toggle={toggle} item={item} />
     )
   }
 

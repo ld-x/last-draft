@@ -97,7 +97,7 @@ Plugins include custom functionality which can be activated from a button in the
 - [ld-todo](https://github.com/vacenz/ld-todo) - Adds todo functionality
 
 ```jsx
-import audio from 'ld-video'
+import video from 'ld-video'
 import audio from 'ld-audio'
 import color from 'ld-color-picker'
 import emoji from 'ld-emoji'
