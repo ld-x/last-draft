@@ -20,7 +20,6 @@ import Actions from '../actions/'
 import insertDataBlock from '../utils/insertDataBlock'
 import {blockStyleFn, blockRenderMap, getPluginTypeForBlock} from '../utils/block'
 import styleMap from '../utils/styleMap'
-import styled from 'styled-components'
 
 export default class extends Component {
   static get defaultProps () {
@@ -56,7 +55,7 @@ export default class extends Component {
     this.keyBindings = this.props.keyBindings || []
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const { autofocus } = this.props
     if (autofocus) {
       this.refs.editor.focus()
@@ -81,14 +80,14 @@ export default class extends Component {
       actions.push(action)
     }
 
-    actions.push({type: "separator"})
+    actions.push({type: 'separator'})
 
     for (let block of this.props.blocks) {
       let action = this.getAction(block)
       actions.push(action)
     }
 
-    actions.push({type: "separator"})
+    actions.push({type: 'separator'})
 
     for (let plugin of this.plugins) {
       if (plugin.type === 'placeholder') {
@@ -225,7 +224,7 @@ export default class extends Component {
     let editable = true
 
     if (type === 'image' || type === 'video') {
-      component = Media,
+      component = Media
       editable = false
     }
     if (plugin.editable !== undefined) { editable = plugin.editable }
@@ -250,7 +249,7 @@ export default class extends Component {
     return <Sidebar {...props} />
   }
 
-  uploadFile(file, selection) {
+  uploadFile (file, selection) {
     const { uploadImageCallBack, editorState } = this.props
     const { uploading } = this.state
 
@@ -287,7 +286,7 @@ export default class extends Component {
     this.uploadFile(file, selection)
   }
 
-  resetStateFromHtml(html) {
+  resetStateFromHtml (html) {
     this.onChange(editorStateFromHtml(html))
   }
 
@@ -295,13 +294,12 @@ export default class extends Component {
     this.onChange(editorStateFromText(text))
   }
 
-  returnStateAsHtml() {
+  returnStateAsHtml () {
     return editorStateToHtml(this.props.editorState)
   }
 
   render () {
     const {editorState, stripPastedStyles, spellCheck, theme} = this.props
-    const plugins = this.plugins
 
     return (
       <div>

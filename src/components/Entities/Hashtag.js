@@ -4,20 +4,12 @@
  * License: MIT
  */
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 export default class extends Component {
-  render() {
-    const {
-      decoratedText,
-      dir,
-      entityKey,
-      getEditorState,
-      offsetKey,
-      setEditorState,
-      ...otherProps
-    } = this.props
+  render () {
+    const {...otherProps} = this.props
     return (
       <Hashtag {...otherProps} className='hashtag ld-hashtag' />
     )

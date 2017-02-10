@@ -22,7 +22,7 @@ const styleMap = {
     marginLeft: '-0.05em',
     marginBottom: '-0.05em',
     padding: '0.05em 0.075em 0 0',
-    position: 'relative',
+    position: 'relative'
   },
   'blue': {
     color: 'rgb(84, 172, 210)'
@@ -30,7 +30,7 @@ const styleMap = {
 }
 
 colors.map((c, i) => {
-  const safeName = c.replace('#', '');
+  const safeName = c.replace('#', '')
   styleMap[`color-${safeName}`] = { color: c }
 })
 export default styleMap

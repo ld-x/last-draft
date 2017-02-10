@@ -6,6 +6,7 @@
   "scripts": {
     "test": "tape test/index.js",
     "lint": "standard 'src/**/*.js'; exit 0",
+    "lint:fix": "standard --fix 'src/**/*.js'; exit 0",
     "build": "rm -rf lib && babel src --out-dir lib --copy-files && npm run styles",
     "styles": "cp -r example/styles lib && rm lib/styles/example.css",
     "site": "NODE_ENV=prod webpack --config example/webpack.config.prod",

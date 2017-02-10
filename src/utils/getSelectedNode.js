@@ -4,8 +4,7 @@
  * License: MIT
  */
 
-function getSelectedNode()
-{
+function getSelectedNode () {
   if (document.selection) { return document.selection.createRange().parentElement() }
   let selection = window.getSelection()
   if (selection.rangeCount > 0) {

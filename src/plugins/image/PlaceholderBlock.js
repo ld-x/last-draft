@@ -6,8 +6,7 @@
  */
 
 import React, {Component} from 'react'
-import Block from '../block/Block'
-import icons from '../../components/Buttons/'
+import Block from './Block'
 import styled, { keyframes } from 'styled-components'
 
 export default class ImageBlock extends Component {

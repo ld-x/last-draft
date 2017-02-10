@@ -12,13 +12,13 @@ import styled from 'styled-components'
 export class PluginButton extends Component {
   render () {
     const Button = this.props.item.icon
-    const { item, theme } = this.props
+    const { theme } = this.props
 
     return (
       <ToolbarButtonWrapper theme={theme} active={false} className='ld-toolbar-button-wrapper'>
         <LdToolbarButton className='ld-toolbar-button' type='button'>
           <Button
-            onChange={::this.props.onChange }
+            onChange={::this.props.onChange}
             uploadImageCallBack={this.props.uploadImageCallBack}
             uploadFile={this.props.uploadFile}
             editorState={this.props.editorState}
@@ -39,7 +39,6 @@ export class ToolbarButton extends Component {
   render () {
     const Icon = this.props.item.icon
     const { item, active, theme } = this.props
-    console.log(theme)
 
     if (item.type === 'separator') {
       return <Separator />

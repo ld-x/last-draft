@@ -12,23 +12,23 @@ const hashtagSpecialChars = /_\u200c\u200d\ua67e\u05be\u05f3\u05f4\uff5e\u301c\u
 
 var regexes = {}
 regexes.hashSigns = /[#＃]/
-regexes.hashtagAlpha = new RegExp("[" + unicodeLettersAndMarks + "]")
-regexes.hashtagAlphaNumeric = new RegExp("[" + unicodeLettersAndMarks + unicodeNumbers + hashtagSpecialChars + "]")
+regexes.hashtagAlpha = new RegExp('[' + unicodeLettersAndMarks + ']')
+regexes.hashtagAlphaNumeric = new RegExp('[' + unicodeLettersAndMarks + unicodeNumbers + hashtagSpecialChars + ']')
 regexes.endHashtagMatch = regexSupplant(/^(?:#{hashSigns}|:\/\/)/)
-regexes.hashtagBoundary = new RegExp("(?:^|$|[^&" + unicodeLettersAndMarks + unicodeNumbers + hashtagSpecialChars + "])")
+regexes.hashtagBoundary = new RegExp('(?:^|$|[^&' + unicodeLettersAndMarks + unicodeNumbers + hashtagSpecialChars + '])')
 regexes.validHashtag = regexSupplant(/(#{hashtagBoundary})(#{hashSigns})(?!\ufe0f|\u20e3)(#{hashtagAlphaNumeric}*#{hashtagAlpha}#{hashtagAlphaNumeric}*)/gi)
 
-function regexSupplant(regex, flags) {
+function regexSupplant (regex, flags) {
   flags = flags || ''
   if (typeof regex !== 'string') {
-    if (regex.global && flags.indexOf("g") < 0) {
-      flags += "g"
+    if (regex.global && flags.indexOf('g') < 0) {
+      flags += 'g'
     }
-    if (regex.ignoreCase && flags.indexOf("i") < 0) {
-      flags += "i"
+    if (regex.ignoreCase && flags.indexOf('i') < 0) {
+      flags += 'i'
     }
-    if (regex.multiline && flags.indexOf("m") < 0) {
-      flags += "m"
+    if (regex.multiline && flags.indexOf('m') < 0) {
+      flags += 'm'
     }
 
     regex = regex.source
@@ -43,7 +43,7 @@ function regexSupplant(regex, flags) {
   }), flags)
 }
 
-export function extractHashtagsWithIndices(text) {
+export function extractHashtagsWithIndices (text) {
   if (!text || !text.match(regexes.hashSigns)) {
     return []
   }
@@ -59,7 +59,7 @@ export function extractHashtagsWithIndices(text) {
     const endPosition = startPosition + hashText.length + 1
     tags.push({
       hashtag: hashText,
-      indices: [startPosition, endPosition],
+      indices: [startPosition, endPosition]
     })
   })
 

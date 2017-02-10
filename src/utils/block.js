@@ -6,37 +6,32 @@
  */
 
 import { Map } from 'immutable'
-import { DefaultDraftBlockRenderMap, getVisibleSelectionRect} from 'draft-js'
+import { DefaultDraftBlockRenderMap } from 'draft-js'
 import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
-import React, {Component} from 'react'
 
 export const blockRenderMap = Map({
-  ['em']: {
-    element: 'em',
+  'em': {
+    element: 'em'
   },
-  ['caption']: {
-    element: 'cite',
+  'caption': {
+    element: 'cite'
   },
-  ['quote']: {
-    element: 'span',
+  'quote': {
+    element: 'span'
   },
-  ['image']: {
-    element: 'figure',
+  'image': {
+    element: 'figure'
   },
-  ['break']: {
-    element: 'div',
+  'span': {
+    element: 'span'
   },
-  ['span']: {
-    element: 'span',
+  'section': {
+    element: 'section'
   },
-  ['section']: {
-    element: 'section',
-  },
-  ['break']: {
-    element: 'div',
-  },
+  'break': {
+    element: 'div'
+  }
 }).merge(DefaultDraftBlockRenderMap)
-
 
 export function blockStyleFn (contentBlock) {
   const type = contentBlock.getType()
@@ -62,7 +57,6 @@ export function blockStyleFn (contentBlock) {
 
 export function getPluginTypeForBlock (editorState, block) {
   /* gets the parent blocks plugin type as the node may not yet be in the dom */
-  const selectionState = editorState.getSelection()
   const contentState = editorState.getCurrentContent()
 
   let prevBlock = contentState.getBlockBefore(block.getKey())

@@ -7,9 +7,9 @@
 
 import React, {Component} from 'react'
 import styled from 'styled-components'
-import BlockContent from '../block/BlockContent'
-import BlockInput from '../block/BlockInput'
-import Block from '../block/Block'
+import BlockContent from './BlockContent'
+import BlockInput from './BlockInput'
+import Block from './Block'
 import icons from '../../components/Buttons/'
 
 export default class ImageBlock extends Component {
@@ -77,8 +77,8 @@ export default class ImageBlock extends Component {
             </InputWrap>
         }
       </Block>
-      )
-    }
+    )
+  }
   }
 
 const Image = styled.img`

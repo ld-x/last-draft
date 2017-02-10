@@ -7,7 +7,6 @@
 
 import React, {Component} from 'react'
 import {EditorState, SelectionState, Modifier} from 'draft-js'
-import styled from 'styled-components'
 
 export default class extends Component {
   constructor (props) {

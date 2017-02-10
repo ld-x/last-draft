@@ -48,12 +48,6 @@ export default class Link extends Component {
     this.props.cancelEntity()
   }
 
-
-  reset () {
-    this.setState({ url: '' })
-    this.props.cancelEntity()
-  }
-
   onLinkChange (event) {
     event.stopPropagation()
     const url = event.target.value

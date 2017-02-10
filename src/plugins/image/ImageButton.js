@@ -7,7 +7,6 @@
 
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import insertDataBlock from '../../utils/insertDataBlock'
 
 export default class extends Component {
   onClick (e) {

@@ -6,12 +6,11 @@
  */
 
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
-import {EditorState, RichUtils, Entity} from 'draft-js'
+import {RichUtils} from 'draft-js'
 import {ToolbarButton, PluginButton} from './ToolbarButton'
 import LinkToolbar from './LinkToolbar'
-import {getSelectionCoords, getSelectedBlockElement} from '../../utils/selection'
-import {hasEntity,setEntity} from '../../utils/entity'
+import {getSelectionCoords} from '../../utils/selection'
+import {hasEntity} from '../../utils/entity'
 import styled from 'styled-components'
 
 export default class extends Component {
@@ -71,7 +70,7 @@ export default class extends Component {
 
   /* plugin modal */
 
-  submitHtmlModal(html) {
+  submitHtmlModal (html) {
     this.props.submitHtmlModal(html)
     this.closeModal()
   }
@@ -110,7 +109,7 @@ export default class extends Component {
   }
 
   openToolbar () {
-    //this.setState({ position: { bottom: this.state.position.bottom, left: 220 } })
+    // this.setState({ position: { bottom: this.state.position.bottom, left: 220 } })
     this.props.openToolbar()
   }
 
@@ -150,8 +149,7 @@ export default class extends Component {
         break
       }
       case 'plugin': {
-
-        if(item.modal) {
+        if (item.modal) {
           toggle = () => this.toggleModal(item.modal)
           break
         }
@@ -165,7 +163,6 @@ export default class extends Component {
             key={key}
             item={item} />
         )
-        break
       }
     }
 
@@ -174,7 +171,7 @@ export default class extends Component {
     )
   }
 
-  renderToolbar() {
+  renderToolbar () {
     const { editingEntity, showModal } = this.state
 
     let toolbar = null
@@ -216,7 +213,7 @@ export default class extends Component {
   }
 
   render () {
-    const { position, error, editingEntity } = this.state
+    const { position, error } = this.state
     const { theme } = this.props
 
     if (this.props.readOnly) { return null }
@@ -233,7 +230,7 @@ export default class extends Component {
     let toolbarStyle = { display: show ? 'block' : 'none' }
     if (position !== undefined) {
       toolbarStyle = Object.assign(position, toolbarStyle)
-      toolbarStyle = {...toolbarStyle }
+      toolbarStyle = {...toolbarStyle}
     }
 
     return (
@@ -261,7 +258,7 @@ const ToolbarWrapper = styled.div`
 `
 
 const Toolbar = styled.div`
-  background: ${props => props.error ? '#E83F26' : props.theme.backgroundColor };
+  background: ${props => props.error ? '#E83F26' : props.theme.backgroundColor};
   box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
   left: -50%;
   position: relative;
