@@ -12,7 +12,7 @@ import color from 'ld-color-picker'
 import emoji from 'ld-emoji'
 import html from 'ld-html'
 import todo from 'ld-todo'
-let plugins = [video, audio, color, emoji, html, todo]
+let plugins = [video, audio, emoji, color, html, todo]
 
 export default class ExampleEditor extends Component {
   constructor(props) {
