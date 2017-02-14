@@ -5,7 +5,7 @@
  * License: MIT
  */
 
-import icons from '../components/Buttons/'
+import icons from '../components/Icons/'
 
 export default [
   {type: 'inline', label: 'bold', style: 'BOLD', icon: icons.BoldIcon},
@@ -17,11 +17,11 @@ export default [
   {type: 'separator', label: 'separator'},
   {type: 'block', label: 'ul', style: 'unordered-list-item', icon: icons.ULIcon},
   {type: 'block', label: 'ol', style: 'ordered-list-item', icon: icons.OLIcon},
-  {type: 'block', label: 'h1', style: 'header-one', icon: icons.HIcon},
-  {type: 'block', label: 'h2', style: 'header-two', icon: icons.HIcon},
-  {type: 'block', label: 'h3', style: 'header-three', icon: icons.HIcon},
-  {type: 'block', label: 'h4', style: 'header-four', icon: icons.HIcon},
-  {type: 'block', label: 'h5', style: 'header-five', icon: icons.HIcon},
+  {type: 'block', label: 'h1', style: 'header-one', icon: icons.H1Icon},
+  {type: 'block', label: 'h2', style: 'header-two', icon: icons.H2Icon},
+  {type: 'block', label: 'h3', style: 'header-three', icon: icons.H3Icon},
+  {type: 'block', label: 'h4', style: 'header-four', icon: icons.H4Icon},
+  {type: 'block', label: 'h5', style: 'header-five', icon: icons.H5Icon},
   {type: 'block', label: 'blockquote', style: 'blockquote', icon: icons.BlockQuoteIcon},
   {type: 'block', label: 'quote', style: 'quote', icon: icons.QuoteIcon}
 ]

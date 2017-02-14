@@ -9,6 +9,7 @@ import React, {Component} from 'react'
 import {RichUtils} from 'draft-js'
 import {ToolbarButton, PluginButton} from './ToolbarButton'
 import LinkToolbar from './LinkToolbar'
+import Header from './Header'
 import {getSelectionCoords} from '../../utils/selection'
 import {hasEntity} from '../../utils/entity'
 import styled from 'styled-components'
@@ -167,7 +168,13 @@ export default class extends Component {
     }
 
     return (
-      <ToolbarButton key={key} active={active} theme={this.props.theme} toggle={toggle} item={item} />
+      <ToolbarButton
+        key={key}
+        active={active}
+        separators={this.props.separators}
+        theme={this.props.theme}
+        toggle={toggle}
+        item={item} />
     )
   }
 
@@ -201,7 +208,26 @@ export default class extends Component {
         </ToolbarList>
       )
     }
+
+    this.updateHeaderIcon()
     return toolbar
+  }
+
+  updateHeaderIcon () {
+    let headerCount = this.props.actions.filter((action) => {
+      if (action.style) {
+        if (action.style.includes('header')) { return action }
+      }
+    }).length
+
+    /* If only 1 header, use the H icon */
+    if (headerCount === 1) {
+      this.props.actions.map((action) => {
+        if (action.style) {
+          if (action.style.includes('header')) { action.icon = Header }
+        }
+      })
+    }
   }
 
   renderError () {

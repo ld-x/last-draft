@@ -152,6 +152,9 @@ function uploadImageCallBack(file) {
 #### `autofocus`
 Whether to focus the Editor on component mount. Default is `false`
 
+#### `separators`
+Whether to show the Separators between inline, blocks and plugins. Default is `true`
+
 #### `theme`
 Pass in a custom theme to override the base Last Draft styles. An object with the following properties:
 

@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import BlockContent from './BlockContent'
 import BlockInput from './BlockInput'
 import Block from './Block'
-import icons from '../../components/Buttons/'
+import icons from '../../components/Icons/'
 
 export default class ImageBlock extends Component {
   static get defaultProps () {

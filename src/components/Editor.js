@@ -29,6 +29,7 @@ export default class extends Component {
       blocks: ['ul', 'ol', 'blockquote'],
       placeholder: 'Enter text...',
       autofocus: false,
+      separators: true,
       theme: {
         color: '#fff',
         backgroundColor: '#181818',
@@ -299,7 +300,7 @@ export default class extends Component {
   }
 
   render () {
-    const {editorState, stripPastedStyles, spellCheck, theme} = this.props
+    const {editorState, stripPastedStyles, spellCheck, theme, separators} = this.props
 
     return (
       <div>
@@ -314,6 +315,7 @@ export default class extends Component {
             editorWrapper: this.refs.editorWrapper,
             editorState,
             theme,
+            separators,
             showToolbar: this.state.showToolbar,
             readOnly: this.state.readOnly,
             openToolbar: this.openToolbar,
