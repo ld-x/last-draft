@@ -9,7 +9,7 @@ import BoldIcon from './Bold'
 import ItalicIcon from './Italic'
 import ULIcon from './Ul'
 import OLIcon from './Ol'
-import H2Icon from './H2'
+import HIcon from './H'
 import BlockQuoteIcon from './BlockQuote'
 import QuoteIcon from './Quote'
 import LinkIcon from './Link'
@@ -27,7 +27,7 @@ const icons = {
   ItalicIcon,
   ULIcon,
   OLIcon,
-  H2Icon,
+  HIcon,
   BlockQuoteIcon,
   QuoteIcon,
   LinkIcon,

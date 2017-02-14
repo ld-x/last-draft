@@ -26,7 +26,7 @@ export default class extends Component {
     return {
       inline: ['bold', 'italic', 'strikethrough', 'code', 'dropcap'],
       entities: ['link'],
-      blocks: ['ul', 'ol', 'h2', 'blockquote'],
+      blocks: ['ul', 'ol', 'blockquote'],
       placeholder: 'Enter text...',
       autofocus: false,
       theme: {

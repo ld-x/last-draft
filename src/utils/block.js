@@ -41,8 +41,20 @@ export function blockStyleFn (contentBlock) {
   if (type === 'blockquote') {
     return 'ld-blockquote'
   }
+  if (type === 'header-one') {
+    return 'ld-header-one'
+  }
   if (type === 'header-two') {
-    return 'ld-header'
+    return 'ld-header-two'
+  }
+  if (type === 'header-three') {
+    return 'ld-header-three'
+  }
+  if (type === 'header-four') {
+    return 'ld-header-four'
+  }
+  if (type === 'header-five') {
+    return 'ld-header-five'
   }
   if (type === 'unordered-list-item') {
     return 'ld-unordered-list'

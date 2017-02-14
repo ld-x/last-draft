@@ -17,7 +17,11 @@ export default [
   {type: 'separator', label: 'separator'},
   {type: 'block', label: 'ul', style: 'unordered-list-item', icon: icons.ULIcon},
   {type: 'block', label: 'ol', style: 'ordered-list-item', icon: icons.OLIcon},
-  {type: 'block', label: 'h2', style: 'header-two', icon: icons.H2Icon},
+  {type: 'block', label: 'h1', style: 'header-one', icon: icons.HIcon},
+  {type: 'block', label: 'h2', style: 'header-two', icon: icons.HIcon},
+  {type: 'block', label: 'h3', style: 'header-three', icon: icons.HIcon},
+  {type: 'block', label: 'h4', style: 'header-four', icon: icons.HIcon},
+  {type: 'block', label: 'h5', style: 'header-five', icon: icons.HIcon},
   {type: 'block', label: 'blockquote', style: 'blockquote', icon: icons.BlockQuoteIcon},
   {type: 'block', label: 'quote', style: 'quote', icon: icons.QuoteIcon}
 ]

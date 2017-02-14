@@ -39,7 +39,7 @@ export default class ExampleEditor extends Component {
         theme={this.props.theme}
         plugins={plugins}
         inline={['bold', 'italic', 'dropcap']}
-        blocks={['ol', 'h2', 'quote']}
+        blocks={['ol', 'h3', 'quote']}
         autofocus={true}
         editorState={this.state.value}
         placeholder='Text'
