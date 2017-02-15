@@ -50,7 +50,6 @@ const BlockInput = styled.input`
     border-color: #999;
   }
   &:focus {
-    border-color: #0072de;
-    border-style: solid;
+    border-color: #999;
   }
 `

@@ -9,9 +9,9 @@ class App extends Component {
     super(props)
     this.state = {
       theme: {
-        backgroundColor: '#181818',
-        color: '#fafafa',
-        highlight: '#9d1d20'
+        backgroundColor: '#fefbec',
+        color: '#404040',
+        highlight: '#ffc0cb'
       }
     }
   }

@@ -155,7 +155,7 @@ export function editorStateToHtml (editorState) {
 
           if (src && type === 'image') {
             return html`
-              <figure>
+              <figure class="ld-image-block-wrapper">
                 <img src="${src}" srcset="${srcSet}" alt="${alt}" title="${title}" class="ld-image-block">
                 <figcaption class="ld-image-caption">${caption}</figcaption>
               </figure>
@@ -163,7 +163,7 @@ export function editorStateToHtml (editorState) {
           }
           if (src && type === 'video') {
             return html`
-            <figure>
+            <figure class="ld-video-block-wrapper">
               <iframe width="560" height="315" src="${src}" class="ld-video-block" frameBorder="0" allowFullScreen>
               </iframe>
               <figcaption class="ld-video-caption">${caption}</figcaption>

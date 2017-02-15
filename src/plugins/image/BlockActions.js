@@ -39,29 +39,22 @@ export default class extends Component {
 }
 
 const BlockActionsWrapper = styled.div`
-  overflow: auto;
-  padding: 8px;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
 `
 
-const BlockActions = styled.ul`
-  color: #999;
-  float: right;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+const BlockActions = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `
 
-const BlockAction = styled.li`
-  display: inline-block;
-  padding: 0,
-  padding-left: 8px;
-  padding-right: 8px;
-  line-height: 40px;
+const BlockAction = styled.div`
+  flex: 1;
   cursor: pointer;
-  text-align: center;
-  font-size: 0;
-
+  color: #ddd;
   &:hover {
-    color: '#000',
+    color: #333;
   }
 `

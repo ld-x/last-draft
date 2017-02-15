@@ -79,11 +79,12 @@ export default class ImageBlock extends Component {
       </Block>
     )
   }
-  }
+}
 
 const Image = styled.img`
   display: inline-block;
-  maxWidth: 100%;
+  maxWidth: 90% !important;
+  margin: 0 auto !important;
   verticalAlign: middle;
 `
 

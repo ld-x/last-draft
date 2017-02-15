@@ -2681,9 +2681,9 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-ld-audio@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/ld-audio/-/ld-audio-1.0.3.tgz#ad45b8cd5ec80c93b6c64b547168743429c86862"
+ld-audio@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/ld-audio/-/ld-audio-1.0.5.tgz#a921d60351bff0f484400692526dd124761e338c"
   dependencies:
     draft-js "^0.9.1"
     immutable "~3.7.4"
@@ -2717,9 +2717,9 @@ ld-todo@1.0.1:
     draft-js "^0.9.1"
     styled-components "^1.2.1"
 
-ld-video@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ld-video/-/ld-video-1.0.1.tgz#401eb4d6949418389ac99a3c9bdb4e5110a9b789"
+ld-video@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/ld-video/-/ld-video-1.0.4.tgz#c03882f7dcdddbf309b31d3f599dff6d33281c7a"
   dependencies:
     draft-js "^0.9.1"
     immutable "~3.7.4"

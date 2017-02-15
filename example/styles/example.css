@@ -1,23 +1,32 @@
-/* override the quote for the Last Draft header style */
-/* Last-draft specific styles - dark theme */
+/* override some last Draft styles */
 
+/* only needed for our custom quote font in this example */
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
 
 /* blocks */
 .ld-blockquote {
-  margin: 12px 0 40px 0;
-  padding: 1rem 2rem;
+  margin: 0;
+  padding: 0;
+  padding-left: 2rem;
+  border: none;
   border-left: 2px solid #80172F;
 }
 .ld-quote {
   display: block;
-  color: #80172F;
+  color: #ffc0cb;
   font-style: italic;
   font-size: 34px;
   font-weight: 700;
   line-height: 1.2;
   margin: 4rem 0 2rem 0;
   font-family: 'Shadows Into Light', cursive;
+}
+
+.ld-hashtag {
+  color: #00FF00 !important;
+}
+.ld-link {
+  color: #FF69B4 !important;
 }
 
 html {
