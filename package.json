@@ -38,7 +38,7 @@
     "ld-audio": "1.0.5",
     "ld-color-picker": "1.0.3",
     "ld-emoji": "1.0.7",
-    "ld-html": "1.0.3",
+    "ld-html": "1.0.4",
     "ld-todo": "1.0.1",
     "ld-video": "1.0.4",
     "react": ">=15.3.1",
