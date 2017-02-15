@@ -1,6 +1,6 @@
 {
   "name": "last-draft",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "Last Draft... A Draft.js Editor",
   "main": "lib/index.js",
   "scripts": {
