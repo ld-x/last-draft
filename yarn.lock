@@ -2689,9 +2689,9 @@ ld-audio@1.0.5:
     immutable "~3.7.4"
     styled-components "^1.2.1"
 
-ld-color-picker@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/ld-color-picker/-/ld-color-picker-1.0.3.tgz#e456570816521075820f4045446ceb4844d38a5e"
+ld-color-picker@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/ld-color-picker/-/ld-color-picker-1.0.4.tgz#c61b1fa8afa26a97e159c59b7792fbe8083872bd"
   dependencies:
     draft-js "^0.9.1"
     styled-components "^1.2.1"

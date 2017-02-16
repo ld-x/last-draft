@@ -157,6 +157,7 @@ export default class extends Component {
 
         return (
           <PluginButton
+            theme={this.props.theme}
             uploadImageCallBack={this.props.uploadImageCallBack}
             uploadFile={this.props.uploadFile}
             editorState={this.props.editorState}

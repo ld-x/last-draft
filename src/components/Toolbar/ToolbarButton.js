@@ -18,6 +18,7 @@ export class PluginButton extends Component {
       <ToolbarButtonWrapper theme={theme} active={false} className='ld-toolbar-button-wrapper'>
         <LdToolbarButton className='ld-toolbar-button' type='button'>
           <Button
+            theme={theme}
             onChange={::this.props.onChange}
             uploadImageCallBack={this.props.uploadImageCallBack}
             uploadFile={this.props.uploadFile}
