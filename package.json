@@ -35,7 +35,7 @@
     "babel-runtime": "^6.6.1",
     "express": "^4.13.4",
     "html-webpack-plugin": "^2.16.0",
-    "ld-audio": "1.0.5",
+    "ld-audio": "1.0.6",
     "ld-color-picker": "1.0.4",
     "ld-emoji": "1.0.7",
     "ld-html": "1.0.4",

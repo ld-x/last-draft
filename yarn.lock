@@ -2681,13 +2681,14 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-ld-audio@1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/ld-audio/-/ld-audio-1.0.5.tgz#a921d60351bff0f484400692526dd124761e338c"
+ld-audio@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/ld-audio/-/ld-audio-1.0.6.tgz#5e11db0f29a056230995c19fbcc6d024f3a48788"
   dependencies:
     draft-js "^0.9.1"
     immutable "~3.7.4"
     styled-components "^1.2.1"
+    whatwg-fetch "^2.0.2"
 
 ld-color-picker@1.0.4:
   version "1.0.4"
@@ -4236,6 +4237,10 @@ websocket-extensions@>=0.1.1:
 whatwg-fetch@>=0.10.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.1.tgz#078b9461bbe91cea73cbce8bb122a05f9e92b772"
+
+whatwg-fetch@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.2.tgz#fe294d1d89e36c5be8b3195057f2e4bc74fc980e"
 
 which-module@^1.0.0:
   version "1.0.0"
