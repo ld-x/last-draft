@@ -6,10 +6,12 @@
  */
 
 import React, {Component} from 'react'
-import {Editor, RichUtils, getDefaultKeyBinding} from 'draft-js'
+import {Editor, RichUtils, getDefaultKeyBinding, KeyBindingUtil} from 'draft-js'
+import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
 import {editorStateFromHtml, editorStateToHtml, editorStateFromText} from '../utils/convert'
 
 import Toolbar from './Toolbar/Toolbar'
+import MentionList from './Mentions/MentionList'
 import Sidebar from './Sidebar/Sidebar'
 import Atomic from './Blocks/Atomic'
 import Media from './Blocks/Media'
@@ -42,7 +44,9 @@ export default class extends Component {
     super(props)
     this.state = {
       readOnly: this.props.readOnly || false,
-      uploading: false
+      uploading: false,
+      openToolbar: false,
+      showMentions: false
     }
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
@@ -50,6 +54,7 @@ export default class extends Component {
     this.openToolbar = ::this.openToolbar
     this.resetStateFromHtml = ::this.resetStateFromHtml
     this.returnStateAsHtml = ::this.returnStateAsHtml
+    this.closeMentionList = ::this.closeMentionList
     this.plugins = this.getValidPlugins()
     this.actions = this.getActions()
     this.pluginsByType = this.getPluginsByType()
@@ -161,16 +166,31 @@ export default class extends Component {
     let hasFocus = editorState.getSelection().getHasFocus()
     if (hasFocus) {
       this.setState({showToolbar: false})
+      this.setState({showMentions: false})
     }
   }
 
-  keyBindingFn (e) {
+  openMentionList () {
+    this.setState({showMentions: true})
+  }
+
+  closeMentionList () {
+    this.setState({showMentions: false})
+  }
+
+  keyBindingFn (event) {
     for (const kb of this.keyBindings) {
       if (kb.isKeyBound(e)) {
         return kb.name
       }
     }
-    return getDefaultKeyBinding(e)
+
+    /* @ */
+    if (event.keyCode === 50 && event.shiftKey) {
+      return 'editor-mention'
+    }
+
+    return getDefaultKeyBinding(event)
   }
 
   onTab (event) {
@@ -184,6 +204,11 @@ export default class extends Component {
         kb.action()
         return true
       }
+    }
+
+    if (command === 'editor-mention') {
+      this.openMentionList()
+      return true
     }
 
     const {editorState} = this.props
@@ -248,6 +273,10 @@ export default class extends Component {
 
   renderSidebar (props) {
     return <Sidebar {...props} />
+  }
+
+  renderMentionList (props) {
+    return <MentionList {...props} />
   }
 
   uploadFile (file, selection) {
@@ -325,6 +354,13 @@ export default class extends Component {
             returnStateAsHtml: this.returnStateAsHtml,
             onChange: this.onChange,
             actions: this.actions
+          })}
+          {this.renderMentionList({
+            editorWrapper: this.refs.editorWrapper,
+            editorState,
+            showMentions: this.state.showMentions,
+            closeMentionList: this.closeMentionList,
+            onChange: this.onChange
           })}
           <Editor
             ref='editor'
