@@ -43,7 +43,7 @@ export default {
     },
     {
       "key": "bqjdr",
-      "text": "Emojis! 🏄🌠🏀",
+      "text": "Emojis! 🏄🌠🏀 and mentions @",
       "type": "ordered-list-item",
       "depth": 0,
       "inlineStyleRanges": [],

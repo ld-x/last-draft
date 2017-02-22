@@ -16,32 +16,38 @@ linkify.tlds(tlds)
 
 export default class extends Component {
   render () {
-    let href = ''
-    let target = '_self'
+    const {entityKey, decoratedText} = this.props
 
-    const {decoratedText} = this.props
-    if (decoratedText !== undefined) {
-      const links = linkify.match(decoratedText)
-      href = links && links[0] ? links[0].url : ''
-    } else {
-      const data = Entity.get(this.props.entityKey).getData()
-      href = data.url
-    }
-
-    const {type, url, name, avatar} = Entity.get(this.props.entityKey).getData()
-    if (type === 'mention') {
+    if (entityKey) {
+      const data = Entity.get(entityKey).getData()
+      /* Mentions */
+      if (data.type === 'mention') {
+        return (
+          <Mention href={data.url} title={data.name} className='ld-mention'>
+            {this.props.children}
+          </Mention>
+        )
+      }
+      /* Links */
       return (
-        <Mention href={url} title={name} className='ld-mention'>
+        <Link href={data.url} title={data.url} target='_self' className='ld-link'>
           {this.props.children}
-        </Mention>
+        </Link>
       )
     }
 
-    return (
-      <Link href={href} title={href} target={target} className='ld-link'>
-        {this.props.children}
-      </Link>
-    )
+    if (!this.props.entityKey) {
+      /* linkify links */
+      const links = linkify.match(decoratedText)
+      let href = links && links[0] ? links[0].url : ''
+      return (
+        <Link href={href} title={href} target='_self' className='ld-link'>
+          {this.props.children}
+        </Link>
+      )
+    }
+
+    return null
   }
 }
 
