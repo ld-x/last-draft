@@ -46,7 +46,8 @@ export default class extends Component {
 
   render () {
     const { position } = this.state
-    const { showMentions } = this.props
+    const { mentionSearchValue } = this.props
+    let showMentions = mentionSearchValue.length > 0
 
     if (this.props.readOnly) { return null }
 

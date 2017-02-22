@@ -9,9 +9,8 @@ import styled from 'styled-components'
 
 export default class extends Component {
   render () {
-    const {...otherProps} = this.props
     return (
-      <Hashtag {...otherProps} className='hashtag ld-hashtag' />
+      <Hashtag {...this.props} className='hashtag ld-hashtag' />
     )
   }
 }

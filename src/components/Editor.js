@@ -46,7 +46,7 @@ export default class extends Component {
       readOnly: this.props.readOnly || false,
       uploading: false,
       openToolbar: false,
-      showMentions: false
+      mentionSearchValue: ''
     }
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
@@ -81,10 +81,9 @@ export default class extends Component {
       actions.push(action)
     }
 
-    for (let ent of this.props.entities) {
-      let action = this.getAction(ent)
-      actions.push(action)
-    }
+    /* hashtag and mention entities are not action buttons */
+    let action = this.getAction('link')
+    actions.push(action)
 
     actions.push({type: 'separator'})
 
@@ -166,16 +165,11 @@ export default class extends Component {
     let hasFocus = editorState.getSelection().getHasFocus()
     if (hasFocus) {
       this.setState({showToolbar: false})
-      this.setState({showMentions: false})
     }
   }
 
-  openMentionList () {
-    this.setState({showMentions: true})
-  }
-
   closeMentionList () {
-    this.setState({showMentions: false})
+    this.setState({mentionSearchValue: ''})
   }
 
   keyBindingFn (event) {
@@ -185,12 +179,50 @@ export default class extends Component {
       }
     }
 
-    /* @ */
-    if (event.keyCode === 50 && event.shiftKey) {
-      return 'editor-mention'
+    this.showMentionsKeyBinding(event)
+    return getDefaultKeyBinding(event)
+  }
+
+  showMentionsKeyBinding (event) {
+    if (this.props.mentionUsers === undefined) { return }
+
+    const {editorState} = this.props
+    const selectionState = editorState.getSelection()
+    const contentState = editorState.getCurrentContent()
+    const block = contentState.getBlockForKey(selectionState.getStartKey())
+    const text = block.text
+    const focusOffset = selectionState.getFocusOffset()
+    let mentionSearchValue = null
+
+    if (block.text.includes('@')) {
+      const lastMentionOffset = text.lastIndexOf('@')
+
+      if (focusOffset > lastMentionOffset) {
+        /* alphanumeric key or backspace */
+        if (
+          (event.keyCode >= 48 && event.keyCode <= 57) ||
+          (event.keyCode >= 65 && event.keyCode <= 90) ||
+          (event.keyCode === 8)
+        ) {
+          let mentionText = text.substr(lastMentionOffset, focusOffset)
+          if (event.keyCode === 8) {
+            mentionText = mentionText.slice(0, -1)
+          } else {
+            mentionText = mentionText + event.key
+          }
+
+          if (!mentionText.includes(' ')) {
+            mentionSearchValue = mentionText.substr(1) /* remove the @ */
+          }
+        }
+      }
     }
 
-    return getDefaultKeyBinding(event)
+    if (mentionSearchValue === null) {
+      this.closeMentionList()
+    } else {
+      this.setState({mentionSearchValue: mentionSearchValue})
+    }
   }
 
   onTab (event) {
@@ -204,11 +236,6 @@ export default class extends Component {
         kb.action()
         return true
       }
-    }
-
-    if (command === 'editor-mention') {
-      this.openMentionList()
-      return true
     }
 
     const {editorState} = this.props
@@ -355,13 +382,16 @@ export default class extends Component {
             onChange: this.onChange,
             actions: this.actions
           })}
-          {this.renderMentionList({
-            editorWrapper: this.refs.editorWrapper,
-            editorState,
-            showMentions: this.state.showMentions,
-            closeMentionList: this.closeMentionList,
-            onChange: this.onChange
-          })}
+          { this.props.mentionUsers &&
+              this.renderMentionList({
+              editorWrapper: this.refs.editorWrapper,
+              editorState,
+              mentionUsers: this.props.mentionUsers,
+              mentionSearchValue: this.state.mentionSearchValue,
+              closeMentionList: this.closeMentionList,
+              onChange: this.onChange
+            })
+          }
           <Editor
             ref='editor'
             customStyleMap={styleMap}

@@ -21,7 +21,7 @@ export default class ExampleEditor extends Component {
     //const INITIAL_STATE = editorStateFromRaw(RAW)
     //const INITIAL_STATE = editorStateFromRaw({})
     //const INITIAL_STATE = editorStateFromText('this is a cooel editor... 🏄🌠🏀')
-    const INITIAL_STATE = editorStateFromText('xy')
+    const INITIAL_STATE = editorStateFromText('xyz')
     //const INITIAL_STATE = editorStateFromHtml(HTML)
     //const INITIAL_STATE = editorStateFromHtml('<div />')
     this.state = { value: INITIAL_STATE }
@@ -41,6 +41,7 @@ export default class ExampleEditor extends Component {
         plugins={plugins}
         inline={['bold', 'italic', 'dropcap']}
         blocks={['ol', 'h3', 'quote']}
+        mentionUsers={mentionUsers}
         autofocus={true}
         separators={false}
         editorState={this.state.value}
@@ -64,3 +65,22 @@ function uploadImageCallBack(file) {
     }
   )
 }
+
+
+const mentionUsers = [
+  {
+    name: 'Max Stoiber',
+    link: 'https://github.com/mxstbr',
+    avatar: 'https://avatars0.githubusercontent.com/u/7525670?v=3&s=400',
+  },
+  {
+    name: 'Nik Graf',
+    link: 'https://github.com/nikgraf',
+    avatar: 'https://avatars2.githubusercontent.com/u/223045?v=3&s=400',
+  },
+  {
+    name: 'Steven Iseki',
+    link: 'https://github.com/steveniseki',
+    avatar: 'https://avatars1.githubusercontent.com/u/6695114?v=3&s=400',
+  },
+]

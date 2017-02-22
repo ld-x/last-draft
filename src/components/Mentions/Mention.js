@@ -5,47 +5,49 @@
  * License: MIT
  */
 
- const mentions = [
-   {
-     name: 'Max Stoiber',
-     link: 'https://github.com/mxstbr',
-     avatar: 'https://avatars0.githubusercontent.com/u/7525670?v=3&s=400',
-   },
-   {
-     name: 'Nik Graf',
-     link: 'https://github.com/nikgraf',
-     avatar: 'https://avatars2.githubusercontent.com/u/223045?v=3&s=400',
-   },
-   {
-     name: 'Steven Iseki',
-     link: 'https://github.com/steveniseki',
-     avatar: 'https://avatars1.githubusercontent.com/u/6695114?v=3&s=400',
-   },
- ]
-
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import Search from './Search'
-import {EditorState, Modifier, Entity} from 'draft-js'
+import {EditorState, Modifier, Entity, SelectionState} from 'draft-js'
 
 export default class Link extends Component {
-  setMention (item) {
-    const {editorState, onChange} = this.props
-    if (item === null || item === undefined) {
+  setMention (user) {
+    const {editorState, onChange, mentionSearchValue} = this.props
+
+    if (user === null || user === undefined) {
       this.props.closeMentionList()
       return
     }
 
-    let contentState = Modifier.insertText(
+    let selectionState = editorState.getSelection()
+    let contentState = editorState.getCurrentContent()
+    let block = contentState.getBlockForKey(selectionState.getStartKey())
+
+    let start = selectionState.getEndOffset() - (mentionSearchValue.length + 1)
+    let end = selectionState.getEndOffset()
+
+    const targetRange = new SelectionState({
+      anchorKey: block.getKey(),
+      anchorOffset: start,
+      focusKey: block.getKey(),
+      focusOffset: end
+    })
+
+    let updatedState = Modifier.replaceText(
       editorState.getCurrentContent(),
-      editorState.getSelection(),
-      item,
+      targetRange,
+      user.name,
       editorState.getCurrentInlineStyle(),
-      Entity.create('MENTION', 'IMMUTABLE', {url: 'http://g.co'})
+      Entity.create('LINK', 'IMMUTABLE', {
+        type: 'mention',
+        url: user.link,
+        avatar: user.avatar,
+        name: user.name
+      })
     )
     onChange(
-      EditorState.push(editorState, contentState, 'insert-characters')
+      EditorState.push(editorState, updatedState, 'insert-characters')
     )
     this.props.closeMentionList()
   }
@@ -60,7 +62,8 @@ export default class Link extends Component {
     return (
       <div style={{whiteSpace: 'nowrap'}}>
         <Search
-          items={mentions}
+          searchValue={this.props.mentionSearchValue}
+          users={this.props.mentionUsers}
           searchKey='name'
           closeMentionList={::this.props.closeMentionList}
           onClick={::this.handleItemClick} />

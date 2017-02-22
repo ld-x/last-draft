@@ -77,7 +77,7 @@ Array of block styles to use in the toolbar. Any of the following: `ul`, `ol`, `
 ```
 
 #### `entities`
-Array of entities to use. Any of the following: `link`, `hashtag`. By default all are included:
+Array of entities to use. Any of the following: `link`, `hashtag`, `mentions`. By default all are included:
 
 ```jsx
 <Editor
@@ -125,6 +125,31 @@ Updating the plugin import at the top `import {image, placeholder, video} from '
 And then adding updating the following line in the `getValidPlugins ()` function: `let plugins = [image, placeholder, video]`.
 
 Copy any of the above `ld-` plugins as a starting point. Once it is working then create your new plugin repo `npm run build` it, then publish it to npm.
+
+
+#### `mentionUsers`
+A list of users for mentions functionality. An array of objects with properties `name`, `link` and `avatar`
+
+```jsx
+<Editor
+  editorState={this.state.value}
+  mentionUsers={mentionUsers}
+  onChange={::this.onChange} />
+
+const mentionUsers = [
+  {
+    name: 'Steven Iseki',
+    link: 'https://github.com/steveniseki',
+    avatar: 'https://avatars1.githubusercontent.com/u/6695114?v=3&s=400',
+  },
+  {
+    name: 'Nik Graf',
+    link: 'https://github.com/nikgraf',
+    avatar: 'https://avatars2.githubusercontent.com/u/223045?v=3&s=400',
+  }
+]
+```
+
 
 #### `uploadImageCallBack`
 

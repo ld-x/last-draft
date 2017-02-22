@@ -28,81 +28,47 @@ export default class extends Component {
     this.state = {
       matchingItems: [],
       open: false,
-      searchValue: '@'
     }
-  }
-
-  componentDidMount () {
-    ReactDOM.findDOMNode(this.refs.searchInput).focus()
   }
 
   selectAutoComplete (event) {
-    this.setState({open: false})
     let result = event.target.innerText
-    this.setState({searchValue: result})
-
+    let user = this.props.users.find(u => u.name === result)
     if(typeof this.props.onClick !== 'undefined'){
-      this.props.onClick(result)
-    }
-  }
-
-  reset () {
-    this.setState({matchingItems: []})
-    this.setState({open: false})
-    this.setState({searchValue: ''})
-    this.props.closeMentionList()
-  }
-
-  onSearchChange (event) {
-    event.stopPropagation()
-    this.setState({open: true})
-    const searchValue = event.target.value
-    this.setState({searchValue: searchValue})
-
-    let result = SearchItemInArrayObjects(this.props.items, searchValue, this.props.searchKey)
-    this.setState({matchingItems: result})
-  }
-
-  onKeyDown (event) {
-    if (event.key === 'Escape') {
-      event.preventDefault()
-      this.reset()
-    }
-    if (event.key === 'Backspace') {
-      if (this.state.searchValue === '') {
-        event.preventDefault()
-        this.reset()
-      }
+      this.props.onClick(user)
     }
   }
 
   render() {
+    const {searchValue, users, searchKey} = this.props
 
-    let items = this.state.matchingItems.map((item, i) => {
-      let name = item.name
-      let avatarSrc = item.avatar
-      return (
-        <li key={i}>
-          <MentionItem>
-            <Avatar src={avatarSrc} />
-            <MentionName key={name} onClick={::this.selectAutoComplete}>
-              {name}
-            </MentionName>
-          </MentionItem>
-        </li>
-      )
-    })
+    let items = null
+    let menuStyle = { border: 'none'}
+
+    if (searchValue.length > 0) {
+      let matchingItems = SearchItemInArrayObjects(users, searchValue, searchKey)
+      items = matchingItems.map((item, i) => {
+        let name = item.name
+        let avatarSrc = item.avatar
+        return (
+          <li key={i}>
+            <MentionItem>
+              <Avatar src={avatarSrc} />
+              <MentionName key={name} onClick={::this.selectAutoComplete}>
+                {name}
+              </MentionName>
+            </MentionItem>
+          </li>
+        )
+      })
+      if (matchingItems.length) {
+        menuStyle = { border: '1px solid #b7b7b7' }
+      }
+    }
 
     return (
       <Search>
-        <Input
-          ref='searchInput'
-          type='text'
-          onChange={::this.onSearchChange}
-          value={this.state.searchValue}
-          onKeyDown={::this.onKeyDown} />
-
-        <Menu ref="autocomplete">
+        <Menu style={menuStyle}>
           {/*
             <SearchButton onClick={::this.reset}>
               <icons.CloseIcon  />
@@ -121,19 +87,7 @@ const Search = styled.div`
   line-height: 1.5;
   position: relative;
   width: 100%;
-`
-
-const Input = styled.input`
-  color: #666;
-  width: 100%;
-  padding: 0.5rem;
-  padding-bottom: 0.2rem;
-  border: 1px solid #b7b7b7;
-  border-bottom: none;
-
-  &:focus {
-    outline: none;
-  }
+  min-width: 10rem;
 `
 
 const Menu = styled.div`
@@ -141,8 +95,7 @@ const Menu = styled.div`
   display: block;
   text-decoration: none;
   white-space: nowrap;
-  padding: 0.5rem;
-  padding-top: 0;
+  padding: 0;
   max-height: 30rem;
   overflow-x: hidden;
   overflow-y: auto;
@@ -150,20 +103,24 @@ const Menu = styled.div`
   width: 100%;
   visibility: visible;
   z-index: 100;
-  border: 1px solid #b7b7b7;
-  border-top: none;
 `
 
 const List = styled.ul`
   list-style-type: none;
-  padding: 0em;
-  margin: 0em;
+  padding: 0;
+  margin: 0;
 `
 
 const MentionItem = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
+  padding: 0 0.5rem;
+
+  &:hover {
+    background: rgb(236, 236, 234);
+  }
 `
 
 const MentionName = styled.p`
@@ -173,7 +130,7 @@ const MentionName = styled.p`
 const Avatar = styled.img`
   width: 24px;
   height: 24px;
-  border-radius:12px;
+  border-radius: 12px;
 `
 
 const SearchButton = styled.button`

@@ -8,7 +8,6 @@
 import {CompositeDecorator} from 'draft-js'
 import {createTypeStrategy, hashtagStrategy, linkifyStrategy, } from '../utils/strategy'
 import Link from '../components/Entities/Link'
-import Mention from '../components/Entities/Mention'
 import Hashtag from '../components/Entities/Hashtag'
 
 const decorator = new CompositeDecorator([
@@ -19,10 +18,6 @@ const decorator = new CompositeDecorator([
   {
     strategy: hashtagStrategy,
     component: Hashtag
-  },
-  {
-    strategy: createTypeStrategy('MENTION'),
-    component: Mention
   },
   {
     strategy: linkifyStrategy,
