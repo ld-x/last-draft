@@ -20,17 +20,9 @@ export default class extends Component {
 
     if (entityKey) {
       const data = Entity.get(entityKey).getData()
-      /* Mentions */
-      if (data.type === 'mention') {
-        return (
-          <Mention href={data.url} title={data.name} className='ld-mention'>
-            {this.props.children}
-          </Mention>
-        )
-      }
       /* Links */
       return (
-        <Link href={data.url} title={data.url} target='_self' className='ld-link'>
+        <Link href={data.url} title={data.title} target='_self' className='ld-link'>
           {this.props.children}
         </Link>
       )
@@ -53,13 +45,6 @@ export default class extends Component {
 
 const Link = styled.a`
   color: #3192e7;
-  text-decoration: none;
-  cursor: pointer;
-`
-
-const Mention = styled.a`
-  background: rgb(236, 236, 234);
-  color: #000;
   text-decoration: none;
   cursor: pointer;
 `

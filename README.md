@@ -249,6 +249,7 @@ It is simple to customize elements in the editor, as shown in the [ld-theme-exam
 ```css
 .ld-link {}
 .ld-hashtag {}
+.ld-mention {}
 ```
 
 **Plugin Block styles**

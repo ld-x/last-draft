@@ -42,7 +42,7 @@ export default class extends Component {
 
   selectAutoComplete (event) {
     let result = event.target.innerText
-    let user = this.props.mentionUsers.find(u => u.name === result)
+    let user = this.state.foundUsers.find(u => u.name === result)
     if(typeof this.props.onClick !== 'undefined'){
       this.props.onClick(user)
     }

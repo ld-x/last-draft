@@ -39,8 +39,7 @@ export default class Link extends Component {
       targetRange,
       user.name,
       editorState.getCurrentInlineStyle(),
-      Entity.create('LINK', 'IMMUTABLE', {
-        type: 'mention',
+      Entity.create('MENTION', 'IMMUTABLE', {
         url: user.link,
         avatar: user.avatar,
         name: user.name

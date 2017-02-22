@@ -18,11 +18,11 @@ export default class ExampleEditor extends Component {
   constructor(props) {
     super(props)
     /* examples of initial state */
-    const INITIAL_STATE = editorStateFromRaw(RAW)
+    //const INITIAL_STATE = editorStateFromRaw(RAW)
+    //const INITIAL_STATE = editorStateFromHtml(HTML)
     //const INITIAL_STATE = editorStateFromRaw({})
     //const INITIAL_STATE = editorStateFromText('this is a cooel editor... 🏄🌠🏀')
-    //const INITIAL_STATE = editorStateFromText('xyz')
-    //const INITIAL_STATE = editorStateFromHtml(HTML)
+    const INITIAL_STATE = editorStateFromText('xyz')
     //const INITIAL_STATE = editorStateFromHtml('<div />')
     this.state = { value: INITIAL_STATE }
   }
@@ -30,8 +30,8 @@ export default class ExampleEditor extends Component {
   onChange(editorState) {
     this.setState({ value: editorState })
     /* You would normally save this to your database here instead of logging it */
-    //console.log(editorStateToHtml(editorState))
-    console.log(editorStateToJSON(editorState))
+    console.log(editorStateToHtml(editorState))
+    //console.log(editorStateToJSON(editorState))
   }
 
   render() {

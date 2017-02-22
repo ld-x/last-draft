@@ -28,6 +28,12 @@
 /* entities */
 .ld-link { color: #80172F !important; }
 
+.ld-mention {
+  background: rgb(236, 236, 234);
+  color: #000;
+  text-decoration: none;
+}
+
 /* inline toolbar */
 .ld-toolbar-wrapper { color: #181818 !important; background: white !important; }
 .ld-toolbar { background: white !important; }

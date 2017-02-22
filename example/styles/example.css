@@ -28,6 +28,12 @@
 .ld-link {
   color: #FF69B4 !important;
 }
+.ld-mention {
+  background: rgb(236, 236, 234);
+  color: #000;
+  text-decoration: none;
+}
+
 
 html {
   box-sizing: border-box;

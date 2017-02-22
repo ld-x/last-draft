@@ -20,6 +20,15 @@ export default {
       "data": {
         "url": "https://github.com/vacenz/last-draft#docs"
       }
+    },
+    "3": {
+      "type": "MENTION",
+      "mutability": "IMMUTABLE",
+      "data": {
+        "url": "https://github.com/steveniseki",
+        "avatar": "https://avatars1.githubusercontent.com/u/6695114?v=3&s=400",
+        "name": "Steven Iseki"
+      }
     }
   },
   "blocks": [
@@ -43,11 +52,17 @@ export default {
     },
     {
       "key": "bqjdr",
-      "text": "Emojis! 🏄🌠🏀 and mentions @",
+      "text": "Emojis! 🏄🌠🏀 and mentions Steven Iseki",
       "type": "ordered-list-item",
       "depth": 0,
       "inlineStyleRanges": [],
-      "entityRanges": [],
+      "entityRanges": [
+        {
+          "offset": 25,
+          "length": 12,
+          "key": 3
+        }
+      ],
       "data": {}
     },
     {

@@ -5,15 +5,14 @@
  * License: MIT
  */
 
-import {convertFromHTML} from 'draft-convert'
-import {stateToHTML} from 'draft-js-export-html'
+import {convertFromHTML, convertToHTML} from 'draft-convert'
 import {Entity, convertToRaw, convertFromRaw, EditorState, ContentState} from 'draft-js'
 import defaultDecorator from '../decorators/defaultDecorator'
-import {html} from 'common-tags'
 import linkifyIt from 'linkify-it'
 import tlds from 'tlds'
 import { extractHashtagsWithIndices } from './hashtag';
 import styleMap from './styleMap';
+import React from 'react'
 
 const linkify = linkifyIt()
 linkify.tlds(tlds)
@@ -33,6 +32,14 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
     },
     htmlToEntity: (nodeName, node) => {
       if (nodeName === 'a') {
+        if (node.className === "ld-mention") {
+          return Entity.create(
+            'MENTION',
+            'IMMUTABLE',
+            {url: node.href, target: node.target}
+          )
+        }
+
         return Entity.create(
           'LINK',
           'MUTABLE',
@@ -114,7 +121,7 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
   return EditorState.createWithContent(contentState, decorator)
 }
 
-function reactToInline(o){
+function convertToInline(o){
   var elem = new Option
   Object.keys(o).forEach(function(a){ elem.style[a]=o[a] })
   return elem.getAttribute('style')
@@ -122,56 +129,70 @@ function reactToInline(o){
 
 export function editorStateToHtml(editorState) {
   if (editorState) {
-    const content = editorState.getCurrentContent();
-    const exportInlineStyles = {}
-    Object.keys(styleMap).map((name) => {
-      // Push each style into the object
-      exportInlineStyles[name] = {
-        element: 'span',
-        attributes: { class: name, style: reactToInline(styleMap[name]) }
-      }
-    })
+    const convertedHTML = convertToHTML({
+      styleToHTML: (style) => {
+        /* inline color styles */
+        if (style.includes('color')) {
+          let colorClassName = ''
+          let colorInlineStyle = ''
+          Object.keys(styleMap).map((name) => {
+            if (style === name) {
+              colorClassName = name
+              colorInlineStyle = convertToInline(styleMap[name])
+              console.log(colorInlineStyle.color)
+              console.log(styleMap[name])
+            }
+          })
+          console.log(colorInlineStyle)
+          return <span className={colorClassName} style={{color: colorInlineStyle.replace('color: ', '')}} />
+        }
+      },
+      blockToHTML: (block) => {
+        const type = block.type
+        if (type === 'atomic') {
+          let src = block.data.src
+          let srcSet = block.data.srcSet
+          let alt = block.data.alt
+          let title = block.data.title
+          let caption = ''
+          if (block.data.caption !== undefined) { caption = block.data.caption }
+          if (alt === '' || alt === undefined) { alt = caption }
+          if (title === '' || title === undefined) { title = caption }
 
-    const convertedHTML = stateToHTML(content, {
-      inlineStyles: exportInlineStyles,
-      blockRenderers: {
-        atomic: (block) => {
-          let data = block.getData()
-          let type = data.get('type')
-          let src = data.get('src')
-          let srcSet = data.get('srcSet')
-          let alt = data.get('alt')
-          let title = data.get('title')
-          let caption = data.get('caption')
-          if (alt === '') { alt = caption }
-          if (title === '') { title = caption }
-
-          if (src && type == 'image') {
-            return html`
-              <figure class="ld-image-block-wrapper">
-                <img src="${src}" srcset="${srcSet}" alt="${alt}" title="${title}" class="ld-image-block">
-                <figcaption class="ld-image-caption">${caption}</figcaption>
-              </figure>
-            `
+          if (src && (block.data.type == 'image' || block.data.type == 'placeholder')) {
+            let start = `<figure class="ld-image-block-wrapper"><img src="${src}" srcset="${srcSet}" alt="${alt}" title="${title}" class="ld-image-block"><figcaption class="ld-image-caption">${caption}</figcaption>`
+            return { start: start, end: '</figure>' }
           }
-          if (src && type == 'video') {
-            return html`
-            <figure class="ld-video-block-wrapper">
-              <iframe width="560" height="315" src="${src}" class="ld-video-block" frameBorder="0" allowFullScreen>
-              </iframe>
-              <figcaption class="ld-video-caption">${caption}</figcaption>
-            </figure>
-            `
+          if (src && block.data.type == 'video') {
+            let start = `<figure class="ld-video-block-wrapper"><iframe width="560" height="315" src="${src}" class="ld-video-block" frameBorder="0" allowFullScreen></iframe><figcaption class="ld-video-caption">${caption}</figcaption>`
+            return { start: start, end: '</figure>' }
           }
-        },
-        quote: (block) => {
-          let text = block.getText()
-          return `<span class='ld-quote' >${text}</span>`
-        },
-      }
-    })
+          if (src && block.data.type == 'audio') {
+            let start = `<figure class="ld-audio-block-wrapper"> <iframe width="100%" height="450" scrolling="no" frameborder="no" src="${src}"></iframe>`
+            return { start: start, end: '</figure>' }
+          }
+          /* default atomic block */
+          return { start: '<figure>', end: '</figure>' }
 
-    /* logic for linkify due to no Entity support in stateToHTML */
+        }
+        if (type === 'unstyled') {
+          return { start: '<div>', end: '</div>' }
+        }
+        if (type === 'quote') {
+          return { start: `<span class="ld-quote">`, end: '</span>' }
+        }
+      },
+      entityToHTML: (entity, originalText) => {
+        if (entity.type === 'LINK') {
+          return { start: `<a class="ld-link" target="_self">`, end: '</a>' }
+        }
+        if (entity.type === 'MENTION') {
+          return <a target='_self' src={entity.data.url} className="ld-mention">{entity.data.name}</a>
+        }
+      }
+    })(editorState.getCurrentContent())
+
+    /* logic for linkify */
     let convertedHTMLLinkify = convertedHTML
     const linkifyMatch = linkify.match(convertedHTML)
     if (linkifyMatch !== null) {
