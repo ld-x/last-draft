@@ -184,9 +184,9 @@ export default class extends Component {
   }
 
   showMentionsKeyBinding (event) {
-    if (this.props.mentionUsers === undefined) { return }
+    const {editorState, mentionUsers, mentionUsersAsync} = this.props
+    if (mentionUsers === undefined && mentionUsersAsync === undefined) { return }
 
-    const {editorState} = this.props
     const selectionState = editorState.getSelection()
     const contentState = editorState.getCurrentContent()
     const block = contentState.getBlockForKey(selectionState.getStartKey())
@@ -303,11 +303,15 @@ export default class extends Component {
   }
 
   renderMentionList (props) {
+    const {mentionUsersAsync, mentionUsers} = this.props
+    if (mentionUsers === undefined && mentionUsersAsync === undefined) {
+      return null
+    }
     return <MentionList {...props} />
   }
 
   uploadFile (file, selection) {
-    const { uploadImageCallBack, editorState } = this.props
+    const { uploadImageAsync, editorState } = this.props
     const { uploading } = this.state
 
     if (file.type.indexOf('image/') !== 0) { return }
@@ -315,13 +319,13 @@ export default class extends Component {
 
     this.setState({ uploading: true })
 
-    if (uploadImageCallBack !== undefined) {
+    if (uploadImageAsync !== undefined) {
       /* show placeholder */
       const src = window.URL.createObjectURL(file)
       const imageData = {src: src, type: 'placeholder'}
       this.onChange(insertDataBlock(editorState, imageData, selection))
 
-      uploadImageCallBack(file)
+      uploadImageAsync(file)
       .then((data) => {
         /* show loaded image */
         let srcSet = data.srcSet
@@ -376,16 +380,17 @@ export default class extends Component {
             readOnly: this.state.readOnly,
             openToolbar: this.openToolbar,
             uploadFile: this.uploadFile,
-            uploadImageCallBack: this.props.uploadImageCallBack,
+            uploadImageAsync: this.props.uploadImageAsync,
             submitHtmlModal: this.resetStateFromHtml,
             returnStateAsHtml: this.returnStateAsHtml,
             onChange: this.onChange,
             actions: this.actions
           })}
-          { this.props.mentionUsers &&
-              this.renderMentionList({
+          {
+            this.renderMentionList({
               editorWrapper: this.refs.editorWrapper,
               editorState,
+              mentionUsersAsync: this.props.mentionUsersAsync,
               mentionUsers: this.props.mentionUsers,
               mentionSearchValue: this.state.mentionSearchValue,
               closeMentionList: this.closeMentionList,

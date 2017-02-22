@@ -20,7 +20,7 @@ export class PluginButton extends Component {
           <Button
             theme={theme}
             onChange={::this.props.onChange}
-            uploadImageCallBack={this.props.uploadImageCallBack}
+            uploadImageAsync={this.props.uploadImageAsync}
             uploadFile={this.props.uploadFile}
             editorState={this.props.editorState}
             />

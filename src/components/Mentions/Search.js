@@ -26,55 +26,75 @@ export default class extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      matchingItems: [],
-      open: false,
+      foundUsers: []
+    }
+  }
+
+  componentDidMount() {
+    this.findUsers()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.searchValue !== this.props.searchValue) {
+      this.findUsers()
     }
   }
 
   selectAutoComplete (event) {
     let result = event.target.innerText
-    let user = this.props.users.find(u => u.name === result)
+    let user = this.props.mentionUsers.find(u => u.name === result)
     if(typeof this.props.onClick !== 'undefined'){
       this.props.onClick(user)
     }
   }
 
-  render() {
-    const {searchValue, users, searchKey} = this.props
+  findUsers () {
+    const {mentionUsersAsync, mentionUsers, searchValue, searchKey} = this.props
 
-    let items = null
-    let menuStyle = { border: 'none'}
-
-    if (searchValue.length > 0) {
-      let matchingItems = SearchItemInArrayObjects(users, searchValue, searchKey)
-      items = matchingItems.map((item, i) => {
-        let name = item.name
-        let avatarSrc = item.avatar
-        return (
-          <li key={i}>
-            <MentionItem>
-              <Avatar src={avatarSrc} />
-              <MentionName key={name} onClick={::this.selectAutoComplete}>
-                {name}
-              </MentionName>
-            </MentionItem>
-          </li>
-        )
+    if (mentionUsersAsync !== undefined) {
+      /* async */
+      mentionUsersAsync(searchValue)
+      .then((result) => {
+        console.log(result)
+        this.setState({foundUsers: result.mentionUsers})
       })
-      if (matchingItems.length) {
-        menuStyle = { border: '1px solid #b7b7b7' }
-      }
+    } else {
+      /* static list of users */
+      let users = SearchItemInArrayObjects(mentionUsers, searchValue, searchKey)
+      this.setState({foundUsers: users})
     }
+
+  }
+
+  renderUsers () {
+    const {foundUsers} = this.state
+    const {searchValue} = this.props
+
+    return foundUsers.map((item, i) => {
+      let name = item.name
+      let avatarSrc = item.avatar
+      return (
+        <li key={i}>
+          <MentionItem>
+            <Avatar src={avatarSrc} />
+            <MentionName key={name} onClick={::this.selectAutoComplete}>
+              {name}
+            </MentionName>
+          </MentionItem>
+        </li>
+      )
+    })
+  }
+
+  render() {
+    const {searchValue} = this.props
+    let menuStyle = { border: '1px solid #b7b7b7' }
+    if (searchValue.length < 1) { menuStyle = { border: 'none' } }
 
     return (
       <Search>
         <Menu style={menuStyle}>
-          {/*
-            <SearchButton onClick={::this.reset}>
-              <icons.CloseIcon  />
-            </SearchButton>
-            */}
-          <List>{items}</List>
+          <List>{this.renderUsers()}</List>
         </Menu>
       </Search>
     )
@@ -131,15 +151,4 @@ const Avatar = styled.img`
   width: 24px;
   height: 24px;
   border-radius: 12px;
-`
-
-const SearchButton = styled.button`
-  margin: 0 0 0 auto;
-  display: block;
-  color: inherit;
-  cursor: pointer;
-  border: 0;
-  height: 24px;
-  width: 24px;
-  background: transparent;
 `

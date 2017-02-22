@@ -46,13 +46,13 @@ export default class ExampleEditor extends Component {
         separators={false}
         editorState={this.state.value}
         placeholder='Text'
-        uploadImageCallBack={uploadImageCallBack}
+        uploadImageAsync={uploadImageAsync}
         onChange={::this.onChange} />
     )
   }
 }
 
-function uploadImageCallBack(file) {
+function uploadImageAsync(file) {
   return new Promise(
     (resolve, reject) => {
       /* simulate a 2 second call to parse file and return an img src... */
@@ -65,7 +65,6 @@ function uploadImageCallBack(file) {
     }
   )
 }
-
 
 const mentionUsers = [
   {
@@ -84,3 +83,19 @@ const mentionUsers = [
     avatar: 'https://avatars1.githubusercontent.com/u/6695114?v=3&s=400',
   },
 ]
+
+const mentionUsersAsync = function (searchValue, cb) {
+  return new Promise(
+    (resolve, reject) => {
+      /* simulate a 0.2 second call to retrieve the users from the mentions search value */
+      setTimeout( () => {
+        /*
+        this would instead be the returned filtered items from the query e.g.
+        let url = `https://api.github.com/search/users?q=${searchValue}`
+        fetch(url).then( (response) => { return response.json() }).then((results) => { resolve({ mentionUsers: mentionUsers }) })
+        */
+        resolve({ mentionUsers: mentionUsers })
+      }, 200)
+    }
+  )
+}

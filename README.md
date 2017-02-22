@@ -150,18 +150,39 @@ const mentionUsers = [
 ]
 ```
 
+mentionUsersCallback
 
-#### `uploadImageCallBack`
+#### `mentionUsersAsync`
+A function that returns a list of filtered users for mentions functionality.
+
+The `searchValue` is passed to the function, which will filter and return the users e.g. Searching for users in github. Returns a promise which should return an object with the mentionUsers array.
+
+```jsx
+const mentionUsersAsync = function (searchValue, cb) {
+  return new Promise(
+    (resolve, reject) => {
+      let url = `https://api.github.com/search/users?q=${searchValue}`
+      fetch(url).then( (response) => {
+        return response.json();
+      }).then((results) => {
+        resolve({ mentionUsers: mentionUsers })
+      });
+    }
+  )
+}
+```
+
+#### `uploadImageAsync`
 
 A callback to parse the url for example uploading the file to S3 or a database and returning the url. Returns a promise which should return an object with a src property e.g. `resolve({ src: 'http://imgur.com/yrwFoXT.jpg' })`. You can also return `srcSet` prop for responsive images `resolve({ src: 'x.jpg' srcSet: 'y.jpg' })`
 
 ```jsx
 <Editor
   editorState={this.state.value}
-  uploadImageCallBack={uploadImageCallBack}
+  uploadImageAsync={uploadImageAsync}
   onChange={::this.onChange} />
 
-function uploadImageCallBack(file) {
+function uploadImageAsync(file) {
   return new Promise(
     (resolve, reject) => {
       /* simulating a 2 second call to parse file and return an img src... */

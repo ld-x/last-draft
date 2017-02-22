@@ -63,7 +63,8 @@ export default class Link extends Component {
       <div style={{whiteSpace: 'nowrap'}}>
         <Search
           searchValue={this.props.mentionSearchValue}
-          users={this.props.mentionUsers}
+          mentionUsers={this.props.mentionUsers}
+          mentionUsersAsync={this.props.mentionUsersAsync}
           searchKey='name'
           closeMentionList={::this.props.closeMentionList}
           onClick={::this.handleItemClick} />
