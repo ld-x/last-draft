@@ -42,7 +42,8 @@ export default class Link extends Component {
       Entity.create('MENTION', 'IMMUTABLE', {
         url: user.link,
         avatar: user.avatar,
-        name: user.name
+        name: user.name,
+        className: 'ld-mention'
       })
     )
     onChange(

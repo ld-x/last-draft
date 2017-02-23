@@ -78,8 +78,6 @@
 .header {
   color: #223A87;
 }
-.ld-hashtag {
-}
 .ld-unordered-list {}
 .ld-ordered-list {}
 
@@ -136,6 +134,7 @@
 /* entities */
 .ld-link {}
 .ld-hashtag {}
+.ld-mention {}
 
 /* sidebar */
 .ld-sidebar {}

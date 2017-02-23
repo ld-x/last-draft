@@ -55,7 +55,6 @@ export default class extends Component {
       /* async */
       mentionUsersAsync(searchValue)
       .then((result) => {
-        console.log(result)
         this.setState({foundUsers: result.mentionUsers})
       })
     } else {

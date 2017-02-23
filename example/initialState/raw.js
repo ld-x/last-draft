@@ -46,7 +46,13 @@ export default {
       "text": "Last Draft is a ReactJS Rich Text editor built on top of Facebook's draft.js featuring:",
       "type": "unstyled",
       "depth": 0,
-      "inlineStyleRanges": [],
+      "inlineStyleRanges": [
+        {
+          "offset": 57,
+          "length": 10,
+          "style": "color-ADFF2F"
+        }
+      ],
       "entityRanges": [],
       "data": {}
     },
