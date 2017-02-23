@@ -84,18 +84,20 @@ const mentionUsers = [
   },
 ]
 
+/* mentionUsersAsync example using github search api */
+
+/*
 const mentionUsersAsync = function (searchValue, cb) {
   return new Promise(
     (resolve, reject) => {
-      /* simulate a 0.2 second call to retrieve the users from the mentions search value */
-      setTimeout( () => {
-        /*
-        this would instead be the returned filtered items from the query e.g.
-        let url = `https://api.github.com/search/users?q=${searchValue}`
-        fetch(url).then( (response) => { return response.json() }).then((results) => { resolve({ mentionUsers: mentionUsers }) })
-        */
-        resolve({ mentionUsers: mentionUsers })
-      }, 200)
+      let url = `https://api.github.com/search/users?q=${searchValue}`
+      fetch(url)
+      .then( (response) => { return response.json() })
+      .then((data) => {
+        let users = data.items.map( (u, i) => { return { name: u.login, link: u.html_url, avatar: u.avatar_url } })
+        resolve({ mentionUsers: users })
+      })
     }
   )
 }
+*/

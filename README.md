@@ -162,11 +162,12 @@ const mentionUsersAsync = function (searchValue, cb) {
   return new Promise(
     (resolve, reject) => {
       let url = `https://api.github.com/search/users?q=${searchValue}`
-      fetch(url).then( (response) => {
-        return response.json();
-      }).then((results) => {
-        resolve({ mentionUsers: mentionUsers })
-      });
+      fetch(url)
+      .then( (response) => { return response.json() })
+      .then((data) => {
+        let users = data.items.map( (u, i) => { return { name: u.login, link: u.html_url, avatar: u.avatar_url } })
+        resolve({ mentionUsers: users })
+      })
     }
   )
 }

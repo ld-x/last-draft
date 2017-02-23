@@ -1622,6 +1622,10 @@ elliptic@^6.0.0:
     hash.js "^1.0.0"
     inherits "^2.0.1"
 
+emojione@^2.2.7:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/emojione/-/emojione-2.2.7.tgz#46457cf6b9b2f8da13ae8a2e4e547de06ee15e96"
+
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
@@ -2868,11 +2872,12 @@ ld-color-picker@1.0.4:
     draft-js "^0.9.1"
     styled-components "^1.2.1"
 
-ld-emoji@1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-1.0.7.tgz#21fade02e88ef50ea05b6600c8c53e138db6be22"
+ld-emoji@1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-1.0.9.tgz#fe233e4ae3b4449082e5405996d5f14e816c1d02"
   dependencies:
     draft-js "^0.9.1"
+    emojione "^2.2.7"
     styled-components "^1.2.1"
 
 ld-html@1.0.4:
