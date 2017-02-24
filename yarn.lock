@@ -2872,9 +2872,9 @@ ld-color-picker@1.0.4:
     draft-js "^0.9.1"
     styled-components "^1.2.1"
 
-ld-emoji@1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-1.0.9.tgz#fe233e4ae3b4449082e5405996d5f14e816c1d02"
+ld-emoji@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-1.1.0.tgz#13dd339f4d96cfa29b026f1ee478d428aa6ba921"
   dependencies:
     draft-js "^0.9.1"
     emojione "^2.2.7"
