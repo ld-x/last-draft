@@ -23,6 +23,8 @@ import insertDataBlock from '../utils/insertDataBlock'
 import {blockStyleFn, blockRenderMap, getPluginTypeForBlock} from '../utils/block'
 import styleMap from '../utils/styleMap'
 
+let mentionCurrentOffset = 0
+
 export default class extends Component {
   static get defaultProps () {
     return {
@@ -155,6 +157,18 @@ export default class extends Component {
   onChange (editorState) {
     this.props.onChange(editorState)
     this.closeToolbar(editorState)
+
+    this.hideMentionsOnMove(editorState)
+  }
+
+  hideMentionsOnMove (editorState) {
+    const {mentionUsers, mentionUsersAsync} = this.props
+    if (mentionUsers === undefined && mentionUsersAsync === undefined) { return }
+
+    const selectionState = editorState.getSelection()
+    const focusOffset = selectionState.getFocusOffset()
+    if (focusOffset === undefined) { return }
+    if (focusOffset !== mentionCurrentOffset) { this.closeMentionList() }
   }
 
   openToolbar () {
@@ -193,37 +207,33 @@ export default class extends Component {
     const text = block.text
     const focusOffset = selectionState.getFocusOffset()
     let mentionSearchValue = null
+    let lastMentionOffset = null
 
-    if (block.text.includes('@')) {
-      let lastMentionOffset = null
-      console.log(`focusOffset: ${focusOffset}`)
-
-      for(var i = focusOffset; i >= 0; i--) {
-        let char = text.substr(i, 1)
-        if (char === '@') {
-          lastMentionOffset = i
-          break
-        }
+    if (!block.text.includes('@')) { return }
+    for(var i = focusOffset; i >= 0; i--) {
+      let char = text.substr(i, 1)
+      if (char === '@') {
+        lastMentionOffset = i
+        break
       }
-      if (lastMentionOffset === null) { return }
+    }
+    if (lastMentionOffset === null) { return }
 
-      if (focusOffset > lastMentionOffset) {
-        /* alphanumeric key or backspace */
-        if (
-          (event.keyCode >= 48 && event.keyCode <= 57) ||
-          (event.keyCode >= 65 && event.keyCode <= 90) ||
-          (event.keyCode === 8)
-        ) {
-          let textLength = focusOffset - lastMentionOffset
-          let mentionText = text.substr(lastMentionOffset, textLength)
-          if (event.keyCode === 8) {
-            mentionText = mentionText.slice(0, -1)
-          } else {
-            mentionText = mentionText + event.key
-          }
-
-          mentionSearchValue = mentionText.substr(1) /* remove the @ */
+    if (focusOffset > lastMentionOffset) {
+      /* alphanumeric key or backspace */
+      if (
+        (event.keyCode >= 48 && event.keyCode <= 57) ||
+        (event.keyCode >= 65 && event.keyCode <= 90) ||
+        (event.keyCode === 8) || (event.keyCode === 32)
+      ) {
+        let textLength = focusOffset - lastMentionOffset
+        let mentionText = text.substr(lastMentionOffset, textLength)
+        if (event.keyCode === 8) {
+          mentionText = mentionText.slice(0, -1)
+        } else {
+          mentionText = mentionText + event.key
         }
+        mentionSearchValue = mentionText.substr(1) /* remove the @ */
       }
     }
 
@@ -231,6 +241,8 @@ export default class extends Component {
       this.closeMentionList()
     } else {
       this.setState({mentionSearchValue: mentionSearchValue})
+      /* the new focus offset for mention, used to check if onChange we moved away */
+      mentionCurrentOffset = (event.keyCode === 8) ? focusOffset - 1 : focusOffset + 1
     }
   }
 
