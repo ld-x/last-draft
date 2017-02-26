@@ -195,7 +195,17 @@ export default class extends Component {
     let mentionSearchValue = null
 
     if (block.text.includes('@')) {
-      const lastMentionOffset = text.lastIndexOf('@')
+      let lastMentionOffset = null
+      console.log(`focusOffset: ${focusOffset}`)
+
+      for(var i = focusOffset; i >= 0; i--) {
+        let char = text.substr(i, 1)
+        if (char === '@') {
+          lastMentionOffset = i
+          break
+        }
+      }
+      if (lastMentionOffset === null) { return }
 
       if (focusOffset > lastMentionOffset) {
         /* alphanumeric key or backspace */
@@ -204,16 +214,15 @@ export default class extends Component {
           (event.keyCode >= 65 && event.keyCode <= 90) ||
           (event.keyCode === 8)
         ) {
-          let mentionText = text.substr(lastMentionOffset, focusOffset)
+          let textLength = focusOffset - lastMentionOffset
+          let mentionText = text.substr(lastMentionOffset, textLength)
           if (event.keyCode === 8) {
             mentionText = mentionText.slice(0, -1)
           } else {
             mentionText = mentionText + event.key
           }
 
-          if (!mentionText.includes(' ')) {
-            mentionSearchValue = mentionText.substr(1) /* remove the @ */
-          }
+          mentionSearchValue = mentionText.substr(1) /* remove the @ */
         }
       }
     }
