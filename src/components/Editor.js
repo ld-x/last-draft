@@ -28,7 +28,7 @@ let mentionCurrentOffset = 0
 export default class extends Component {
   static get defaultProps () {
     return {
-      inline: ['bold', 'italic', 'strikethrough', 'code', 'dropcap'],
+      inline: ['bold', 'italic', 'underline', 'code', 'dropcap'],
       entities: ['link'],
       blocks: ['ul', 'ol', 'blockquote'],
       placeholder: 'Enter text...',

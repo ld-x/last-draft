@@ -57,7 +57,7 @@ export default class ExampleEditor extends Component {
 ## Props
 
 #### `inline`
-Array of inline styles to use in the toolbar. Any of the following: `bold`, `italic`, `strikethrough`, `code`, `dropcap`. By default all are included:
+Array of inline styles to use in the toolbar. Any of the following: `bold`, `italic`, `strikethrough`, `underline`, `code`, `dropcap`. By default all are included:
 
 ```jsx
 <Editor
