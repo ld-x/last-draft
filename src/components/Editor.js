@@ -231,7 +231,7 @@ export default class extends Component {
         if (event.keyCode === 8) {
           mentionText = mentionText.slice(0, -1)
         } else {
-          mentionText = mentionText + event.key
+          mentionText = mentionText + String.fromCharCode(event.keyCode)
         }
         mentionSearchValue = mentionText.substr(1) /* remove the @ */
       }
