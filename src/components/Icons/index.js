@@ -24,6 +24,7 @@ import CloseIcon from './Close'
 import Code from './Code'
 import Strike from './Strike'
 import Dropcap from './Dropcap'
+import Underline from './Underline'
 
 const icons = {
   BoldIcon,
@@ -44,7 +45,8 @@ const icons = {
   CloseIcon,
   Code,
   Strike,
-  Dropcap
+  Dropcap,
+  Underline
 }
 
 export default icons

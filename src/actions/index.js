@@ -11,6 +11,7 @@ export default [
   {type: 'inline', label: 'bold', style: 'BOLD', icon: icons.BoldIcon},
   {type: 'inline', label: 'italic', style: 'ITALIC', icon: icons.ItalicIcon},
   {type: 'inline', label: 'strikethrough', style: 'STRIKETHROUGH', icon: icons.Strike},
+  {type: 'inline', label: 'underline', style: 'UNDERLINE', icon: icons.Underline},
   {type: 'inline', label: 'code', style: 'CODE', icon: icons.Code},
   {type: 'inline', label: 'dropcap', style: 'DROPCAP', icon: icons.Dropcap},
   {type: 'entity', label: 'link', style: 'link', entity: 'LINK', icon: icons.LinkIcon},
