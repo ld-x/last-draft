@@ -5,9 +5,10 @@
  */
 
 import React, {Component} from 'react'
-import Mention from './Mention'
-import {getSelectionCoords} from '../../utils/selection'
 import styled from 'styled-components'
+import {getSelectionCoords} from '../../utils/selection'
+import Search from './Search'
+import {EditorState, Modifier, Entity, SelectionState} from 'draft-js'
 
 export default class extends Component {
   constructor (props) {
@@ -20,6 +21,44 @@ export default class extends Component {
 
   componentDidUpdate () {
     this.setBarPosition()
+  }
+
+  setMention (user) {
+    const {editorState, onChange, mentionSearchValue} = this.props
+
+    if (user === null || user === undefined) {
+      this.props.closeMentionList()
+      return
+    }
+
+    let selectionState = editorState.getSelection()
+    let contentState = editorState.getCurrentContent()
+    let block = contentState.getBlockForKey(selectionState.getStartKey())
+
+    let start = selectionState.getEndOffset() - (mentionSearchValue.length + 1)
+    let end = selectionState.getEndOffset()
+
+    const targetRange = new SelectionState({
+      anchorKey: block.getKey(),
+      anchorOffset: start,
+      focusKey: block.getKey(),
+      focusOffset: end
+    })
+
+    let updatedState = Modifier.replaceText(
+      editorState.getCurrentContent(),
+      targetRange,
+      user.name,
+      editorState.getCurrentInlineStyle(),
+      Entity.create('MENTION', 'IMMUTABLE', {
+        url: user.link,
+        avatar: user.avatar,
+        name: user.name,
+        className: 'ld-mention'
+      })
+    )
+    onChange(EditorState.push(editorState, updatedState, 'insert-characters'))
+    this.props.closeMentionList()
   }
 
   setBarPosition () {
@@ -63,9 +102,15 @@ export default class extends Component {
           <MentionList className='ld-mention-list'>
             {
               showMentions &&
-                <Mention
-                  {...this.props}
-                  closeMentionList={::this.props.closeMentionList} />
+                <div style={{whiteSpace: 'nowrap'}}>
+                  <Search
+                    searchValue={this.props.mentionSearchValue}
+                    mentionUsers={this.props.mentionUsers}
+                    mentionUsersAsync={this.props.mentionUsersAsync}
+                    searchKey='name'
+                    closeMentionList={::this.props.closeMentionList}
+                    onClick={::this.setMention} />
+                </div>
             }
           </MentionList>
         </div>

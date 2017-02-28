@@ -11,7 +11,8 @@ import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
 import {editorStateFromHtml, editorStateToHtml, editorStateFromText} from '../utils/convert'
 
 import Toolbar from './Toolbar/Toolbar'
-import MentionList from './Mentions/MentionList'
+import MentionList from './MentionList/MentionList'
+import EmojiList from './EmojiList/EmojiList'
 import Sidebar from './Sidebar/Sidebar'
 import Atomic from './Blocks/Atomic'
 import Media from './Blocks/Media'
@@ -23,7 +24,7 @@ import insertDataBlock from '../utils/insertDataBlock'
 import {blockStyleFn, blockRenderMap, getPluginTypeForBlock} from '../utils/block'
 import styleMap from '../utils/styleMap'
 
-let mentionCurrentOffset = 0
+let autocompleteOffset = 0
 
 export default class extends Component {
   static get defaultProps () {
@@ -48,7 +49,8 @@ export default class extends Component {
       readOnly: this.props.readOnly || false,
       uploading: false,
       openToolbar: false,
-      mentionSearchValue: ''
+      mentionSearchValue: '',
+      emojiSearchValue: ''
     }
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
@@ -57,6 +59,7 @@ export default class extends Component {
     this.resetStateFromHtml = ::this.resetStateFromHtml
     this.returnStateAsHtml = ::this.returnStateAsHtml
     this.closeMentionList = ::this.closeMentionList
+    this.closeEmojiList = ::this.closeEmojiList
     this.plugins = this.getValidPlugins()
     this.actions = this.getActions()
     this.pluginsByType = this.getPluginsByType()
@@ -158,17 +161,24 @@ export default class extends Component {
     this.props.onChange(editorState)
     this.closeToolbar(editorState)
 
-    this.hideMentionsOnMove(editorState)
+    this.hideAutocompleteOnMove(editorState)
   }
 
-  hideMentionsOnMove (editorState) {
+  hideAutocompleteOnMove (editorState) {
     const {mentionUsers, mentionUsersAsync} = this.props
-    if (mentionUsers === undefined && mentionUsersAsync === undefined) { return }
+    if (
+      mentionUsers === undefined
+      && mentionUsersAsync === undefined
+      && this.getPluginsByType('emoji') === undefined
+    ) { return }
 
     const selectionState = editorState.getSelection()
     const focusOffset = selectionState.getFocusOffset()
     if (focusOffset === undefined) { return }
-    if (focusOffset !== mentionCurrentOffset) { this.closeMentionList() }
+    if (focusOffset !== autocompleteOffset) {
+      this.closeMentionList()
+      this.closeEmojiList()
+    }
   }
 
   openToolbar () {
@@ -186,64 +196,87 @@ export default class extends Component {
     this.setState({mentionSearchValue: ''})
   }
 
+  closeEmojiList () {
+    this.setState({emojiSearchValue: ''})
+  }
+
   keyBindingFn (event) {
+    const {mentionUsers, mentionUsersAsync} = this.props
     for (const kb of this.keyBindings) {
       if (kb.isKeyBound(e)) {
         return kb.name
       }
     }
-
-    this.showMentionsKeyBinding(event)
+    this.mentionKeyBinding(event)
+    this.emojiKeyBinding(event)
     return getDefaultKeyBinding(event)
   }
 
-  showMentionsKeyBinding (event) {
-    const {editorState, mentionUsers, mentionUsersAsync} = this.props
+  mentionKeyBinding (event) {
+    const {mentionUsers, mentionUsersAsync} = this.props
     if (mentionUsers === undefined && mentionUsersAsync === undefined) { return }
+    let searchValue = this.autocompleteKeyBinding(event, '@')
+    if (searchValue === null || searchValue === undefined) {
+      this.closeMentionList()
+    } else {
+      this.setState({mentionSearchValue: searchValue})
+    }
+  }
+
+  emojiKeyBinding (event) {
+    if (this.getPluginsByType('emoji')) {
+      let searchValue = this.autocompleteKeyBinding(event, ':')
+      if (searchValue === null || searchValue === undefined) {
+        this.closeEmojiList()
+      } else {
+        this.setState({emojiSearchValue: searchValue})
+      }
+    }
+  }
+
+  autocompleteKeyBinding (event, searchChar) {
+    const {editorState} = this.props
 
     const selectionState = editorState.getSelection()
     const contentState = editorState.getCurrentContent()
     const block = contentState.getBlockForKey(selectionState.getStartKey())
     const text = block.text
     const focusOffset = selectionState.getFocusOffset()
-    let mentionSearchValue = null
-    let lastMentionOffset = null
+    let searchValue = null
+    let charOffset = null
 
-    if (!block.text.includes('@')) { return }
+    if (!block.text.includes(searchChar)) { return }
     for(var i = focusOffset; i >= 0; i--) {
       let char = text.substr(i, 1)
-      if (char === '@') {
-        lastMentionOffset = i
+      if (char === searchChar) {
+        charOffset = i
         break
       }
     }
-    if (lastMentionOffset === null) { return }
+    if (charOffset === null) { return }
 
-    if (focusOffset > lastMentionOffset) {
+    if (focusOffset > charOffset) {
       /* alphanumeric key or backspace */
       if (
         (event.keyCode >= 48 && event.keyCode <= 57) ||
         (event.keyCode >= 65 && event.keyCode <= 90) ||
         (event.keyCode === 8) || (event.keyCode === 32)
       ) {
-        let textLength = focusOffset - lastMentionOffset
-        let mentionText = text.substr(lastMentionOffset, textLength)
+        let textLength = focusOffset - charOffset
+        let searchText = text.substr(charOffset, textLength)
         if (event.keyCode === 8) {
-          mentionText = mentionText.slice(0, -1)
+          searchText = searchText.slice(0, -1)
         } else {
-          mentionText = mentionText + String.fromCharCode(event.keyCode)
+          searchText = searchText + String.fromCharCode(event.keyCode)
         }
-        mentionSearchValue = mentionText.substr(1) /* remove the @ */
+        searchValue = searchText.substr(1) /* remove the @ or : */
       }
     }
-
-    if (mentionSearchValue === null) {
-      this.closeMentionList()
-    } else {
-      this.setState({mentionSearchValue: mentionSearchValue})
-      /* the new focus offset for mention, used to check if onChange we moved away */
-      mentionCurrentOffset = (event.keyCode === 8) ? focusOffset - 1 : focusOffset + 1
+    if (searchValue !== null) {
+      /* Used to check if onChange we moved away */
+      autocompleteOffset = (event.keyCode === 8) ? focusOffset - 1 : focusOffset + 1
     }
+    return searchValue
   }
 
   onTab (event) {
@@ -331,6 +364,13 @@ export default class extends Component {
     return <MentionList {...props} />
   }
 
+  renderEmojiList (props) {
+    if (this.getPluginsByType('emoji')) {
+      return <EmojiList {...props} />
+    }
+    return null
+  }
+
   uploadFile (file, selection) {
     const { uploadImageAsync, editorState } = this.props
     const { uploading } = this.state
@@ -407,6 +447,15 @@ export default class extends Component {
             onChange: this.onChange,
             actions: this.actions
           })}
+          {
+            this.renderEmojiList({
+              editorWrapper: this.refs.editorWrapper,
+              editorState,
+              emojiSearchValue: this.state.emojiSearchValue,
+              closeEmojiList: this.closeEmojiList,
+              onChange: this.onChange
+            })
+          }
           {
             this.renderMentionList({
               editorWrapper: this.refs.editorWrapper,

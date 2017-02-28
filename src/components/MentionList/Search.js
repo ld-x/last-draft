@@ -40,9 +40,7 @@ export default class extends Component {
     }
   }
 
-  selectAutoComplete (event) {
-    let result = event.target.innerText
-    let user = this.state.foundUsers.find(u => u.name === result)
+  selectAutoComplete (user) {
     if(typeof this.props.onClick !== 'undefined'){
       this.props.onClick(user)
     }
@@ -76,7 +74,7 @@ export default class extends Component {
         <li key={i}>
           <MentionItem>
             <Avatar src={avatarSrc} />
-            <MentionName key={name} onClick={::this.selectAutoComplete}>
+            <MentionName key={name} onClick={() => this.selectAutoComplete(item)}>
               {name}
             </MentionName>
           </MentionItem>
