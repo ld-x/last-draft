@@ -166,10 +166,12 @@ export default class extends Component {
 
   hideAutocompleteOnMove (editorState) {
     const {mentionUsers, mentionUsersAsync} = this.props
+    let plugins = this.getPluginsByType()
+
     if (
       mentionUsers === undefined
       && mentionUsersAsync === undefined
-      && this.getPluginsByType('emoji') === undefined
+      && plugins.emoji === undefined
     ) { return }
 
     const selectionState = editorState.getSelection()
@@ -215,6 +217,7 @@ export default class extends Component {
   mentionKeyBinding (event) {
     const {mentionUsers, mentionUsersAsync} = this.props
     if (mentionUsers === undefined && mentionUsersAsync === undefined) { return }
+
     let searchValue = this.autocompleteKeyBinding(event, '@')
     if (searchValue === null || searchValue === undefined) {
       this.closeMentionList()
@@ -224,13 +227,14 @@ export default class extends Component {
   }
 
   emojiKeyBinding (event) {
-    if (this.getPluginsByType('emoji')) {
-      let searchValue = this.autocompleteKeyBinding(event, ':')
-      if (searchValue === null || searchValue === undefined) {
-        this.closeEmojiList()
-      } else {
-        this.setState({emojiSearchValue: searchValue})
-      }
+    let plugins = this.getPluginsByType()
+    if (plugins.emoji === undefined) { return }
+
+    let searchValue = this.autocompleteKeyBinding(event, ':')
+    if (searchValue === null || searchValue === undefined) {
+      this.closeEmojiList()
+    } else {
+      this.setState({emojiSearchValue: searchValue})
     }
   }
 
@@ -365,7 +369,8 @@ export default class extends Component {
   }
 
   renderEmojiList (props) {
-    if (this.getPluginsByType('emoji')) {
+    let plugins = this.getPluginsByType()
+    if (plugins.emoji !== undefined) {
       return <EmojiList {...props} />
     }
     return null
