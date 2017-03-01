@@ -5,7 +5,7 @@
  * License: MIT
  */
 
-import {RichUtils, Entity, EditorState} from 'draft-js'
+import {RichUtils, EditorState} from 'draft-js'
 
 export function hasEntity (entityType, editorState) {
   const entity = getCurrentEntity(editorState)
@@ -16,7 +16,10 @@ export function hasEntity (entityType, editorState) {
 }
 
 export function setEntity (entityType, data, editorState, onChange) {
-  const entityKey = Entity.create(entityType, 'MUTABLE', data)
+  const contentState = editorState.getCurrentContent()
+  const contentStateWithEntity = contentState.createEntity(entityType, 'MUTABLE', data)
+  const entityKey = contentStateWithEntity.getLastCreatedEntityKey()
+
   const newState = RichUtils.toggleLink(
     editorState,
     editorState.getSelection(),
@@ -40,9 +43,10 @@ export function getCurrentEntityKey (editorState) {
 }
 
 export function getCurrentEntity (editorState) {
+  const contentState = editorState.getCurrentContent()
   const entityKey = getCurrentEntityKey(editorState)
   if (entityKey) {
-    return Entity.get(entityKey)
+    return contentState.getEntity(entityKey)
   }
   return null
 }

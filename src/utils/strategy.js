@@ -4,7 +4,6 @@
  * License: MIT
  */
 
-import {Entity} from 'draft-js'
 import {extractHashtagsWithIndices} from './hashtag'
 import linkifyIt from 'linkify-it'
 import tlds from 'tlds'
@@ -13,13 +12,13 @@ const linkify = linkifyIt()
 linkify.tlds(tlds)
 
 export function createTypeStrategy (type) {
-  return (contentBlock, callback) => {
+  return (contentBlock, callback, contentState) => {
     contentBlock.findEntityRanges(
       (character) => {
         const entityKey = character.getEntity()
         return (
           entityKey !== null &&
-          Entity.get(entityKey).getType() === type
+          contentState.getEntity(entityKey).getType() === type
         )
       },
       callback

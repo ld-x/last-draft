@@ -11,9 +11,9 @@ import styled from 'styled-components'
 
 export default class extends Component {
   render () {
-    const {entityKey} = this.props
+    const {contentState, entityKey} = this.props
     if (entityKey) {
-      const data = Entity.get(entityKey).getData()
+      const data = contentState.getEntity(entityKey).getData()
       return (
         <Mention href={data.url} title={data.name} className='ld-mention'>
           {this.props.children}

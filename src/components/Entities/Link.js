@@ -16,10 +16,10 @@ linkify.tlds(tlds)
 
 export default class extends Component {
   render () {
-    const {entityKey, decoratedText} = this.props
+    const {contentState, decoratedText, entityKey} = this.props
 
     if (entityKey) {
-      const data = Entity.get(entityKey).getData()
+      const data = contentState.getEntity(entityKey).getData()
       /* Links */
       return (
         <Link href={data.url} title={data.title} target='_self' className='ld-link'>

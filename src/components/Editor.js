@@ -15,7 +15,7 @@ import Sidebar from './Sidebar/Sidebar'
 import Atomic from './Blocks/Atomic'
 import Media from './Blocks/Media'
 
-import {image, placeholder} from '../plugins/'
+import {image, placeholder, mention} from '../plugins/'
 import Actions from '../actions/'
 
 import insertDataBlock from '../utils/insertDataBlock'
@@ -132,7 +132,7 @@ export default class extends Component {
 
   getValidPlugins () {
     /* default image plugin */
-    let plugins = [image, placeholder]
+    let plugins = [image, placeholder, mention]
 
     if (!this.props.plugins) { return plugins }
 
