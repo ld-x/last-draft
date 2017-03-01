@@ -165,13 +165,8 @@ export default class extends Component {
   }
 
   hideAutocompleteOnMove (editorState) {
-    const {mentionUsers, mentionUsersAsync} = this.props
     let plugins = this.getPluginsByType()
-
-    if (
-      plugins.mention === undefined
-      && plugins.emoji === undefined
-    ) { return }
+    if (plugins.mention === undefined && plugins.emoji === undefined) { return }
 
     const selectionState = editorState.getSelection()
     const focusOffset = selectionState.getFocusOffset()
@@ -283,6 +278,11 @@ export default class extends Component {
 
   onTab (event) {
     event.preventDefault()
+  }
+
+  onEscape (event) {
+    this.closeEmojiList()
+    this.closeMentionList()
   }
 
   handleKeyCommand (command) {
@@ -475,7 +475,8 @@ export default class extends Component {
             blockRenderMap={blockRenderMap}
             blockRendererFn={::this.blockRendererFn}
             blockStyleFn={blockStyleFn}
-            onTab={this.onTab}
+            onTab={::this.onTab}
+            onEscape={::this.onEscape}
             handleKeyCommand={::this.handleKeyCommand}
             handleReturn={::this.handleReturn}
             handleDroppedFiles={::this.handleDroppedFiles}
