@@ -6,4 +6,3 @@
  */
 
 export * from './image/plugin'
-export mention from './mention/plugin'
