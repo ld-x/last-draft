@@ -11,8 +11,6 @@ import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
 import {editorStateFromHtml, editorStateToHtml, editorStateFromText} from '../utils/convert'
 
 import Toolbar from './Toolbar/Toolbar'
-import MentionList from './MentionList/MentionList'
-import EmojiList from './EmojiList/EmojiList'
 import Sidebar from './Sidebar/Sidebar'
 import Atomic from './Blocks/Atomic'
 import Media from './Blocks/Media'
@@ -86,7 +84,7 @@ export default class extends Component {
       actions.push(action)
     }
 
-    /* hashtag and mention entities are not action buttons */
+    /* Link entity has an action button */
     let action = this.getAction('link')
     actions.push(action)
 
@@ -107,7 +105,9 @@ export default class extends Component {
       if (plugin.modal) {
         actions.push({type: 'plugin', label: plugin.type, icon: plugin.button, modal: plugin.modal})
       } else {
-        actions.push({type: 'plugin', label: plugin.type, icon: plugin.button})
+        if (plugin.button) {
+          actions.push({type: 'plugin', label: plugin.type, icon: plugin.button})
+        }
       }
     }
 
@@ -169,8 +169,7 @@ export default class extends Component {
     let plugins = this.getPluginsByType()
 
     if (
-      mentionUsers === undefined
-      && mentionUsersAsync === undefined
+      plugins.mention === undefined
       && plugins.emoji === undefined
     ) { return }
 
@@ -203,7 +202,6 @@ export default class extends Component {
   }
 
   keyBindingFn (event) {
-    const {mentionUsers, mentionUsersAsync} = this.props
     for (const kb of this.keyBindings) {
       if (kb.isKeyBound(e)) {
         return kb.name
@@ -215,8 +213,8 @@ export default class extends Component {
   }
 
   mentionKeyBinding (event) {
-    const {mentionUsers, mentionUsersAsync} = this.props
-    if (mentionUsers === undefined && mentionUsersAsync === undefined) { return }
+    let plugins = this.getPluginsByType()
+    if (plugins.mention === undefined) { return }
 
     let searchValue = this.autocompleteKeyBinding(event, '@')
     if (searchValue === null || searchValue === undefined) {
@@ -361,19 +359,17 @@ export default class extends Component {
   }
 
   renderMentionList (props) {
-    const {mentionUsersAsync, mentionUsers} = this.props
-    if (mentionUsers === undefined && mentionUsersAsync === undefined) {
-      return null
-    }
-    return <MentionList {...props} />
+    let plugins = this.getPluginsByType()
+    if (plugins.mention === undefined) { return null }
+    let Autocomplete = plugins.mention.autocomplete
+    return <Autocomplete {...props} />
   }
 
   renderEmojiList (props) {
     let plugins = this.getPluginsByType()
-    if (plugins.emoji !== undefined) {
-      return <EmojiList {...props} />
-    }
-    return null
+    if (plugins.emoji === undefined) { return null }
+    let Autocomplete = plugins.emoji.autocomplete
+    return <Autocomplete {...props} />
   }
 
   uploadFile (file, selection) {

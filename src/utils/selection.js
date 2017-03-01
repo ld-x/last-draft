@@ -37,3 +37,11 @@ export function getSelectionCoords (editor, toolbarHeight = 34, maxOffsetLeft = 
   const rangeLeft = rangeBounds.left
   return { offsetLeft, offsetTop, offsetBottom, rangeLeft }
 }
+
+export function getSelectedNode () {
+  if (document.selection) { return document.selection.createRange().parentElement() }
+  let selection = window.getSelection()
+  if (selection.rangeCount > 0) {
+    return selection.getRangeAt(0).startContainer.parentNode
+  }
+}

@@ -93,6 +93,7 @@ Plugins include custom functionality which can be activated from a button in the
 - [ld-audio](https://github.com/steveniseki/ld-audio) - Adds an audio player with soundcloud support
 - [ld-color-picker](https://github.com/steveniseki/ld-color-picker) - Adds Color picker functionality
 - [ld-emoji](https://github.com/vacenz/ld-emoji) - Adds emoji functionality
+- [ld-mention](https://github.com/steveniseki/ld-mention) - Adds mention functionality
 - [ld-html](https://github.com/steveniseki/ld-html) - Adds Edit html functionality
 - [ld-todo](https://github.com/vacenz/ld-todo) - Adds todo functionality
 
@@ -101,9 +102,10 @@ import video from 'ld-video'
 import audio from 'ld-audio'
 import color from 'ld-color-picker'
 import emoji from 'ld-emoji'
+import mention from 'ld-mention'
 import html from 'ld-html'
 import todo from 'ld-todo'
-let plugins = [video, audio, color, emoji, html, todo]
+let plugins = [video, audio, color, emoji, mention, html, todo]
 
 <Editor
   editorState={this.state.value}
@@ -126,9 +128,8 @@ And then adding updating the following line in the `getValidPlugins ()` function
 
 Copy any of the above `ld-` plugins as a starting point. Once it is working then create your new plugin repo `npm run build` it, then publish it to npm.
 
-
 #### `mentionUsers`
-A list of users for mentions functionality. An array of objects with properties `name`, `link` and `avatar`
+A list of users for mentions functionality. An array of objects with properties `name`, `link` and `avatar`. You must also add the [ld-mention](https://github.com/steveniseki/ld-mention) to show mentions on autocomplete.
 
 ```jsx
 <Editor
@@ -150,12 +151,10 @@ const mentionUsers = [
 ]
 ```
 
-mentionUsersCallback
-
 #### `mentionUsersAsync`
 A function that returns a list of filtered users for mentions functionality.
 
-The `searchValue` is passed to the function, which will filter and return the users e.g. Searching for users in github. Returns a promise which should return an object with the mentionUsers array.
+The `searchValue` is passed to the function, which will filter and return the users e.g. Searching for users in github. Returns a promise which should return an object with the mentionUsers array. You must also add the [ld-mention](https://github.com/steveniseki/ld-mention) to show mentions on autocomplete.
 
 ```jsx
 const mentionUsersAsync = function (searchValue, cb) {
