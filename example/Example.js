@@ -10,10 +10,11 @@ import video from 'ld-video'
 import audio from 'ld-audio'
 import color from 'ld-color-picker'
 import emoji from 'ld-emoji'
+import gif from 'ld-gif'
 import mention from 'ld-mention'
 import html from 'ld-html'
 import todo from 'ld-todo'
-let plugins = [video, audio, color, emoji, mention, html, todo]
+let plugins = [video, audio, color, emoji, gif, mention, html, todo]
 
 export default class ExampleEditor extends Component {
   constructor(props) {

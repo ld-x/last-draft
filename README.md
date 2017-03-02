@@ -206,7 +206,7 @@ Whether to show the Separators between inline, blocks and plugins. Default is `t
 #### `theme`
 Pass in a custom theme to override the base Last Draft styles. An object with the following properties:
 
-`let THEME = { backgroundColor: '#181818', color: '#66ff00', highlight: '#a80077' }`
+`let THEME = { backgroundColor: '#181818', color: '#66ff00', highlight: '#ffc0cb' }`
 
 ## Styles
 
@@ -220,7 +220,7 @@ You can set a custom theme for the Last Draft Editor. As shown in the [last draf
 let THEME = {
   backgroundColor: '#181818',
   color: '#66ff00',
-  highlight: '#a80077'
+  highlight: '#ffc0cb'
 }
 
 <Editor theme={THEME}

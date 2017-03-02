@@ -68,7 +68,7 @@ const ColorPickerWrapper = styled.div`
   display: flex;
   width: 6rem;
   height: 16rem;
-  background: #fafafa;
+  background: #fefbec;
   box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
   position: absolute;
   z-index: 100;
@@ -79,7 +79,7 @@ const ColorPicker = styled.div`
   width: 1rem;
   cursor: pointer;
   border-radius: 2px;
-  background: linear-gradient(to left, #66ff00, #a80077)
+  background: linear-gradient(to left, #66ff00, #ffc0cb)
 `
 
 const ColorWrapper = styled.div`

@@ -30,11 +30,11 @@ class App extends Component {
             <span>Style the </span>
             <span className='color-picker-green'>LD. Editor</span>
           </div>
-          <span>backgroundColor </span>
+          <span className='color-picker-green'>backgroundColor </span>
           <ColorPicker onColorChange={(color) => this.onColorChange(color, 'backgroundColor')}/>
-          <span>color </span>
+          <span className='color-picker-green'>color </span>
           <ColorPicker onColorChange={(color) => this.onColorChange(color, 'color')}/>
-          <span>highlight </span>
+          <span className='color-picker-green'>highlight </span>
           <ColorPicker onColorChange={(color) => this.onColorChange(color, 'highlight')}/>
         </div>
 

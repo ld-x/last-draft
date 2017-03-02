@@ -66,17 +66,20 @@ body {
 
 .color-picker-wrapper {
   position: static;
+  background: #fefbec;
+  padding: 1rem;
+  padding-top: 0;
 }
 @media (min-width: 768px) {
   .color-picker-wrapper {
     position: absolute;
-    right: 2rem;
+    right: 0;
     top: 0;
   }
 }
 
 .color-picker {
-  color: #a80077;
+  color: #ffc0cb;
   font-style: italic;
   font-size: 28px;
   font-weight: 700;
