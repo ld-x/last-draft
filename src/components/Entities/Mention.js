@@ -6,7 +6,6 @@
  */
 
 import React, {Component} from 'react'
-import {Entity} from 'draft-js'
 import styled from 'styled-components'
 
 export default class extends Component {
