@@ -93,6 +93,7 @@ Plugins include custom functionality which can be activated from a button in the
 - [ld-audio](https://github.com/steveniseki/ld-audio) - Adds an audio player with soundcloud support
 - [ld-color-picker](https://github.com/steveniseki/ld-color-picker) - Adds Color picker functionality
 - [ld-emoji](https://github.com/vacenz/ld-emoji) - Adds emoji functionality
+- [ld-gif](https://github.com/steveniseki/ld-gif) - Adds gif functionality from Giphy
 - [ld-mention](https://github.com/steveniseki/ld-mention) - Adds mention functionality
 - [ld-html](https://github.com/steveniseki/ld-html) - Adds Edit html functionality
 - [ld-todo](https://github.com/vacenz/ld-todo) - Adds todo functionality
@@ -102,10 +103,11 @@ import video from 'ld-video'
 import audio from 'ld-audio'
 import color from 'ld-color-picker'
 import emoji from 'ld-emoji'
+import gif from 'ld-gif'
 import mention from 'ld-mention'
 import html from 'ld-html'
 import todo from 'ld-todo'
-let plugins = [video, audio, color, emoji, mention, html, todo]
+let plugins = [video, audio, color, emoji, gif, mention, html, todo]
 
 <Editor
   editorState={this.state.value}

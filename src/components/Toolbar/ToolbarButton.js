@@ -8,6 +8,7 @@
 import React, {Component} from 'react'
 import Separator from './Separator'
 import styled from 'styled-components'
+import insertDataBlock from '../../utils/insertDataBlock'
 
 export class PluginButton extends Component {
   render () {
@@ -16,9 +17,10 @@ export class PluginButton extends Component {
 
     return (
       <ToolbarButtonWrapper theme={theme} active={false} className='ld-toolbar-button-wrapper'>
-        <LdToolbarButton className='ld-toolbar-button' type='button'>
+        <LdToolbarButton className='ld-toolbar-button'>
           <Button
             theme={theme}
+            insertDataBlock={insertDataBlock}
             onChange={::this.props.onChange}
             uploadImageAsync={this.props.uploadImageAsync}
             uploadFile={this.props.uploadFile}
@@ -48,11 +50,7 @@ export class ToolbarButton extends Component {
 
     return (
       <ToolbarButtonWrapper theme={theme} active={active} className='ld-toolbar-button-wrapper'>
-        <LdToolbarButton
-          className='ld-toolbar-button'
-          onClick={() => this.toggleAction(this.props)}
-          type='button'
-        >
+        <LdToolbarButton className='ld-toolbar-button' onClick={() => this.toggleAction(this.props)}>
           <Icon />
         </LdToolbarButton>
       </ToolbarButtonWrapper>
@@ -72,13 +70,12 @@ const ToolbarButtonWrapper = styled.li`
   }
 `
 
-const LdToolbarButton = styled.button`
+const LdToolbarButton = styled.div`
   padding: 0;
-  color: inherit;
   cursor: pointer;
-  border: 0;
   height: 40px;
   width: 40px;
-  line-height: 1;
   background: transparent;
+  margin-top: 0.4rem;
+  margin-bottom: -1rem;
 `

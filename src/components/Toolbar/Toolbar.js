@@ -13,6 +13,7 @@ import Header from './Header'
 import {getSelectionCoords} from '../../utils/selection'
 import {hasEntity} from '../../utils/entity'
 import styled from 'styled-components'
+import insertDataBlock from '../../utils/insertDataBlock'
 
 export default class extends Component {
   constructor (props) {
@@ -198,6 +199,7 @@ export default class extends Component {
       toolbar = (
         <Modal
           {...this.props}
+          insertDataBlock={insertDataBlock}
           closeModal={::this.closeModal}
           submitHtmlModal={::this.submitHtmlModal}
           rangeLeft={this.state.rangeLeft} />

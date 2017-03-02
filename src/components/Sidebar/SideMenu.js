@@ -47,8 +47,8 @@ const SideMenuButton = styled.button`
 
   &:before {
     content: '';
-    width: 100%;
-    height: 100%;
+    width: 24px;
+    height: 24px;
     border-radius: 100%;
     display: inline-block;
     background-color: ${props => props.open ? '#f00' : '#181818'};
