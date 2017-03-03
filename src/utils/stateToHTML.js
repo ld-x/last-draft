@@ -91,8 +91,6 @@ function styleToCSS(styleDescr) {
 
 /* draft-js-utils */
 
-import {Entity} from 'draft-js';
-
 export const INLINE_STYLE = {
   BOLD: 'BOLD',
   CODE: 'CODE',

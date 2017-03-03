@@ -1,11 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
 //require("babel-polyfill")
+const Visualizer = require('webpack-visualizer-plugin');
 
 function plugins() {
   return [
     new webpack.DefinePlugin({ 'process.env':{ 'NODE_ENV': JSON.stringify('production')} }),
     new webpack.optimize.UglifyJsPlugin(),
+    new Visualizer(),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js' })
   ]
 }
