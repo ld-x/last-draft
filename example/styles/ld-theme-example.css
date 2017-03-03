@@ -10,16 +10,13 @@
 }
 .ld-quote {
   display: block;
-  color: #80172F;
-  font-style: italic;
-  font-size: 34px;
-  font-weight: 700;
+  color: #0cf;
+  text-transform: uppercase;
+  font-size: 28px;
   line-height: 1.2;
-  margin: 4rem 0 2rem 0;
-  font-family: 'Shadows Into Light', cursive;
 }
+
 .ld-quote:first-child { margin-top: 0; }
-.ld-header { color: #80172F; font-family: 'Shadows Into Light', cursive; }
 .ld-hashtag { color: #C50002 !important; }
 
 /* buttons */

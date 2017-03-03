@@ -5,7 +5,6 @@
  * License: MIT
  */
 
-import insertDataBlock from './utils/insertDataBlock'
 import Editor from './components/Editor'
 import * as convert from './utils/convert'
 
@@ -15,8 +14,8 @@ const LD = {
   editorStateFromText: convert.editorStateFromText,
   editorStateToJSON: convert.editorStateToJSON,
   editorStateToHtml: convert.editorStateToHtml,
-  insertDataBlock: insertDataBlock,
   Editor: Editor
 }
 
 module.exports = LD
+// MARKDOWN!!!

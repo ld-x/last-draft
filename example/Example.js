@@ -7,15 +7,15 @@ import RAW from './initialState/raw'
 import HTML from './initialState/html'
 
 import video from 'ld-video'
-import audio from 'ld-audio'
+//import audio from 'ld-audio'
 import color from 'ld-color-picker'
 import emoji from 'ld-emoji'
 import gif from 'ld-gif'
-import sticker from 'ld-sticker'
+//import sticker from 'ld-sticker'
 import mention from 'ld-mention'
-import html from 'ld-html'
-import todo from 'ld-todo'
-let plugins = [video, audio, color, emoji, gif, sticker, mention, html, todo]
+//import html from 'ld-html'
+//import todo from 'ld-todo'
+let plugins = [video, color, emoji, gif, mention]
 
 export default class ExampleEditor extends Component {
   constructor(props) {
@@ -33,8 +33,8 @@ export default class ExampleEditor extends Component {
   onChange(editorState) {
     this.setState({ value: editorState })
     /* You would normally save this to your database here instead of logging it */
-    //console.log(editorStateToHtml(editorState))
-    //console.log(editorStateToJSON(editorState))
+    console.log(editorStateToHtml(editorState))
+    console.log(editorStateToJSON(editorState))
   }
 
   render() {
@@ -43,7 +43,7 @@ export default class ExampleEditor extends Component {
         theme={this.props.theme}
         plugins={plugins}
         inline={['bold', 'italic', 'dropcap']}
-        blocks={['ol', 'h3', 'quote']}
+        blocks={['h3', 'quote']}
         mentionUsers={mentionUsers}
         autofocus={true}
         separators={false}
