@@ -4,8 +4,6 @@
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-![](https://raw.githubusercontent.com/vacenz/last-draft/master/example/public/screenshot.png)
-
 last-draft is a Draft.js editor inspired heavily by [MegaDraft](https://github.com/globocom/megadraft) and [draft-js-plugins](https://draft-js-plugins.com)
 
 # Install
@@ -17,7 +15,7 @@ npm install last-draft --save
 
 ## Example
 
-Check out this awesome 🌠🎉🏄 [Last Draft example](https://github.com/vacenz/last-draft-example)
+Check out this awesome 🏄 [Last Draft example](https://github.com/vacenz/last-draft-example)
 
 To run the example simply `git clone`, then run `yarn install` and `npm run dev`
 

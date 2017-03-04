@@ -1,6 +1,13 @@
 export default {
   "entityMap": {
     "0": {
+      "type": "LINK",
+      "mutability": "MUTABLE",
+      "data": {
+        "url": "http://vace.nz"
+      }
+    },
+    "1": {
       "type": "MENTION",
       "mutability": "IMMUTABLE",
       "data": {
@@ -13,7 +20,7 @@ export default {
   "blocks": [
     {
       "key": "59kd9",
-      "text": "An editor built with Draft.js",
+      "text": "An editor built with Draft.js ",
       "type": "unstyled",
       "depth": 0,
       "inlineStyleRanges": [
@@ -24,6 +31,32 @@ export default {
         }
       ],
       "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "6l1hu",
+      "text": "Made with ❤️ by vace.enz ",
+      "type": "unstyled",
+      "depth": 0,
+      "inlineStyleRanges": [
+        {
+          "offset": 10,
+          "length": 2,
+          "style": "color-C1E1A6"
+        },
+        {
+          "offset": 16,
+          "length": 8,
+          "style": "color-C1E1A6"
+        }
+      ],
+      "entityRanges": [
+        {
+          "offset": 16,
+          "length": 8,
+          "key": 0
+        }
+      ],
       "data": {}
     },
     {
@@ -46,12 +79,29 @@ export default {
       "type": "atomic",
       "depth": 0,
       "inlineStyleRanges": [],
+      "entityRanges": []
+    },
+    {
+      "key": "ef02e",
+      "text": "",
+      "type": "atomic",
+      "depth": 0,
+      "inlineStyleRanges": [],
       "entityRanges": [],
       "data": {
         "src": "https://player.vimeo.com/video/29658258",
         "type": "video",
-        "caption": "Awesome video",
+        "caption": "Awesome video"
       }
+    },
+    {
+      "key": "aep41",
+      "text": "",
+      "type": "unstyled",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [],
+      "data": {}
     }
   ]
 };
