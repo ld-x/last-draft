@@ -198,6 +198,9 @@ function uploadImageAsync(file) {
 #### `autofocus`
 Whether to focus the Editor on component mount. Default is `false`
 
+#### `autofocus`
+Whether to show the tooltips on hover over button icons. Default is `true`
+
 #### `separators`
 Whether to show the Separators between inline, blocks and plugins. Default is `true`
 

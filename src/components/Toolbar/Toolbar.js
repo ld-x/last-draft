@@ -159,6 +159,7 @@ export default class extends Component {
         return (
           <PluginButton
             theme={this.props.theme}
+            tooltips={this.props.tooltips}
             uploadImageAsync={this.props.uploadImageAsync}
             uploadFile={this.props.uploadFile}
             editorState={this.props.editorState}
@@ -173,6 +174,7 @@ export default class extends Component {
       <ToolbarButton
         key={key}
         active={active}
+        tooltips={this.props.tooltips}
         separators={this.props.separators}
         theme={this.props.theme}
         toggle={toggle}

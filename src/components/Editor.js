@@ -33,6 +33,7 @@ export default class extends Component {
       placeholder: 'Enter text...',
       autofocus: false,
       separators: true,
+      tooltips: true,
       theme: {
         color: '#fff',
         backgroundColor: '#181818',
@@ -438,6 +439,7 @@ export default class extends Component {
             editorState,
             theme,
             separators,
+            tooltips: this.props.tooltips,
             showToolbar: this.state.showToolbar,
             readOnly: this.state.readOnly,
             openToolbar: this.openToolbar,
