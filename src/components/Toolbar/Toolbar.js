@@ -94,23 +94,8 @@ export default class extends Component {
     const hasFocus = this.props.editorState.getSelection().getHasFocus()
 
     if (!hasFocus && !selectionCoords && this.props.sidebarOpen) {
-      /* manually open the toolbar */
-      const container = editorWrapper.querySelector('.ld-sidebar')
-      const element = getSelectedBlockElement(this.props.editorState)
-      if (!element || !container) { return }
-      const containerTop = container.getBoundingClientRect().top - document.documentElement.clientTop
-      let top = element.getBoundingClientRect().top - containerTop - 20
-      top = Math.max(0, Math.floor(top))
-      let actionsLength = this.props.actions.length
-      let left = (actionsLength * 20) - 80
-
-      let toolbarLeft = 40 - (actionsLength * 20)
-      let toolbarLeftPixels = `${toolbarLeft}px`
-
-      if (this.state.position.top !== top) {
-        this.setState({ toolbarLeft: toolbarLeftPixels })
-        this.setState({ position: { top: top, left: left } })
-      }
+      /* manually open the toolbar which acts as the sidebar in ld */
+      this.setSidebarPosition()
       return
     }
     if (!hasFocus) { return }
@@ -127,6 +112,26 @@ export default class extends Component {
           left: selectionCoords.offsetLeft
         }
       })
+    }
+  }
+
+  setSidebarPosition () {
+    const editorWrapper = this.props.editorWrapper
+    const container = editorWrapper.querySelector('.ld-sidebar')
+    const element = getSelectedBlockElement(this.props.editorState)
+    if (!element || !container) { return }
+    const containerTop = container.getBoundingClientRect().top - document.documentElement.clientTop
+    let top = element.getBoundingClientRect().top - containerTop - 20
+    top = Math.max(0, Math.floor(top))
+    let actionsLength = this.props.actions.length
+    let left = (actionsLength * 20) - 80
+
+    let toolbarLeft = 40 - (actionsLength * 20)
+    let toolbarLeftPixels = `${toolbarLeft}px`
+
+    if (this.state.position.top !== top) {
+      this.setState({ toolbarLeft: toolbarLeftPixels })
+      this.setState({ position: { top: top, left: left } })
     }
   }
 
