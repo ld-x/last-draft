@@ -16,6 +16,7 @@ import Atomic from './Blocks/Atomic'
 import Media from './Blocks/Media'
 
 import {image, placeholder} from '../plugins/'
+
 import Actions from '../actions/'
 
 import insertDataBlock from '../utils/insertDataBlock'
@@ -33,7 +34,8 @@ export default class extends Component {
       placeholder: 'Enter text...',
       autofocus: false,
       separators: true,
-      maxLeftOffset: 250,
+      toolbarHeight: 34,
+      maxLeftOffset: 150,
       tooltips: true,
       theme: {
         color: '#fff',
@@ -439,7 +441,7 @@ export default class extends Component {
   }
 
   render () {
-    const {editorState, stripPastedStyles, spellCheck, theme, separators, maxLeftOffset} = this.props
+    const {editorState, stripPastedStyles, spellCheck, theme, separators, maxLeftOffset, toolbarHeight} = this.props
 
     return (
       <div>
@@ -457,6 +459,7 @@ export default class extends Component {
             editorState,
             theme,
             separators,
+            toolbarHeight,
             maxLeftOffset,
             tooltips: this.props.tooltips,
             sidebarOpen: this.state.sidebarOpen,

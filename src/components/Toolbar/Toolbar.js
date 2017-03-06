@@ -22,7 +22,8 @@ export default class extends Component {
       editingEntity: null,
       link: '',
       error: null,
-      position: {}
+      position: {},
+      toolbarLeft: '-50%'
     }
     this.renderButton = ::this.renderButton
   }
@@ -89,7 +90,7 @@ export default class extends Component {
 
   setBarPosition () {
     const editorWrapper = this.props.editorWrapper
-    const selectionCoords = getSelectionCoords(editorWrapper)
+    const selectionCoords = getSelectionCoords(editorWrapper, this.props.toolbarHeight, this.props.maxLeftOffset)
     const hasFocus = this.props.editorState.getSelection().getHasFocus()
 
     if (!hasFocus && !selectionCoords && this.props.sidebarOpen) {
@@ -98,10 +99,17 @@ export default class extends Component {
       const element = getSelectedBlockElement(this.props.editorState)
       if (!element || !container) { return }
       const containerTop = container.getBoundingClientRect().top - document.documentElement.clientTop
-      let top = element.getBoundingClientRect().top - containerTop + 25
+      let top = element.getBoundingClientRect().top - containerTop - 20
       top = Math.max(0, Math.floor(top))
+      let actionsLength = this.props.actions.length
+      let left = (actionsLength * 20) - 80
+
+      let toolbarLeft = 40 - (actionsLength * 20)
+      let toolbarLeftPixels = `${toolbarLeft}px`
+
       if (this.state.position.top !== top) {
-        this.setState({ position: { top: top, left: 105 } })
+        this.setState({ toolbarLeft: toolbarLeftPixels })
+        this.setState({ position: { top: top, left: left } })
       }
       return
     }
@@ -113,6 +121,7 @@ export default class extends Component {
         this.state.position.top !== selectionCoords.offsetTop ||
         this.state.position.left !== selectionCoords.offsetLeft) {
       this.setState({
+        toolbarLeft: '-50%',
         position: {
           top: selectionCoords.offsetTop,
           left: selectionCoords.offsetLeft
@@ -213,11 +222,14 @@ export default class extends Component {
           rangeLeft={this.state.rangeLeft} />
       )
     } else {
-      toolbar = (
-        <ToolbarList onMouseDown={(e) => { e.preventDefault() }}>
-          {this.props.actions.map(this.renderButton)}
-        </ToolbarList>
-      )
+      let actionsLength = this.props.actions.length
+      if(actionsLength > 0) {
+        toolbar = (
+          <ToolbarList onMouseDown={(e) => { e.preventDefault() }}>
+            {this.props.actions.map(this.renderButton)}
+          </ToolbarList>
+        )
+      }
     }
 
     this.updateHeaderIcon()
@@ -271,9 +283,9 @@ export default class extends Component {
     }
 
     return (
-      <ToolbarWrapper theme={theme} ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
+      <ToolbarWrapper showModal={this.state.showModal} theme={theme} ref='toolbarWrapper' style={toolbarStyle} className='ld-toolbar-wrapper'>
         <div style={{position: 'absolute', bottom: '0'}}>
-          <Toolbar ref='toolbar' error={error} theme={theme} className='ld-toolbar'>
+          <Toolbar toolbarLeft={this.state.toolbarLeft} ref='toolbar' error={error} theme={theme} className='ld-toolbar'>
             {this.renderToolbar()}
             {this.state.error && this.renderError()}
           </Toolbar>
@@ -291,13 +303,13 @@ const ToolbarWrapper = styled.div`
   height: 0;
   position: relative;
   z-index: 10;
-  transform: translateY(8px);
+  transform: ${props => props.showModal ? '' : 'translateY(0)'};
 `
 
 const Toolbar = styled.div`
   background: ${props => props.error ? '#E83F26' : props.theme.backgroundColor};
   box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
-  left: -50%;
+  left: ${props => props.toolbarLeft};
   position: relative;
   transition: background-color 0.2s ease-in-out;
 `

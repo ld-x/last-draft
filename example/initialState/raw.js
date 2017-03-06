@@ -40,13 +40,8 @@ export default {
       "depth": 0,
       "inlineStyleRanges": [
         {
-          "offset": 10,
-          "length": 2,
-          "style": "color-C1E1A6"
-        },
-        {
           "offset": 16,
-          "length": 8,
+          "length": 7,
           "style": "color-C1E1A6"
         }
       ],

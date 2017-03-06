@@ -65,9 +65,8 @@
 
 .ld-quote {
   display: block;
-  color: #0cf;
-  text-transform: uppercase;
-  font-size: 24px;
+  color: #faeBd7;
+  font-size: 32px;
   line-height: 1.2;
 }
 .ld-quote:first-child {
@@ -101,23 +100,11 @@
 .ld-image-block {}
 .ld-image-placeholder-block {}
 .ld-image-block-button {}
-.ld-video-block-wrapper {}
-.ld-video-block {}
-.ld-video-button {}
-.ld-emoji {}
-.ld-emoji-modal {}
-.ld-emoji-close-icon {}
-.ld-emoji-block-button {}
 
 /* buttons */
-.ld-button-align-left {}
-.ld-button-align-center {}
-.ld-button-align-right {}
 .ld-button-blockquote {}
 .ld-button-bold {}
 .ld-button-close {}
-.ld-button-cross {}
-.ld-button-emoji {}
 .ld-button-error {}
 .ld-button-header {}
 .ld-button-image {}
@@ -127,7 +114,6 @@
 .ld-button-quote {}
 .ld-button-unordered-list {}
 .ld-button-unlink {}
-.ld-button-video {}
 
 /* entities */
 .ld-link {}
@@ -140,8 +126,6 @@
 .ld-sidemenu-wrapper {}
 .ld-sidemenu {}
 .ld-sidemenu-button {}
-.ld-sidemenu-items {}
-.ld-sidemenu-item {}
 
 /* inline toolbar */
 .ld-toolbar-wrapper {}

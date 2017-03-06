@@ -24,7 +24,7 @@ export function getSelectedBlockElement (editorState) {
   }
 }
 
-export function getSelectionCoords (editor, toolbarHeight = 34, maxOffsetLeft = 250) {
+export function getSelectionCoords (editor, toolbarHeight = 34, maxOffsetLeft = 150) {
   const editorBounds = editor.getBoundingClientRect()
   const rangeBounds = getVisibleSelectionRect(window)
   if (!rangeBounds) { return null }

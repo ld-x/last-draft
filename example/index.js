@@ -10,7 +10,7 @@ class App extends Component {
       theme: {
         backgroundColor: '#fff',
         color: '#404040',
-        highlight: '#ffc0cb'
+        highlight: '#faeBd7'
       }
     }
   }

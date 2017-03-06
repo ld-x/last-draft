@@ -4,7 +4,9 @@
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-last-draft is a Draft.js editor inspired heavily by [MegaDraft](https://github.com/globocom/megadraft) and [draft-js-plugins](https://draft-js-plugins.com)
+![](https://raw.githubusercontent.com/vacenz/last-draft/master/example/public/screenshot.gif)
+
+last-draft is a Draft.js editor inspired by [MegaDraft](https://github.com/globocom/megadraft) and [draft-js-plugins](https://draft-js-plugins.com)
 
 # Install
 ```jsx
@@ -198,11 +200,11 @@ function uploadImageAsync(file) {
 #### `autofocus`
 Whether to focus the Editor on component mount. Default is `false`
 
-#### `autofocus`
+#### `tooltips`
 Whether to show the tooltips on hover over button icons. Default is `true`
 
 #### `maxLeftOffset`
-The max offset in pixels left the toolbar is allowed. This is to prevent the toolbar being positioned off the screen to the left when selecting for instance the first few words in a paragraph. Default is `250`
+The max offset in pixels left the toolbar is allowed. This is to prevent the toolbar being positioned off the screen to the left when selecting for instance the first few words in a paragraph. Default is `150`
 
 #### `separators`
 Whether to show the Separators between inline, blocks and plugins. Default is `true`
@@ -232,10 +234,7 @@ let THEME = {
 
 ## Custom Styles with CSS
 
-You can also add custom css to override the base styling with the following class names specified below:
-
-It is simple to customize elements in the editor, as shown in the [ld-theme-example.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/ld-theme-example.css).
-
+You can also add custom css to override the base styling with the following class names specified below in [ld.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/ld.css).
 
 **Block styles**
 
@@ -244,10 +243,6 @@ It is simple to customize elements in the editor, as shown in the [ld-theme-exam
 .ld-unordered-list {}
 .ld-ordered-list {}
 .ld-blockquote {}
-.ld-align-wrapper {}
-.ld-align-left {}
-.ld-align-center {}
-.ld-align-right {}
 ```
 
 **Entity styles**
@@ -273,26 +268,14 @@ It is simple to customize elements in the editor, as shown in the [ld-theme-exam
 .ld-image-placeholder-block {}
 .ld-image-placeholder-block-loader {}
 .ld-image-block-button {}
-.ld-video-block-wrapper {}
-.ld-video-block {}
-.ld-video-block-button {}
-.ld-emoji {}
-.ld-emoji-modal {}
-.ld-emoji-close-icon {}
-.ld-emoji-block-button {}
 ```
 
 **Button styles**
 
 ```css
-.ld-button-align-left {}
-.ld-button-align-center {}
-.ld-button-align-right {}
 .ld-button-blockquote {}
 .ld-button-bold {}
 .ld-button-close {}
-.ld-button-cross {}
-.ld-button-emoji {}
 .ld-button-error {}
 .ld-button-header {}
 .ld-button-image {}
@@ -301,7 +284,6 @@ It is simple to customize elements in the editor, as shown in the [ld-theme-exam
 .ld-button-ordered-list {}
 .ld-button-unordered-list {}
 .ld-button-unlink {}
-.ld-button-video {}
 ```
 
 **Inline Toolbar**
@@ -317,7 +299,7 @@ It is simple to customize elements in the editor, as shown in the [ld-theme-exam
 .ld-link-toolbar-input {}
 ```
 
-**Side Toolbar**
+**Sidebar**
 
 ```css
 .ld-sidebar {}
@@ -325,8 +307,6 @@ It is simple to customize elements in the editor, as shown in the [ld-theme-exam
 .ld-sidemenu-wrapper {}
 .ld-sidemenu {}
 .ld-sidemenu-button {}
-.ld-sidemenu-items {}
-.ld-sidemenu-item {}
 ```
 
 ## Development
