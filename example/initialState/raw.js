@@ -35,7 +35,7 @@ export default {
     },
     {
       "key": "6l1hu",
-      "text": "Made with ❤️ by vace.enz ",
+      "text": "Made with ❤️ by vace.nz ",
       "type": "unstyled",
       "depth": 0,
       "inlineStyleRanges": [
@@ -53,7 +53,7 @@ export default {
       "entityRanges": [
         {
           "offset": 16,
-          "length": 8,
+          "length": 7,
           "key": 0
         }
       ],

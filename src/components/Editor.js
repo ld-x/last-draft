@@ -56,6 +56,7 @@ export default class extends Component {
     this.setReadOnly = ::this.setReadOnly
     this.uploadFile = ::this.uploadFile
     this.openToolbar = ::this.openToolbar
+    this.closeToolbar = ::this.closeToolbar
     this.resetStateFromHtml = ::this.resetStateFromHtml
     this.returnStateAsHtml = ::this.returnStateAsHtml
     this.closeMentionList = ::this.closeMentionList
@@ -161,8 +162,8 @@ export default class extends Component {
 
   onChange (editorState) {
     this.props.onChange(editorState)
-    this.closeToolbar(editorState)
-
+    let hasFocus = editorState.getSelection().getHasFocus()
+    if (hasFocus) { this.closeToolbar() }
     this.hideAutocompleteOnMove(editorState)
   }
 
@@ -184,10 +185,7 @@ export default class extends Component {
   }
 
   closeToolbar (editorState) {
-    let hasFocus = editorState.getSelection().getHasFocus()
-    if (hasFocus) {
-      this.setState({sidebarOpen: false})
-    }
+    this.setState({sidebarOpen: false})
   }
 
   closeMentionList () {

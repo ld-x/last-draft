@@ -4,8 +4,11 @@ import styled from 'styled-components'
 
 export default class extends Component {
   sideBarClick () {
-    //console.log(this.props.sidebarOpen)
-    this.props.openToolbar(this.props.editorState)
+    if (this.props.sidebarOpen) {
+      this.props.closeToolbar()
+    } else {
+      this.props.openToolbar()
+    }
   }
 
   render () {
