@@ -131,7 +131,9 @@ To create and test your own plugin, I would advise to test it in this repo, by f
 
 - Update the line in the `getValidPlugins ()` function: to `let plugins = [image, placeholder, video]`
 
-Copy any of the above `ld-` plugins as a starting point. Once it is working then create your new plugin repo `npm run build` it, then publish it to npm.
+Copy any of the above `ld-` plugins as a starting point. 
+
+Once its working then create your new plugin repo, then `npm run build` and publish it to npm.
 
 #### `mentionUsers`
 A list of users for mentions functionality. An array of objects with properties `name`, `link` and `avatar`. You must also add the [ld-mention](https://github.com/steveniseki/ld-mention) to show mentions on autocomplete.
