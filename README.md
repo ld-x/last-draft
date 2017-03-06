@@ -117,19 +117,19 @@ let plugins = [video, audio, color, emoji, gif, mention, html, todo]
 
 #### Creating your own plugin
 
-To create and test your own plugin, I would advise to test it in this repo, by following the steps below:
-
 For an overview on how to create your own plugin, check out [writing-a-last-draft-plugin](https://medium.com/@StevenIseki/writing-a-last-draft-plugin-with-draft-js-f7a8938c5b40)
 
-Create a new `/video` folder in `/plugins` copying the `src\video` folder from [ld-video](https://github.com/vacenz/ld-video)
+To create and test your own plugin, I would advise to test it in this repo, by following the steps below:
 
-Add the following line to `/plugins/index`: `export video from './video/plugin'`
+- Create a new `/video` folder in `/plugins` copy the `src\video` folder from [ld-video](https://github.com/vacenz/ld-video)
 
-Import your test plugin to the Editor in `last-draft/src/components/Editor` by:
+- Add the following line to `/plugins/index`: `export video from './video/plugin'`
 
-Updating the plugin import at the top `import {image, placeholder, video} from '../plugins/'`
+- Import your test plugin to the Editor in `last-draft/src/components/Editor`:
 
-And then adding updating the following line in the `getValidPlugins ()` function: `let plugins = [image, placeholder, video]`.
+- Update the plugin import line to `import {image, placeholder, video} from '../plugins/'`
+
+- Update the line in the `getValidPlugins ()` function: to `let plugins = [image, placeholder, video]`.
 
 Copy any of the above `ld-` plugins as a starting point. Once it is working then create your new plugin repo `npm run build` it, then publish it to npm.
 
