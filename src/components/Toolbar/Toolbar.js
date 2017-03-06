@@ -10,7 +10,7 @@ import {RichUtils} from 'draft-js'
 import {ToolbarButton, PluginButton} from './ToolbarButton'
 import LinkToolbar from './LinkToolbar'
 import Header from './Header'
-import {getSelectionCoords} from '../../utils/selection'
+import {getSelectionCoords, getSelectedBlockElement} from '../../utils/selection'
 import {hasEntity} from '../../utils/entity'
 import styled from 'styled-components'
 import insertDataBlock from '../../utils/insertDataBlock'
@@ -22,8 +22,7 @@ export default class extends Component {
       editingEntity: null,
       link: '',
       error: null,
-      position: {},
-      rangeLeft: 250
+      position: {}
     }
     this.renderButton = ::this.renderButton
   }
@@ -93,15 +92,27 @@ export default class extends Component {
     const selectionCoords = getSelectionCoords(editorWrapper)
     const hasFocus = this.props.editorState.getSelection().getHasFocus()
 
-    if (!selectionCoords) { return null }
-    if (!hasFocus) { return null }
+    if (!hasFocus && !selectionCoords && this.props.showToolbar) {
+      /* manually open the toolbar */
+      const container = editorWrapper.querySelector('.ld-sidebar')
+      const element = getSelectedBlockElement(this.props.editorState)
+      if (!element || !container) { return }
+      const containerTop = container.getBoundingClientRect().top - document.documentElement.clientTop
+      let top = element.getBoundingClientRect().top - containerTop - 20
+      top = Math.max(0, Math.floor(top))
+      if (this.state.position.top !== top) {
+        this.setState({ position: { top: top, left: this.props.maxLeftOffset } })
+      }
+      return
+    }
+    if (!hasFocus) { return }
+    if (!selectionCoords) { return }
 
     if (selectionCoords &&
         !this.state.position ||
         this.state.position.top !== selectionCoords.offsetTop ||
         this.state.position.left !== selectionCoords.offsetLeft) {
       this.setState({
-        rangeLeft: selectionCoords.rangeLeft,
         position: {
           top: selectionCoords.offsetTop,
           left: selectionCoords.offsetLeft

@@ -17,10 +17,7 @@ export class PluginButton extends Component {
 
     return (
       <ToolbarButtonWrapper theme={theme} active={false} className='ld-toolbar-button-wrapper'>
-        {
-          this.props.tooltips &&
-            <Label>{this.props.item.label}</Label>
-        }
+        {this.props.tooltips && <Label>{this.props.item.label}</Label>}
         <LdToolbarButton className='ld-toolbar-button'>
           <Button
             theme={theme}
@@ -54,10 +51,7 @@ export class ToolbarButton extends Component {
 
     return (
       <ToolbarButtonWrapper theme={theme} active={active} className='ld-toolbar-button-wrapper'>
-        {
-          this.props.tooltips &&
-            <Label>{this.props.item.label}</Label>
-        }
+        {this.props.tooltips && <Label>{this.props.item.label}</Label>}
         <LdToolbarButton className='ld-toolbar-button' onClick={() => this.toggleAction(this.props)}>
           <Icon />
         </LdToolbarButton>

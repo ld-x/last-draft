@@ -33,6 +33,7 @@ export default class extends Component {
       placeholder: 'Enter text...',
       autofocus: false,
       separators: true,
+      maxLeftOffset: 250,
       tooltips: true,
       theme: {
         color: '#fff',
@@ -423,7 +424,7 @@ export default class extends Component {
   }
 
   render () {
-    const {editorState, stripPastedStyles, spellCheck, theme, separators} = this.props
+    const {editorState, stripPastedStyles, spellCheck, theme, separators, maxLeftOffset} = this.props
 
     return (
       <div>
@@ -439,6 +440,7 @@ export default class extends Component {
             editorState,
             theme,
             separators,
+            maxLeftOffset,
             tooltips: this.props.tooltips,
             showToolbar: this.state.showToolbar,
             readOnly: this.state.readOnly,

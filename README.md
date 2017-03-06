@@ -201,6 +201,9 @@ Whether to focus the Editor on component mount. Default is `false`
 #### `autofocus`
 Whether to show the tooltips on hover over button icons. Default is `true`
 
+#### `maxLeftOffset`
+The max offset in pixels left the toolbar is allowed. This is to prevent the toolbar being positioned off the screen to the left when selecting for instance the first few words in a paragraph. Default is `250`
+
 #### `separators`
 Whether to show the Separators between inline, blocks and plugins. Default is `true`
 
