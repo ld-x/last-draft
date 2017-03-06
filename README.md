@@ -116,7 +116,10 @@ let plugins = [video, audio, color, emoji, gif, mention, html, todo]
 ```
 
 #### Creating your own plugin
+
 To create and test your own plugin, I would advise to test it in this repo, by following these steps, using the `video plugin` as an example.
+
+For a guide on how to create your own plugin, check out [writing-a-last-draft-plugin](https://medium.com/@StevenIseki/writing-a-last-draft-plugin-with-draft-js-f7a8938c5b40)
 
 Create a new `/video` folder in `/plugins` copying the `src\video` folder from [ld-video](https://github.com/vacenz/ld-video)
 
