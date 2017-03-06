@@ -5,23 +5,25 @@
  * License: MIT
  */
 
-import React from 'react'
-import styled from 'styled-components'
+ import React from 'react'
+ import styled from 'styled-components'
 
-export default class extends React.Component {
-  render () {
-    return (
-      <MenuIcon fill='currentColor' height='24' viewBox='0 0 24 24' width='24'>
-        <path d='M0 0h24v24H0z' fill='none' />
-        <path d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z' />
-      </MenuIcon>
-    )
-  }
-}
+ export default class extends React.Component {
+   render () {
+     return (
+       <MenuIcon width='24' height='24' viewBox='0 0 24 24' className='ld-button-cross'>
+         <g fill='currentColor' >
+           <path d='M11 6h2v12h-2z' />
+           <path d='M18 11v2H6v-2z' />
+         </g>
+       </MenuIcon>
+     )
+   }
+ }
 
-const MenuIcon = styled.svg`
-  position: absolute;
-  transform: scale(0.6);
-  top: 0;
-  left: 0;
-`
+ const MenuIcon = styled.svg`
+   position: absolute;
+   transform: scale(0.7);
+   top: 0;
+   left: 0;
+ `

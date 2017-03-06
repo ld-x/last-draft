@@ -92,7 +92,7 @@ export default class extends Component {
     const selectionCoords = getSelectionCoords(editorWrapper)
     const hasFocus = this.props.editorState.getSelection().getHasFocus()
 
-    if (!hasFocus && !selectionCoords && this.props.showToolbar) {
+    if (!hasFocus && !selectionCoords && this.props.sidebarOpen) {
       /* manually open the toolbar */
       const container = editorWrapper.querySelector('.ld-sidebar')
       const element = getSelectedBlockElement(this.props.editorState)
@@ -265,7 +265,7 @@ export default class extends Component {
       show = false
     }
 
-    if (this.props.showToolbar) {
+    if (this.props.sidebarOpen) {
       show = true
     }
 

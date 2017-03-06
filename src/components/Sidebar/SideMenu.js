@@ -3,13 +3,19 @@ import icons from '../Icons/'
 import styled from 'styled-components'
 
 export default class extends Component {
+  sideBarClick () {
+    //console.log(this.props.sidebarOpen)
+    this.props.openToolbar(this.props.editorState)
+  }
+
   render () {
     return (
       <SideMenuWrapper className='ld-sidemenu-wrapper'>
         <SideMenu className='ld-sidemenu'>
           <SideMenuButton
+            onClick={::this.sideBarClick}
+            sidebarOpen={this.props.sidebarOpen}
             className='ld-sidemenu-button'
-            onClick={::this.props.openToolbar}
             type='button'
           >
             <icons.MenuIcon />
@@ -33,7 +39,7 @@ const SideMenu = styled.li`
 `
 
 const SideMenuButton = styled.button`
-  transform: ${props => props.open ? 'rotate(45deg)' : 'none'};
+  transform: ${props => props.sidebarOpen ? 'rotate(45deg)' : 'none'};
   border: 0;
   color: #fff;
   cursor: pointer;
@@ -51,7 +57,7 @@ const SideMenuButton = styled.button`
     height: 24px;
     border-radius: 100%;
     display: inline-block;
-    background-color: ${props => props.open ? '#f00' : '#181818'};
+    background-color: ${props => props.sidebarOpen ? '#ccc' : '#181818'};
   }
 
   &:focus {

@@ -48,7 +48,7 @@ export default class extends Component {
     this.state = {
       readOnly: this.props.readOnly || false,
       uploading: false,
-      openToolbar: false,
+      sidebarOpen: false,
       mentionSearchValue: '',
       emojiSearchValue: ''
     }
@@ -180,13 +180,13 @@ export default class extends Component {
   }
 
   openToolbar () {
-    this.setState({showToolbar: true})
+    this.setState({sidebarOpen: true})
   }
 
   closeToolbar (editorState) {
     let hasFocus = editorState.getSelection().getHasFocus()
     if (hasFocus) {
-      this.setState({showToolbar: false})
+      this.setState({sidebarOpen: false})
     }
   }
 
@@ -431,7 +431,9 @@ export default class extends Component {
         <div id='editor' ref='editorWrapper' className='last-draft-editor'>
           {this.renderSidebar({
             editorState,
+            sidebarOpen: this.state.sidebarOpen,
             openToolbar: this.openToolbar,
+            closeToolbar: this.closeToolbar,
             readOnly: this.state.readOnly,
             onChange: this.onChange
           })}
@@ -442,7 +444,7 @@ export default class extends Component {
             separators,
             maxLeftOffset,
             tooltips: this.props.tooltips,
-            showToolbar: this.state.showToolbar,
+            sidebarOpen: this.state.sidebarOpen,
             readOnly: this.state.readOnly,
             openToolbar: this.openToolbar,
             uploadFile: this.uploadFile,
