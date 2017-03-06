@@ -129,7 +129,7 @@ To create and test your own plugin, I would advise to test it in this repo, by f
 
 - Update the plugin import line to `import {image, placeholder, video} from '../plugins/'`
 
-- Update the line in the `getValidPlugins ()` function: to `let plugins = [image, placeholder, video]`.
+- Update the line in the `getValidPlugins ()` function: to `let plugins = [image, placeholder, video]`
 
 Copy any of the above `ld-` plugins as a starting point. Once it is working then create your new plugin repo `npm run build` it, then publish it to npm.
 
