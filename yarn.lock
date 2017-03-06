@@ -2925,70 +2925,70 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-ld-audio@1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/ld-audio/-/ld-audio-1.0.9.tgz#d9a9af21c9286f260dfb3ba879d5c1853b30bbcd"
+ld-audio@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ld-audio/-/ld-audio-2.0.0.tgz#8b05dc2fe3c964a2152fd39cad49ab8d725513da"
   dependencies:
     draft-js "0.10.0"
     immutable "~3.7.4"
     styled-components "^1.2.1"
     whatwg-fetch "^2.0.2"
 
-ld-color-picker@1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/ld-color-picker/-/ld-color-picker-1.0.9.tgz#7e2590052fc705369af23f5ad8192493782f8d9d"
+ld-color-picker@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ld-color-picker/-/ld-color-picker-2.0.0.tgz#ce6f22b6b30af07a103e5443c87538453fc6e79c"
   dependencies:
     draft-js "0.10.0"
     styled-components "^1.2.1"
 
-ld-emoji@1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-1.1.6.tgz#be4f83d067a3ba4b845e3bc1f28e82b2b7d5dbab"
+ld-emoji@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ld-emoji/-/ld-emoji-2.0.0.tgz#5449a84aa2931fd31d764ab8e7e06542f64c2df9"
   dependencies:
     draft-js "0.10.0"
     emojione "^2.2.7"
     styled-components "^1.2.1"
 
-ld-gif@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ld-gif/-/ld-gif-1.0.2.tgz#adbee6a8b21f36f39c6da8bb7005d75083463429"
+ld-gif@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ld-gif/-/ld-gif-2.0.0.tgz#243fbf0cee123f3ad171f3b67b7d0ba6746b92df"
   dependencies:
     draft-js "0.10.0"
     styled-components "^1.2.1"
     whatwg-fetch "^2.0.2"
 
-ld-html@1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/ld-html/-/ld-html-1.0.7.tgz#b566fd123def41f40f74e0a77e56141e64cca8a9"
+ld-html@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ld-html/-/ld-html-2.0.0.tgz#dd2feba2171a83c6a9909c8453898897344841f4"
   dependencies:
     draft-js "0.10.0"
     styled-components "^1.2.1"
 
-ld-mention@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/ld-mention/-/ld-mention-1.0.4.tgz#3ff0c15a554d600b723ceac40f22361f344f7d12"
+ld-mention@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ld-mention/-/ld-mention-2.0.0.tgz#f88861046345bdb7de08b3e39f666f8038c4d57c"
   dependencies:
     draft-js "0.10.0"
     styled-components "^1.2.1"
 
-ld-sticker@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ld-sticker/-/ld-sticker-1.0.2.tgz#11475700e2a5d2b6b44111eeceb707b6ecdd29fd"
+ld-sticker@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ld-sticker/-/ld-sticker-2.0.0.tgz#d2cde6af2df84d9f410b144edcbd8612610cc9b3"
   dependencies:
     draft-js "0.10.0"
     styled-components "^1.2.1"
     whatwg-fetch "^2.0.2"
 
-ld-todo@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/ld-todo/-/ld-todo-1.0.4.tgz#f9c19c39f10f3db88381fcf6c4813648845c4fc3"
+ld-todo@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ld-todo/-/ld-todo-2.0.0.tgz#bd492d20f1b2e1683c32587d712562380838d059"
   dependencies:
     draft-js "0.10.0"
     styled-components "^1.2.1"
 
-ld-video@1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/ld-video/-/ld-video-1.0.7.tgz#8573822eaf604489008f99027b43e63c4e17b850"
+ld-video@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ld-video/-/ld-video-2.0.0.tgz#d5d699ad390f11a1a56def62db90e218d955f536"
   dependencies:
     draft-js "0.10.0"
     immutable "~3.7.4"
