@@ -55,14 +55,15 @@ export default class extends Component {
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
     this.uploadFile = ::this.uploadFile
-    this.openToolbar = ::this.openToolbar
-    this.closeToolbar = ::this.closeToolbar
+    this.openSidebar = ::this.openSidebar
+    this.closeSidebar = ::this.closeSidebar
     this.resetStateFromHtml = ::this.resetStateFromHtml
     this.returnStateAsHtml = ::this.returnStateAsHtml
     this.closeMentionList = ::this.closeMentionList
     this.closeEmojiList = ::this.closeEmojiList
     this.plugins = this.getValidPlugins()
     this.actions = this.getActions()
+    this.allActions = this.getActions()
     this.pluginsByType = this.getPluginsByType()
     this.keyBindings = this.props.keyBindings || []
   }
@@ -163,7 +164,7 @@ export default class extends Component {
   onChange (editorState) {
     this.props.onChange(editorState)
     let hasFocus = editorState.getSelection().getHasFocus()
-    if (hasFocus) { this.closeToolbar() }
+    if (hasFocus) { this.closeSidebar() }
     this.hideAutocompleteOnMove(editorState)
   }
 
@@ -180,12 +181,28 @@ export default class extends Component {
     }
   }
 
-  openToolbar () {
+  openSidebar () {
     this.setState({sidebarOpen: true})
+    this.setActionsToPlugins()
   }
 
-  closeToolbar (editorState) {
+  closeSidebar (editorState) {
     this.setState({sidebarOpen: false})
+    this.setAllActions()
+  }
+
+  setAllActions () {
+    this.actions = this.allActions
+  }
+
+  setActionsToPlugins () {
+    let newActions = []
+    for (let action of this.allActions) {
+      if (action.type === 'plugin') {
+        newActions.push(action)
+      }
+    }
+    this.actions = newActions
   }
 
   closeMentionList () {
@@ -430,8 +447,8 @@ export default class extends Component {
           {this.renderSidebar({
             editorState,
             sidebarOpen: this.state.sidebarOpen,
-            openToolbar: this.openToolbar,
-            closeToolbar: this.closeToolbar,
+            openSidebar: this.openSidebar,
+            closeSidebar: this.closeSidebar,
             readOnly: this.state.readOnly,
             onChange: this.onChange
           })}
@@ -444,7 +461,7 @@ export default class extends Component {
             tooltips: this.props.tooltips,
             sidebarOpen: this.state.sidebarOpen,
             readOnly: this.state.readOnly,
-            openToolbar: this.openToolbar,
+            openSidebar: this.openSidebar,
             uploadFile: this.uploadFile,
             uploadImageAsync: this.props.uploadImageAsync,
             submitHtmlModal: this.resetStateFromHtml,

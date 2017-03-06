@@ -25,7 +25,7 @@ const onChange = () => {
   console.log('changed')
 }
 
-const openToolbar = () => {
+const openSidebar = () => {
   console.log('opening the toolbar')
 }
 
@@ -36,7 +36,7 @@ test('Sidebar component', (t) => {
   const wrapper = mount(
     <Sidebar
       editorState={convertFromRaw(INITIAL_CONTENT)}
-      openToolbar={openToolbar}
+      openSidebar={openSidebar}
       onChange={onChange} />
   )
 

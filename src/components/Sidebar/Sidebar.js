@@ -35,8 +35,8 @@ export default class extends Component {
         <SidebarMenuWrapper style={{top: `${this.state.top}px`}} className='ld-sidebar-menu-wrapper'>
           <SideMenu
             sidebarOpen={this.props.sidebarOpen}
-            closeToolbar={::this.props.closeToolbar}
-            openToolbar={::this.props.openToolbar}
+            closeSidebar={::this.props.closeSidebar}
+            openSidebar={::this.props.openSidebar}
             editorState={this.props.editorState}
             onChange={::this.props.onChange} />
         </SidebarMenuWrapper>

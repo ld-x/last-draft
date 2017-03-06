@@ -5,9 +5,9 @@ import styled from 'styled-components'
 export default class extends Component {
   sideBarClick () {
     if (this.props.sidebarOpen) {
-      this.props.closeToolbar()
+      this.props.closeSidebar()
     } else {
-      this.props.openToolbar()
+      this.props.openSidebar()
     }
   }
 

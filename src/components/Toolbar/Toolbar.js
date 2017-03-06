@@ -98,10 +98,10 @@ export default class extends Component {
       const element = getSelectedBlockElement(this.props.editorState)
       if (!element || !container) { return }
       const containerTop = container.getBoundingClientRect().top - document.documentElement.clientTop
-      let top = element.getBoundingClientRect().top - containerTop - 20
+      let top = element.getBoundingClientRect().top - containerTop + 25
       top = Math.max(0, Math.floor(top))
       if (this.state.position.top !== top) {
-        this.setState({ position: { top: top, left: this.props.maxLeftOffset } })
+        this.setState({ position: { top: top, left: 105 } })
       }
       return
     }
@@ -119,11 +119,6 @@ export default class extends Component {
         }
       })
     }
-  }
-
-  openToolbar () {
-    // this.setState({ position: { bottom: this.state.position.bottom, left: 220 } })
-    this.props.openToolbar()
   }
 
   renderButton (item, position) {
