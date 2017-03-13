@@ -30,6 +30,10 @@ export default class extends Component {
 
   render () {
     if (this.props.readOnly) { return null }
+    if (this.props.sidebarVisibleOn === 'never') { return null }
+    if (this.props.sidebarVisibleOn === 'newline') {
+      if (!this.props.sidebarVisible) { return null }
+    }
     return (
       <Sidebar ref='container' className='ld-sidebar'>
         <SidebarMenuWrapper style={{top: `${this.state.top}px`}} className='ld-sidebar-menu-wrapper'>

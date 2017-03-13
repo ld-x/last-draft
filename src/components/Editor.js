@@ -37,6 +37,7 @@ export default class extends Component {
       toolbarHeight: 34,
       maxLeftOffset: 150,
       tooltips: true,
+      sidebarVisibleOn: 'newline',
       theme: {
         color: '#fff',
         backgroundColor: '#181818',
@@ -52,13 +53,15 @@ export default class extends Component {
       uploading: false,
       sidebarOpen: false,
       mentionSearchValue: '',
-      emojiSearchValue: ''
+      emojiSearchValue: '',
+      sidebarVisible: false
     }
     this.onChange = ::this.onChange
     this.setReadOnly = ::this.setReadOnly
     this.uploadFile = ::this.uploadFile
     this.openSidebar = ::this.openSidebar
     this.closeSidebar = ::this.closeSidebar
+    this.displaySidebar = ::this.displaySidebar
     this.resetStateFromHtml = ::this.resetStateFromHtml
     this.returnStateAsHtml = ::this.returnStateAsHtml
     this.closeMentionList = ::this.closeMentionList
@@ -168,6 +171,18 @@ export default class extends Component {
     let hasFocus = editorState.getSelection().getHasFocus()
     if (hasFocus) { this.closeSidebar() }
     this.hideAutocompleteOnMove(editorState)
+    this.displaySidebar(editorState)
+  }
+
+  displaySidebar (editorState) {
+    const selectionState = editorState.getSelection()
+    const contentState = editorState.getCurrentContent()
+    const block = contentState.getBlockForKey(selectionState.getStartKey())
+    if (block.text.length === 0) {
+      this.setState({sidebarVisible: true})
+    } else {
+      this.setState({sidebarVisible: false})
+    }
   }
 
   hideAutocompleteOnMove (editorState) {
@@ -449,6 +464,8 @@ export default class extends Component {
           {this.renderSidebar({
             editorState,
             sidebarOpen: this.state.sidebarOpen,
+            sidebarVisible: this.state.sidebarVisible,
+            sidebarVisibleOn: this.props.sidebarVisibleOn,
             openSidebar: this.openSidebar,
             closeSidebar: this.closeSidebar,
             readOnly: this.state.readOnly,

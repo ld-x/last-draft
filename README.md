@@ -66,6 +66,16 @@ Array of inline styles to use in the toolbar. Any of the following: `bold`, `ita
   onChange={::this.onChange} />
 ```
 
+#### `sidebarVisibleOn`
+When to show the sidebar. Any of the following: `never`, `always`, `newline`. `newline` is the default:
+
+```jsx
+<Editor
+  editorState={this.state.value}
+  sidebarVisibleOn='always'
+  onChange={::this.onChange} />
+```
+
 #### `blocks`
 Array of block styles to use in the toolbar. Any of the following: `ul`, `ol`, `h1`, `h2`, `h3`, `h4`, `h5`, `blockquote`, `quote`. By default `ul`, `ol` and `blockquote` are included:
 
@@ -131,7 +141,7 @@ To create and test your own plugin, I would advise to test it in this repo, by f
 
 - Update the line in the `getValidPlugins ()` function: to `let plugins = [image, placeholder, video]`
 
-Copy any of the above `ld-` plugins as a starting point. 
+Copy any of the above `ld-` plugins as a starting point.
 
 Once its working then create your new plugin repo, then `npm run build` and publish it to npm.
 

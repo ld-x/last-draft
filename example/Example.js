@@ -15,7 +15,7 @@ import audio from 'ld-audio'
 import sticker from 'ld-sticker'
 import html from 'ld-html'
 import todo from 'ld-todo'
-let plugins = [video, color, emoji, gif, mention, html]
+let plugins = [video, color, emoji, gif, mention]
 
 export default class ExampleEditor extends Component {
   constructor(props) {
@@ -42,6 +42,7 @@ export default class ExampleEditor extends Component {
       <Editor
         theme={this.props.theme}
         plugins={plugins}
+        sidebarVisibleOn='newline'
         inline={['bold', 'italic', 'dropcap']}
         blocks={['h3', 'quote']}
         mentionUsers={mentionUsers}
