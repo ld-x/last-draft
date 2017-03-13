@@ -17,7 +17,7 @@ export const blockRenderMap = Map({
     element: 'cite'
   },
   'quote': {
-    element: 'span'
+    element: 'p'
   },
   'image': {
     element: 'figure'
@@ -29,7 +29,7 @@ export const blockRenderMap = Map({
     element: 'section'
   },
   'break': {
-    element: 'div'
+    element: 'br'
   }
 }).merge(DefaultDraftBlockRenderMap)
 
