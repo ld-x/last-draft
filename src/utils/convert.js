@@ -5,7 +5,7 @@
  * License: MIT
  */
 
-import {convertFromHTML} from 'draft-convert'
+import stateFromHTML from './stateFromHTML'
 import stateToHTML from './stateToHTML'
 import {Entity, convertToRaw, convertFromRaw, EditorState, ContentState} from 'draft-js'
 import defaultDecorator from '../decorators/defaultDecorator'
@@ -13,16 +13,18 @@ import linkifyIt from 'linkify-it'
 import tlds from 'tlds'
 import { extractHashtagsWithIndices } from './hashtag';
 import styleMap from './styleMap';
+const REGEX_LF = new RegExp('\n', 'g');
 
 const linkify = linkifyIt()
 linkify.tlds(tlds)
 
-export function editorStateFromHtml (html, decorator = defaultDecorator) {
-  if (html === null) {
+export function editorStateFromHtml (rawHtml, decorator = defaultDecorator) {
+  if (rawHtml === null) {
     return EditorState.createEmpty(decorator)
   }
 
-  const contentState = convertFromHTML({
+  let html = rawHtml.replace(REGEX_LF, '')
+  const contentState = stateFromHTML({
     htmlToStyle: (nodeName, node, currentStyle) => {
       if (node.className !== undefined) {
         return currentStyle.add(node.className)
@@ -107,11 +109,9 @@ export function editorStateFromHtml (html, decorator = defaultDecorator) {
         }
       }
 
-      if (nodeName === 'span') {
-        if(node.className === 'ld-quote'){
-          return {
-            type: 'quote'
-          };
+      if (nodeName === 'p') {
+        if (node.className === 'ld-quote' || node.className === 'quote') {
+          return { type: 'quote' }
         }
       }
 
@@ -145,9 +145,16 @@ export function editorStateToHtml(editorState) {
       attributes: { class: name, style: convertToInline(styleMap[name]) }
     }
   })
-
-  const convertedHTML = stateToHTML(editorState.getCurrentContent(), {
+  const content = editorState.getCurrentContent()
+  const convertedHTML = stateToHTML(content, {
     inlineStyles: exportInlineStyles,
+    blockStyleFn: (block) => {
+      if (block.getType() === 'quote') {
+        return {
+          attributes: { class: 'ld-quote' }
+        }
+      }
+    },
     blockRenderers: {
       atomic: (block) => {
         let data = block.getData()
@@ -167,8 +174,7 @@ export function editorStateToHtml(editorState) {
         }
       },
       quote: (block) => {
-        let text = block.getText()
-        return `<span class='ld-quote' >${text}</span>`
+        return null
       }
     }
   })
@@ -197,7 +203,7 @@ export function editorStateToHtml(editorState) {
     }, convertedHTMLLinkify)
   }
 
-  return convertedHTMLHash
+  return convertedHTMLHash.replace(REGEX_LF, '')
 }
 
 export function editorStateToJSON (editorState) {
