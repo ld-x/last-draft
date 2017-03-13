@@ -32,7 +32,7 @@ export const blockRenderMap = Map({
     element: 'br'
   },
   'paragraph': {
-    element: 'div'
+    element: 'p'
   }
 }).merge(DefaultDraftBlockRenderMap)
 
