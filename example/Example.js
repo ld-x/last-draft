@@ -21,8 +21,8 @@ export default class ExampleEditor extends Component {
   constructor(props) {
     super(props)
     /* examples of initial state */
-    //const INITIAL_STATE = editorStateFromRaw(RAW)
-    const INITIAL_STATE = editorStateFromHtml(HTML)
+    const INITIAL_STATE = editorStateFromRaw(RAW)
+    //const INITIAL_STATE = editorStateFromHtml(HTML)
     //const INITIAL_STATE = editorStateFromRaw({})
     //const INITIAL_STATE = editorStateFromText('this is a cooel editor... 🏄🌠🏀')
     //const INITIAL_STATE = editorStateFromText('xyz')
