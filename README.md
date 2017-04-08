@@ -13,7 +13,7 @@ last-draft is a Draft.js editor using [draft-js-plugins](https://draft-js-plugin
 npm install last-draft --save
 ```
 
-# Important Note:
+## Important Note:
 
 Last Draft now has 2 maintained versions:
 
