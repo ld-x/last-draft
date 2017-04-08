@@ -6,19 +6,6 @@ class App extends Component {
 
   constructor (props) {
     super(props)
-    this.state = {
-      theme: {
-        backgroundColor: '#fff',
-        color: '#404040',
-        highlight: '#faeBd7'
-      }
-    }
-  }
-
-  onColorChange (color, themeName) {
-    let updatedTheme = this.state.theme
-    updatedTheme[themeName] = color
-    this.setState({ theme: updatedTheme })
   }
 
   render () {
@@ -39,7 +26,7 @@ class App extends Component {
       			<span className="green">T</span>
       		</h1>
         </div>
-        <Example theme={this.state.theme} />
+        <Example />
       </div>
     )
   }

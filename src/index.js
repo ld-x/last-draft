@@ -6,7 +6,7 @@
  */
 
 import Editor from './components/Editor'
-import * as convert from './utils/convert'
+import * as convert from './convert'
 
 const LD = {
   editorStateFromRaw: convert.editorStateFromRaw,
@@ -18,4 +18,3 @@ const LD = {
 }
 
 module.exports = LD
-// MARKDOWN!!!

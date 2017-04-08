@@ -6,7 +6,7 @@
 
 ![](https://raw.githubusercontent.com/vacenz/last-draft/master/example/public/screenshot.gif)
 
-last-draft is a Draft.js editor inspired by [MegaDraft](https://github.com/globocom/megadraft) and [draft-js-plugins](https://draft-js-plugins.com)
+last-draft is a Draft.js editor using [draft-js-plugins](https://draft-js-plugins.com)
 
 # Install
 ```jsx
@@ -15,98 +15,67 @@ npm install last-draft --save
 
 # Docs
 
-## Example
-
-Check out this awesome 🏄 [Last Draft example](https://github.com/vacenz/last-draft-example)
-
-To run the example simply `git clone`, then run `yarn install` and `npm run dev`
-
 ## Use
 ```jsx
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import {Editor, editorStateFromHtml, editorStateToHtml, editorStateFromRaw, editorStateToJSON} from 'last-draft'
-
-/* init the state, either from raw or html */
-import raw from './initialState/raw'
+import {Editor, editorStateFromHtml, editorStateToHtml, editorStateFromRaw, editorStateFromText} from 'last-draft'
+import { fromJS } from 'immutable';
 
 export default class ExampleEditor extends Component {
   constructor(props) {
     super(props)
-    const INITIAL_STATE = editorStateFromRaw(raw)
-    this.state = { value: INITIAL_STATE }
+    const INITIAL_STATE = editorStateFromText('this is a cooel editor... 🏄🌠🏀')
+    this.state = { editorState: INITIAL_STATE }
   }
 
-  onChange(editorState) {
-    this.setState({ value: editorState })
+  onChange = (editorState) => {
+    this.setState({ editorState: editorState })
+    /* You would normally save this to your database here instead of logging it */
     console.log(editorStateToHtml(editorState))
-    console.log(editorStateToJSON(editorState))
   }
 
   render() {
     return (
       <Editor
-        editorState={this.state.value}
-        placeholder='Enter text...'
+        editorState={this.state.editorState}
+        placeholder='Text'
         onChange={::this.onChange} />
     )
   }
 }
 ```
 
+Check out the [example](https://github.com/vacenz/last-draft/tree/master/example) for more.
+
 ## Props
 
-#### `inline`
-Array of inline styles to use in the toolbar. Any of the following: `bold`, `italic`, `strikethrough`, `underline`, `code`, `dropcap`. By default all are included:
-
-```jsx
-<Editor
-  editorState={this.state.value}
-  inline={['bold', 'italic', 'dropcap']}
-  onChange={::this.onChange} />
-```
-
-#### `sidebarVisibleOn`
-When to show the sidebar. Any of the following: `never`, `always`, `newline`. `newline` is the default:
-
-```jsx
-<Editor
-  editorState={this.state.value}
-  sidebarVisibleOn='always'
-  onChange={::this.onChange} />
-```
-
-#### `blocks`
-Array of block styles to use in the toolbar. Any of the following: `ul`, `ol`, `h1`, `h2`, `h3`, `h4`, `h5`, `blockquote`, `quote`. By default `ul`, `ol` and `blockquote` are included:
-
-```jsx
-<Editor
-  editorState={this.state.value}
-  blocks={['blockquote', 'code']}
-  onChange={::this.onChange} />
-```
-
-#### `entities`
-Array of entities to use. Any of the following: `link`, `hashtag`, `mentions`. By default all are included:
-
-```jsx
-<Editor
-  editorState={this.state.value}
-  entities={['link']}
-  onChange={::this.onChange} />
-```
+#### `blocks and inline style buttons`
+In progress is the ability to toggle entities, inline style and block style buttons, as in Last Draft 2
 
 #### `plugins`
-Plugins include custom functionality which can be activated from a button in the toolbar. By default the `image` plugin is always included. However you can create your own plugins! Some examples are below:
+Last Draft 3.0 uses [draft-js-plugins](https://github.com/draft-js-plugins/draft-js-plugins)
 
-- [ld-video](https://github.com/vacenz/ld-video) - Adds embed video functionality from youtube and vimeo
-- [ld-audio](https://github.com/steveniseki/ld-audio) - Adds an audio player with soundcloud support
-- [ld-color-picker](https://github.com/steveniseki/ld-color-picker) - Adds Color picker functionality
-- [ld-emoji](https://github.com/vacenz/ld-emoji) - Adds emoji functionality
-- [ld-gif](https://github.com/steveniseki/ld-gif) - Adds gif functionality from Giphy
-- [ld-mention](https://github.com/steveniseki/ld-mention) - Adds mention functionality
-- [ld-html](https://github.com/steveniseki/ld-html) - Adds Edit html functionality
-- [ld-todo](https://github.com/vacenz/ld-todo) - Adds todo functionality
+The following draft-js-plugins are added by default in Last Draft, TODO: In progress is being able to pass an array of the plugins required.
+
+- last-draft-js-sidebar-plugin
+- last-draft-js-toolbar-plugin
+- draft-js-modal-plugin
+- draft-js-color-picker-plugin
+- draft-js-gif-picker-plugin
+- draft-js-emoji-picker-plugin
+- draft-js-alignment-plugin
+- draft-js-dnd-plugin
+- draft-js-embed-plugin
+- draft-js-emoji-plugin
+- draft-js-focus-plugin
+- draft-js-hashtag-plugin
+- draft-js-image-plugin
+- draft-js-link-plugin
+- draft-js-linkify-plugin
+- draft-js-mention-plugin
+- draft-js-resizeable-plugin
+
 
 ```jsx
 import video from 'ld-video'
@@ -125,53 +94,32 @@ let plugins = [video, audio, color, emoji, gif, mention, html, todo]
   onChange={::this.onChange} />
 ```
 
-#### Creating your own plugin
-
-For an overview on how to create your own plugin, check out [writing-a-last-draft-plugin](https://medium.com/@StevenIseki/writing-a-last-draft-plugin-with-draft-js-f7a8938c5b40)
-
-To create and test your own plugin, I would advise to test it in this repo, by following the steps below:
-
-- Create a new `/video` folder in `/plugins` copy the `src\video` folder from [ld-video](https://github.com/vacenz/ld-video)
-
-- Add the following line to `/plugins/index`: `export video from './video/plugin'`
-
-- Import your test plugin to the Editor in `last-draft/src/components/Editor`:
-
-- Update the plugin import line to `import {image, placeholder, video} from '../plugins/'`
-
-- Update the line in the `getValidPlugins ()` function: to `let plugins = [image, placeholder, video]`
-
-Copy any of the above `ld-` plugins as a starting point.
-
-Once its working then create your new plugin repo, then `npm run build` and publish it to npm.
-
-#### `mentionUsers`
-A list of users for mentions functionality. An array of objects with properties `name`, `link` and `avatar`. You must also add the [ld-mention](https://github.com/steveniseki/ld-mention) to show mentions on autocomplete.
+#### `mentions`
+A list of users for mentions functionality. An array of objects with properties `name`, `link` and `avatar`.
 
 ```jsx
 <Editor
   editorState={this.state.value}
-  mentionUsers={mentionUsers}
+  mentions={mentionList}
   onChange={::this.onChange} />
 
-const mentionUsers = [
+const mentionList = fromJS([
+  {
+    name: 'Nik Graf',
+    link: 'https://twitter.com/nikgraf',
+    avatar: 'https://avatars0.githubusercontent.com/u/223045?v=3&s=400',
+  },
   {
     name: 'Steven Iseki',
     link: 'https://github.com/steveniseki',
     avatar: 'https://avatars1.githubusercontent.com/u/6695114?v=3&s=400',
-  },
-  {
-    name: 'Nik Graf',
-    link: 'https://github.com/nikgraf',
-    avatar: 'https://avatars2.githubusercontent.com/u/223045?v=3&s=400',
   }
-]
+]);
+
 ```
 
-#### `mentionUsersAsync`
-A function that returns a list of filtered users for mentions functionality.
-
-The `searchValue` is passed to the function, which will filter and return the users e.g. Searching for users in github. Returns a promise which should return an object with the mentionUsers array. You must also add the [ld-mention](https://github.com/steveniseki/ld-mention) to show mentions on autocomplete.
+#### `mentionSearchAsync`
+A function that returns the list of filtered user suggestions for the draft-js-mention-plugin.
 
 ```jsx
 const mentionUsersAsync = function (searchValue, cb) {
@@ -182,7 +130,7 @@ const mentionUsersAsync = function (searchValue, cb) {
       .then( (response) => { return response.json() })
       .then((data) => {
         let users = data.items.map( (u, i) => { return { name: u.login, link: u.html_url, avatar: u.avatar_url } })
-        resolve({ mentionUsers: users })
+        resolve({ suggestions: users })
       })
     }
   )
@@ -191,14 +139,11 @@ const mentionUsersAsync = function (searchValue, cb) {
 
 #### `uploadImageAsync`
 
+TODO: This is still in progress
+
 A callback to parse the url for example uploading the file to S3 or a database and returning the url. Returns a promise which should return an object with a src property e.g. `resolve({ src: 'http://imgur.com/yrwFoXT.jpg' })`. You can also return `srcSet` prop for responsive images `resolve({ src: 'x.jpg' srcSet: 'y.jpg' })`
 
 ```jsx
-<Editor
-  editorState={this.state.value}
-  uploadImageAsync={uploadImageAsync}
-  onChange={::this.onChange} />
-
 function uploadImageAsync(file) {
   return new Promise(
     (resolve, reject) => {
@@ -212,126 +157,25 @@ function uploadImageAsync(file) {
 }
 ```
 
-#### `autofocus`
-Whether to focus the Editor on component mount. Default is `false`
-
-#### `tooltips`
-Whether to show the tooltips on hover over button icons. Default is `true`
-
-#### `maxLeftOffset`
-The max offset in pixels left the toolbar is allowed. This is to prevent the toolbar being positioned off the screen to the left when selecting for instance the first few words in a paragraph. Default is `150`
-
-#### `separators`
-Whether to show the Separators between inline, blocks and plugins. Default is `true`
-
-#### `theme`
-Pass in a custom theme to override the base Last Draft styles. An object with the following properties:
-
-`let THEME = { backgroundColor: '#181818', color: '#66ff00', highlight: '#ffc0cb' }`
-
 ## Styles
 
-Last Draft uses styled-components 💅 for the base styling.
+Last Draft uses style loader and css loader for theming following the draft-js-plugin approach.
+
+### Webpack Usage
+Follow the steps below to import the css file by using Webpack's `style-loader` and `css-loader`.
+
+1. Install Webpack loaders: `npm install style-loader css-loader --save-dev`
+2. Add the below section to Webpack config.
+
+    ```js
+    module: {
+      loaders: [{
+        test: /\.css$/,
+        loaders: [
+          'style', 'css'
+        ]
+      }]
+    }
+    ```
 
 You need to include the base [draft.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/draft.css) styles, similar to with any Draft.js Editor.
-
-You can set a custom theme for the Last Draft Editor. As shown in the [last draft example](http://lastdraft.xyz)
-
-```jsx
-let THEME = {
-  backgroundColor: '#181818',
-  color: '#66ff00',
-  highlight: '#ffc0cb'
-}
-
-<Editor theme={THEME}
-```
-
-## Custom Styles with CSS
-
-You can also add custom css to override the base styling with the following class names specified below in [ld.css](https://github.com/vacenz/last-draft/blob/master/lib/styles/ld.css).
-
-**Block styles**
-
-```css
-.ld-header {}
-.ld-unordered-list {}
-.ld-ordered-list {}
-.ld-blockquote {}
-```
-
-**Entity styles**
-
-```css
-.ld-link {}
-.ld-hashtag {}
-.ld-mention {}
-```
-
-**Plugin Block styles**
-
-```css
-.ld-block-wrapper {}
-.ld-block {}
-.ld-block-actions-wrapper {}
-.ld-block-actions {}
-.ld-block-action {}
-.ld-block-content {}
-.ld-block-input-wrapper {}
-.ld-block-input {}
-.ld-image-block {}
-.ld-image-placeholder-block {}
-.ld-image-placeholder-block-loader {}
-.ld-image-block-button {}
-```
-
-**Button styles**
-
-```css
-.ld-button-blockquote {}
-.ld-button-bold {}
-.ld-button-close {}
-.ld-button-error {}
-.ld-button-header {}
-.ld-button-image {}
-.ld-button-italic {}
-.ld-button-link {}
-.ld-button-ordered-list {}
-.ld-button-unordered-list {}
-.ld-button-unlink {}
-```
-
-**Inline Toolbar**
-
-```css
-.ld-toolbar-wrapper {}
-.ld-toolbar {}
-.ld-toolbar-error {}
-.ld-toolbar-button-wrapper {}
-.ld-toolbar-button {}
-.ld-link-toolbar-button {}
-.ld-link-toolbar-item {}
-.ld-link-toolbar-input {}
-```
-
-**Sidebar**
-
-```css
-.ld-sidebar {}
-.ld-sidebar-menu-wrapper {}
-.ld-sidemenu-wrapper {}
-.ld-sidemenu {}
-.ld-sidemenu-button {}
-```
-
-## Development
-
-```
-yarn install
-npm run dev
-open http://127.0.0.1:3000
-```
-
-## License
-
-[MIT](http://isekivacenz.mit-license.org/)
