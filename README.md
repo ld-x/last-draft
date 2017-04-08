@@ -15,15 +15,7 @@ npm install last-draft --save
 
 # Important Note:
 
-Last Draft now has 2 maintained versions, the older stable version which uses the [MegaDraft](https://github.com/globocom/megadraft) plugin approach, and the new version which uses [draft-js-plugins](https://draft-js-plugins.com).
-
-The new version still has the following work in progress:
-- Adding the html edit modal
-- Adding the Todo plugin
-- Improving html
-- Improving html import and export
-- Fixing mention and image async loading
-
+Last Draft now has 2 maintained versions:
 
 ## Version
 
