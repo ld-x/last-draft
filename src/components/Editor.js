@@ -426,7 +426,7 @@ export default class extends Component {
         /* show loaded image */
         let srcSet = data.srcSet
         if (srcSet === undefined) { srcSet = data.src }
-        const imageData = {src: data.src, srcSet: srcSet, type: 'image'}
+        const imageData = {src: data.src, srcSet: srcSet, alt: 'image', caption: '', type: 'image'}
         this.onChange(insertDataBlock(editorState, imageData, selection))
         this.setState({ uploading: false })
       })
