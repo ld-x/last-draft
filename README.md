@@ -6,11 +6,9 @@
 
 ![](https://raw.githubusercontent.com/vacenz/last-draft/master/example/public/screenshot.gif)
 
-last-draft is a Draft.js editor using [draft-js-plugins](https://draft-js-plugins.com)
+[last-draft](http://lastdraft.xyz) is a Draft.js editor using [draft-js-plugins](https://draft-js-plugins.com)
 
 ## Important Note:
-
-Last Draft now has 2 maintained versions:
 
 ## Versions
 
