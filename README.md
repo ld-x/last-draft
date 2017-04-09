@@ -8,11 +8,6 @@
 
 last-draft is a Draft.js editor using [draft-js-plugins](https://draft-js-plugins.com)
 
-# Install
-```jsx
-npm install last-draft --save
-```
-
 ## Important Note:
 
 Last Draft now has 2 maintained versions:
@@ -25,12 +20,19 @@ https://github.com/vacenz/last-draft/tree/v3
 
 View example at http://lastdraft.xyz/v3
 
-This branch will be kept in sync with master.
+```jsx
+yarn add last-draft
+```
 
 #### `2.1.0` stable version using [MegaDraft](https://github.com/globocom/megadraft) plugin approach and ld-plugins
 
 https://github.com/vacenz/last-draft/tree/v2
+
 View example at http://lastdraft.xyz
+
+```jsx
+yarn add last-draft@2.1.0
+```
 
 ## v3 Use
 ```jsx
