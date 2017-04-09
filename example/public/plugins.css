@@ -1,0 +1,698 @@
+.draftJsEmojiPlugin__emoji__2oqBk {
+  background-position: center;
+  /* make sure the background the image is only shown once */
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* move it a bit further down to align it nicer with the text */
+  vertical-align: middle;
+
+  /*
+  We need to limit the emoji width because it can be multiple characters
+  long if it is a 32bit unicode. Since the proper width depends on the font and
+  it's relationship between 0 and other characters it's not ideal. 1.95ch is not
+  the best value, but hopefully a good enough approximation for most fonts.
+  */
+  display: inline-block;
+  overflow: hidden;
+  max-width: 1.95ch;
+  /*
+  Needed for iOS rendering to avoid some icons using a lot of height without
+  actually needing it.
+  */
+  max-height: 1em;
+  line-height: inherit;
+  margin: -.2ex 0em .2ex;
+  /*
+  In the past we used opacity: 0 to hide the original Emoji icon no matter what
+  system it is. Recently we switched to color: transparent since it started to
+  work in recent iOS version.
+  */
+  color: transparent;
+}
+.draftJsEmojiPlugin__emojiSuggestionsEntry__2-2p_ {
+  padding: 5px 10px 1px 10px;
+  -webkit-transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
+  transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
+}
+
+.draftJsEmojiPlugin__emojiSuggestionsEntry__2-2p_:active {
+  background-color: #cce7ff;
+}
+
+.draftJsEmojiPlugin__emojiSuggestionsEntryFocused__XDntY {
+  background-color: #e6f3ff;
+}
+
+.draftJsEmojiPlugin__emojiSuggestionsEntryText__2sPjk {
+  display: inline-block;
+  margin-left: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 368px;
+  font-size: 0.9em;
+}
+
+.draftJsEmojiPlugin__emojiSuggestionsEntryIcon__1qC2V {
+  width: 1em;
+  height: 1em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  display: inline-block;
+}
+.draftJsEmojiPlugin__emojiSuggestions__2ffcV {
+  border: 1px solid #eee;
+  margin-top: 1.75em;
+  position: absolute;
+  min-width: 220px;
+  max-width: 440px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0px 4px 30px 0px rgba(220,220,220,1);
+  cursor: pointer;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  z-index: 2;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  box-sizing: border-box;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+.draftJsHashtagPlugin__hashtag__1wMVC {
+  color: #5e93c5;
+}
+.draftJsEmojiPlugin__alignmentTool__2mkQr {
+  left: 50%;
+  -webkit-transform: translate(-50%) scale(0);
+          transform: translate(-50%) scale(0);
+  position: absolute;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0px 1px 3px 0px rgba(220,220,220,1);
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.draftJsEmojiPlugin__alignmentTool__2mkQr:after, .draftJsEmojiPlugin__alignmentTool__2mkQr:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.draftJsEmojiPlugin__alignmentTool__2mkQr:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-top-color: #fff;
+  border-width: 4px;
+  margin-left: -4px;
+}
+.draftJsEmojiPlugin__alignmentTool__2mkQr:before {
+  border-color: rgba(221, 221, 221, 0);
+  border-top-color: #ddd;
+  border-width: 6px;
+  margin-left: -6px;
+}
+.draftJsEmojiPlugin__buttonWrapper__1Dmqh {
+  display: inline-block;
+}
+
+.draftJsEmojiPlugin__button__qi1gf {
+  background: #fbfbfb;
+  color: #888;
+  font-size: 18px;
+  border: 0;
+  padding-top: 5px;
+  vertical-align: bottom;
+  height: 34px;
+  width: 36px;
+}
+
+.draftJsEmojiPlugin__button__qi1gf svg {
+  fill: #888;
+}
+
+.draftJsEmojiPlugin__button__qi1gf:hover, .draftJsEmojiPlugin__button__qi1gf:focus {
+  background: #f3f3f3;
+  outline: 0; /* reset for :focus */
+}
+
+.draftJsEmojiPlugin__active__3qcpF {
+  background: #efefef;
+  color: #444;
+}
+
+.draftJsEmojiPlugin__active__3qcpF svg {
+  fill: #444;
+}
+.draftJsEmojiPlugin__unfocused__1Wvrs:hover {
+  cursor: default;
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px #D2E3F7;
+}
+
+.draftJsEmojiPlugin__focused__3Mksn {
+  cursor: default;
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px #ACCEF7;
+}
+.draftJsLinkifyPlugin__link__2ittM, .draftJsLinkifyPlugin__link__2ittM:visited {
+  color: #5e93c5;
+  text-decoration: none;
+}
+
+.draftJsLinkifyPlugin__link__2ittM:hover, .draftJsLinkifyPlugin__link__2ittM:focus {
+  color: #7eadda;
+  outline: 0; /* reset for :focus */
+  cursor: pointer;
+}
+
+.draftJsLinkifyPlugin__link__2ittM:active {
+  color: #4a7bab;
+}
+.draftJsMentionPlugin__mention__29BEd, .draftJsMentionPlugin__mention__29BEd:visited {
+  color: #575f67;
+  cursor: pointer;
+  display: inline-block;
+  background: #e6f3ff;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.draftJsMentionPlugin__mention__29BEd:hover, .draftJsMentionPlugin__mention__29BEd:focus {
+  color: #677584;
+  background: #edf5fd;
+  outline: 0; /* reset for :focus */
+}
+
+.draftJsMentionPlugin__mention__29BEd:active {
+  color: #222;
+  background: #455261;
+}
+.draftJsMentionPlugin__mentionSuggestionsEntry__3mSwm {
+  padding: 7px 10px 3px 10px;
+  -webkit-transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
+  transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
+}
+
+.draftJsMentionPlugin__mentionSuggestionsEntry__3mSwm:active {
+  background-color: #cce7ff;
+}
+
+.draftJsMentionPlugin__mentionSuggestionsEntryFocused__3LcTd {
+  background-color: #e6f3ff;
+}
+
+.draftJsMentionPlugin__mentionSuggestionsEntryText__3Jobq {
+  display: inline-block;
+  margin-left: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 368px;
+  font-size: 0.9em;
+  margin-bottom: 0.2em;
+}
+
+.draftJsMentionPlugin__mentionSuggestionsEntryAvatar__1xgA9 {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+.draftJsMentionPlugin__mentionSuggestions__2DWjA {
+  border: 1px solid #eee;
+  margin-top: 1.75em;
+  position: absolute;
+  min-width: 220px;
+  max-width: 440px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0px 4px 30px 0px rgba(220,220,220,1);
+  cursor: pointer;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  z-index: 2;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  box-sizing: border-box;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+.draftJsSidebarPlugin__separator__3U7qt {
+  display: inline-block;
+  border-right: 1px solid #ddd;
+  height: 24px;
+  margin: 0 0.5em;
+}
+.draftJsSidebarPlugin__buttonWrapper__1Dmqh {
+  display: inline-block;
+}
+
+.draftJsSidebarPlugin__button__qi1gf {
+  background: #fbfbfb;
+  color: #404040;
+  font-size: 18px;
+  border: 0;
+  padding-top: 5px;
+  vertical-align: bottom;
+  height: 46px;
+  width: 46px;
+}
+
+.draftJsSidebarPlugin__button__qi1gf svg {
+  fill: currentColor;
+}
+
+.draftJsSidebarPlugin__button__qi1gf:hover, .draftJsSidebarPlugin__button__qi1gf:focus {
+  background: #f3f3f3;
+  outline: 0; /* reset for :focus */
+}
+
+.draftJsSidebarPlugin__active__3qcpF {
+  background: #efefef;
+  color: #444;
+}
+
+.draftJsSidebarPlugin__active__3qcpF svg {
+  fill: #444;
+}
+.draftJsSidebarPlugin__toolbar__dNtBH {
+  left: 50%;
+  -webkit-transform: translate(-50%) scale(1);
+          transform: translate(-50%) scale(1);
+  position: absolute;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  box-sizing: border-box;
+}
+.draftJsSidebarPlugin__modalWrapper__EaX74 {
+  white-space: nowrap;
+  background: #fff;
+  box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  background-color: white;
+  width: 360px;
+}
+
+.draftJsSidebarPlugin__modalInput__1sp75 {
+  background-color: transparent;
+  border: none;
+  color: #181818 !important;
+  font-size: 15px;
+  height: auto;
+  line-height: 1.2;
+  margin: 0;
+  padding: 16px;
+  width: 270px;
+}
+
+.draftJsSidebarPlugin__modalInput__1sp75:focus {
+  outline: none;
+}
+
+.draftJsSidebarPlugin__modalButton__ffoIL {
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  height: 46px;
+  width: 46px;
+  background: transparent;
+  padding-right: 16px;
+  color: #ccc;
+}
+
+.draftJsSidebarPlugin__modalButton__ffoIL:hover {
+  color: #9d1d20;
+}
+
+.draftJsSidebarPlugin__modalButtonWrapper__27s-M {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.draftJsSidebarPlugin__modalError___AfCV {
+  -webkit-transition: height 0.2s ease-in-out;
+  transition: height 0.2s ease-in-out;
+  color: #fff;
+  font-size: 12px;
+  margin: -8px 2rem 0 2rem;
+}
+.draftJsSidebarPlugin__wrapper__1udU0 {
+  position: absolute;
+  border: 1px solid #F1F1F1;
+  border-radius: 2px;
+  background-color: inherit;
+  box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
+  display: -webkit-box;
+  display: flex;
+  height: 15rem;
+  padding: 1.5rem;
+  padding-top: 1.8rem;
+  z-index: 100;
+}
+
+.draftJsSidebarPlugin__picker__2dADB {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.draftJsSidebarPlugin__color__1Xb1m {
+  cursor: pointer;
+  width: 1rem;
+  -webkit-box-flex: 1;
+          flex: 1 0 10%;
+  margin: 0.1rem;
+  border-radius: 2px;
+}
+
+.draftJsSidebarPlugin__closeWrapper__3ofjk {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.1rem;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  color: #ccc;
+}
+.draftJsSidebarPlugin__closeWrapper__3ofjk:hover {
+  color: #9d1d20;
+}
+
+.draftJsSidebarPlugin__close__1uWEp {
+  display: block;
+  margin: 0 0 0 auto;
+}
+.draftJsSidebarPlugin__buttonWrapper__1Dmqh {
+  display: inline-block;
+}
+
+.draftJsSidebarPlugin__button__qi1gf {
+  background: #fbfbfb;
+  color: #404040;
+  font-size: 18px;
+  border: 0;
+  padding-top: 5px;
+  vertical-align: bottom;
+  height: 46px;
+  width: 46px;
+}
+
+.draftJsSidebarPlugin__button__qi1gf svg {
+  fill: currentColor;
+}
+
+.draftJsSidebarPlugin__button__qi1gf:hover, .draftJsSidebarPlugin__button__qi1gf:focus {
+  background: #f3f3f3;
+  outline: 0; /* reset for :focus */
+}
+
+.draftJsSidebarPlugin__active__3qcpF {
+  background: #efefef;
+  color: #444;
+}
+
+.draftJsSidebarPlugin__active__3qcpF svg {
+  fill: #444;
+}
+
+.draftJsSidebarPlugin__separator__3M3L7 {
+  display: inline-block;
+  border-right: 1px solid #ddd;
+  height: 24px;
+  margin: 0 0.5em;
+}
+.draftJsSidebarPlugin__blockType__27Jwn {
+  box-sizing: border-box;
+  background: #181818;
+  color: #fff;
+  margin: 0;
+  border-radius: 13px;
+  cursor: pointer;
+  height: 26px;
+  width: 26px;
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.draftJsSidebarPlugin__blockType__27Jwn svg {
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
+.draftJsSidebarPlugin__spacer__2Os2z {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  width: 74px;
+  height: 8px;
+}
+
+.draftJsSidebarPlugin__popup__GHzbY {
+  position: absolute;
+  left: 130px;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: flex;
+  margin-top: -40px;
+}
+.draftJsSidebarPlugin__wrapper__3on36 {
+  position: absolute;
+  z-index: 3;
+}
+.draftJsSidebarPlugin__modalWrapper__EaX74 {
+  white-space: nowrap;
+  background: #fff;
+  box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
+}
+
+.draftJsSidebarPlugin__modalInput__1sp75 {
+  background-color: transparent;
+  border: none;
+  color: #181818 !important;
+  font-size: 15px;
+  height: auto;
+  line-height: 1.2;
+  margin: 0;
+  padding: 16px;
+  width: 270px;
+}
+
+.draftJsSidebarPlugin__modalInput__1sp75:focus {
+  outline: none;
+}
+
+.draftJsSidebarPlugin__modalButton__ffoIL {
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  height: 46px;
+  width: 46px;
+  background: transparent;
+  padding-right: 16px;
+  color: #ccc;
+}
+
+.draftJsSidebarPlugin__modalButton__ffoIL:hover {
+  color: #9d1d20;
+}
+
+.draftJsSidebarPlugin__modalButtonWrapper__27s-M {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.draftJsSidebarPlugin__wrapper__ih9FN {
+  position: absolute;
+  border: 1px solid #F1F1F1;
+  border-radius: 2px;
+  background-color: inherit;
+  box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
+  height: 400px;
+  overflow-y: scroll;
+  z-index: 100;
+  padding: 1rem;
+  margin-top: -3rem;
+}
+
+.draftJsSidebarPlugin__picker__iDUNn {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  border-radius: 2px;
+  -webkit-box-align: baseline;
+          align-items: baseline;
+}
+
+.draftJsSidebarPlugin__gif__3NqJR {
+  cursor: pointer;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 0.21rem;
+}
+
+.draftJsSidebarPlugin__input__33l4h {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  color: inherit;
+  font-size: 15px;
+  height: auto;
+  line-height: 1.2;
+  padding: 1rem;
+  margin: 1rem 0.2rem;
+  z-index: 100;
+}
+.draftJsSidebarPlugin__input__33l4h:focus {
+  outline: none;
+}
+
+.draftJsSidebarPlugin__closeWrapper__Fz-as {
+  position: absolute;
+  top: 0.2rem;
+  right: 0;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  color: #ccc;
+  width: 200px;
+  margin: 0 1rem;
+}
+.draftJsSidebarPlugin__closeWrapper__Fz-as:hover {
+  color: #9d1d20;
+}
+
+.draftJsSidebarPlugin__close__3IRgw {
+  display: block;
+  margin: 0 0 0 auto;
+}
+.draftJsSidebarPlugin__wrapper__2Hef_ {
+  position: absolute;
+  margin-top: 1rem;
+  border: 1px solid #F1F1F1;
+  border-radius: 2px;
+  background-color: inherit;
+  box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
+  width: 370px;
+  min-height: 360px;
+  z-index: 100;
+  margin-top: -3rem;
+}
+
+.draftJsSidebarPlugin__picker__2FUMw {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.8rem;
+  padding-top: 0;
+  margin-top: 1rem;
+  border-radius: 2px;
+  -webkit-box-align: baseline;
+          align-items: baseline;
+  float: left;
+  width: 85%;
+}
+
+.draftJsSidebarPlugin__emoji__2ci96 {
+  cursor: pointer;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 0.21rem;
+}
+
+.draftJsSidebarPlugin__tabWrapper__v0rd2 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  float: left;
+  width: 15%;
+  height: 100%;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.draftJsSidebarPlugin__tab__1djJ6 {
+  font-size: 1.5rem;
+  padding-left: 0.35rem;
+  padding: 0.8rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.draftJsSidebarPlugin__tab__1djJ6 img {
+  height: 24px !important;
+  width: 24px !important;
+}
+
+.draftJsSidebarPlugin__closeWrapper__15umu {
+  position: absolute;
+  top: 1rem;
+  right: 2px;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  color: #ccc;
+}
+.draftJsSidebarPlugin__closeWrapper__15umu:hover {
+  color: #9d1d20;
+}
+.draftJsEmbedPlugin__embedWrapper__1GiCv {
+  position: relative;
+  width: 90%;
+  height: 0;
+  padding-bottom: 56.25%;
+  margin: 0 auto;
+}
+
+.draftJsEmbedPlugin__embed__DJdZR {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.draftJsLinkPlugin__link__2ittM, .draftJsLinkPlugin__link__2ittM:visited {
+  color: #5e93c5;
+  text-decoration: none;
+}
+
+.draftJsLinkPlugin__link__2ittM:hover, .draftJsLinkPlugin__link__2ittM:focus {
+  color: #7eadda;
+  outline: 0; /* reset for :focus */
+  cursor: pointer;
+}
+
+.draftJsLinkPlugin__link__2ittM:active {
+  color: #4a7bab;
+}

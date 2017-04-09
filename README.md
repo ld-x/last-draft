@@ -17,17 +17,20 @@ npm install last-draft --save
 
 Last Draft now has 2 maintained versions:
 
-## Version
+## Versions
 
 #### `3.0.0` in progress version using [draft-js-plugins](https://draft-js-plugins.com) and [last-draft-js-plugins](https://github.com/vacenz/last-draft-js-plugins)
 
 https://github.com/vacenz/last-draft/tree/v3
+
+View example at http://lastdraft.xyz/v3
 
 This branch will be kept in sync with master.
 
 #### `2.1.0` stable version using [MegaDraft](https://github.com/globocom/megadraft) plugin approach and ld-plugins
 
 https://github.com/vacenz/last-draft/tree/v2
+View example at http://lastdraft.xyz
 
 ## v3 Use
 ```jsx
