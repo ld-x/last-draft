@@ -16,9 +16,9 @@ Last Draft now has 2 maintained versions:
 
 #### `3.0.0` in progress version using [draft-js-plugins](https://draft-js-plugins.com) and [last-draft-js-plugins](https://github.com/vacenz/last-draft-js-plugins)
 
-https://github.com/vacenz/last-draft/tree/v3
+- [v3 docs](https://github.com/vacenz/last-draft/tree/v3)
 
-View example at http://lastdraft.xyz/v3
+- [v3 example](http://lastdraft.xyz/v3)
 
 ```jsx
 yarn add last-draft
@@ -26,9 +26,9 @@ yarn add last-draft
 
 #### `2.1.0` stable version using [MegaDraft](https://github.com/globocom/megadraft) plugin approach and ld-plugins
 
-https://github.com/vacenz/last-draft/tree/v2
+- [v2 docs](https://github.com/vacenz/last-draft/tree/v2)
 
-View example at http://lastdraft.xyz
+- [v2 example](http://lastdraft.xyz)
 
 ```jsx
 yarn add last-draft@2.1.0
