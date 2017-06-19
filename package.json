@@ -33,10 +33,12 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.7.2",
     "babel-runtime": "^6.6.1",
+    "draft-js": "^0.10.0",
     "enzyme": "^2.7.1",
     "expect": "^1.20.2",
     "express": "^4.13.4",
     "html-webpack-plugin": "^2.16.0",
+    "immutable": "~3.7.4",
     "jsdom": "^9.11.0",
     "ld-audio": "2.0.0",
     "ld-color-picker": "2.0.0",
@@ -47,20 +49,25 @@
     "ld-sticker": "2.0.0",
     "ld-todo": "2.0.0",
     "ld-video": "2.0.0",
-    "react": ">=15.3.1",
-    "react-addons-test-utils": "^15.4.2",
-    "react-dom": ">=15.3.1",
+    "react": "15.4.2",
+    "react-addons-test-utils": "15.4.2",
+    "react-dom": "15.4.2",
     "standard": "^8.6.0",
     "tape": "^4.6.3",
     "webpack": "2.1.0-beta.27",
     "webpack-visualizer-plugin": "^0.1.11",
     "webpack-dev-server": "2.1.0-beta.12"
   },
-  "dependencies": {
-    "draft-js": "0.10.0",
+  "peerDependencies": {
+    "draft-js": "^0.10.0",
     "immutable": "~3.7.4",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "styled-components": "2.1.0"
+  },
+  "dependencies": {
     "linkify-it": "^2.0.2",
-    "styled-components": "^1.2.1",
     "tlds": "^1.182.0"
   },
   "keywords": [
