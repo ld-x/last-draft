@@ -2982,9 +2982,9 @@ ld-html@2.0.0:
     draft-js "0.10.0"
     styled-components "^1.2.1"
 
-ld-mention@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ld-mention/-/ld-mention-2.0.0.tgz#f88861046345bdb7de08b3e39f666f8038c4d57c"
+ld-mention@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/ld-mention/-/ld-mention-2.1.0.tgz#031db87dabb18e45ea3668e772d5fe1039fe6718"
   dependencies:
     draft-js "0.10.0"
     styled-components "^1.2.1"
