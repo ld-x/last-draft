@@ -12,7 +12,7 @@
 
 ## Versions
 
-#### `3.2.0` in progress version using [draft-js-plugins](https://draft-js-plugins.com) and [last-draft-js-plugins](https://github.com/vacenz/last-draft-js-plugins)
+#### `3.3.0` in progress version using [draft-js-plugins](https://draft-js-plugins.com) and [last-draft-js-plugins](https://github.com/vacenz/last-draft-js-plugins)
 
 - [v3 docs](https://github.com/vacenz/last-draft/tree/v3)
 
