@@ -301,6 +301,10 @@ export default class extends Component {
           searchText = searchText + String.fromCharCode(event.keyCode)
         }
         searchValue = searchText.substr(1) /* remove the @ or : */
+
+        /* if more than 2 spaces or greater than 100 characters exit */
+        if ((searchValue.split(' ').length - 1) > 2) { return }
+        if (searchValue.length > 100) { return }
       }
     }
     if (searchValue !== null) {
