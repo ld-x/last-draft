@@ -28,7 +28,9 @@ yarn add last-draft
 
 - [v2 docs](https://github.com/vacenz/last-draft/tree/v2)
 
-- [v2 example](http://lastdraft.xyz)
+- [v2 demo](http://lastdraft.xyz)
+
+- [v2 example-repo](https://github.com/vacenz/last-draft-example)
 
 ```jsx
 yarn add last-draft@2.3.3
