@@ -66,7 +66,7 @@
   },
   "dependencies": {
     "draft-js-color-picker-plugin": "1.2.0",
-    "draft-js-link-plugin": "1.2.0",
+    "draft-js-link-plugin": "1.2.2",
     "draft-js-embed-plugin": "1.2.0",
     "last-draft-js-sidebar-plugin": "1.2.0",
     "last-draft-js-toolbar-plugin": "1.2.0",

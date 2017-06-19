@@ -1921,9 +1921,9 @@ draft-js-image-plugin@2.0.0-rc2:
     prop-types "^15.5.8"
     union-class-names "^1.0.0"
 
-draft-js-link-plugin@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/draft-js-link-plugin/-/draft-js-link-plugin-1.2.0.tgz#a32c5d0617e2bfb4ec3b1c656c1855594b9dc248"
+draft-js-link-plugin@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/draft-js-link-plugin/-/draft-js-link-plugin-1.2.2.tgz#01939fa622a778cdb140f9fc28cd5ec4cde4eae3"
   dependencies:
     decorate-component-with-props "^1.0.2"
     linkify-it "2.0.0"
@@ -2907,13 +2907,9 @@ ignore@^3.0.9, ignore@^3.2.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.2.4.tgz#4055e03596729a8fabe45a43c100ad5ed815c4e8"
 
-immutable@3.7.4:
+immutable@3.7.4, immutable@~3.7.4:
   version "3.7.4"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.7.4.tgz#40ab3ec87b4ac95e0331a6d359a4b1fa73b2ddf3"
-
-immutable@~3.7.4:
-  version "3.7.6"
-  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.7.6.tgz#13b4d3cb12befa15482a26fe1b2ebae640071e4b"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
