@@ -137,11 +137,17 @@ export default class extends Component {
   }
 
   render () {
+    const {
+        editorState,
+        ...editorProps,
+    } = this.props;
+
     return (
       <div>
         <div className='editor'>
           <Editor
-            editorState={this.props.editorState}
+            {...editorProps}
+            editorState={editorState}
             onChange={this.onChange}
             plugins={plugins}
             customStyleMap={colorStyleMap}
