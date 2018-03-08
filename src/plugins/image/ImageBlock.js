@@ -83,9 +83,9 @@ export default class ImageBlock extends Component {
 
 const Image = styled.img`
   display: inline-block;
-  maxWidth: 90% !important;
+  max-width: 90% !important;
   margin: 0 auto !important;
-  verticalAlign: middle;
+  vertical-align: middle;
 `
 
 const InputWrap = styled.div`

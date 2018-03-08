@@ -41,8 +41,8 @@ const Spinner = styled.svg`
 `
 const PlaceholderImage = styled.img`
   display: inline-block;
-  maxWidth: 100%;
-  verticalAlign: middle;
+  max-width: 100%;
+  vertical-align: middle;
   opacity: 0.25;
 `
 
